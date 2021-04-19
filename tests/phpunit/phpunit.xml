@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<phpunit colors="true">
+  <testsuites>
+    <testsuite name="main">
+      <directory suffix="Test.php">../</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>

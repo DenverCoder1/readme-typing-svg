@@ -1,0 +1,24 @@
+name: PHPUnit CI
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v5
+      - name: PHPUnit Tests
+        uses: php-actions/phpunit@v2
+        with:
+          bootstrap: vendor/autoload.php
+          configuration: tests/phpunit/phpunit.xml
+          args: --testdox
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: DenverCoder1
