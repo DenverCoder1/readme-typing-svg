@@ -1,0 +1,22 @@
+{
+    "name": "denvercoder1/readme-typing-svg",
+    "description": "⚡ Dynamically generated, customizable SVG that gives the appearance of typing and deleting text. Typing SVGs can be used as a bio on your Github profile readme or repository.",
+    "keywords": ["github", "dynamic", "readme", "typing", "svg", "profile"],
+    "license": "MIT",
+    "homepage": "https://github.com/DenverCoder1/readme-typing-svg/",
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    },
+    "scripts": {
+        "start": "php -S localhost:8000 -t src",
+        "test": "./vendor/bin/phpunit --testdox tests"
+    }
+}
