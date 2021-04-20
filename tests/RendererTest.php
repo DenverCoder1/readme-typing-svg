@@ -34,8 +34,6 @@ final class RendererTest extends TestCase
      */
     public function testErrorCardRender(): void
     {
-        $this->expectException("InvalidArgumentException");
-        $this->expectExceptionMessage("Lines parameter must be set.");
         // missing lines
         $params = array(
             "center" => "true",
@@ -44,11 +42,11 @@ final class RendererTest extends TestCase
         );
         try {
             // create renderer model
-            $model = new RendererModel("templates/main.php", $params);
+            $model = new RendererModel("src/templates/main.php", $params);
             $view = new RendererView($model);
         } catch (InvalidArgumentException $error) {
             // create error rendering model
-            $model = new ErrorModel("templates/error.php", $error->getMessage());
+            $model = new ErrorModel("src/templates/error.php", $error->getMessage());
             $view = new ErrorView($model);
         }
         $this->assertEquals(file_get_contents("tests/svg/test_missing_lines.svg"), $view->output());
