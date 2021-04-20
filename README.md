@@ -3,8 +3,7 @@
 </p>
 
 <p align="center">
-  <!-- TODO: Replace temporary URL -->
-  <img src="https://freshidea.com/jonah/app/typing-svg/?lines=Type+messages+everywhere!;Add+a+bio+to+your+profile!;Add+a+description+to+your+repo!;Make+your+readme+stand+out!&center=true&width=360&height=50">
+  <img src="https://readme-typing-svg.herokuapp.com/?lines=Type+messages+everywhere!;Add+a+bio+to+your+profile!;Add+a+description+to+your+repo!;Make+your+readme+stand+out!&center=true&width=360&height=50">
 </p>
 
 <p align="center">
@@ -25,12 +24,10 @@
 
 1. Copy-paste the markdown below into your GitHub profile README
 2. Replace the value after `?lines=` with your text. Separate lines of text with semicolons and use `+` or `%20` for spaces.
+3. (Optional) Adjust the width parameter (see below) to fit the full width of your text.
 
-> Please be patient while a new URL is being set up
-
-<!-- TODO: Fix URL -->
 ```md
-[![Typing SVG](https://------------.herokuapp.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
 ```
 
 ## 🔧 Options
