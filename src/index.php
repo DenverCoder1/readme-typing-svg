@@ -10,4 +10,4 @@ $model = new RendererModel();
 $view = new RendererView($model);
 
 // render SVG
-$view->output();
+echo $view->output();

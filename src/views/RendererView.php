@@ -21,6 +21,7 @@ class RendererView
 
     /**
      * Render SVG Output
+     * @return string
      */
     public function output()
     {
@@ -31,6 +32,12 @@ class RendererView
         $center = $this->model->center;
         $width = $this->model->width;
         $height = $this->model->height;
-        require_once $this->model->template;
+        // render SVG with output buffering
+        ob_start();
+        require $this->model->template;
+        $output = ob_get_contents();
+        ob_end_clean();
+        // return rendered output
+        return $output;
     }
 }
