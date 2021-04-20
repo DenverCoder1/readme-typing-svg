@@ -69,7 +69,7 @@ class RendererModel
         if (!$exploded) {
             throw new InvalidArgumentException("Lines parameter is invalid.");
         }
-        return $exploded;
+        return array_map("urldecode", $exploded);
     }
 
     /**
