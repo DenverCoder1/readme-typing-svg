@@ -10,10 +10,8 @@ try {
     // create renderer model
     $model = new RendererModel("templates/main.php", $_REQUEST);
 } catch (InvalidArgumentException $error) {
-    // display error svg
-    $message = $error->getMessage();
-    require_once "templates/error.php";
-    exit;
+    // create error rendering model
+    $model = new RendererModel("templates/error.php", $error->getMessage());
 }
 
 // create renderer view
