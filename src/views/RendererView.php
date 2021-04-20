@@ -25,13 +25,16 @@ class RendererView
      */
     public function output()
     {
-        $lines = $this->model->lines;
-        $font = $this->model->font;
-        $color = $this->model->color;
-        $size = $this->model->size;
-        $center = $this->model->center;
-        $width = $this->model->width;
-        $height = $this->model->height;
+        // import variables into symbol table
+        extract(array(
+            "lines" => $this->model->lines,
+            "font" => $this->model->font,
+            "color" => $this->model->color,
+            "size" => $this->model->size,
+            "center" => $this->model->center,
+            "width" => $this->model->width,
+            "height" => $this->model->height,
+        ));
         // render SVG with output buffering
         ob_start();
         require_once $this->model->template;
