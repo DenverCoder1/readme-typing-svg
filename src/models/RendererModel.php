@@ -1,7 +1,7 @@
 <?php declare (strict_types = 1);
 
 /**
- * Model for Typing SVG parameters
+ * Model for SVG outputs
  */
 class RendererModel
 {
@@ -44,7 +44,7 @@ class RendererModel
      */
     public function __construct($template, $params)
     {
-        $this->lines = $this->checkLines($params["lines"]);
+        $this->lines = $this->checkLines($params["lines"] ?? "");
         $this->font = $this->checkFont($params["font"] ?? $this->DEFAULTS["font"]);
         $this->color = $this->checkColor($params["color"] ?? $this->DEFAULTS["color"]);
         $this->size = $this->checkNumber($params["size"] ?? $this->DEFAULTS["size"], "Font size");
@@ -57,12 +57,12 @@ class RendererModel
     /**
      * Validate lines and return array of string
      *
-     * @param string|NULL $lines - semicolon separated lines parameter
+     * @param string $lines - semicolon separated lines parameter
      * @return array<string>
      */
     private function checkLines($lines)
     {
-        if (!isset($lines)) {
+        if (!$lines) {
             throw new InvalidArgumentException("Lines parameter must be set.");
         }
         $exploded = explode(";", $lines);
@@ -87,7 +87,7 @@ class RendererModel
     /**
      * Validate font color and return valid string
      *
-     * @param string|NULL $color - color parameter
+     * @param string $color - color parameter
      * @return string
      */
     private function checkColor($color)
@@ -104,7 +104,7 @@ class RendererModel
     /**
      * Validate numeric parameter and return valid integer
      *
-     * @param string|NULL $num - parameter to validate
+     * @param string $num - parameter to validate
      * @param string $field - field name for displaying in case of error
      * @return int
      */
@@ -120,7 +120,7 @@ class RendererModel
     /**
      * Validate center alignment and return boolean
      *
-     * @param string|NULL $center - center parameter
+     * @param string $center - center parameter
      * @return boolean
      */
     private function checkCenter($center)
