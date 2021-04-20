@@ -45,7 +45,7 @@ class RendererModel
         $this->center = $this->checkCenter($_REQUEST["center"] ?? $this->DEFAULTS["center"]);
         $this->width = $this->checkNumber($_REQUEST["width"] ?? $this->DEFAULTS["width"], "Width");
         $this->height = $this->checkNumber($_REQUEST["height"] ?? $this->DEFAULTS["height"], "Height");
-        $this->template = "templates/svg.php";
+        $this->template = "templates/main.php";
     }
 
     /**
