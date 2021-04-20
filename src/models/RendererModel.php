@@ -36,16 +36,22 @@ class RendererModel
         "height" => "50",
     );
 
-    public function __construct()
+    /**
+     * Construct RendererModel
+     *
+     * @param string $template path to the template file
+     * @param array<string, string> $params request parameters
+     */
+    public function __construct($template, $params)
     {
-        $this->lines = $this->checkLines($_REQUEST["lines"]);
-        $this->font = $this->checkFont($_REQUEST["font"] ?? $this->DEFAULTS["font"]);
-        $this->color = $this->checkColor($_REQUEST["color"] ?? $this->DEFAULTS["color"]);
-        $this->size = $this->checkNumber($_REQUEST["size"] ?? $this->DEFAULTS["size"], "Font size");
-        $this->center = $this->checkCenter($_REQUEST["center"] ?? $this->DEFAULTS["center"]);
-        $this->width = $this->checkNumber($_REQUEST["width"] ?? $this->DEFAULTS["width"], "Width");
-        $this->height = $this->checkNumber($_REQUEST["height"] ?? $this->DEFAULTS["height"], "Height");
-        $this->template = "templates/main.php";
+        $this->lines = $this->checkLines($params["lines"]);
+        $this->font = $this->checkFont($params["font"] ?? $this->DEFAULTS["font"]);
+        $this->color = $this->checkColor($params["color"] ?? $this->DEFAULTS["color"]);
+        $this->size = $this->checkNumber($params["size"] ?? $this->DEFAULTS["size"], "Font size");
+        $this->center = $this->checkCenter($params["center"] ?? $this->DEFAULTS["center"]);
+        $this->width = $this->checkNumber($params["width"] ?? $this->DEFAULTS["width"], "Width");
+        $this->height = $this->checkNumber($params["height"] ?? $this->DEFAULTS["height"], "Height");
+        $this->template = $template;
     }
 
     /**
