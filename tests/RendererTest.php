@@ -12,7 +12,12 @@ final class RendererTest extends TestCase
     public function testCardRender(): void
     {
         $params = array(
-            "lines" => "Full-stack%20web%20and%20app%20developer;Self-taught%20UI%2FUX%20Designer;10%2B%20years%20of%20coding%20experience;Always%20learning%20new%20things",
+            "lines" => implode(";", array(
+                "Full-stack+web+and+app+developer",
+                "Self-taught%20UI%2FUX%20Designer",
+                "10%2B%20years%20of%20coding%20experience",
+                "Always learning new things",
+            )),
             "center" => "true",
             "width" => "380",
             "height" => "50",
@@ -28,6 +33,7 @@ final class RendererTest extends TestCase
     public function testErrorCardRender(): void
     {
         $this->expectException("InvalidArgumentException");
+        $this->expectExceptionMessage("Lines parameter must be set.");
         // missing lines
         $params = array(
             "center" => "true",
