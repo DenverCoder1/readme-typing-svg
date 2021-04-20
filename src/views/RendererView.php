@@ -34,7 +34,7 @@ class RendererView
         $height = $this->model->height;
         // render SVG with output buffering
         ob_start();
-        require $this->model->template;
+        require_once $this->model->template;
         $output = ob_get_contents();
         ob_end_clean();
         // return rendered output
