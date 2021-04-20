@@ -26,7 +26,7 @@ class ErrorView
     public function output()
     {
         // import variables into symbol table
-        extract(["message" => $this->model->lines]);
+        extract(["message" => $this->model->message]);
         // render SVG with output buffering
         ob_start();
         require_once $this->model->template;
