@@ -26,6 +26,9 @@ class RendererModel
     /** @var int $height SVG height (px) */
     public $height;
 
+    /** @var string $template path to template file */
+    public $template;
+
     /** @var array<string, string> $DEFAULTS */
     private $DEFAULTS = array(
         "font" => "JetBrains Mono",

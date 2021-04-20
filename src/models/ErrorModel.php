@@ -8,6 +8,9 @@ class ErrorModel
     /** @var string $message text to display */
     public $message;
 
+    /** @var string $template path to template file */
+    public $template;
+
     /**
      * Construct ErrorModel
      *
