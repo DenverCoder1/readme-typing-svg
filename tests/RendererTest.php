@@ -15,9 +15,9 @@ final class RendererTest extends TestCase
     {
         $params = array(
             "lines" => implode(";", array(
-                "Full-stack+web+and+app+developer",
-                "Self-taught%20UI%2FUX%20Designer",
-                "10%2B%20years%20of%20coding%20experience",
+                "Full-stack web and app developer",
+                "Self-taught UI/UX Designer",
+                "10+ years of coding experience",
                 "Always learning new things",
             )),
             "center" => "true",
