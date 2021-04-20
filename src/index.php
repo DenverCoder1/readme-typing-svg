@@ -2,8 +2,8 @@
 
 require_once "models/RendererModel.php";
 require_once "views/RendererView.php";
-require_once "src/models/ErrorModel.php";
-require_once "src/views/ErrorView.php";
+require_once "models/ErrorModel.php";
+require_once "views/ErrorView.php";
 
 // set content type
 header("Content-type: image/svg+xml");
