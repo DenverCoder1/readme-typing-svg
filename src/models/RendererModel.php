@@ -1,5 +1,8 @@
 <?php declare (strict_types = 1);
 
+/**
+ * Model for Typing SVG parameters
+ */
 class RendererModel
 {
     /** @var array<string> $lines text to display */
