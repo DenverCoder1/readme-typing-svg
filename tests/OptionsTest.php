@@ -28,7 +28,7 @@ final class OptionsTest extends TestCase
     {
         $params = array(
             "lines" => "text",
-            "font" => "Open+Sans",
+            "font" => "Open Sans",
         );
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals("Open Sans", $model->font);
