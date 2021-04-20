@@ -6,7 +6,17 @@ require_once "views/RendererView.php";
 // set content type
 header("Content-type: image/svg+xml");
 
-$model = new RendererModel();
+try {
+    // create renderer model
+    $model = new RendererModel("templates/main.php", $_REQUEST);
+} catch (InvalidArgumentException $error) {
+    // display error svg
+    $message = $error->getMessage();
+    require_once "templates/error.php";
+    exit;
+}
+
+// create renderer view
 $view = new RendererView($model);
 
 // render SVG
