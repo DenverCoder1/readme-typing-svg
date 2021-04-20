@@ -66,9 +66,6 @@ class RendererModel
             throw new InvalidArgumentException("Lines parameter must be set.");
         }
         $exploded = explode(";", $lines);
-        if (!$exploded) {
-            throw new InvalidArgumentException("Lines parameter is invalid.");
-        }
         return array_map("urldecode", $exploded);
     }
 
@@ -81,7 +78,7 @@ class RendererModel
     private function checkFont($font)
     {
         // return escaped font name
-        return (string) preg_replace("/[^0-9A-Za-z+'\-()!&*_ ]/", "", $font);
+        return urldecode(preg_replace("/[^0-9A-Za-z+'\-()!&*_ ]/", "", $font));
     }
 
     /**
