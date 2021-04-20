@@ -19,10 +19,7 @@ final class RendererTest extends TestCase
         );
         $model = new RendererModel("src/templates/main.php", $params);
         $view = new RendererView($model);
-        // check that getRequestedTheme returns correct colors for each theme
-        $render = $view->output();
-        $expected = file_get_contents("tests/svg/test_card.svg");
-        $this->assertEquals($expected, $render);
+        $this->assertEquals(file_get_contents("tests/svg/test_normal.svg"), $view->output());
     }
 
     /**
@@ -30,8 +27,21 @@ final class RendererTest extends TestCase
      */
     public function testErrorCardRender(): void
     {
-        // check that getRequestedTheme returns correct colors for each theme
-        // $expected = file_get_contents("tests/svg/test_error_card.svg");
-        // $this->assertEquals($expected, $render);
+        $this->expectException("InvalidArgumentException");
+        // missing lines
+        $params = array(
+            "center" => "true",
+            "width" => "380",
+            "height" => "50",
+        );
+        try {
+            // create renderer model
+            $model = new RendererModel("templates/main.php", $params);
+        } catch (InvalidArgumentException $error) {
+            // create error rendering model
+            $model = new RendererModel("templates/error.php", $error->getMessage());
+        }
+        $view = new RendererView($model);
+        $this->assertEquals(file_get_contents("tests/svg/test_missing_lines.svg"), $view->output());
     }
 }
