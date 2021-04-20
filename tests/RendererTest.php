@@ -3,6 +3,8 @@ use PHPUnit\Framework\TestCase;
 
 require_once "src/models/RendererModel.php";
 require_once "src/views/RendererView.php";
+require_once "src/models/ErrorModel.php";
+require_once "src/views/ErrorView.php";
 
 final class RendererTest extends TestCase
 {
@@ -43,11 +45,12 @@ final class RendererTest extends TestCase
         try {
             // create renderer model
             $model = new RendererModel("templates/main.php", $params);
+            $view = new RendererView($model);
         } catch (InvalidArgumentException $error) {
             // create error rendering model
-            $model = new RendererModel("templates/error.php", $error->getMessage());
+            $model = new ErrorModel("templates/error.php", $error->getMessage());
+            $view = new ErrorView($model);
         }
-        $view = new RendererView($model);
         $this->assertEquals(file_get_contents("tests/svg/test_missing_lines.svg"), $view->output());
     }
 }

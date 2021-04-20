@@ -11,7 +11,7 @@ try {
     $model = new RendererModel("templates/main.php", $_REQUEST);
 } catch (InvalidArgumentException $error) {
     // create error rendering model
-    $model = new RendererModel("templates/error.php", $error->getMessage());
+    $model = new ErrorModel("templates/error.php", $error->getMessage());
 }
 
 // create renderer view
