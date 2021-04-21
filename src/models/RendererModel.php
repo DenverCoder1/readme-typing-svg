@@ -81,7 +81,7 @@ class RendererModel
     private function checkFont($font)
     {
         // return escaped font name
-        return preg_replace("/[^0-9A-Za-z+'\-()!&*_ ]/", "", $font);
+        return preg_replace("/[^0-9A-Za-z\- ]/", "", $font);
     }
 
     /**
