@@ -1,10 +1,7 @@
 <?php declare (strict_types = 1);
 use PHPUnit\Framework\TestCase;
 
-require_once "src/models/RendererModel.php";
-require_once "src/views/RendererView.php";
-require_once "src/models/ErrorModel.php";
-require_once "src/views/ErrorView.php";
+require 'vendor/autoload.php';
 
 final class RendererTest extends TestCase
 {

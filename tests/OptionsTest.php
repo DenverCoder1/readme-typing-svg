@@ -1,8 +1,7 @@
 <?php declare (strict_types = 1);
 use PHPUnit\Framework\TestCase;
 
-require_once "src/models/RendererModel.php";
-require_once "src/views/RendererView.php";
+require 'vendor/autoload.php';
 
 final class OptionsTest extends TestCase
 {

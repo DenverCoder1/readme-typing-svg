@@ -1,9 +1,6 @@
 <?php declare (strict_types = 1);
 
-require_once "models/RendererModel.php";
-require_once "views/RendererView.php";
-require_once "models/ErrorModel.php";
-require_once "views/ErrorView.php";
+require '../vendor/autoload.php';
 
 // set content type
 header("Content-type: image/svg+xml");
