@@ -6,7 +6,8 @@
     "homepage": "https://github.com/DenverCoder1/readme-typing-svg/",
     "autoload": {
         "classmap": [
-            "src/"
+            "src/models/",
+            "src/views/"
         ]
     },
     "require": {
