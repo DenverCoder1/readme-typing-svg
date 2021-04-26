@@ -12,7 +12,6 @@ let preview = {
     "The five boxing wizards jump quickly",
     "How vexingly quick daft zebras jump",
     "Quick fox jumps nightly above wizard",
-    "Jackdaws love my big sphinx of quartz",
     "Sphinx of black quartz, judge my vow",
     "Waltz, bad nymph, for quick jigs vex",
     "Glib jocks quiz nymph to vex dwarf",

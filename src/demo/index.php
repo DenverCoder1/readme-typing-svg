@@ -93,8 +93,7 @@
                 <code></code>
             </div>
 
-            <button class="copy-button btn tooltip" onclick="clipboard.copy(this);" onmouseout="tooltip.reset(this);"
-                disabled>
+            <button class="copy-button btn tooltip" onclick="clipboard.copy(this);" onmouseout="tooltip.reset(this);" disabled>
                 Copy To Clipboard
             </button>
         </div>
