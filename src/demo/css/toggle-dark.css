@@ -1,0 +1,28 @@
+a.darkmode {
+  position: fixed;
+  top: 2em;
+  right: 2em;
+  color: var(--text);
+  background: var(--background);
+  height: 3em;
+  width: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  box-shadow: 0 0 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  transition: 0.2s ease-in box-shadow;
+}
+
+a.darkmode:hover {
+  box-shadow: 0 0 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+}
+
+@media only screen and (max-width: 600px) {
+  a.darkmode {
+    top: unset;
+    bottom: 1em;
+    right: 1em;
+  }
+}
