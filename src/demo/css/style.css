@@ -200,8 +200,13 @@ span[title="required"] {
   color: var(--red);
 }
 
-input:focus:invalid {
+input:invalid {
   outline: 2px var(--red) auto;
+}
+
+input:focus:invalid {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--blue-light), 0 0 0 3px var(--red);
 }
 
 .delete-line.btn {

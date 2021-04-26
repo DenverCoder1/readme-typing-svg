@@ -19,36 +19,39 @@ let preview = {
   ],
   // update the preview
   update: function () {
+    const copyButton = document.querySelector(".copy-button");
     // get parameter values from all .param elements
     const params = Array.from(document.querySelectorAll(".param:not([data-index])")).reduce(
       (acc, next) => {
-        let obj = {
-          ...acc
-        };
+        // copy accumulator into local object
+        let obj = acc;
         let value = next.value;
-
-        if (value.indexOf('#') >= 0) {
-          // if the value is colour, remove the hash sign
-          value = value.replace(/#/g, "");
-          if (value.length > 6) {
-            // if the value is in hexa and opacity is 1, remove FF
-            value = value.replace(/(F|f){2}$/, "");
-          }
-        }
+        // remove hash from any colors and remove "FF" if full opacity
+        value = value.replace(/#([A-Fa-f0-9]{6})(F|f){2}$/, "$1");
+        // add value to reduction accumulator
         obj[next.id] = value;
         return obj;
       }, {}
     );
-    params.lines = Array.from(document.querySelectorAll(".param[data-index]"))
-      .filter((el) => el.value.length)
-      .map((el) => el.value)
-      .join(";");
+    const lineInputs = Array.from(document.querySelectorAll(".param[data-index]"));
+    // disable copy button if any line contains semicolon
+    if (lineInputs.some((el) => el.value.indexOf(";") >= 0)) {
+      return copyButton.disabled = "true";
+    }
+    // add lines to parameters
+    params.lines = lineInputs
+      .map((el) => el.value) // get values
+      .filter((val) => val.length) // skip blank entries
+      .join(";"); // join lines with ';' delimiter
+    // function to URI encode string but keep semicolons as ';' and spaces as '+'
+    const encode = (str) => {
+      return encodeURIComponent(str).replace(/%3B/g, ";").replace(/%20/g, "+")
+    };
     // convert parameters to query string
-    const encode = encodeURIComponent;
     const query = Object.keys(params)
-      .filter((key) => params[key] !== this.defaults[key])
-      .map((key) => encode(key) + "=" + encode(params[key]).replace(/%3B/g, ";").replace(/%20/g, "+"))
-      .join("&");
+      .filter((key) => params[key] !== this.defaults[key]) // skip if default value
+      .map((key) => encode(key) + "=" + encode(params[key])) // encode keys and values
+      .join("&"); // join lines with '&' delimiter
     // generate links and markdown
     const imageURL = `${window.location.origin}?${query}`;
     const demoImageURL = `/?${query}`;
@@ -56,13 +59,14 @@ let preview = {
     const md = `[![Typing SVG](${imageURL})](${repoLink})`;
     // don't update if nothing has changed
     const mdElement = document.querySelector(".md code");
-    if (mdElement.innerText === md) return;
+    if (mdElement.innerText === md) {
+      return;
+    }
     // update image preview
     document.querySelector(".output img").src = demoImageURL;
     // update markdown
     mdElement.innerText = md;
     // disable copy button if no lines are filled in
-    const copyButton = document.querySelector(".copy-button");
     copyButton.disabled = !params.lines.length;
   },
   addLine: function () {
@@ -73,7 +77,7 @@ let preview = {
     label.innerText = `Line ${index}`;
     label.setAttribute("for", `line-${index}`);
     label.dataset.index = index;
-    // color picker
+    // line input box
     const input = document.createElement("input");
     input.className = "param";
     input.type = "text";
@@ -182,7 +186,7 @@ document.addEventListener("keyup", () => preview.update(), false);
 document.addEventListener("click", () => preview.update(), false);
 
 // checkbox listener
-document.querySelector(".show-border input").addEventListener("change", function() {
+document.querySelector(".show-border input").addEventListener("change", function () {
   const img = document.querySelector(".output img");
   this.checked ? img.classList.add("outlined") : img.classList.remove("outlined");
 });
