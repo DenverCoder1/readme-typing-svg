@@ -15,6 +15,7 @@
 
 - [📃 Table of Contents](#-table-of-contents)
 - [⚡ Quick setup](#-quick-setup)
+- [⚙ Demo Site](#-demo-site)
 - [🔧 Options](#-options)
 - [📤 Deploying it on your own](#-deploying-it-on-your-own)
 - [🤗 Contributing](#-contributing)
@@ -29,6 +30,14 @@
 ```md
 [![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
 ```
+
+## ⚙ Demo Site
+
+Here you can customize your Streak Stats card with a live preview.
+
+https://readme-typing-svg.herokuapp.com/demo/
+
+[![Demo Site](https://user-images.githubusercontent.com/20955511/116159172-70d46500-a6f8-11eb-9a26-97c476410a13.png "Demo Site")](https://readme-typing-svg.herokuapp.com/demo/)
 
 ## 🔧 Options
 
