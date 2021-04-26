@@ -33,7 +33,7 @@
 
 ## ⚙ Demo Site
 
-Here you can customize your Streak Stats card with a live preview.
+Here you can easily customize your Typing SVG with a live preview.
 
 https://readme-typing-svg.herokuapp.com/demo/
 
