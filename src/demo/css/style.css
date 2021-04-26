@@ -158,6 +158,7 @@ h2 {
 }
 
 .parameters input[type="text"],
+.parameters input[type="number"],
 .parameters input.jscolor,
 .parameters select {
   padding: 10px 14px;
@@ -169,6 +170,11 @@ h2 {
   background: var(--card-background);
   width: 100%;
   color: inherit;
+}
+
+.param.inline {
+  max-width: 54px;
+  padding: 10px 6px!important;
 }
 
 .parameters input.jscolor {

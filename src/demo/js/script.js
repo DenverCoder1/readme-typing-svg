@@ -1,13 +1,17 @@
 let preview = {
   // default values
   defaults: {
-    theme: "default",
-    hide_border: "false",
+    font: "JetBrains Mono",
+    color: "36BCF7",
+    size: "20",
+    center: "false",
+    width: "400",
+    height: "50"
   },
   // update the preview
   update: function () {
     // get parameter values from all .param elements
-    const params = Array.from(document.querySelectorAll(".param")).reduce(
+    const params = Array.from(document.querySelectorAll(".param:not([data-index])")).reduce(
       (acc, next) => {
         let obj = {
           ...acc
@@ -26,24 +30,28 @@ let preview = {
         return obj;
       }, {}
     );
+    params.lines = Array.from(document.querySelectorAll(".param[data-index]"))
+      .filter((el) => el.value.length)
+      .map((el) => el.value)
+      .join(";");
     // convert parameters to query string
     const encode = encodeURIComponent;
     const query = Object.keys(params)
       .filter((key) => params[key] !== this.defaults[key])
-      .map((key) => encode(key) + "=" + encode(params[key]))
+      .map((key) => encode(key) + "=" + encode(params[key]).replace(/%3B/g, ";").replace(/%20/g, "+"))
       .join("&");
     // generate links and markdown
     const imageURL = `${window.location.origin}?${query}`;
-    const demoImageURL = `preview.php?${query}`;
-    const repoLink = "https://git.io/streak-stats";
-    const md = `[![GitHub Streak](${imageURL})](${repoLink})`;
+    const demoImageURL = `/?${query}`;
+    const repoLink = "https://git.io/typing-svg";
+    const md = `[![Typing SVG](${imageURL})](${repoLink})`;
     // update image preview
     document.querySelector(".output img").src = demoImageURL;
     // update markdown
     document.querySelector(".md code").innerText = md;
     // disable copy button if username is invalid
     const copyButton = document.querySelector(".copy-button");
-    copyButton.disabled = !!document.querySelectorAll("#user:invalid").length;
+    copyButton.disabled = !params.lines.length;
   },
   addLine: function () {
     const parent = document.querySelector(".lines");

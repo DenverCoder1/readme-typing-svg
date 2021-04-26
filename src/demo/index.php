@@ -51,24 +51,36 @@
     <div class="container">
         <div class="properties">
             <h2>Add your text</h2>
-            <form class="parameters three-columns lines"></form>
+            <form class="parameters three-columns lines">
+            </form>
             <button class="add-line btn" onclick="return preview.addLine(this);">+ Add line</button>
+            
             <h2>Options</h2>
             <form class="parameters two-columns options">
-                <label for="user">Username<span title="required">*</span></label>
-                <input class="param" type="text" id="user" name="user" placeholder="DenverCoder1" required
-                    pattern="^[A-Za-z\d-]{0,39}[A-Za-z\d]$"
-                    title="Up to 40 letters or hyphens but not ending with hyphen">
+                <label for="font">Font</label>
+                <input class="param" type="text" id="font" name="font" value="JetBrains Mono"
+                    pattern="^[A-Za-z0-9 ]*$"
+                    title="Font from Google Fonts. Must contain only letters, numbers, and spaces">
 
                 <label for="color">Font color</label>
                 <input class="param jscolor jscolor-active" id="color" name="background"
                     data-jscolor="{ format: 'hexa' }" value="#36BCF7">
 
                 <label for="size">Font size</label>
-                <select class="param" id="hide_border" name="hide_border" placeholder="false">
+                <input class="param" type="number" id="size" name="size" value="20">
+
+                <label for="center">Centered</label>
+                <select class="param" id="center" name="center" value="false">
                     <option>false</option>
                     <option>true</option>
                 </select>
+
+                <label for="dimensions">W ✕ H</label>
+                <span id="dimensions">
+                    <input class="param inline" type="number" id="width" name="width" value="400">
+                    <label>✕</label>
+                    <input class="param inline" type="number" id="height" name="height" value="50">
+                </span>
             </form>
         </div>
 
