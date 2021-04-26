@@ -100,7 +100,7 @@ let preview = {
     parent.appendChild(deleteButton);
 
     // disable button if only 1
-    parent.querySelector(".x.btn").disabled = index == 1;
+    parent.querySelector(".delete-line.btn").disabled = index == 1;
 
     // update and exit
     this.update();
@@ -136,7 +136,7 @@ let preview = {
           input.setAttribute("name", `line-${inputIndex - 1}`);
         }
       });
-    const buttons = parent.querySelectorAll(".x.btn");
+    const buttons = parent.querySelectorAll(".delete-line.btn");
     buttons
       .forEach((button) => {
         const buttonIndex = Number(button.dataset.index);

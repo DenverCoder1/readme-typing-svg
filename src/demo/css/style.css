@@ -58,6 +58,7 @@ body {
   .github a {
     display: none;
   }
+
   .github iframe {
     margin-left: 0 !important;
   }
@@ -83,6 +84,7 @@ body {
 }
 
 @media only screen and (max-width: 1024px) {
+
   .properties,
   .output {
     width: 100%;
@@ -167,7 +169,7 @@ h2 {
 
 .param.inline {
   max-width: 54px;
-  padding: 10px 6px!important;
+  padding: 10px 6px !important;
 }
 
 .parameters input.jscolor {
@@ -210,12 +212,18 @@ input:focus:invalid {
   padding: 0;
   height: 40px;
   width: 40px;
-  background: var(--red);
-  color: var(--card-background);
+  background: var(--card-background);
+  color: var(--red-alt);
+  box-shadow: none;
 }
 
 .delete-line.btn:not(:disabled):hover {
-  background: var(--red-alt);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  background: #e4535314;
+}
+
+.delete-line.btn:disabled {
+  color: var(--stroke);
 }
 
 .add-line.btn {
@@ -231,6 +239,7 @@ input:focus:invalid {
 
 .output img.outlined {
   border: 1px dashed var(--red);
+  border-radius: 2px;
 }
 
 .output .md {
