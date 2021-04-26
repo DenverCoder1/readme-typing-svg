@@ -86,7 +86,12 @@
 
         <div class="output">
             <h2>Preview</h2>
-            <img alt="Readme Typing SVG" src="preview.php?user=" />
+            <img alt="Readme Typing SVG" src="/?lines=The+five+boxing+wizards+jump+quickly" />
+            
+            <label class="show-border" style="display:block;">
+                <input type="checkbox">
+                Show border
+            </label>
 
             <h2>Markdown</h2>
             <div class="md">

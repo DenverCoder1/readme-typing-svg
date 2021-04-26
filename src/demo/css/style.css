@@ -64,7 +64,6 @@ body {
   .github a {
     display: none;
   }
-
   .github iframe {
     margin-left: 0 !important;
   }
@@ -90,7 +89,6 @@ body {
 }
 
 @media only screen and (max-width: 1024px) {
-
   .properties,
   .output {
     width: 100%;
@@ -126,14 +124,15 @@ h2 {
   outline: var(--button-outline) auto 2px;
 }
 
-.btn:hover {
+.btn:not(:disabled):hover {
   background-color: var(--blue-dark);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .btn:disabled {
-  background: var(--blue-transparent);
+  opacity: 0.8;
   box-shadow: none;
+  cursor: not-allowed;
 }
 
 .parameters {
@@ -229,7 +228,7 @@ input:focus:invalid {
   color: var(--card-background);
 }
 
-.x.btn:hover {
+.x.btn:not(:disabled):hover {
   background: var(--red-alt);
 }
 
@@ -242,6 +241,10 @@ input:focus:invalid {
 
 .output img {
   max-width: 100%;
+}
+
+.output img.outlined {
+  border: 1px dashed var(--red);
 }
 
 .output .warning {
@@ -307,5 +310,5 @@ input:focus:invalid {
 }
 
 .btn.tooltip:disabled:before {
-  content: "You must first input a valid username.";
+  content: "You must first input a valid text.";
 }
