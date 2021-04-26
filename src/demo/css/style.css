@@ -19,13 +19,10 @@ html {
   --border: #ccc;
   --stroke: #a9a9a9;
   --blue-light: #2196f3;
-  --blue-transparent: #2196f3aa;
   --blue-dark: #1e88e5;
   --button-outline: black;
   --red: #ff6464;
   --red-alt: #e45353;
-  --yellow: #ffee58;
-  --yellow-alt: #fffde7;
 }
 
 [data-theme="dark"] {
@@ -35,13 +32,10 @@ html {
   --border: #2a2e34;
   --stroke: #737373;
   --blue-light: #1976d2;
-  --blue-transparent: #2196f320;
   --blue-dark: #1565c0;
   --button-outline: black;
   --red: #ff6464;
   --red-alt: #e45353;
-  --yellow: #a59809;
-  --yellow-alt: #716800;
 }
 
 body {
@@ -200,14 +194,6 @@ h2 {
   background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
 }
 
-.parameters select option[disabled] {
-  display: none;
-}
-
-.parameters label {
-  text-transform: capitalize;
-}
-
 span[title="required"] {
   color: var(--red);
 }
@@ -216,7 +202,7 @@ input:focus:invalid {
   outline: 2px var(--red) auto;
 }
 
-.x.btn {
+.delete-line.btn {
   margin: 0;
   background: inherit;
   color: inherit;
@@ -228,7 +214,7 @@ input:focus:invalid {
   color: var(--card-background);
 }
 
-.x.btn:not(:disabled):hover {
+.delete-line.btn:not(:disabled):hover {
   background: var(--red-alt);
 }
 
@@ -247,13 +233,6 @@ input:focus:invalid {
   border: 1px dashed var(--red);
 }
 
-.output .warning {
-  font-size: 0.84em;
-  background: var(--yellow-alt);
-  padding: 8px 14px;
-  border-left: 4px solid var(--yellow);
-}
-
 .output .md {
   background: var(--border);
   border-radius: 6px;
@@ -263,6 +242,11 @@ input:focus:invalid {
 
 .output .btn {
   margin-top: 16px;
+}
+
+label.show-border {
+  display: block;
+  margin-top: 8px;
 }
 
 /* tooltips */
@@ -310,5 +294,5 @@ input:focus:invalid {
 }
 
 .btn.tooltip:disabled:before {
-  content: "You must first input a valid text.";
+  content: "You must first input valid text.";
 }

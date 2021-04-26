@@ -55,10 +55,13 @@ let preview = {
     const demoImageURL = `/?${query}`;
     const repoLink = "https://git.io/typing-svg";
     const md = `[![Typing SVG](${imageURL})](${repoLink})`;
+    // don't update if nothing has changed
+    const mdElement = document.querySelector(".md code");
+    if (mdElement.innerText === md) return;
     // update image preview
     document.querySelector(".output img").src = demoImageURL;
     // update markdown
-    document.querySelector(".md code").innerText = md;
+    mdElement.innerText = md;
     // disable copy button if no lines are filled in
     const copyButton = document.querySelector(".copy-button");
     copyButton.disabled = !params.lines.length;
@@ -83,19 +86,19 @@ let preview = {
     input.title = "Text cannot contain semicolons";
     input.dataset.index = index;
     // removal button
-    const xButton = document.createElement("button");
-    xButton.className = "x btn";
-    xButton.setAttribute(
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "delete-line btn";
+    deleteButton.setAttribute(
       "onclick",
       "return preview.removeLine(this.dataset.index);"
     );
-    xButton.innerHTML = '<svg stroke="currentColor" fill="currentColor"  stroke-width="0" viewBox="0 0 1024 1024" height="0.85em" width="0.85em" xmlns="http://www.w3.org/2000/svg"> <path d="M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z"> </path> </svg>';
-    xButton.dataset.index = index;
+    deleteButton.innerHTML = '<svg stroke="currentColor" fill="currentColor"  stroke-width="0" viewBox="0 0 1024 1024" height="0.85em" width="0.85em" xmlns="http://www.w3.org/2000/svg"> <path d="M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z"> </path> </svg>';
+    deleteButton.dataset.index = index;
 
     // add elements
     parent.appendChild(label);
     parent.appendChild(input);
-    parent.appendChild(xButton);
+    parent.appendChild(deleteButton);
 
     // disable button if only 1
     parent.querySelector(".x.btn").disabled = index == 1;
@@ -181,11 +184,9 @@ document.addEventListener("click", () => preview.update(), false);
 
 // checkbox listener
 document.querySelector(".show-border input").addEventListener("change", function() {
-  document.querySelector(".output img").classList.remove("outlined");
-  if (this.checked) {
-    document.querySelector(".output img").classList.add("outlined");
-  }
-})
+  const img = document.querySelector(".output img");
+  this.checked ? img.classList.add("outlined") : img.classList.remove("outlined");
+});
 
 // when the page loads
 window.addEventListener(
@@ -193,6 +194,7 @@ window.addEventListener(
   () => {
     // add first line
     preview.addLine();
+    preview.update();
   },
   false
 );

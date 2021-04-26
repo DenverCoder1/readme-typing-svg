@@ -9,14 +9,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-48CYVH0XEF"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-48CYVH0XEF');
     </script>
-    <title>Readme Typing SVG</title>
+    <title>Readme Typing SVG - Demo Site</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link href="https://css.gg/css?=|moon|sun" rel="stylesheet">
@@ -51,23 +48,21 @@
     <div class="container">
         <div class="properties">
             <h2>Add your text</h2>
-            <form class="parameters three-columns lines">
-            </form>
-            <button class="add-line btn" onclick="return preview.addLine(this);">+ Add line</button>
-            
+            <form class="parameters three-columns lines"><!-- Lines are added in JavaScript --></form>
+            <button class="add-line btn" onclick="return preview.addLine();">+ Add line</button>
+
             <h2>Options</h2>
             <form class="parameters two-columns options">
                 <label for="font">Font</label>
-                <input class="param" type="text" id="font" name="font" value="JetBrains Mono"
-                    pattern="^[A-Za-z0-9 ]*$"
-                    title="Font from Google Fonts. Must contain only letters, numbers, and spaces">
+                <input class="param" type="text" id="font" name="font" placeholder="JetBrains Mono" value="JetBrains Mono"
+                    pattern="^[A-Za-z0-9\- ]*$" title="Font from Google Fonts. Only letters, numbers, and spaces.">
 
                 <label for="color">Font color</label>
                 <input class="param jscolor jscolor-active" id="color" name="background"
                     data-jscolor="{ format: 'hexa' }" value="#36BCF7">
 
                 <label for="size">Font size</label>
-                <input class="param" type="number" id="size" name="size" value="20">
+                <input class="param" type="number" id="size" name="size" placeholder="20" value="20">
 
                 <label for="center">Centered</label>
                 <select class="param" id="center" name="center" value="false">
@@ -77,9 +72,9 @@
 
                 <label for="dimensions">W ✕ H</label>
                 <span id="dimensions">
-                    <input class="param inline" type="number" id="width" name="width" value="400">
+                    <input class="param inline" type="number" id="width" name="width" placeholder="400" value="400">
                     <label>✕</label>
-                    <input class="param inline" type="number" id="height" name="height" value="50">
+                    <input class="param inline" type="number" id="height" name="height" placeholder="50" value="50">
                 </span>
             </form>
         </div>
@@ -87,8 +82,8 @@
         <div class="output">
             <h2>Preview</h2>
             <img alt="Readme Typing SVG" src="/?lines=The+five+boxing+wizards+jump+quickly" />
-            
-            <label class="show-border" style="display:block;">
+
+            <label class="show-border">
                 <input type="checkbox">
                 Show border
             </label>
