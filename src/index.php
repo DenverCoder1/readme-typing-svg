@@ -4,6 +4,12 @@ require '../vendor/autoload.php';
 
 // set content type
 header("Content-type: image/svg+xml");
+// set cache to refresh once per day
+$timestamp = gmdate("D, d M Y 23:59:00") . " GMT";
+header("Expires: $timestamp");
+header("Last-Modified: $timestamp");
+header("Pragma: no-cache");
+header("Cache-Control: no-cache, must-revalidate");
 
 try {
     // create renderer model
