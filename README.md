@@ -51,7 +51,10 @@ Here you can easily customize your Typing SVG with a live preview.
 
 ## 🚀 Example Usage
 
+- **[Jonah Lawrence](https://github.com/DenverCoder1)**
 - **[Waren Gonzaga](https://github.com/warengonzaga)**
+
+Feel free to open a PR and add yours!
 
 ## 🔧 Options
 
