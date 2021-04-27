@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD033 MD041-->
 <p align="center">
   <h3 align="center">⌨️ Readme Typing SVG</h3>
 </p>
@@ -10,15 +11,24 @@
   <a href="https://discord.gg/fPrdqh3Zfu" alt="Discord" title="Dev Pro Tips Discussion & Support Server">
     <img src="https://img.shields.io/discord/819650821314052106?color=7289DA&logo=discord&logoColor=white&style=for-the-badge"/></a>
 </p>
+<!-- markdownlint-enable MD033 -->
 
 ## 📃 Table of Contents
 
 - [📃 Table of Contents](#-table-of-contents)
 - [⚡ Quick setup](#-quick-setup)
 - [⚙ Demo Site](#-demo-site)
+- [🚀 Example Usage](#-example-usage)
 - [🔧 Options](#-options)
 - [📤 Deploying it on your own](#-deploying-it-on-your-own)
 - [🤗 Contributing](#-contributing)
+  - [Installing Requirements](#installing-requirements)
+    - [Requirements](#requirements)
+    - [Linux](#linux)
+    - [Windows](#windows)
+  - [Clone the repository](#clone-the-repository)
+  - [Running the app locally](#running-the-app-locally)
+  - [Running the tests](#running-the-tests)
 - [🙋‍♂️ Support](#️-support)
 
 ## ⚡ Quick setup
@@ -35,9 +45,13 @@
 
 Here you can easily customize your Typing SVG with a live preview.
 
-https://readme-typing-svg.herokuapp.com/demo/
+<https://readme-typing-svg.herokuapp.com/demo/>
 
 [![Demo Site](https://user-images.githubusercontent.com/20955511/116159172-70d46500-a6f8-11eb-9a26-97c476410a13.png "Demo Site")](https://readme-typing-svg.herokuapp.com/demo/)
+
+## 🚀 Example Usage
+
+- **[Waren Gonzaga](https://github.com/warengonzaga)**
 
 ## 🔧 Options
 
@@ -71,8 +85,8 @@ Make sure your request is meaningful and you have tested the app locally before 
 
 #### Requirements
 
-* [PHP 7.4+](https://www.apachefriends.org/index.html)
-* [Composer](https://getcomposer.org)
+- [PHP 7.4+](https://www.apachefriends.org/index.html)
+- [Composer](https://getcomposer.org)
 
 #### Linux
 
@@ -92,7 +106,7 @@ Install PHP from [XAMPP](https://www.apachefriends.org/index.html) or [php.net](
 
 ### Clone the repository
 
-```
+```bash
 git clone https://github.com/DenverCoder1/readme-typing-svg.git
 cd readme-typing-svg
 ```
@@ -103,7 +117,7 @@ cd readme-typing-svg
 composer start
 ```
 
-Open http://localhost:8000/ and add parameters to run the project locally.
+Open <http://localhost:8000/> and add parameters to run the project locally.
 
 ### Running the tests
 
@@ -123,15 +137,18 @@ composer test
 
 💙 If you like this project, give it a ⭐ and share it with friends!
 
+<!-- markdownlint-disable MD033 -->
 <p align="left">
   <a href="https://www.youtube.com/channel/UCipSxT7a3rn81vGLw9lqRkg?sub_confirmation=1"><img alt="Youtube" title="Youtube" src="https://img.shields.io/badge/-Subscribe-red?style=for-the-badge&logo=youtube&logoColor=white"/></a>
   <a href="https://github.com/sponsors/DenverCoder1"><img alt="Sponsor with Github" title="Sponsor with Github" src="https://img.shields.io/badge/-Sponsor-ea4aaa?style=for-the-badge&logo=github&logoColor=white"/></a>
 </p>
+<!-- markdownlint-enable MD033 -->
 
 [☕ Buy me a coffee](https://ko-fi.com/jlawrence)
 
 ---
 
 Made with ❤️ and PHP
-
+<!-- markdownlint-disable MD033 -->
 <a href="https://heroku.com/"><img alt="Powered by Heroku" title="Powered by Heroku" src="https://img.shields.io/badge/-Powered%20by%20Heroku-6567a5?style=for-the-badge&logo=heroku&logoColor=white"/></a>
+<!-- markdownlint-enable MD033 -->
