@@ -84,7 +84,7 @@
             <h2>Preview</h2>
 
             <img alt="Readme Typing SVG" src="/?lines=The+five+boxing+wizards+jump+quickly"
-                onload="this.classList.remove('loading')" />
+                onload="this.classList.remove('loading')" onerror="this.classList.remove('loading')" />
             <div class="loader">Loading...</div>
 
             <label class="show-border">
