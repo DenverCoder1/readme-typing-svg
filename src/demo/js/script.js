@@ -1,7 +1,7 @@
 let preview = {
   // default values
   defaults: {
-    font: "JetBrains Mono",
+    font: "",
     color: "36BCF7",
     size: "20",
     center: "false",

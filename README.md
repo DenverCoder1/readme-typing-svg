@@ -64,7 +64,7 @@ Feel free to open a PR and add yours!
 | `center`  | `true` to center text or `false` for left aligned (default: `false`) | boolean |          `true` or `false`          |
 | `height`  |          Height of the output SVG in pixels (default: `50`)          | integer |         Any positive number         |
 |  `width`  |          Width of the output SVG in pixels (default: `400`)          | integer |         Any positive number         |
-|  `font`   |               Font family (default: `JetBrains Mono`)                | string  |     Any font from Google Fonts      |
+|  `font`   |                  Font family (default: `monospace`)                  | string  |     Any font from Google Fonts      |
 |  `size`   |                 Font size in pixels (default: `20`)                  | integer |         Any positive number         |
 |  `color`  |                Color of the text (default: `36BCF7`)                 | string  |  Hex code without # (eg. `00ff00`)  |
 
