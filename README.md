@@ -43,9 +43,6 @@
 
 ## ⚙ Demo Site
 
-![gif-php](https://user-images.githubusercontent.com/62628408/116336814-1bb85200-a7d1-11eb-8586-0ccf5bb97eae.gif)
-
-
 Here you can easily customize your Typing SVG with a live preview.
 
 <https://readme-typing-svg.herokuapp.com/demo/>
