@@ -36,12 +36,12 @@ class RendererController
         // set up model and view
         try {
             // create renderer model
-            $this->model = new RendererModel("templates/main.php", $params, $database);
+            $this->model = new RendererModel(__DIR__ . "/../templates/main.php", $params, $database);
             // create renderer view
             $this->view = new RendererView($this->model);
         } catch (Exception $error) {
             // create error rendering model
-            $this->model = new ErrorModel("templates/error.php", $error->getMessage());
+            $this->model = new ErrorModel(__DIR__ . "/../templates/error.php", $error->getMessage());
             // create error rendering view
             $this->view = new ErrorView($this->model);
         }
@@ -96,12 +96,12 @@ class RendererController
     }
 
     /**
-     * Output the rendered SVG
+     * Get the rendered SVG
      *
-     * @return string the printed output
+     * @return string The SVG to output
      */
-    public function render(): void
+    public function render(): string
     {
-        echo $this->view->render();
+        return $this->view->render();
     }
 }

@@ -8,4 +8,4 @@ $dotenv->safeLoad();
 
 $controller = new RendererController($_REQUEST);
 $controller->setHeaders();
-$controller->render();
+echo $controller->render();
