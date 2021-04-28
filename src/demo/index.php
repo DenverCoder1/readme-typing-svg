@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link href="https://css.gg/css?=|moon|sun" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/loader.css">
     <link rel="stylesheet" href="./css/toggle-dark.css">
     <script type="text/javascript" src="./js/script.js" defer></script>
     <script type="text/javascript" src="./js/toggle-dark.js" defer></script>
@@ -81,7 +82,10 @@
 
         <div class="output">
             <h2>Preview</h2>
-            <img alt="Readme Typing SVG" src="/?lines=The+five+boxing+wizards+jump+quickly" />
+
+            <img alt="Readme Typing SVG" src="/?lines=The+five+boxing+wizards+jump+quickly"
+                onload="this.classList.remove('loading')" />
+            <div class="loader">Loading...</div>
 
             <label class="show-border">
                 <input type="checkbox">

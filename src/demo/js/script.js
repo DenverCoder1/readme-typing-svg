@@ -59,11 +59,13 @@ let preview = {
     const md = `[![Typing SVG](${imageURL})](${repoLink})`;
     // don't update if nothing has changed
     const mdElement = document.querySelector(".md code");
+    const image = document.querySelector(".output img");
     if (mdElement.innerText === md) {
       return;
     }
     // update image preview
-    document.querySelector(".output img").src = demoImageURL;
+    image.src = demoImageURL;
+    image.classList.add("loading");
     // update markdown
     mdElement.innerText = md;
     // disable copy button if no lines are filled in
