@@ -47,7 +47,7 @@ Here you can easily customize your Typing SVG with a live preview.
 
 <https://readme-typing-svg.herokuapp.com/demo/>
 
-[![Demo Site](https://user-images.githubusercontent.com/20955511/116159172-70d46500-a6f8-11eb-9a26-97c476410a13.png "Demo Site")](https://readme-typing-svg.herokuapp.com/demo/)
+[![Demo Site](https://user-images.githubusercontent.com/62628408/116336814-1bb85200-a7d1-11eb-8586-0ccf5bb97eae.gif "Demo Site")](https://readme-typing-svg.herokuapp.com/demo/)
 
 ## 🚀 Example Usage
 
