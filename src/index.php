@@ -7,4 +7,5 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->safeLoad();
 
 $controller = new RendererController($_REQUEST);
+$controller->setHeaders();
 $controller->render();

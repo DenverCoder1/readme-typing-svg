@@ -52,9 +52,10 @@ class RendererModel
      * @param array<string, string> $params request parameters
      * @param DatabaseConnection $font_db database connection
      */
-    public function __construct($template, $params, $font_db = null)
+    public function __construct($template, $params, $database)
     {
-        $this->database = $font_db ?? new DatabaseConnection();
+        $this->template = $template;
+        $this->database = $database;
         $this->lines = $this->checkLines($params["lines"] ?? "");
         $this->font = $this->checkFont($params["font"] ?? $this->DEFAULTS["font"]);
         $this->color = $this->checkColor($params["color"] ?? $this->DEFAULTS["color"]);
@@ -63,7 +64,6 @@ class RendererModel
         $this->width = $this->checkNumber($params["width"] ?? $this->DEFAULTS["width"], "Width");
         $this->height = $this->checkNumber($params["height"] ?? $this->DEFAULTS["height"], "Height");
         $this->fontCSS = $this->fetchFontCSS($this->font);
-        $this->template = $template;
     }
 
     /**
