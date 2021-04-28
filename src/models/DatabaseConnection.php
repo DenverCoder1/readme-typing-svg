@@ -33,8 +33,8 @@ class DatabaseConnection
     /**
      * Fetch CSS from PostgreSQL Database
      *
-     * @param string $font - Google Font to fetch
-     * @return array<string> - date and CSS for displaying the font
+     * @param string $font Google Font to fetch
+     * @return array<string> array containing the date and the CSS for displaying the font
      */
     public function fetchFontCSS($font)
     {
@@ -56,9 +56,9 @@ class DatabaseConnection
     /**
      * Insert font CSS into database
      *
-     * @param string $font - Font Family
-     * @param string $css - CSS with Base64 encoding
-     * @return bool - True if successful, false if connection failed
+     * @param string $font Font Family
+     * @param string $css CSS with Base64 encoding
+     * @return bool True if successful, false if connection failed
      */
     public function insertFontCSS($font, $css)
     {

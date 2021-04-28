@@ -8,8 +8,8 @@ class GoogleFontConverter
     /**
      * Fetch CSS from Google Fonts
      *
-     * @param string $font - Google Font to fetch
-     * @return string|false - the CSS for displaying the font
+     * @param string $font Google Font to fetch
+     * @return string|false The CSS for displaying the font
      */
     public static function fetchFontCSS($font)
     {
@@ -27,8 +27,8 @@ class GoogleFontConverter
     /**
      * Encode font urls in string as base 64
      *
-     * @param string $css - The CSS from Google Fonts
-     * @return string - CSS with urls replaced with base 64 Data URIs
+     * @param string $css The CSS from Google Fonts
+     * @return string CSS with urls replaced with base 64 Data URIs
      */
     private static function encodeFonts($css)
     {
@@ -47,8 +47,8 @@ class GoogleFontConverter
     /**
      * Get the contents of a URL
      *
-     * @param string $url - The URL to fetch
-     * @return string - Response from URL
+     * @param string $url The URL to fetch
+     * @return string Response from URL
      */
     private static function curl_get_contents($url): string
     {

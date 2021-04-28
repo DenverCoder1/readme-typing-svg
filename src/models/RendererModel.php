@@ -8,16 +8,16 @@ class RendererModel
     /** @var array<string> $lines text to display */
     public $lines;
 
-    /** @var string $font font family */
+    /** @var string $font Font family */
     public $font;
 
-    /** @var string $color font color */
+    /** @var string $color Font color */
     public $color;
 
-    /** @var int $size font size */
+    /** @var int $size Font size */
     public $size;
 
-    /** @var bool $center whether or not to center text */
+    /** @var bool $center Whether or not to center text */
     public $center;
 
     /** @var int $width SVG width (px) */
@@ -29,7 +29,7 @@ class RendererModel
     /** @var string $fontCSS CSS required for displaying the selected font */
     public $fontCSS;
 
-    /** @var string $template path to template file */
+    /** @var string $template Path to template file */
     public $template;
 
     /** @var DatabaseConnection $database Database connection */
@@ -48,9 +48,9 @@ class RendererModel
     /**
      * Construct RendererModel
      *
-     * @param string $template path to the template file
+     * @param string $template Path to the template file
      * @param array<string, string> $params request parameters
-     * @param DatabaseConnection $font_db database connection
+     * @param DatabaseConnection $font_db Database connection
      */
     public function __construct($template, $params, $database)
     {
@@ -69,8 +69,8 @@ class RendererModel
     /**
      * Validate lines and return array of string
      *
-     * @param string $lines - semicolon separated lines parameter
-     * @return array<string>
+     * @param string $lines Semicolon-separated lines parameter
+     * @return array<string> escaped array of lines
      */
     private function checkLines($lines)
     {
@@ -85,8 +85,8 @@ class RendererModel
     /**
      * Validate font family and return valid string
      *
-     * @param string $font - font name parameter
-     * @return string
+     * @param string $font Font name parameter
+     * @return string Sanitized font name
      */
     private function checkFont($font)
     {
@@ -97,8 +97,8 @@ class RendererModel
     /**
      * Validate font color and return valid string
      *
-     * @param string $color - color parameter
-     * @return string
+     * @param string $color Color parameter
+     * @return string Sanitized color with preceding hash symbol
      */
     private function checkColor($color)
     {
@@ -114,9 +114,9 @@ class RendererModel
     /**
      * Validate numeric parameter and return valid integer
      *
-     * @param string $num - parameter to validate
-     * @param string $field - field name for displaying in case of error
-     * @return int
+     * @param string $num Parameter to validate
+     * @param string $field Field name for displaying in case of error
+     * @return int Sanitized digits and int
      */
     private function checkNumber($num, $field)
     {
@@ -130,8 +130,8 @@ class RendererModel
     /**
      * Validate center alignment and return boolean
      *
-     * @param string $center - center parameter
-     * @return boolean
+     * @param string $center Center parameter
+     * @return boolean Whether or not $center is set to "true"
      */
     private function checkCenter($center)
     {
@@ -141,8 +141,8 @@ class RendererModel
     /**
      * Fetch CSS with Base-64 encoding from database or store new entry if it is missing
      *
-     * @param string $font - Google Font to fetch
-     * @return string - The CSS for displaying the font
+     * @param string $font Google Font to fetch
+     * @return string The CSS for displaying the font
      */
     private function fetchFontCSS($font)
     {
