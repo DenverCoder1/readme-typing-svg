@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Class for Database Access from Heroku PostgreSQL Database
+ * Class for accessing the font database
  */
 class DatabaseConnection
 {
     /**
-     * Postgres Database Connection
+     * PostgreSQL Database Connection
      * @var resource|false
      */
     private $conn = false;
 
     /**
-     * Constructor for Database class
+     * Constructor for DatabaseConnection class
      * Creates a database connection
      */
     public function __construct()
