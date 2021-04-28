@@ -55,7 +55,7 @@
             <h2>Options</h2>
             <form class="parameters two-columns options">
                 <label for="font">Font</label>
-                <input class="param" type="text" id="font" name="font" placeholder="Open Sans" value="monospace"
+                <input class="param" type="text" id="font" name="font" placeholder="monospace" value="monospace"
                     pattern="^[A-Za-z0-9\- ]*$" title="Font from Google Fonts. Only letters, numbers, and spaces.">
 
                 <label for="color">Font color</label>
