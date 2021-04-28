@@ -23,13 +23,13 @@ class ErrorView
      * Render SVG Output
      * @return string
      */
-    public function output()
+    public function render()
     {
         // import variables into symbol table
         extract(["message" => $this->model->message]);
         // render SVG with output buffering
         ob_start();
-        require_once $this->model->template;
+        include $this->model->template;
         $output = ob_get_contents();
         ob_end_clean();
         // return rendered output

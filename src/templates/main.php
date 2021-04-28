@@ -4,11 +4,9 @@
 	viewBox='0 0 <?php echo "$width $height" ?>'
 	width='<?php echo $width ?>px' height='<?php echo $height ?>px'>
 
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=<?php echo str_replace(" ", "+", $font) ?>')
-	</style>
+	<?php echo preg_replace("/\n/", "\n\t", $fontCSS); ?>
 
-<?php $previousId = "d" . count($lines) - 1;?>
+<?php $previousId = "d" . (count($lines) - 1);?>
 <?php for ($i = 0; $i < count($lines); ++$i): ?>
     <path id='path<?php echo $i ?>'>
         <animate id='d<?php echo $i ?>' attributeName='d' begin='<?php echo ($i == 0 ? "0s;" : "") . $previousId ?>.end' dur='5s'

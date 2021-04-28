@@ -11,13 +11,14 @@
         ]
     },
     "require": {
-        "php": "^7.4|^8.0"
+        "php": "^7.4",
+        "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^9"
     },
     "scripts": {
-        "start": "php -S localhost:8000 -t src",
+        "start": "php7 -S localhost:8000 -t src || php -S localhost:8000 -t src",
         "test": "./vendor/bin/phpunit --testdox tests"
     }
 }

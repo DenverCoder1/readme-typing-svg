@@ -4,11 +4,7 @@
 	viewBox='0 0 400 50'
 	width='400px' height='50px'>
 
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono');
-	</style>
-
-    <text font-family='"JetBrains Mono", monospace' fill='#c00' font-size='18'
+    <text font-family='monospace' fill='#c00' font-size='18'
         y="50%" x='50%' dominant-baseline='middle' text-anchor='middle'>
         <?php echo $message . "\n" ?>
     </text>

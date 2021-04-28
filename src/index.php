@@ -2,6 +2,10 @@
 
 require '../vendor/autoload.php';
 
+// load environment variables if src/.env exists
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
+
 // set content type
 header("Content-type: image/svg+xml");
 
@@ -23,7 +27,7 @@ try {
     $model = new RendererModel("templates/main.php", $_REQUEST);
     // create renderer view
     $view = new RendererView($model);
-} catch (InvalidArgumentException $error) {
+} catch (Exception $error) {
     // create error rendering model
     $model = new ErrorModel("templates/error.php", $error->getMessage());
     // create error rendering view
@@ -31,4 +35,4 @@ try {
 }
 
 // render SVG
-echo $view->output();
+echo $view->render();
