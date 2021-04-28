@@ -23,7 +23,7 @@ class RendererView
      * Render SVG Output
      * @return string
      */
-    public function output()
+    public function render()
     {
         // import variables into symbol table
         extract(array(
@@ -34,10 +34,11 @@ class RendererView
             "center" => $this->model->center,
             "width" => $this->model->width,
             "height" => $this->model->height,
+            "fontCSS" => $this->model->fontCSS,
         ));
         // render SVG with output buffering
         ob_start();
-        require_once $this->model->template;
+        include $this->model->template;
         $output = ob_get_contents();
         ob_end_clean();
         // return rendered output

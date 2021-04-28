@@ -5,17 +5,17 @@
  */
 class ErrorModel
 {
-    /** @var string $message text to display */
+    /** @var string $message Text to display */
     public $message;
 
-    /** @var string $template path to template file */
+    /** @var string $template Path to template file */
     public $template;
 
     /**
      * Construct ErrorModel
      *
-     * @param string $message text to display
-     * @param string $template path to the template file
+     * @param string $message Text to display
+     * @param string $template Path to the template file
      */
     public function __construct($template, $message)
     {

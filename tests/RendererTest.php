@@ -5,6 +5,14 @@ require 'vendor/autoload.php';
 
 final class RendererTest extends TestCase
 {
+
+    protected static $database;
+
+    public static function setUpBeforeClass(): void
+    {
+        self::$database = new DatabaseConnection();
+    }
+
     /**
      * Test normal card render
      */
@@ -21,9 +29,8 @@ final class RendererTest extends TestCase
             "width" => "380",
             "height" => "50",
         );
-        $model = new RendererModel("src/templates/main.php", $params);
-        $view = new RendererView($model);
-        $this->assertEquals(file_get_contents("tests/svg/test_normal.svg"), $view->output());
+        $controller = new RendererController($params, self::$database);
+        $this->assertEquals(file_get_contents("tests/svg/test_normal.svg"), $controller->render());
     }
 
     /**
@@ -37,15 +44,43 @@ final class RendererTest extends TestCase
             "width" => "380",
             "height" => "50",
         );
-        try {
-            // create renderer model
-            $model = new RendererModel("src/templates/main.php", $params);
-            $view = new RendererView($model);
-        } catch (InvalidArgumentException $error) {
-            // create error rendering model
-            $model = new ErrorModel("src/templates/error.php", $error->getMessage());
-            $view = new ErrorView($model);
-        }
-        $this->assertEquals(file_get_contents("tests/svg/test_missing_lines.svg"), $view->output());
+        $controller = new RendererController($params, self::$database);
+        $this->assertEquals(file_get_contents("tests/svg/test_missing_lines.svg"), $controller->render());
+    }
+
+    /**
+     * Test loading a valid Google Font
+     */
+    public function testLoadingGoogleFont(): void
+    {
+        $params = array(
+            "lines" => "text",
+            "font" => "Roboto",
+        );
+        $controller = new RendererController($params, self::$database);
+        $expected = preg_replace("/\/\*(.*?)\*\//", "", file_get_contents("tests/svg/test_fonts.svg"));
+        $actual = preg_replace("/\/\*(.*?)\*\//", "", $controller->render());
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * Test loading a valid Google Font
+     */
+    public function testInvalidGoogleFont(): void
+    {
+        $params = array(
+            "lines" => implode(";", array(
+                "Full-stack web and app developer",
+                "Self-taught UI/UX Designer",
+                "10+ years of coding experience",
+                "Always learning new things",
+            )),
+            "center" => "true",
+            "width" => "380",
+            "font" => "Not-A-Font",
+        );
+        $controller = new RendererController($params, self::$database);
+        $expected = str_replace('"monospace"', '"Not-A-Font"', file_get_contents("tests/svg/test_normal.svg"));
+        $this->assertEquals($expected, $controller->render());
     }
 }

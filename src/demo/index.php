@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link href="https://css.gg/css?=|moon|sun" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/loader.css">
     <link rel="stylesheet" href="./css/toggle-dark.css">
     <script type="text/javascript" src="./js/script.js" defer></script>
     <script type="text/javascript" src="./js/toggle-dark.js" defer></script>
@@ -54,7 +55,7 @@
             <h2>Options</h2>
             <form class="parameters two-columns options">
                 <label for="font">Font</label>
-                <input class="param" type="text" id="font" name="font" placeholder="JetBrains Mono" value="JetBrains Mono"
+                <input class="param" type="text" id="font" name="font" placeholder="Open Sans" value="monospace"
                     pattern="^[A-Za-z0-9\- ]*$" title="Font from Google Fonts. Only letters, numbers, and spaces.">
 
                 <label for="color">Font color</label>
@@ -81,7 +82,10 @@
 
         <div class="output">
             <h2>Preview</h2>
-            <img alt="Readme Typing SVG" src="/?lines=The+five+boxing+wizards+jump+quickly" />
+
+            <img alt="Readme Typing SVG" src="/?lines=The+five+boxing+wizards+jump+quickly"
+                onload="this.classList.remove('loading')" onerror="this.classList.remove('loading')" />
+            <div class="loader">Loading...</div>
 
             <label class="show-border">
                 <input type="checkbox">
