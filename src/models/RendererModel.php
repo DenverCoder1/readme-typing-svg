@@ -26,6 +26,9 @@ class RendererModel
     /** @var int $height SVG height (px) */
     public $height;
 
+    /** @var bool $multiline True = wrap to new lines, False = retype on same line */
+    public $multiline;
+
     /** @var string $fontCSS CSS required for displaying the selected font */
     public $fontCSS;
 
@@ -43,6 +46,7 @@ class RendererModel
         "center" => "false",
         "width" => "400",
         "height" => "50",
+        "multiline" => "false",
     );
 
     /**
@@ -60,9 +64,10 @@ class RendererModel
         $this->font = $this->checkFont($params["font"] ?? $this->DEFAULTS["font"]);
         $this->color = $this->checkColor($params["color"] ?? $this->DEFAULTS["color"]);
         $this->size = $this->checkNumber($params["size"] ?? $this->DEFAULTS["size"], "Font size");
-        $this->center = $this->checkCenter($params["center"] ?? $this->DEFAULTS["center"]);
+        $this->center = $this->checkBoolean($params["center"] ?? $this->DEFAULTS["center"]);
         $this->width = $this->checkNumber($params["width"] ?? $this->DEFAULTS["width"], "Width");
         $this->height = $this->checkNumber($params["height"] ?? $this->DEFAULTS["height"], "Height");
+        $this->multiline = $this->checkBoolean($params["multiline"] ?? $this->DEFAULTS["multiline"]);
         $this->fontCSS = $this->fetchFontCSS($this->font);
     }
 
@@ -128,14 +133,14 @@ class RendererModel
     }
 
     /**
-     * Validate center alignment and return boolean
+     * Validate "true" or "false" value as string and return boolean
      *
-     * @param string $center Center parameter
-     * @return boolean Whether or not $center is set to "true"
+     * @param string $bool Boolean parameter as string
+     * @return boolean Whether or not $bool is set to "true"
      */
-    private function checkCenter($center)
+    private function checkBoolean($bool)
     {
-        return isset($center) ? ($center == "true") : $this->DEFAULTS["center"];
+        return strtolower($bool) == "true";
     }
 
     /**

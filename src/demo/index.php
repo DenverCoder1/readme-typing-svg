@@ -71,6 +71,12 @@
                     <option>true</option>
                 </select>
 
+                <label for="multiline">Multiline</label>
+                <select class="param" id="multiline" name="multiline" value="false">
+                    <option value="false">Type sentences on one line</option>
+                    <option value="true">Each sentence on a new line</option>
+                </select>
+
                 <label for="dimensions">W ✕ H</label>
                 <span id="dimensions">
                     <input class="param inline" type="number" id="width" name="width" placeholder="400" value="400">

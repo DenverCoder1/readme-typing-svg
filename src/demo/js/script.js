@@ -5,6 +5,7 @@ let preview = {
     color: "36BCF7",
     size: "20",
     center: "false",
+    multiline: "false",
     width: "400",
     height: "50"
   },
