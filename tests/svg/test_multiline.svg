@@ -1,13 +1,14 @@
 <!-- https://github.com/DenverCoder1/readme-typing-svg/ -->
 <svg xmlns='http://www.w3.org/2000/svg'
     xmlns:xlink='http://www.w3.org/1999/xlink'
-    viewBox='0 0 380 50'
-    width='380px' height='50px'>
+    viewBox='0 0 380 200'
+    width='380px' height='200px'>
 
     
     <path id='path0'>
-        <animate id='d0' attributeName='d' begin='0s;d3.end' dur='5s'
-            values='m0,25 h0 ; m0,25 h380 ; m0,25 h0' keyTimes='0 ; 0.8 ; 1' />
+        <animate id='d0' attributeName='d' dur='5s' fill="freeze"
+            begin='0s;d3.end' keyTimes="0 ; 0 ; 1"
+            values='m0,25 h0 ; m0,25 h0 ; m0,25 h380' />
     </path>
     <text font-family='"monospace", monospace' fill='#36BCF7' font-size='20'
         x='50%' dominant-baseline='middle' text-anchor='middle'>
@@ -17,8 +18,9 @@
     </text>
 
     <path id='path1'>
-        <animate id='d1' attributeName='d' begin='d0.end' dur='5s'
-            values='m0,25 h0 ; m0,25 h380 ; m0,25 h0' keyTimes='0 ; 0.8 ; 1' />
+        <animate id='d1' attributeName='d' dur='10s' fill="freeze"
+            begin='0s;d3.end' keyTimes="0 ; 0.5 ; 1"
+            values='m0,50 h0 ; m0,50 h0 ; m0,50 h380' />
     </path>
     <text font-family='"monospace", monospace' fill='#36BCF7' font-size='20'
         x='50%' dominant-baseline='middle' text-anchor='middle'>
@@ -28,8 +30,9 @@
     </text>
 
     <path id='path2'>
-        <animate id='d2' attributeName='d' begin='d1.end' dur='5s'
-            values='m0,25 h0 ; m0,25 h380 ; m0,25 h0' keyTimes='0 ; 0.8 ; 1' />
+        <animate id='d2' attributeName='d' dur='15s' fill="freeze"
+            begin='0s;d3.end' keyTimes="0 ; 0.66666666666667 ; 1"
+            values='m0,75 h0 ; m0,75 h0 ; m0,75 h380' />
     </path>
     <text font-family='"monospace", monospace' fill='#36BCF7' font-size='20'
         x='50%' dominant-baseline='middle' text-anchor='middle'>
@@ -39,8 +42,9 @@
     </text>
 
     <path id='path3'>
-        <animate id='d3' attributeName='d' begin='d2.end' dur='5s'
-            values='m0,25 h0 ; m0,25 h380 ; m0,25 h0' keyTimes='0 ; 0.8 ; 1' />
+        <animate id='d3' attributeName='d' dur='20s' fill="freeze"
+            begin='0s;d3.end' keyTimes="0 ; 0.75 ; 1"
+            values='m0,100 h0 ; m0,100 h0 ; m0,100 h380' />
     </path>
     <text font-family='"monospace", monospace' fill='#36BCF7' font-size='20'
         x='50%' dominant-baseline='middle' text-anchor='middle'>

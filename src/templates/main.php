@@ -1,10 +1,10 @@
 <!-- https://github.com/DenverCoder1/readme-typing-svg/ -->
 <svg xmlns='http://www.w3.org/2000/svg'
-	xmlns:xlink='http://www.w3.org/1999/xlink'
-	viewBox='0 0 <?php echo "$width $height" ?>'
-	width='<?php echo $width ?>px' height='<?php echo $height ?>px'>
+    xmlns:xlink='http://www.w3.org/1999/xlink'
+    viewBox='0 0 <?php echo "$width $height" ?>'
+    width='<?php echo $width ?>px' height='<?php echo $height ?>px'>
 
-	<?php echo preg_replace("/\n/", "\n\t", $fontCSS); ?>
+    <?php echo preg_replace("/\n/", "\n\t", $fontCSS); ?>
 
 <?php $previousId = "d" . (count($lines) - 1);?>
 <?php for ($i = 0; $i < count($lines); ++$i): ?>

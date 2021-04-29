@@ -33,6 +33,24 @@ final class RendererTest extends TestCase
         $this->assertEquals(file_get_contents("tests/svg/test_normal.svg"), $controller->render());
     }
 
+    public function testMultilineCardRender(): void
+    {
+        $params = array(
+            "lines" => implode(";", array(
+                "Full-stack web and app developer",
+                "Self-taught UI/UX Designer",
+                "10+ years of coding experience",
+                "Always learning new things",
+            )),
+            "center" => "true",
+            "width" => "380",
+            "height" => "200",
+            "multiline" => "true",
+        );
+        $controller = new RendererController($params, self::$database);
+        $this->assertEquals(file_get_contents("tests/svg/test_multiline.svg"), $controller->render());
+    }
+
     /**
      * Test error card render
      */
