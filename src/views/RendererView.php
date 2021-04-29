@@ -34,6 +34,7 @@ class RendererView
             "center" => $this->model->center,
             "width" => $this->model->width,
             "height" => $this->model->height,
+            "multiline" => $this->model->multiline,
             "fontCSS" => $this->model->fontCSS,
         ));
         // render SVG with output buffering
