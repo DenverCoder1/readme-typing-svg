@@ -13,16 +13,16 @@
 </p>
 <!-- markdownlint-enable MD033 -->
 
-## 📃 Table of Contents
+## 📃 Table of contents
 
-- [📃 Table of Contents](#-table-of-contents)
+- [📃 Table of contents](#-table-of-contents)
 - [⚡ Quick setup](#-quick-setup)
-- [⚙ Demo Site](#-demo-site)
-- [🚀 Example Usage](#-example-usage)
+- [⚙ Demo site](#-demo-site)
+- [🚀 Example usage](#-example-usage)
 - [🔧 Options](#-options)
 - [📤 Deploying it on your own](#-deploying-it-on-your-own)
 - [🤗 Contributing](#-contributing)
-  - [Installing Requirements](#installing-requirements)
+  - [Installing requirements](#installing-requirements)
     - [Requirements](#requirements)
     - [Linux](#linux)
     - [Windows](#windows)
@@ -41,7 +41,7 @@
 [![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
 ```
 
-## ⚙ Demo Site
+## ⚙ Demo site
 
 Here you can easily customize your Typing SVG with a live preview.
 
@@ -49,7 +49,7 @@ Here you can easily customize your Typing SVG with a live preview.
 
 [![Demo Site](https://user-images.githubusercontent.com/62628408/116336814-1bb85200-a7d1-11eb-8586-0ccf5bb97eae.gif "Demo Site")](https://readme-typing-svg.herokuapp.com/demo/)
 
-## 🚀 Example Usage
+## 🚀 Example usage
 
 - **[Jonah Lawrence](https://github.com/DenverCoder1)**
 - **[Waren Gonzaga](https://github.com/warengonzaga)**
@@ -84,11 +84,11 @@ Contributions are welcome! Feel free to open an issue or submit a pull request i
 
 Make sure your request is meaningful and you have tested the app locally before submitting a pull request.
 
-### Installing Requirements
+### Installing requirements
 
 #### Requirements
 
-- [PHP 7.4+](https://www.apachefriends.org/index.html)
+- [PHP 7](https://www.apachefriends.org/index.html)
 - [Composer](https://getcomposer.org)
 
 #### Linux
