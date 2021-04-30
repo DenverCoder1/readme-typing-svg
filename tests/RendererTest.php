@@ -101,4 +101,25 @@ final class RendererTest extends TestCase
         $expected = str_replace('"monospace"', '"Not-A-Font"', file_get_contents("tests/svg/test_normal.svg"));
         $this->assertEquals($expected, $controller->render());
     }
+    
+    /**
+     * Test if a trailing ";" in lines is trimmed; see issue #25
+     */
+    public function testLineTrimming(): void
+    {
+        $params = array(
+            "lines" => implode(";", array(
+                "Full-stack web and app developer",
+                "Self-taught UI/UX Designer",
+                "10+ years of coding experience",
+                "Always learning new things",
+                "",
+            )),
+            "center" => "true",
+            "width" => "380",
+            "height" => "50",
+        );
+        $controller = new RendererController($params, self::$database);
+        $this->assertEquals(file_get_contents("tests/svg/test_normal.svg"), $controller->render());
+    }
 }
