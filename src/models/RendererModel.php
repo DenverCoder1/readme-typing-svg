@@ -82,7 +82,8 @@ class RendererModel
         if (!$lines) {
             throw new InvalidArgumentException("Lines parameter must be set.");
         }
-        $exploded = explode(";", $lines);
+        $trimmed_lines = rtrim($lines, ';');
+        $exploded = explode(";", $trimmed_lines);
         // escape special characters to prevent code injection
         return array_map("htmlspecialchars", $exploded);
     }
