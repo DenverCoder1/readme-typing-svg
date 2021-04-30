@@ -20,10 +20,15 @@
 <?php endif;?>
     </path>
     <text font-family='"<?php echo $font ?>", monospace' fill='<?php echo $color ?>' font-size='<?php echo $size ?>'
-<?php if ($center): ?>
-        x='50%' dominant-baseline='middle' text-anchor='middle'>
+<?php if ($vCenter): ?>
+        dominant-baseline='middle'
 <?php else: ?>
-        x='0%' dominant-baseline='auto' text-anchor='start'>
+        dominant-baseline='auto'
+<?php endif;?>
+<?php if ($center): ?>
+        x='50%' text-anchor='middle'>
+<?php else: ?>
+        x='0%' text-anchor='start'>
 <?php endif;?>
         <textPath xlink:href='#path<?php echo $i ?>'>
             <?php echo $lines[$i] . "\n" ?>
