@@ -32,6 +32,7 @@ class RendererView
             "color" => $this->model->color,
             "size" => $this->model->size,
             "center" => $this->model->center,
+            "vCenter" => $this->model->vCenter,
             "width" => $this->model->width,
             "height" => $this->model->height,
             "multiline" => $this->model->multiline,
