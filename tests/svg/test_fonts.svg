@@ -19,7 +19,8 @@
             values='m0,25 h0 ; m0,25 h400 ; m0,25 h0' keyTimes='0 ; 0.8 ; 1' />
     </path>
     <text font-family='"Roboto", monospace' fill='#36BCF7' font-size='20'
-        x='0%' dominant-baseline='auto' text-anchor='start'>
+        dominant-baseline='auto'
+        x='0%' text-anchor='start'>
         <textPath xlink:href='#path0'>
             text
         </textPath>
