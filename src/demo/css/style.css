@@ -164,6 +164,7 @@ h2 {
   font-family: inherit;
   background: var(--card-background);
   width: 100%;
+  min-width: 70px;
   color: inherit;
 }
 
