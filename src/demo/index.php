@@ -71,7 +71,7 @@
                     <option>true</option>
                 </select>
                 
-                <label for="center">Vertically Centered</label>
+                <label for="vCenter">Vertically Centered</label>
                 <select class="param" id="vCenter" name="vCenter" value="false">
                     <option>false</option>
                     <option>true</option>
