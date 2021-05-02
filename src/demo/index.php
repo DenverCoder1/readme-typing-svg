@@ -65,8 +65,14 @@
                 <label for="size">Font size</label>
                 <input class="param" type="number" id="size" name="size" placeholder="20" value="20">
 
-                <label for="center">Centered</label>
+                <label for="center">Horizontally Centered</label>
                 <select class="param" id="center" name="center" value="false">
+                    <option>false</option>
+                    <option>true</option>
+                </select>
+                
+                <label for="vCenter">Vertically Centered</label>
+                <select class="param" id="vCenter" name="vCenter" value="false">
                     <option>false</option>
                     <option>true</option>
                 </select>

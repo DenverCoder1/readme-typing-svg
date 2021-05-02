@@ -10,7 +10,8 @@
             values='m0,25 h0 ; m0,25 h380 ; m0,25 h0' keyTimes='0 ; 0.8 ; 1' />
     </path>
     <text font-family='"monospace", monospace' fill='#36BCF7' font-size='20'
-        x='50%' dominant-baseline='middle' text-anchor='middle'>
+        dominant-baseline='middle'
+        x='50%' text-anchor='middle'>
         <textPath xlink:href='#path0'>
             Full-stack web and app developer
         </textPath>
@@ -21,7 +22,8 @@
             values='m0,25 h0 ; m0,25 h380 ; m0,25 h0' keyTimes='0 ; 0.8 ; 1' />
     </path>
     <text font-family='"monospace", monospace' fill='#36BCF7' font-size='20'
-        x='50%' dominant-baseline='middle' text-anchor='middle'>
+        dominant-baseline='middle'
+        x='50%' text-anchor='middle'>
         <textPath xlink:href='#path1'>
             Self-taught UI/UX Designer
         </textPath>
@@ -32,7 +34,8 @@
             values='m0,25 h0 ; m0,25 h380 ; m0,25 h0' keyTimes='0 ; 0.8 ; 1' />
     </path>
     <text font-family='"monospace", monospace' fill='#36BCF7' font-size='20'
-        x='50%' dominant-baseline='middle' text-anchor='middle'>
+        dominant-baseline='middle'
+        x='50%' text-anchor='middle'>
         <textPath xlink:href='#path2'>
             10+ years of coding experience
         </textPath>
@@ -43,7 +46,8 @@
             values='m0,25 h0 ; m0,25 h380 ; m0,25 h0' keyTimes='0 ; 0.8 ; 1' />
     </path>
     <text font-family='"monospace", monospace' fill='#36BCF7' font-size='20'
-        x='50%' dominant-baseline='middle' text-anchor='middle'>
+        dominant-baseline='middle'
+        x='50%' text-anchor='middle'>
         <textPath xlink:href='#path3'>
             Always learning new things
         </textPath>

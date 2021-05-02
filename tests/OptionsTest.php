@@ -172,4 +172,30 @@ final class OptionsTest extends TestCase
         $model = new RendererModel("src/templates/main.php", $params, self::$database);
         $this->assertEquals(false, $model->center);
     }
+    
+    /**
+     * Test vCenter set to true
+     */
+    public function testVCenterIsTrue(): void
+    {
+        $params = array(
+            "lines" => "text",
+            "vCenter" => "true",
+        );
+        $model = new RendererModel("src/templates/main.php", $params, self::$database);
+        $this->assertEquals(true, $model->vCenter);
+    }
+
+    /**
+     * Test vCenter not set to true
+     */
+    public function testVCenterIsNotTrue(): void
+    {
+        $params = array(
+            "lines" => "text",
+            "vCenter" => "other",
+        );
+        $model = new RendererModel("src/templates/main.php", $params, self::$database);
+        $this->assertEquals(false, $model->vCenter);
+    }
 }

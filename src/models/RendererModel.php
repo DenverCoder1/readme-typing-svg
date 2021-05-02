@@ -17,8 +17,11 @@ class RendererModel
     /** @var int $size Font size */
     public $size;
 
-    /** @var bool $center Whether or not to center text */
+    /** @var bool $center Whether or not to center text horizontally */
     public $center;
+    
+    /** @var bool $vCenter Whether or not to center text vertically */
+    public $vCenter;
 
     /** @var int $width SVG width (px) */
     public $width;
@@ -44,6 +47,7 @@ class RendererModel
         "color" => "#36BCF7",
         "size" => "20",
         "center" => "false",
+        "vCenter" => "false",
         "width" => "400",
         "height" => "50",
         "multiline" => "false",
@@ -65,6 +69,7 @@ class RendererModel
         $this->color = $this->checkColor($params["color"] ?? $this->DEFAULTS["color"]);
         $this->size = $this->checkNumber($params["size"] ?? $this->DEFAULTS["size"], "Font size");
         $this->center = $this->checkBoolean($params["center"] ?? $this->DEFAULTS["center"]);
+        $this->vCenter = $this->checkBoolean($params["vCenter"] ?? $this->DEFAULTS["vCenter"]);
         $this->width = $this->checkNumber($params["width"] ?? $this->DEFAULTS["width"], "Width");
         $this->height = $this->checkNumber($params["height"] ?? $this->DEFAULTS["height"], "Height");
         $this->multiline = $this->checkBoolean($params["multiline"] ?? $this->DEFAULTS["multiline"]);

@@ -26,6 +26,7 @@ final class RendererTest extends TestCase
                 "Always learning new things",
             )),
             "center" => "true",
+            "vCenter" => "true",
             "width" => "380",
             "height" => "50",
         );
@@ -43,6 +44,7 @@ final class RendererTest extends TestCase
                 "Always learning new things",
             )),
             "center" => "true",
+            "vCenter" => "true",
             "width" => "380",
             "height" => "200",
             "multiline" => "true",
@@ -59,6 +61,7 @@ final class RendererTest extends TestCase
         // missing lines
         $params = array(
             "center" => "true",
+            "vCenter" => "true",
             "width" => "380",
             "height" => "50",
         );
@@ -94,6 +97,7 @@ final class RendererTest extends TestCase
                 "Always learning new things",
             )),
             "center" => "true",
+            "vCenter" => "true",
             "width" => "380",
             "font" => "Not-A-Font",
         );
@@ -116,10 +120,31 @@ final class RendererTest extends TestCase
                 "",
             )),
             "center" => "true",
+            "vCenter" => "true",
             "width" => "380",
             "height" => "50",
         );
         $controller = new RendererController($params, self::$database);
         $this->assertEquals(file_get_contents("tests/svg/test_normal.svg"), $controller->render());
+    }
+    
+    /**
+     * Test normal vertical alignment
+     */
+    public function testNormalVerticalAlignment(): void
+    {
+        $params = array(
+            "lines" => implode(";", array(
+                "Full-stack web and app developer",
+                "Self-taught UI/UX Designer",
+                "10+ years of coding experience",
+                "Always learning new things",
+            )),
+            "center" => "true",
+            "width" => "380",
+            "height" => "50",
+        );
+        $controller = new RendererController($params, self::$database);
+        $this->assertEquals(file_get_contents("tests/svg/test_normal_vertical_alignment.svg"), $controller->render());
     }
 }
