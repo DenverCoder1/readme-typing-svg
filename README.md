@@ -64,7 +64,7 @@ Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issue
 | :---------: | :----------------------------------------------------------------------:      | :-----: | :---------------------------------: |
 |   `lines`   |      Text to display with lines separated by `;` and `+` for spaces           | string  | `First+line;Second+line;Third+line` |
 |  `center`   |   `true` to center text or `false` for left aligned (default: `false`)        | boolean |          `true` or `false`          |
-|  `vCenter`  |`true` to center text vertically or `false` for top aligned (default: `false`) | boolean |          `true` or `false`          |
+|  `vCenter`  | `true` to center vertically or `false`(default) to align above the center     | boolean |          `true` or `false`          |
 |  `height`   |            Height of the output SVG in pixels (default: `50`)                 | integer |         Any positive number         |
 |   `width`   |            Width of the output SVG in pixels (default: `400`)                 | integer |         Any positive number         |
 |   `font`    |                    Font family (default: `monospace`)                         | string  |     Any font from Google Fonts      |
