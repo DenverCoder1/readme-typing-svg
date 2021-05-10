@@ -50,18 +50,8 @@ body {
   margin-bottom: 12px;
 }
 
-.github a {
-  color: var(--text);
-}
-
-@media only screen and (max-width: 340px) {
-  .github a {
-    display: none;
-  }
-
-  .github iframe {
-    margin-left: 0 !important;
-  }
+.github span {
+  margin: 0 2px;
 }
 
 .container {
