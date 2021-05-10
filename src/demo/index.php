@@ -23,6 +23,7 @@
     <script type="text/javascript" src="./js/script.js" defer></script>
     <script type="text/javascript" src="./js/toggle-dark.js" defer></script>
     <script type="text/javascript" src="./js/jscolor.min.js" defer></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 
 <body <?php echo $_COOKIE["darkmode"] == "on" ? 'data-theme="dark"' : ""; ?>>
@@ -68,7 +69,7 @@
                     <option>false</option>
                     <option>true</option>
                 </select>
-                
+
                 <label for="vCenter">Vertically Centered</label>
                 <select class="param" id="vCenter" name="vCenter" value="false">
                     <option>false</option>
