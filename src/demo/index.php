@@ -36,13 +36,13 @@
             data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-heart"
             data-size="large" aria-label="Sponsor @denvercoder1 on GitHub">Sponsor</a>
         <!-- View on GitHub -->
-        <a class="github-button" href="https://github.com/denvercoder1/unicode-formatter"
+        <a class="github-button" href="https://github.com/denvercoder1/readme-typing-svg"
             data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large"
-            aria-label="View denvercoder1/unicode-formatter on GitHub">View on GitHub</a>
+            aria-label="View denvercoder1/readme-typing-svg on GitHub">View on GitHub</a>
         <!-- GitHub Star -->
-        <a class="github-button" href="https://github.com/denvercoder1/unicode-formatter"
+        <a class="github-button" href="https://github.com/denvercoder1/readme-typing-svg"
             data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star"
-            data-size="large" data-show-count="true" aria-label="Star denvercoder1/unicode-formatter on GitHub">Star</a>
+            data-size="large" data-show-count="true" aria-label="Star denvercoder1/readme-typing-svg on GitHub">Star</a>
     </div>
 
     <div class="container">
