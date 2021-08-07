@@ -15,24 +15,6 @@
 </p>
 <!-- markdownlint-enable MD033 -->
 
-## 📃 Table of contents
-
-- [📃 Table of contents](#-table-of-contents)
-- [⚡ Quick setup](#-quick-setup)
-- [⚙ Demo site](#-demo-site)
-- [🚀 Example usage](#-example-usage)
-- [🔧 Options](#-options)
-- [📤 Deploying it on your own](#-deploying-it-on-your-own)
-- [🤗 Contributing](#-contributing)
-  - [Installing requirements](#installing-requirements)
-    - [Requirements](#requirements)
-    - [Linux](#linux)
-    - [Windows](#windows)
-  - [Clone the repository](#clone-the-repository)
-  - [Running the app locally](#running-the-app-locally)
-  - [Running the tests](#running-the-tests)
-- [🙋‍♂️ Support](#️-support)
-
 ## ⚡ Quick setup
 
 1. Copy-paste the markdown below into your GitHub profile README
