@@ -59,7 +59,7 @@
 
                 <label for="color">Font color</label>
                 <input class="param jscolor jscolor-active" id="color" name="background"
-                    data-jscolor="{ format: 'hexa' }" value="#36BCF7">
+                    data-jscolor="{ format: 'hex' }" value="#36BCF7">
 
                 <label for="size">Font size</label>
                 <input class="param" type="number" id="size" name="size" placeholder="20" value="20">
