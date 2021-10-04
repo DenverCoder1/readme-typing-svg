@@ -47,6 +47,7 @@ Here you can easily customize your Typing SVG with a live preview.
 - **[Angelo Fallaria](https://github.com/angelofallars)**
 - **[William J. Ghelfi](https://github.com/trumbitta)**
 - **[Shivam Yadav](https://github.com/sudoshivam)**
+- **[Krishna Kumar](https://github.com/Krishnapro)**
 
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
