@@ -26,7 +26,9 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 
-<body <?php echo $_COOKIE["darkmode"] == "on" ? 'data-theme="dark"' : ""; ?>>
+<body <?php if (!empty($_COOKIE)) {
+        echo $_COOKIE["darkmode"] == "on" ? 'data-theme="dark"' : "";
+} ?>>
     <h1>⌨️ Readme Typing SVG</h1>
 
     <!-- GitHub badges/links section -->
