@@ -26,9 +26,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 
-<body <?php if (!empty($_COOKIE)) {
-        echo $_COOKIE["darkmode"] == "on" ? 'data-theme="dark"' : "";
-} ?>>
+<?php echo (isset($_COOKIE["darkmode"]) && !empty($_COOKIE) && $_COOKIE["darkmode"] == "on") ? 'data-theme="dark"' : ""; ?>
     <h1>⌨️ Readme Typing SVG</h1>
 
     <!-- GitHub badges/links section -->
@@ -117,7 +115,7 @@
     </div>
 
     <a href="javascript:toggleTheme()" class="darkmode" title="toggle dark mode">
-        <i class="<?php echo $_COOKIE["darkmode"] == "on" ? 'gg-sun' : "gg-moon"; ?>"></i>
+        <i class="<?php echo (isset($_COOKIE["darkmode"]) && !empty($_COOKIE) && $_COOKIE["darkmode"] == "on") ? 'gg-sun' : "gg-moon"; ?>"></i>
     </a>
 </body>
 
