@@ -35,20 +35,6 @@ Here you can easily customize your Typing SVG with a live preview.
 
 ## 🚀 Example usage
 
-- **[Jonah Lawrence](https://github.com/DenverCoder1)**
-- **[Waren Gonzaga](https://github.com/warengonzaga)**
-- **[Eke Victor](https://github.com/Evavic44)**
-- **[8BitJonny](https://github.com/8BitJonny)**
-- **[Krish](https://github.com/krishdevdb)**
-- **[Aditya Raute](https://github.com/adityaraute)**
-- **[Shiva Sankeerth Reddy](https://github.com/ShivaSankeerth)**
-- **[Tarun Kamboj](https://github.com/Tarun-Kamboj)**
-- **[T.A.Vignesh](https://github.com/tavignesh)**
-- **[Angelo Fallaria](https://github.com/angelofallars)**
-- **[William J. Ghelfi](https://github.com/trumbitta)**
-- **[Shivam Yadav](https://github.com/sudoshivam)**
-- **[Krishna Kumar](https://github.com/Krishnapro)**
-
 Below are links to profiles where you can see Readme Typing SVGs in action!
 
 [![Jonah Lawrence](https://github.com/DenverCoder1.png?size=60)](https://github.com/DenverCoder1)
