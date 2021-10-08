@@ -4,6 +4,9 @@ Contributions are welcome! Feel free to open an issue or submit a pull request i
 
 Make sure your request is meaningful and you have tested the app locally before submitting a pull request.
 
+If you want to contribute to this project and don't know how to do it then follow this article AND DON'T SPAM: 
+* [HOW TO CONTRIBUTE](https://gist.github.com/MarcDiethelm/7303312)
+
 ### Installing Requirements
 
 #### Requirements
