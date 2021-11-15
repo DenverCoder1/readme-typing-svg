@@ -51,6 +51,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Shivam Yadav](https://github.com/sudoshivam.png?size=60)](https://github.com/sudoshivam)
 [![Adam Ross](https://github.com/R055A.png?size=60)](https://github.com/R055A)
 [![Krishna Kumar](https://github.com/Krishnapro.png?size=60)](https://github.com/Krishnapro)
+[![Pratik Pingale](https://github.com/PROxZIMA.png?size=60)](https://github.com/PROxZIMA)
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
