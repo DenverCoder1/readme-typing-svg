@@ -11,11 +11,11 @@
     <path id='path<?php echo $i ?>'>
 <?php if (!$multiline): ?>
         <animate id='d<?php echo $i ?>' attributeName='d' begin='<?php echo ($i == 0 ? "0s;" : "") . $previousId ?>.end' dur='5s'
-            values='m0,<?php echo $height / 2 ?> h0 ; m0,<?php echo $height / 2 ?> h<?php echo $width ?> ; m0,<?php echo $height / 2 ?> h0' keyTimes='0 ; 0.8 ; 1' />
+            values='m0,<?php echo $height / 2 ?> h0 ; m0,<?php echo $height / 2 ?> h<?php echo $width ?> ; m0,<?php echo $height / 2 ?> h0' keyTimes='0;0.8;1' />
 <?php else: ?>
     <?php $lineHeight = $size + 5;?>
     <animate id='d<?php echo $i ?>' attributeName='d' dur='<?php echo 5 * ($i + 1) ?>s' fill="freeze"
-            begin='0s;<?php echo "d" . (count($lines) - 1) ?>.end' keyTimes="0 ; <?php echo $i / ($i + 1); ?> ; 1"
+            begin='0s;<?php echo "d" . (count($lines) - 1) ?>.end' keyTimes="0;<?php echo $i / ($i + 1); ?>;1"
             values='m0,<?php echo ($i + 1) * $lineHeight ?> h0 ; m0,<?php echo ($i + 1) * $lineHeight ?> h0 ; m0,<?php echo ($i + 1) * $lineHeight ?> h<?php echo $width ?>' />
 <?php endif;?>
     </path>
