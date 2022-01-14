@@ -24,6 +24,7 @@
     <script type="text/javascript" src="./js/toggle-dark.js" defer></script>
     <script type="text/javascript" src="./js/jscolor.min.js" defer></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body <?php echo (isset($_COOKIE["darkmode"]) && $_COOKIE["darkmode"] == "on") ? 'data-theme="dark"' : ""; ?>>
