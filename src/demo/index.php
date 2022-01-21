@@ -65,7 +65,7 @@
                 <label for="size">Font size</label>
                 <input class="param" type="number" id="size" name="size" placeholder="20" value="20">
 
-                <label for="duration">Print duration</label>
+                <label for="duration">Print duration (ms per line)</label>
                 <input class="param" type="number" id="duration" name="duration" placeholder="5000" value="5000">
 
                 <label for="center">Horizontally Centered</label>

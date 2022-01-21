@@ -70,7 +70,7 @@ Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issue
 |   `size`    |                   Font size in pixels (default: `20`)                        | integer |         Any positive number         |
 |   `color`   |                  Color of the text (default: `36BCF7`)                       | string  |  Hex code without # (eg. `00ff00`)  |
 | `multiline` | `true` to wrap lines or `false` to retype on one line (default: `false`)     | boolean |          `true` or `false`          |
-|  `duration` | Duration of the printing of output SVG in milliseconds (default: `5000`)     | integer |         Any positive number         |
+|  `duration` | Duration of the printing of a single line in milliseconds (default: `5000`)  | integer |         Any positive number         |
 
 ## 📤 Deploying it on your own
 
