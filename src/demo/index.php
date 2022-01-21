@@ -65,6 +65,9 @@
                 <label for="size">Font size</label>
                 <input class="param" type="number" id="size" name="size" placeholder="20" value="20">
 
+                <label for="speed">Font size</label>
+                <input class="param" type="number" id="speed" name="speed" placeholder="5" value="5">
+
                 <label for="center">Horizontally Centered</label>
                 <select class="param" id="center" name="center" value="false">
                     <option>false</option>

@@ -8,7 +8,8 @@ let preview = {
     vCenter: "false",
     multiline: "false",
     width: "400",
-    height: "50"
+    height: "50",
+    speed: "5"
   },
   dummyText: [
     "The five boxing wizards jump quickly",
