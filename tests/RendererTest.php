@@ -29,6 +29,7 @@ final class RendererTest extends TestCase
             "vCenter" => "true",
             "width" => "380",
             "height" => "50",
+            "duration" => "5000ms",
         );
         $controller = new RendererController($params, self::$database);
         $this->assertEquals(file_get_contents("tests/svg/test_normal.svg"), $controller->render());
@@ -48,6 +49,7 @@ final class RendererTest extends TestCase
             "width" => "380",
             "height" => "200",
             "multiline" => "true",
+            "duration" => "5000ms",
         );
         $controller = new RendererController($params, self::$database);
         $this->assertEquals(file_get_contents("tests/svg/test_multiline.svg"), $controller->render());
@@ -64,6 +66,7 @@ final class RendererTest extends TestCase
             "vCenter" => "true",
             "width" => "380",
             "height" => "50",
+            "duration" => "5000ms",
         );
         $controller = new RendererController($params, self::$database);
         $this->assertEquals(file_get_contents("tests/svg/test_missing_lines.svg"), $controller->render());
@@ -77,6 +80,7 @@ final class RendererTest extends TestCase
         $params = array(
             "lines" => "text",
             "font" => "Roboto",
+            "duration" => "5000ms",
         );
         $controller = new RendererController($params, self::$database);
         $expected = preg_replace("/\/\*(.*?)\*\//", "", file_get_contents("tests/svg/test_fonts.svg"));
@@ -123,6 +127,7 @@ final class RendererTest extends TestCase
             "vCenter" => "true",
             "width" => "380",
             "height" => "50",
+            "duration" => "5000ms",
         );
         $controller = new RendererController($params, self::$database);
         $this->assertEquals(file_get_contents("tests/svg/test_normal.svg"), $controller->render());
@@ -143,6 +148,7 @@ final class RendererTest extends TestCase
             "center" => "true",
             "width" => "380",
             "height" => "50",
+            "duration" => "5000ms",
         );
         $controller = new RendererController($params, self::$database);
         $this->assertEquals(file_get_contents("tests/svg/test_normal_vertical_alignment.svg"), $controller->render());
