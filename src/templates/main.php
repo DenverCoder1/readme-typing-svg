@@ -14,7 +14,7 @@
             values='m0,<?php echo $height / 2 ?> h0 ; m0,<?php echo $height / 2 ?> h<?php echo $width ?> ; m0,<?php echo $height / 2 ?> h0' keyTimes='0;0.8;1' />
 <?php else: ?>
     <?php $lineHeight = $size + 5;?>
-    <animate id='d<?php echo $i ?>' attributeName='d' dur='<?php echo 50 / $speed ?>s' fill="freeze"
+    <animate id='d<?php echo $i ?>' attributeName='d' dur='<?php echo (50 / $speed) * ($i + 1) ?>s' fill="freeze"
             begin='0s;<?php echo "d" . (count($lines) - 1) ?>.end' keyTimes="0;<?php echo $i / ($i + 1); ?>;1"
             values='m0,<?php echo ($i + 1) * $lineHeight ?> h0 ; m0,<?php echo ($i + 1) * $lineHeight ?> h0 ; m0,<?php echo ($i + 1) * $lineHeight ?> h<?php echo $width ?>' />
 <?php endif;?>
