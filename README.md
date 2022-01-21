@@ -59,17 +59,18 @@ Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issue
 
 ## 🔧 Options
 
-|  Parameter  |                                 Details                                       |  Type   |               Example               |
-| :---------: | :----------------------------------------------------------------------:      | :-----: | :---------------------------------: |
-|   `lines`   |      Text to display with lines separated by `;` and `+` for spaces           | string  | `First+line;Second+line;Third+line` |
-|  `center`   |   `true` to center text or `false` for left aligned (default: `false`)        | boolean |          `true` or `false`          |
-|  `vCenter`  | `true` to center vertically or `false`(default) to align above the center     | boolean |          `true` or `false`          |
-|  `height`   |            Height of the output SVG in pixels (default: `50`)                 | integer |         Any positive number         |
-|   `width`   |            Width of the output SVG in pixels (default: `400`)                 | integer |         Any positive number         |
-|   `font`    |                    Font family (default: `monospace`)                         | string  |     Any font from Google Fonts      |
-|   `size`    |                   Font size in pixels (default: `20`)                         | integer |         Any positive number         |
-|   `color`   |                  Color of the text (default: `36BCF7`)                        | string  |  Hex code without # (eg. `00ff00`)  |
-| `multiline` | `true` to wrap lines or `false` to retype on one line (default: `false`)      | boolean |          `true` or `false`          |
+|  Parameter  |                                 Details                                                   |  Type   |               Example               |
+| :---------: | :---------------------------------------------------------------------------------------: | :-----: | :---------------------------------: |
+|   `lines`   |      Text to display with lines separated by `;` and `+` for spaces                       | string  | `First+line;Second+line;Third+line` |
+|  `center`   |   `true` to center text or `false` for left aligned (default: `false`)                    | boolean |          `true` or `false`          |
+|  `vCenter`  | `true` to center vertically or `false`(default) to align above the center                 | boolean |          `true` or `false`          |
+|  `height`   |            Height of the output SVG in pixels (default: `50`)                             | integer |         Any positive number         |
+|   `width`   |            Width of the output SVG in pixels (default: `400`)                             | integer |         Any positive number         |
+|   `font`    |                    Font family (default: `monospace`)                                     | string  |     Any font from Google Fonts      |
+|   `size`    |                   Font size in pixels (default: `20`)                                     | integer |         Any positive number         |
+|   `color`   |                  Color of the text (default: `36BCF7`)                                    | string  |  Hex code without # (eg. `00ff00`)  |
+| `multiline` | `true` to wrap lines or `false` to retype on one line (default: `false`)                  | boolean |          `true` or `false`          |
+|   `speed`   | Speed of the printing of output SVG in seconds calculated by 50/`speed`. (default: `10`)  | integer |         Any positive number         |
 
 ## 📤 Deploying it on your own
 
