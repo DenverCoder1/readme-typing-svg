@@ -10,7 +10,7 @@
 <?php for ($i = 0; $i < count($lines); ++$i): ?>
     <path id='path<?php echo $i ?>'>
 <?php if (!$multiline): ?>
-        <animate id='d<?php echo $i ?>' attributeName='d' begin='<?php echo ($i == 0 ? "0s;" : "") . $previousId ?>.end' dur='5s'
+        <animate id='d<?php echo $i ?>' attributeName='d' begin='<?php echo ($i == 0 ? "0s;" : "") . $previousId ?>.end' dur='<?php echo $speed * ($i + 1) ?>s'
             values='m0,<?php echo $height / 2 ?> h0 ; m0,<?php echo $height / 2 ?> h<?php echo $width ?> ; m0,<?php echo $height / 2 ?> h0' keyTimes='0;0.8;1' />
 <?php else: ?>
     <?php $lineHeight = $size + 5;?>
