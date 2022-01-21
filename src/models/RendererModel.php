@@ -32,6 +32,9 @@ class RendererModel
     /** @var bool $multiline True = wrap to new lines, False = retype on same line */
     public $multiline;
 
+    /** @var int $duration print duration in milliseconds */
+    public $duration;
+
     /** @var string $fontCSS CSS required for displaying the selected font */
     public $fontCSS;
 
@@ -51,6 +54,7 @@ class RendererModel
         "width" => "400",
         "height" => "50",
         "multiline" => "false",
+        "duration" => "5000"
     );
 
     /**
@@ -73,6 +77,7 @@ class RendererModel
         $this->width = $this->checkNumber($params["width"] ?? $this->DEFAULTS["width"], "Width");
         $this->height = $this->checkNumber($params["height"] ?? $this->DEFAULTS["height"], "Height");
         $this->multiline = $this->checkBoolean($params["multiline"] ?? $this->DEFAULTS["multiline"]);
+        $this->duration = $this->checkNumber($params["duration"] ?? $this->DEFAULTS["duration"], "duration");
         $this->fontCSS = $this->fetchFontCSS($this->font);
     }
 

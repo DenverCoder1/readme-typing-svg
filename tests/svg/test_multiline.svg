@@ -6,7 +6,7 @@
 
     
     <path id='path0'>
-        <animate id='d0' attributeName='d' dur='5s' fill="freeze"
+        <animate id='d0' attributeName='d' dur='5000ms' fill="freeze"
             begin='0s;d3.end' keyTimes="0;0;1"
             values='m0,25 h0 ; m0,25 h0 ; m0,25 h380' />
     </path>
@@ -19,7 +19,7 @@
     </text>
 
     <path id='path1'>
-        <animate id='d1' attributeName='d' dur='10s' fill="freeze"
+        <animate id='d1' attributeName='d' dur='10000ms' fill="freeze"
             begin='0s;d3.end' keyTimes="0;0.5;1"
             values='m0,50 h0 ; m0,50 h0 ; m0,50 h380' />
     </path>
@@ -32,7 +32,7 @@
     </text>
 
     <path id='path2'>
-        <animate id='d2' attributeName='d' dur='15s' fill="freeze"
+        <animate id='d2' attributeName='d' dur='15000ms' fill="freeze"
             begin='0s;d3.end' keyTimes="0;0.66666666666667;1"
             values='m0,75 h0 ; m0,75 h0 ; m0,75 h380' />
     </path>
@@ -45,7 +45,7 @@
     </text>
 
     <path id='path3'>
-        <animate id='d3' attributeName='d' dur='20s' fill="freeze"
+        <animate id='d3' attributeName='d' dur='20000ms' fill="freeze"
             begin='0s;d3.end' keyTimes="0;0.75;1"
             values='m0,100 h0 ; m0,100 h0 ; m0,100 h380' />
     </path>
