@@ -37,7 +37,7 @@ class RendererView
             "height" => $this->model->height,
             "multiline" => $this->model->multiline,
             "fontCSS" => $this->model->fontCSS,
-            "speed" => $this->model->speed,
+            "duration" => $this->model->duration,
         ));
         // render SVG with output buffering
         ob_start();
