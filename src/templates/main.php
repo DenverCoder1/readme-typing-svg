@@ -15,7 +15,7 @@
 <?php else: ?>
     <?php $lineHeight = $size + 5;?>
     <animate id='d<?php echo $i ?>' attributeName='d' dur='<?php echo 50 / $speed ?>s' fill="freeze"
-            begin='<?php echo $speed ?>s;<?php echo "d" . (count($lines) - 1) ?>.end' keyTimes="0;<?php echo $i / ($i + 1); ?>;1"
+            begin='0s;<?php echo "d" . (count($lines) - 1) ?>.end' keyTimes="0;<?php echo $i / ($i + 1); ?>;1"
             values='m0,<?php echo ($i + 1) * $lineHeight ?> h0 ; m0,<?php echo ($i + 1) * $lineHeight ?> h0 ; m0,<?php echo ($i + 1) * $lineHeight ?> h<?php echo $width ?>' />
 <?php endif;?>
     </path>

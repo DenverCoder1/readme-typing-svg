@@ -54,7 +54,7 @@ class RendererModel
         "width" => "400",
         "height" => "50",
         "multiline" => "false",
-        "speed" => "5"
+        "speed" => "10"
     );
 
     /**
