@@ -9,7 +9,7 @@ let preview = {
     multiline: "false",
     width: "400",
     height: "50",
-    speed: "5"
+    speed: "10"
   },
   dummyText: [
     "The five boxing wizards jump quickly",
