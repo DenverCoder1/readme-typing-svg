@@ -32,7 +32,7 @@ class RendererModel
     /** @var bool $multiline True = wrap to new lines, False = retype on same line */
     public $multiline;
 
-    /** @var int $speed print speed (seconds) */
+    /** @var int $speed print speed (50 / $speed seconds) */
     public $speed;
 
     /** @var string $fontCSS CSS required for displaying the selected font */
