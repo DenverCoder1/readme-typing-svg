@@ -91,6 +91,16 @@ You can deploy the PHP files on any website server with PHP installed or as a He
 3. On the page that comes up, click **"Deploy App"** at the end of the form
 4. Once the app is deployed, click **"Manage App"** to go to the dashboard
 5. Scroll down to the **Domains** section in the settings to find the URL you will use in place of `readme-typing-svg.herokuapp.com`
+6. [Optional] To use Google fonts or other custom fonts, you will need to configure the database. The login credentials for the database can be found by clicking the PostgreSQL add-on and going to Settings. The following is the definition for the `fonts` table that needs to be created.
+
+```sql
+CREATE TABLE fonts (
+	"family" varchar(50) NOT NULL,
+	css varchar(1200000) NOT NULL,
+	fetch_date date NOT NULL,
+	CONSTRAINT fonts_pkey PRIMARY KEY (family)
+);
+```
 
 ## 🤗 Contributing
 
