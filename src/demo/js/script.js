@@ -3,6 +3,7 @@ let preview = {
   defaults: {
     font: "monospace",
     color: "36BCF7",
+    background: "00000000",
     size: "20",
     center: "false",
     vCenter: "false",
@@ -30,7 +31,7 @@ let preview = {
         let obj = acc;
         let value = next.value;
         // remove hash from any colors and remove "FF" if full opacity
-        value = value.replace(/#([A-Fa-f0-9]{6})(F|f){2}$/, "$1");
+        value = value.replace(/^#([A-Fa-f0-9]{6})(?:[Ff]{2})?/, "$1");
         // add value to reduction accumulator
         obj[next.id] = value;
         return obj;

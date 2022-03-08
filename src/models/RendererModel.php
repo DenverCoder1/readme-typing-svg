@@ -1,4 +1,6 @@
-<?php declare (strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 /**
  * Model for SVG outputs
@@ -14,12 +16,15 @@ class RendererModel
     /** @var string $color Font color */
     public $color;
 
+    /** @var string $background Background color */
+    public $background;
+
     /** @var int $size Font size */
     public $size;
 
     /** @var bool $center Whether or not to center text horizontally */
     public $center;
-    
+
     /** @var bool $vCenter Whether or not to center text vertically */
     public $vCenter;
 
@@ -48,6 +53,7 @@ class RendererModel
     private $DEFAULTS = array(
         "font" => "monospace",
         "color" => "#36BCF7",
+        "background" => "#00000000",
         "size" => "20",
         "center" => "false",
         "vCenter" => "false",
@@ -70,7 +76,8 @@ class RendererModel
         $this->database = $database;
         $this->lines = $this->checkLines($params["lines"] ?? "");
         $this->font = $this->checkFont($params["font"] ?? $this->DEFAULTS["font"]);
-        $this->color = $this->checkColor($params["color"] ?? $this->DEFAULTS["color"]);
+        $this->color = $this->checkColor($params["color"] ?? $this->DEFAULTS["color"], "color");
+        $this->background = $this->checkColor($params["background"] ?? $this->DEFAULTS["background"], "background");
         $this->size = $this->checkNumber($params["size"] ?? $this->DEFAULTS["size"], "Font size");
         $this->center = $this->checkBoolean($params["center"] ?? $this->DEFAULTS["center"]);
         $this->vCenter = $this->checkBoolean($params["vCenter"] ?? $this->DEFAULTS["vCenter"]);
@@ -114,14 +121,15 @@ class RendererModel
      * Validate font color and return valid string
      *
      * @param string $color Color parameter
+     * @param string $field Field name for displaying in case of error
      * @return string Sanitized color with preceding hash symbol
      */
-    private function checkColor($color)
+    private function checkColor($color, $field)
     {
         $sanitized = (string) preg_replace("/[^0-9A-Fa-f]/", "", $color);
         // if color is not a valid length, use the default
         if (!in_array(strlen($sanitized), [3, 4, 6, 8])) {
-            return $this->DEFAULTS["color"];
+            return $this->DEFAULTS[$field];
         }
         // return sanitized color
         return "#" . $sanitized;

@@ -67,6 +67,32 @@ final class OptionsTest extends TestCase
     }
 
     /**
+     * Test valid background color
+     */
+    public function testValidBackgroundColor(): void
+    {
+        $params = array(
+            "lines" => "text",
+            "background" => "00000033",
+        );
+        $model = new RendererModel("src/templates/main.php", $params, self::$database);
+        $this->assertEquals("#00000033", $model->background);
+    }
+
+    /**
+     * Test invalid background color
+     */
+    public function testInvalidBackgroundColor(): void
+    {
+        $params = array(
+            "lines" => "text",
+            "background" => "00000",
+        );
+        $model = new RendererModel("src/templates/main.php", $params, self::$database);
+        $this->assertEquals("#00000000", $model->background);
+    }
+
+    /**
      * Test valid font size
      */
     public function testValidFontSize(): void
