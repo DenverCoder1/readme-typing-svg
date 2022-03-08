@@ -14,6 +14,9 @@ class RendererModel
     /** @var string $color Font color */
     public $color;
 
+    /** @var string $background Background color */
+    public $background;
+
     /** @var int $size Font size */
     public $size;
 
@@ -48,6 +51,7 @@ class RendererModel
     private $DEFAULTS = array(
         "font" => "monospace",
         "color" => "#36BCF7",
+        "background" => "#00000000",
         "size" => "20",
         "center" => "false",
         "vCenter" => "false",
@@ -71,6 +75,7 @@ class RendererModel
         $this->lines = $this->checkLines($params["lines"] ?? "");
         $this->font = $this->checkFont($params["font"] ?? $this->DEFAULTS["font"]);
         $this->color = $this->checkColor($params["color"] ?? $this->DEFAULTS["color"]);
+        $this->background = $this->checkColor($params["background"] ?? $this->DEFAULTS["background"]);
         $this->size = $this->checkNumber($params["size"] ?? $this->DEFAULTS["size"], "Font size");
         $this->center = $this->checkBoolean($params["center"] ?? $this->DEFAULTS["center"]);
         $this->vCenter = $this->checkBoolean($params["vCenter"] ?? $this->DEFAULTS["vCenter"]);

@@ -30,6 +30,7 @@ class RendererView
             "lines" => $this->model->lines,
             "font" => $this->model->font,
             "color" => $this->model->color,
+            "background" => $this->model->background,
             "size" => $this->model->size,
             "center" => $this->model->center,
             "vCenter" => $this->model->vCenter,

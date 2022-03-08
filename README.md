@@ -60,18 +60,19 @@ Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issue
 
 ## 🔧 Options
 
-|  Parameter  |                                 Details                                      |  Type   |               Example               |
-| :---------: | :--------------------------------------------------------------------------: | :-----: | :---------------------------------: |
-|   `lines`   |      Text to display with lines separated by `;` and `+` for spaces          | string  | `First+line;Second+line;Third+line` |
-|  `center`   |   `true` to center text or `false` for left aligned (default: `false`)       | boolean |          `true` or `false`          |
-|  `vCenter`  | `true` to center vertically or `false`(default) to align above the center    | boolean |          `true` or `false`          |
-|  `height`   |            Height of the output SVG in pixels (default: `50`)                | integer |         Any positive number         |
-|   `width`   |            Width of the output SVG in pixels (default: `400`)                | integer |         Any positive number         |
-|   `font`    |                    Font family (default: `monospace`)                        | string  |     Any font from Google Fonts      |
-|   `size`    |                   Font size in pixels (default: `20`)                        | integer |         Any positive number         |
-|   `color`   |                  Color of the text (default: `36BCF7`)                       | string  |  Hex code without # (eg. `00ff00`)  |
-| `multiline` | `true` to wrap lines or `false` to retype on one line (default: `false`)     | boolean |          `true` or `false`          |
-|  `duration` | Duration of the printing of a single line in milliseconds (default: `5000`)  | integer |         Any positive number         |
+|  Parameter   |                                   Details                                   |  Type   |               Example               |
+| :----------: | :-------------------------------------------------------------------------: | :-----: | :---------------------------------: |
+|   `lines`    |       Text to display with lines separated by `;` and `+` for spaces        | string  | `First+line;Second+line;Third+line` |
+|   `height`   |             Height of the output SVG in pixels (default: `50`)              | integer |         Any positive number         |
+|   `width`    |             Width of the output SVG in pixels (default: `400`)              | integer |         Any positive number         |
+|    `size`    |                     Font size in pixels (default: `20`)                     | integer |         Any positive number         |
+|    `font`    |                     Font family (default: `monospace`)                      | string  |     Any font from Google Fonts      |
+|   `color`    |                    Color of the text (default: `36BCF7`)                    | string  |  Hex code without # (eg. `F724A9`)  |
+| `background` |             Background color of the text (default: `00000000`)              | string  |  Hex code without # (eg. `FEFF4C`)  |
+|   `center`   |    `true` to center text or `false` for left aligned (default: `false`)     | boolean |          `true` or `false`          |
+|  `vCenter`   |  `true` to center vertically or `false`(default) to align above the center  | boolean |          `true` or `false`          |
+| `multiline`  |  `true` to wrap lines or `false` to retype on one line (default: `false`)   | boolean |          `true` or `false`          |
+|  `duration`  | Duration of the printing of a single line in milliseconds (default: `5000`) | integer |         Any positive number         |
 
 ## 📤 Deploying it on your own
 
@@ -82,7 +83,7 @@ Doing this can lead to better uptime and more control over customization (you ca
 You can deploy the PHP files on any website server with PHP installed or as a Heroku app.
 
 ### Step-by-step instructions for deploying to Heroku
-  
+
 1. Sign in to **Heroku** or create a new account at <https://heroku.com>
 2. Click the "Deploy to Heroku" button below
 
@@ -112,8 +113,8 @@ Make sure your request is meaningful and you have tested the app locally before 
 
 #### Requirements
 
-- [PHP 7](https://www.apachefriends.org/index.html)
-- [Composer](https://getcomposer.org)
+-   [PHP 7](https://www.apachefriends.org/index.html)
+-   [Composer](https://getcomposer.org)
 
 #### Linux
 
@@ -176,7 +177,11 @@ composer test
 ---
 
 Made with ❤️ and PHP
+
 <!-- markdownlint-disable MD033 -->
+
 <a href="https://heroku.com/"><img alt="Powered by Heroku" title="Powered by Heroku" src="https://img.shields.io/badge/-Powered%20by%20Heroku-6567a5?style=for-the-badge&logo=heroku&logoColor=white"/></a>
+
 <!-- markdownlint-enable MD033 -->
+
 This project uses [Twemoji](https://github.com/twitter/twemoji), published under the [CC-BY 4.0 License](https://creativecommons.org/licenses/by/4.0/)

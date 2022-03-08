@@ -2,6 +2,7 @@
 <svg xmlns='http://www.w3.org/2000/svg'
     xmlns:xlink='http://www.w3.org/1999/xlink'
     viewBox='0 0 <?php echo "$width $height" ?>'
+    style='background-color: <?php echo $background ?>;'
     width='<?php echo $width ?>px' height='<?php echo $height ?>px'>
 
     <?php echo preg_replace("/\n/", "\n\t", $fontCSS); ?>
