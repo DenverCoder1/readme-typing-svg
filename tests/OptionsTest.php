@@ -89,7 +89,7 @@ final class OptionsTest extends TestCase
             "background" => "00000",
         );
         $model = new RendererModel("src/templates/main.php", $params, self::$database);
-        $this->assertEquals("#36BCF7", $model->background);
+        $this->assertEquals("#00000000", $model->background);
     }
 
     /**
