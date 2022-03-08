@@ -55,6 +55,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Vydr'Oz](https://github.com/VydrOz.png?size=60)](https://github.com/VydrOz)
 [![Caroline Heloíse](https://github.com/Carol42.png?size=60)](https://github.com/Carol42)
 [![BenjaminMichaelis](https://github.com/BenjaminMichaelis.png?size=60)](https://github.com/BenjaminMichaelis)
+[![Thakur Ballary](https://github.com/thakurballary.png?size=60)](https://github.com/thakurballary)
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
