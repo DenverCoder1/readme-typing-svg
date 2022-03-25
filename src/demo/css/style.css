@@ -254,18 +254,27 @@ label.show-border {
   margin-top: 8px;
 }
 
-/* tooltips */
-.btn.tooltip {
+.label-group {
   display: flex;
+  gap: 0.5rem;
+}
+
+a.icon {
+  color: var(--blue-light);
+}
+
+/* tooltips */
+.tooltip {
+  display: inline-flex;
   justify-content: center;
   align-items: center;
 }
 
 /* tooltip bubble */
-.btn.tooltip:before {
+.tooltip:before {
   content: attr(title);
   position: absolute;
-  transform: translateY(-45px);
+  transform: translateY(-2.45rem);
   height: auto;
   width: auto;
   background: #4a4a4afa;
@@ -279,10 +288,10 @@ label.show-border {
 }
 
 /* tooltip bottom triangle */
-.btn.tooltip:after {
+.tooltip:after {
   content: "";
   position: absolute;
-  transform: translateY(-27px);
+  transform: translateY(-1.35rem);
   border-style: solid;
   border-color: #4a4a4afa transparent transparent transparent;
   pointer-events: none;
@@ -290,14 +299,14 @@ label.show-border {
 }
 
 /* show tooltip on hover */
-.btn.tooltip[title]:hover:before,
-.btn.tooltip[title]:hover:after,
-.btn.tooltip:disabled:hover:before,
-.btn.tooltip:disabled:hover:after {
+.tooltip[title]:hover:before,
+.tooltip[title]:hover:after,
+.tooltip:disabled:hover:before,
+.tooltip:disabled:hover:after {
   transition: 0.2s ease-in opacity;
   opacity: 1;
 }
 
-.btn.tooltip:disabled:before {
+.tooltip:disabled:before {
   content: "You must first input valid text.";
 }

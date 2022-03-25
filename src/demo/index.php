@@ -53,13 +53,21 @@
 
             <h2>Options</h2>
             <form class="parameters two-columns options">
-                <label for="font">Font</label>
+                <div class="label-group">
+                    <label for="font">Font</label>
+                    <a href="https://fonts.google.com/" target="_blank" class="icon tooltip" title="Enter a font name from Google Fonts">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 6C9.831 6 8.066 7.765 8.066 9.934h2C10.066 8.867 10.934 8 12 8s1.934.867 1.934 1.934c0 .598-.481 1.032-1.216 1.626-.255.207-.496.404-.691.599C11.029 13.156 11 14.215 11 14.333V15h2l-.001-.633c.001-.016.033-.386.441-.793.15-.15.339-.3.535-.458.779-.631 1.958-1.584 1.958-3.182C15.934 7.765 14.169 6 12 6zM11 16H13V18H11z"></path>
+                            <path d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M12,20c-4.411,0-8-3.589-8-8s3.589-8,8-8 s8,3.589,8,8S16.411,20,12,20z"></path>
+                        </svg>
+                    </a>
+                </div>
                 <input class="param" type="text" id="font" name="font" alt="Font name" placeholder="monospace" value="monospace" pattern="^[A-Za-z0-9\- ]*$" title="Font from Google Fonts. Only letters, numbers, and spaces.">
 
                 <label for="size">Font size</label>
                 <input class="param" type="number" id="size" name="size" alt="Font size" placeholder="20" value="20">
 
-                <label for="duration">Print duration (ms per line)</label>
+                <label for="duration">Duration (ms per line)</label>
                 <input class="param" type="number" id="duration" name="duration" alt="Print duration (ms)" placeholder="5000" value="5000">
 
                 <label for="color">Font color</label>
@@ -86,7 +94,7 @@
                     <option value="true">Each sentence on a new line</option>
                 </select>
 
-                <label for="dimensions" title="Width ✕ Height">W ✕ H</label>
+                <label for="dimensions" title="Width ✕ Height">Width ✕ Height</label>
                 <span id="dimensions">
                     <input class="param inline" type="number" id="width" name="width" alt="Width (px)" placeholder="400" value="400">
                     <label>✕</label>
