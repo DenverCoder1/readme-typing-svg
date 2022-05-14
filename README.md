@@ -37,6 +37,7 @@ Here you can easily customize your Typing SVG with a live preview.
 
 Below are links to profiles where you can see Readme Typing SVGs in action!
 
+[![NiceSapien](https://github.com/nicesapien.png?size=60)](https://github.com/nicesapien)
 [![Jonah Lawrence](https://github.com/DenverCoder1.png?size=60)](https://github.com/DenverCoder1)
 [![Waren Gonzaga](https://github.com/warengonzaga.png?size=60)](https://github.com/warengonzaga)
 [![Eke Victor](https://github.com/Evavic44.png?size=60)](https://github.com/Evavic44)
