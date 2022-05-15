@@ -13,10 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: php-actions/composer@v5
-
-      - name: Install php-pgsql
-        run: sudo apt install php-pgsql
-        
       - name: PHPUnit Tests
         uses: php-actions/phpunit@v2
         with:
@@ -26,4 +22,3 @@ jobs:
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: DenverCoder1
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
