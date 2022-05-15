@@ -22,3 +22,4 @@ jobs:
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: DenverCoder1
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
