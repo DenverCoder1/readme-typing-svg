@@ -59,6 +59,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Ossama Mehmood](https://github.com/ossamamehmood.png?size=60)](https://github.com/ossamamehmood)
 [![Huynh Duong](https://github.com/betty2310.png?size=60)](https://github.com/betty2310)
 [![NiceSapien](https://github.com/nicesapien.png?size=60)](https://github.com/nicesapien)
+[![LMFAO-Jude](https://github.com/lmfao-jude.png?size=60)](https://github.com/lmfao-jude)
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
