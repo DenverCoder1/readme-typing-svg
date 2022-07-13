@@ -61,6 +61,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![NiceSapien](https://github.com/nicesapien.png?size=60)](https://github.com/nicesapien)
 [![LMFAO-Jude](https://github.com/lmfao-jude.png?size=60)](https://github.com/lmfao-jude)
 [![Manthan Ank](https://github.com/manthanank.png?size=60)](https://github.com/manthanank)
+[![Ronny Coste](https://github.com/lertsoft.png?size=60)](https://github.com/lertsoft)
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
