@@ -63,6 +63,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Manthan Ank](https://github.com/manthanank.png?size=60)](https://github.com/manthanank)
 [![Ronny Coste](https://github.com/lertsoft.png?size=60)](https://github.com/lertsoft)
 [![Vishal Beep](https://github.com/vishal-beep136.png?size=60)](https://github.com/Vishal-beep136)
+[![Raihan Khan](https://github.com/raihankhan.png?size=60)](https://github.com/raihankhan)
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
