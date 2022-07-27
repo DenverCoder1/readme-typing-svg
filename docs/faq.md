@@ -27,4 +27,3 @@ You can do so by:
     <img src="https://readme-typing-svg.herokuapp.com/?lines=Type+messages+everywhere!;Add+a+bio+to+your+profile!;Add+a+description+to+your+repo!;Make+your+readme+stand+out!&font=Fira%20Code&center=true&width=380&height=50">
 </p>
 ```
->Note: Why do we have to use the HTML version? It is because we can only use the `align="center"` on a HTML attribute.
