@@ -16,7 +16,7 @@ HTML:
 
 # FAQs
 
-## 1. Help — how do I center the Image/Typing SVG?
+## How do I center the image on the page?
 
 We can do so by *using the HTML version*, and then wrapping it by the HTML attribute of `align="center"`.
 
