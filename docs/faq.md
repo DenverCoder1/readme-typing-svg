@@ -1,4 +1,6 @@
-# Versions of the Readme Typing SVG
+# How do I include Readme Typing SVG in my Readme?
+
+Markdown files on GitHub support embedded images using Markdown or HTML.
 
 Image version:
 
