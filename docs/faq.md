@@ -2,7 +2,7 @@
 
 Markdown files on GitHub support embedded images using Markdown or HTML.
 
-Image version:
+Markdown:
 
 ```html
 [![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
