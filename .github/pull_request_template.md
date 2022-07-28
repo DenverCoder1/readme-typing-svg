@@ -1,10 +1,8 @@
-## Description
+## Summary
 
 <!-- Please include a summary of the change and which issue is fixed. -->
 
-Fixes # <!-- add issue number -->
-
-### Type of change
+## Type of change
 
 <!-- Please delete options that are not relevant. -->
 
@@ -15,19 +13,7 @@ Fixes # <!-- add issue number -->
 
 ## How Has This Been Tested?
 
-<!-- If you have changed a feature of the stats cards, please describe the tests you made to verify your changes. -->
+<!-- If you have changed or added a feature, please describe the tests you made to verify your changes. -->
 
 - [ ] Ran tests with `composer test`
 - [ ] Added or updated test cases to test new features
-
-## Checklist:
-
-- [ ] I have checked to make sure no other pull requests are open for this issue
-- [ ] The code is properly formatted and is consistent with the existing code style
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] I have made corresponding changes to the documentation
-- [ ] My changes generate no new warnings
-
-## Screenshots
-
-<!-- If you have updated the design or appearance, please include a screenshot of your changes. -->
