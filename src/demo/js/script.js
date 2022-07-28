@@ -23,7 +23,7 @@ let preview = {
   ],
   // update the preview
   update: function () {
-    const copyButton = document.querySelector(".copy-button");
+    const copyButtons = document.querySelectorAll(".copy-button");
     // get parameter values from all .param elements
     const params = Array.from(document.querySelectorAll(".param:not([data-index])")).reduce(
       (acc, next) => {
@@ -40,7 +40,7 @@ let preview = {
     const lineInputs = Array.from(document.querySelectorAll(".param[data-index]"));
     // disable copy button if any line contains semicolon
     if (lineInputs.some((el) => el.value.indexOf(";") >= 0)) {
-      return copyButton.disabled = "true";
+      return copyButtons.forEach((el) => el.disabled = true);
     }
     // add lines to parameters
     params.lines = lineInputs
@@ -61,8 +61,10 @@ let preview = {
     const demoImageURL = `/?${query}`;
     const repoLink = "https://git.io/typing-svg";
     const md = `[![Typing SVG](${imageURL})](${repoLink})`;
+    const html = `<a href="${repoLink}"><img src="${imageURL}" alt="Typing SVG" /></a>`;
     // don't update if nothing has changed
     const mdElement = document.querySelector(".md code");
+    const htmlElement = document.querySelector(".html code");
     const image = document.querySelector(".output img");
     if (mdElement.innerText === md) {
       return;
@@ -70,10 +72,11 @@ let preview = {
     // update image preview
     image.src = demoImageURL;
     image.classList.add("loading");
-    // update markdown
+    // update markdown and html
     mdElement.innerText = md;
+    htmlElement.innerText = html;
     // disable copy button if no lines are filled in
-    copyButton.disabled = !params.lines.length;
+    copyButtons.forEach((el) => el.disabled = !params.lines.length);
   },
   addLine: function () {
     const parent = document.querySelector(".lines");
@@ -166,7 +169,7 @@ let clipboard = {
   copy: function (el) {
     // create input box to copy from
     const input = document.createElement("input");
-    input.value = document.querySelector(".md code").innerText;
+    input.value = el.parentElement.querySelector("code").innerText;
     document.body.appendChild(input);
     // select all
     input.select();

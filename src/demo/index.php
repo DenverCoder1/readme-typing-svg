@@ -114,14 +114,27 @@
                 Show border
             </label>
 
-            <h2>Markdown</h2>
-            <div class="md">
-                <code></code>
+            <div>
+                <h2>Markdown</h2>
+                <div class="code-container md">
+                    <code></code>
+                </div>
+
+                <button class="copy-button btn tooltip" onclick="clipboard.copy(this);" onmouseout="tooltip.reset(this);" disabled>
+                    Copy To Clipboard
+                </button>
             </div>
 
-            <button class="copy-button btn tooltip" onclick="clipboard.copy(this);" onmouseout="tooltip.reset(this);" disabled>
-                Copy To Clipboard
-            </button>
+            <div>
+                <h2>HTML</h2>
+                <div class="code-container html">
+                    <code></code>
+                </div>
+
+                <button class="copy-button btn tooltip" onclick="clipboard.copy(this);" onmouseout="tooltip.reset(this);" disabled>
+                    Copy To Clipboard
+                </button>
+            </div>
         </div>
     </div>
 
