@@ -65,6 +65,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Vishal Beep](https://github.com/vishal-beep136.png?size=60)](https://github.com/Vishal-beep136)
 [![Raihan Khan](https://github.com/raihankhan.png?size=60)](https://github.com/raihankhan)
 [![notauserx](https://github.com/notauserx.png?size=60)](https://github.com/notauserx)
+[![wiz64](https://github.com/wiz64.png?size=60)](https://github.com/wiz64)
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
