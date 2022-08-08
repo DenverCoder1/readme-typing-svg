@@ -40,6 +40,9 @@ class RendererModel
     /** @var int $duration print duration in milliseconds */
     public $duration;
 
+    /** @var int $pause pause duration between lines in milliseconds */
+    public $pause;
+
     /** @var string $fontCSS CSS required for displaying the selected font */
     public $fontCSS;
 
@@ -60,7 +63,8 @@ class RendererModel
         "width" => "400",
         "height" => "50",
         "multiline" => "false",
-        "duration" => "5000"
+        "duration" => "5000",
+        "pause" => "0",
     );
 
     /**
@@ -85,6 +89,7 @@ class RendererModel
         $this->height = $this->checkNumber($params["height"] ?? $this->DEFAULTS["height"], "Height");
         $this->multiline = $this->checkBoolean($params["multiline"] ?? $this->DEFAULTS["multiline"]);
         $this->duration = $this->checkNumber($params["duration"] ?? $this->DEFAULTS["duration"], "duration");
+        $this->pause = $this->checkNumber($params["pause"] ?? $this->DEFAULTS["pause"], "pause");
         $this->fontCSS = $this->fetchFontCSS($this->font);
     }
 
@@ -145,7 +150,7 @@ class RendererModel
     private function checkNumber($num, $field)
     {
         $digits = intval(preg_replace("/[^0-9\-]/", "", $num));
-        if ($digits <= 0) {
+        if ($digits < 0) {
             throw new InvalidArgumentException("$field must be a positive number.");
         }
         return $digits;

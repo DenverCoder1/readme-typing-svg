@@ -11,13 +11,14 @@
 <?php for ($i = 0; $i < count($lines); ++$i): ?>
     <path id='path<?php echo $i ?>'>
 <?php if (!$multiline): ?>
-        <animate id='d<?php echo $i ?>' attributeName='d' begin='<?php echo ($i == 0 ? "0s;" : "") . $previousId ?>.end' dur='<?php echo $duration ?>ms'
-            values='m0,<?php echo $height / 2 ?> h0 ; m0,<?php echo $height / 2 ?> h<?php echo $width ?> ; m0,<?php echo $height / 2 ?> h0' keyTimes='0;0.8;1' />
+        <animate id='d<?php echo $i ?>' attributeName='d' begin='<?php echo ($i == 0 ? "0s;" : "") . $previousId ?>.end' dur='<?php echo $duration + $pause ?>ms'
+            values='m0,<?php echo $height / 2 ?> h0 ; m0,<?php echo $height / 2 ?> h<?php echo $width ?> ; m0,<?php echo $height / 2 ?> h<?php echo $width ?> ; m0,<?php echo $height / 2 ?> h0'
+            keyTimes='0;<?php echo 0.8 * $duration / ($duration + $pause) ?>;<?php echo (0.8 * $duration + $pause) / ($duration + $pause) ?>;1' />
 <?php else: ?>
     <?php $lineHeight = $size + 5;?>
-    <animate id='d<?php echo $i ?>' attributeName='d' dur='<?php echo $duration * ($i + 1) ?>ms' fill="freeze"
-            begin='0s;<?php echo "d" . (count($lines) - 1) ?>.end' keyTimes="0;<?php echo $i / ($i + 1); ?>;1"
-            values='m0,<?php echo ($i + 1) * $lineHeight ?> h0 ; m0,<?php echo ($i + 1) * $lineHeight ?> h0 ; m0,<?php echo ($i + 1) * $lineHeight ?> h<?php echo $width ?>' />
+    <animate id='d<?php echo $i ?>' attributeName='d' dur='<?php echo ($duration + $pause) * ($i + 1) ?>ms' fill="freeze"
+            begin='0s;<?php echo "d" . (count($lines) - 1) ?>.end' keyTimes="0;<?php echo $i / ($i + 1); ?>;<?php echo $i / ($i + 1) + $duration / (($duration + $pause) * ($i + 1)); ?>;1"
+            values='m0,<?php echo ($i + 1) * $lineHeight ?> h0 ; m0,<?php echo ($i + 1) * $lineHeight ?> h0 ; m0,<?php echo ($i + 1) * $lineHeight ?> h<?php echo $width ?> ; m0,<?php echo ($i + 1) * $lineHeight ?> h<?php echo $width ?>' />
 <?php endif;?>
     </path>
     <text font-family='"<?php echo $font ?>", monospace' fill='<?php echo $color ?>' font-size='<?php echo $size ?>'
