@@ -1,4 +1,7 @@
-<?php declare (strict_types = 1);
+<?php
+
+declare(strict_types=1);
+
 use PHPUnit\Framework\TestCase;
 
 require 'vendor/autoload.php';
@@ -198,7 +201,7 @@ final class OptionsTest extends TestCase
         $model = new RendererModel("src/templates/main.php", $params, self::$database);
         $this->assertEquals(false, $model->center);
     }
-    
+
     /**
      * Test vCenter set to true
      */
@@ -223,5 +226,72 @@ final class OptionsTest extends TestCase
         );
         $model = new RendererModel("src/templates/main.php", $params, self::$database);
         $this->assertEquals(false, $model->vCenter);
+    }
+
+    /**
+     * Test valid duration
+     */
+    public function testValidDuration(): void
+    {
+        $params = array(
+            "lines" => "text",
+            "duration" => "500",
+        );
+        $model = new RendererModel("src/templates/main.php", $params, self::$database);
+        $this->assertEquals(500, $model->duration);
+    }
+
+    /**
+     * Test exception thrown when duration is invalid
+     */
+    public function testInvalidDuration(): void
+    {
+        $this->expectException("InvalidArgumentException");
+        $this->expectExceptionMessage("duration must be a positive number.");
+        $params = array(
+            "lines" => "text",
+            "duration" => "-1",
+        );
+        print_r(new RendererModel("src/templates/main.php", $params, self::$database));
+    }
+
+    /**
+     * Test valid pause
+     */
+    public function testValidPause(): void
+    {
+        $params = array(
+            "lines" => "text",
+            "pause" => "500",
+        );
+        $model = new RendererModel("src/templates/main.php", $params, self::$database);
+        $this->assertEquals(500, $model->pause);
+    }
+
+    /**
+     * Test valid pause at 0
+     */
+    public function testValidPauseZero(): void
+    {
+        $params = array(
+            "lines" => "text",
+            "pause" => "0",
+        );
+        $model = new RendererModel("src/templates/main.php", $params, self::$database);
+        $this->assertEquals(0, $model->pause);
+    }
+
+    /**
+     * Test exception thrown when pause is invalid
+     */
+    public function testInvalidPause(): void
+    {
+        $this->expectException("InvalidArgumentException");
+        $this->expectExceptionMessage("pause must be a non-negative number.");
+        $params = array(
+            "lines" => "text",
+            "pause" => "-1",
+        );
+        print_r(new RendererModel("src/templates/main.php", $params, self::$database));
     }
 }

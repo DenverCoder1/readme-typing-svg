@@ -70,6 +70,9 @@
                 <label for="duration">Duration (ms per line)</label>
                 <input class="param" type="number" id="duration" name="duration" alt="Print duration (ms)" placeholder="5000" value="5000">
 
+                <label for="pause">Pause (ms after line)</label>
+                <input class="param" type="number" id="pause" name="pause" alt="Pause duration (ms)" placeholder="500" value="500">
+
                 <label for="color">Font color</label>
                 <input class="param jscolor jscolor-active" id="color" name="color" alt="Font color" data-jscolor="{ format: 'hexa' }" value="#36BCF7">
 
