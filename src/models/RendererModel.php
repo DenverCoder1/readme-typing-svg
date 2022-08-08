@@ -82,14 +82,14 @@ class RendererModel
         $this->font = $this->checkFont($params["font"] ?? $this->DEFAULTS["font"]);
         $this->color = $this->checkColor($params["color"] ?? $this->DEFAULTS["color"], "color");
         $this->background = $this->checkColor($params["background"] ?? $this->DEFAULTS["background"], "background");
-        $this->size = $this->checkNumber($params["size"] ?? $this->DEFAULTS["size"], "Font size");
+        $this->size = $this->checkNumberPositive($params["size"] ?? $this->DEFAULTS["size"], "Font size");
         $this->center = $this->checkBoolean($params["center"] ?? $this->DEFAULTS["center"]);
         $this->vCenter = $this->checkBoolean($params["vCenter"] ?? $this->DEFAULTS["vCenter"]);
-        $this->width = $this->checkNumber($params["width"] ?? $this->DEFAULTS["width"], "Width");
-        $this->height = $this->checkNumber($params["height"] ?? $this->DEFAULTS["height"], "Height");
+        $this->width = $this->checkNumberPositive($params["width"] ?? $this->DEFAULTS["width"], "Width");
+        $this->height = $this->checkNumberPositive($params["height"] ?? $this->DEFAULTS["height"], "Height");
         $this->multiline = $this->checkBoolean($params["multiline"] ?? $this->DEFAULTS["multiline"]);
-        $this->duration = $this->checkNumber($params["duration"] ?? $this->DEFAULTS["duration"], "duration");
-        $this->pause = $this->checkNumber($params["pause"] ?? $this->DEFAULTS["pause"], "pause");
+        $this->duration = $this->checkNumberPositive($params["duration"] ?? $this->DEFAULTS["duration"], "duration");
+        $this->pause = $this->checkNumberNonNegative($params["pause"] ?? $this->DEFAULTS["pause"], "pause");
         $this->fontCSS = $this->fetchFontCSS($this->font);
     }
 
@@ -141,17 +141,33 @@ class RendererModel
     }
 
     /**
-     * Validate numeric parameter and return valid integer
+     * Validate positive numeric parameter and return valid integer
      *
      * @param string $num Parameter to validate
      * @param string $field Field name for displaying in case of error
      * @return int Sanitized digits and int
      */
-    private function checkNumber($num, $field)
+    private function checkNumberPositive($num, $field)
+    {
+        $digits = intval(preg_replace("/[^0-9\-]/", "", $num));
+        if ($digits <= 0) {
+            throw new InvalidArgumentException("$field must be a positive number.");
+        }
+        return $digits;
+    }
+
+    /**
+     * Validate non-negative numeric parameter and return valid integer
+     *
+     * @param string $num Parameter to validate
+     * @param string $field Field name for displaying in case of error
+     * @return int Sanitized digits and int
+     */
+    private function checkNumberNonNegative($num, $field)
     {
         $digits = intval(preg_replace("/[^0-9\-]/", "", $num));
         if ($digits < 0) {
-            throw new InvalidArgumentException("$field must be a positive number.");
+            throw new InvalidArgumentException("$field must be a non-negative number.");
         }
         return $digits;
     }

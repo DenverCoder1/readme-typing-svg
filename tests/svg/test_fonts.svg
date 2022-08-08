@@ -17,7 +17,8 @@
 	
     <path id='path0'>
         <animate id='d0' attributeName='d' begin='0s;d0.end' dur='5000ms'
-            values='m0,25 h0 ; m0,25 h400 ; m0,25 h0' keyTimes='0;0.8;1' />
+            values='m0,25 h0 ; m0,25 h400 ; m0,25 h400 ; m0,25 h0'
+            keyTimes='0;0.8;0.8;1' />
     </path>
     <text font-family='"Roboto", monospace' fill='#36BCF7' font-size='20'
         dominant-baseline='auto'
