@@ -1,9 +1,7 @@
 name: Releases
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   changelog:
