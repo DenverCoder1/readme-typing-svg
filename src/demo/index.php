@@ -30,7 +30,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
 
-<body <?php echo (isset($_COOKIE["darkmode"]) && $_COOKIE["darkmode"] == "on") ? 'data-theme="dark"' : ""; ?>>
+<body <?= (isset($_COOKIE["darkmode"]) && $_COOKIE["darkmode"] == "on") ? 'data-theme="dark"' : ""; ?>>
     <h1>⌨️ Readme Typing SVG</h1>
 
     <!-- GitHub badges/links section -->
@@ -142,7 +142,7 @@
     </div>
 
     <a href="javascript:toggleTheme()" class="darkmode" title="toggle dark mode">
-        <i class="<?php echo (isset($_COOKIE["darkmode"]) && $_COOKIE["darkmode"] == "on") ? 'gg-sun' : "gg-moon"; ?>"></i>
+        <i class="<?= (isset($_COOKIE["darkmode"]) && $_COOKIE["darkmode"] == "on") ? 'gg-sun' : "gg-moon"; ?>"></i>
     </a>
 </body>
 
