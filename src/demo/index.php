@@ -106,37 +106,50 @@
             </form>
         </div>
 
-        <div class="output">
-            <h2>Preview</h2>
+        <div class="output top-bottom-split">
+            <div class="top">
+                <h2>Preview</h2>
 
-            <img alt="Readme Typing SVG" src="/?lines=The+five+boxing+wizards+jump+quickly" onload="this.classList.remove('loading')" onerror="this.classList.remove('loading')" />
-            <div class="loader">Loading...</div>
+                <img alt="Readme Typing SVG" src="/?lines=The+five+boxing+wizards+jump+quickly" onload="this.classList.remove('loading')" onerror="this.classList.remove('loading')" />
+                <div class="loader">Loading...</div>
 
-            <label class="show-border">
-                <input type="checkbox">
-                Show border
-            </label>
+                <label class="show-border">
+                    <input type="checkbox">
+                    Show border
+                </label>
 
-            <div>
-                <h2>Markdown</h2>
-                <div class="code-container md">
-                    <code></code>
+                <div>
+                    <h2>Markdown</h2>
+                    <div class="code-container md">
+                        <code></code>
+                    </div>
+
+                    <button class="copy-button btn tooltip" onclick="clipboard.copy(this);" onmouseout="tooltip.reset(this);" disabled>
+                        Copy To Clipboard
+                    </button>
                 </div>
 
-                <button class="copy-button btn tooltip" onclick="clipboard.copy(this);" onmouseout="tooltip.reset(this);" disabled>
-                    Copy To Clipboard
-                </button>
+                <div>
+                    <h2>HTML</h2>
+                    <div class="code-container html">
+                        <code></code>
+                    </div>
+
+                    <button class="copy-button btn tooltip" onclick="clipboard.copy(this);" onmouseout="tooltip.reset(this);" disabled>
+                        Copy To Clipboard
+                    </button>
+                </div>
             </div>
-
-            <div>
-                <h2>HTML</h2>
-                <div class="code-container html">
-                    <code></code>
-                </div>
-
-                <button class="copy-button btn tooltip" onclick="clipboard.copy(this);" onmouseout="tooltip.reset(this);" disabled>
-                    Copy To Clipboard
-                </button>
+            <div class="bottom">
+                <a href="https://github.com/DenverCoder1/readme-typing-svg/blob/main/docs/faq.md" target="_blank" class="underline-hover faq">
+                    Frequently Asked Questions
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                            <path fill="none" d="M0 0h24v24H0z"></path>
+                            <path d="M10 6v2H5v11h11v-5h2v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6zm11-3v9l-3.794-3.793-5.999 6-1.414-1.414 5.999-6L12 3h9z"></path>
+                        </g>
+                    </svg>
+                </a>
             </div>
         </div>
     </div>
