@@ -62,7 +62,7 @@
                         </svg>
                     </a>
                 </div>
-                <input class="param" type="text" id="font" name="font" alt="Font name" placeholder="monospace" value="monospace" pattern="^[A-Za-z0-9\- ]*$" title="Font from Google Fonts. Only letters, numbers, and spaces.">
+                <input class="param" type="text" id="font" name="font" alt="Font name" placeholder="Fira Code" value="Fira Code" pattern="^[A-Za-z0-9\- ]*$" title="Font from Google Fonts. Only letters, numbers, and spaces.">
 
                 <label for="size">Font size</label>
                 <input class="param" type="number" id="size" name="size" alt="Font size" placeholder="20" value="20">
@@ -71,7 +71,7 @@
                 <input class="param" type="number" id="duration" name="duration" alt="Print duration (ms)" placeholder="5000" value="5000">
 
                 <label for="pause">Pause (ms after line)</label>
-                <input class="param" type="number" id="pause" name="pause" alt="Pause duration (ms)" placeholder="500" value="500">
+                <input class="param" type="number" id="pause" name="pause" alt="Pause duration (ms)" placeholder="1000" value="1000">
 
                 <label for="color">Font color</label>
                 <input class="param jscolor jscolor-active" id="color" name="color" alt="Font color" data-jscolor="{ format: 'hexa' }" value="#36BCF7">
@@ -99,7 +99,7 @@
 
                 <label for="dimensions" title="Width ✕ Height">Width ✕ Height</label>
                 <span id="dimensions">
-                    <input class="param inline" type="number" id="width" name="width" alt="Width (px)" placeholder="400" value="400">
+                    <input class="param inline" type="number" id="width" name="width" alt="Width (px)" placeholder="435" value="435">
                     <label>✕</label>
                     <input class="param inline" type="number" id="height" name="height" alt="Height (px)" placeholder="50" value="50">
                 </span>
