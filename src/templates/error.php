@@ -6,6 +6,6 @@
 
     <text font-family='monospace' fill='#c00' font-size='18'
         y="50%" x='50%' dominant-baseline='middle' text-anchor='middle'>
-        <?php echo $message . "\n" ?>
+        <?= $message . "\n" ?>
     </text>
 </svg>
