@@ -262,6 +262,12 @@ a.icon {
   color: var(--blue-light);
 }
 
+.top-bottom-split {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* tooltips */
 .tooltip {
   display: inline-flex;
