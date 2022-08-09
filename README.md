@@ -25,13 +25,14 @@
 [![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
 ```
 
+
 ## ⚙ Demo site
 
 Here you can easily customize your Typing SVG with a live preview.
 
 <https://readme-typing-svg.herokuapp.com/demo/>
 
-[![Demo Site](https://user-images.githubusercontent.com/62628408/116336814-1bb85200-a7d1-11eb-8586-0ccf5bb97eae.gif "Demo Site")](https://readme-typing-svg.herokuapp.com/demo/)
+[![Demo Site](https://user-images.githubusercontent.com/20955511/183703055-42ec8754-d84c-414f-8132-a02974224aa1.gif "Demo Site")](https://readme-typing-svg.herokuapp.com/demo/)
 
 ## 🚀 Example usage
 
