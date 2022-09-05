@@ -67,6 +67,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![notauserx](https://github.com/notauserx.png?size=60)](https://github.com/notauserx)
 [![wiz64](https://github.com/wiz64.png?size=60)](https://github.com/wiz64)
 [![Aquarian Blake](https://github.com/Aquarius-blake.png?size=60)](https://github.com/Aquarius-blake)
+[![D3vil0per](https://github.com/D3vil0per.png?size=60)](https://github.com/D3vil0per)
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
