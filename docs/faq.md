@@ -2,18 +2,18 @@
 
 ## How do I include Readme Typing SVG in my Readme?
 
-Markdown files on GitHub support embedded images using Markdown or HTML. You can customize your SVG on the [demo site](https://readme-typing-svg.herokuapp.com/demo/) and use the image source in either of the following ways:
+Markdown files on GitHub support embedded images using Markdown or HTML. You can customize your SVG on the [demo site](https://readme-typing-svg.demolab.com/demo/) and use the image source in either of the following ways:
 
 ### Markdown
 
 ```md
-[![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
 ```
 
 ### HTML
 
 ```html
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com/?lines=First+line+of+text;Second+line+of+text"></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text"></a>
 ```
 
 ## The text is getting cut off at the end, how do I fix it?
@@ -23,7 +23,7 @@ The text rendered within the SVG can be any variable width, therefore you must s
 The `width` parameter in the URL should be increased such that the full width of the text is displayed properly.
 
 ```md
-https://readme-typing-svg.herokuapp.com/?lines=Your+Long+Message+With+A+Long+Width&width=460
+https://readme-typing-svg.demolab.com/?lines=Your+Long+Message+With+A+Long+Width&width=460
 ```
 
 ## How do I center the image on the page?
@@ -32,7 +32,7 @@ To center align images, you must use the HTML syntax and wrap it in an element w
 
 ```html
 <p align="center">
-  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com/?lines=This+image+is+center-aligned&font=Fira%20Code&center=true&width=380&height=50"></a>
+  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com/?lines=This+image+is+center-aligned&font=Fira%20Code&center=true&width=380&height=50"></a>
 </p>
 ```
 
@@ -48,8 +48,8 @@ As of May 2022, you can now [specify theme context](https://github.blog/changelo
 
 ```html
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.herokuapp.com/?lines=You+are+using+dark+mode&color=FFFFFF">
-  <img src="https://readme-typing-svg.herokuapp.com/?lines=You+are+using+light+mode&color=000000">
+  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com/?lines=You+are+using+dark+mode&color=FFFFFF">
+  <img src="https://readme-typing-svg.demolab.com/?lines=You+are+using+light+mode&color=000000">
 </picture>
 ```
 
