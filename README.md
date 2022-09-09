@@ -4,11 +4,11 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?lines=Type+messages+everywhere!;Add+a+bio+to+your+profile!;Add+a+description+to+your+repo!;Make+your+readme+stand+out!&font=Fira%20Code&center=true&width=380&height=50&duration=4000&pause=1000">
+  <img src="https://readme-typing-svg.demolab.com/?lines=Type+messages+everywhere!;Add+a+bio+to+your+profile!;Add+a+description+to+your+repo!;Make+your+readme+stand+out!&font=Fira%20Code&center=true&width=380&height=50&duration=4000&pause=1000">
 </p>
 
 <p align="center">
-  <a href="https://github.com/search?q=extension%3Amd+%22readme+typing+svg+herokuapp%22&type=Code" alt="Users" title="Repo users">
+  <a href="https://github.com/search?q=extension%3Amd+%22https+readme+typing+svg%22&type=Code" alt="Users" title="Repo users">
     <img src="https://freshidea.com/jonah/app/github-search-results/readme-typing-svg/index.php"/></a>
   <a href="https://discord.gg/fPrdqh3Zfu" alt="Discord" title="Dev Pro Tips Discussion & Support Server">
     <img src="https://img.shields.io/discord/819650821314052106?color=7289DA&logo=discord&logoColor=white&style=for-the-badge"/></a>
@@ -22,16 +22,16 @@
 3. (Optional) Adjust the width parameter (see below) to fit the full width of your text.
 
 ```md
-[![Typing SVG](https://readme-typing-svg.herokuapp.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
 ```
 
 ## ⚙ Demo site
 
 Here you can easily customize your Typing SVG with a live preview.
 
-<https://readme-typing-svg.herokuapp.com/demo/>
+<https://readme-typing-svg.demolab.com/demo/>
 
-[![Demo Site](https://user-images.githubusercontent.com/20955511/183703055-42ec8754-d84c-414f-8132-a02974224aa1.gif "Demo Site")](https://readme-typing-svg.herokuapp.com/demo/)
+[![Demo Site](https://user-images.githubusercontent.com/20955511/183703055-42ec8754-d84c-414f-8132-a02974224aa1.gif "Demo Site")](https://readme-typing-svg.demolab.com/demo/)
 
 ## 🚀 Example usage
 
@@ -105,7 +105,7 @@ You can deploy the PHP files on any website server with PHP installed or as a He
 
 3. On the page that comes up, click **"Deploy App"** at the end of the form
 4. Once the app is deployed, click **"Manage App"** to go to the dashboard
-5. Scroll down to the **Domains** section in the settings to find the URL you will use in place of `readme-typing-svg.herokuapp.com`
+5. Scroll down to the **Domains** section in the settings to find the URL you will use in place of `readme-typing-svg.demolab.com`
 6. [Optional] To use Google fonts or other custom fonts, you will need to configure the database. The login credentials for the database can be found by clicking the PostgreSQL add-on and going to Settings. The following is the definition for the `fonts` table that needs to be created.
 
 ```sql
