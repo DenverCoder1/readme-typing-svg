@@ -193,8 +193,7 @@ class RendererModel
             $from_google_fonts = GoogleFontConverter::fetchFontCSS($font, $text);
             if ($from_google_fonts) {
                 // return the CSS for displaying the font
-                $date = date('Y-m-d');
-                return "<style>\n/* From Google Fonts {$date} */\n{$from_google_fonts}</style>\n";
+                return "<style>\n{$from_google_fonts}</style>\n";
             }
         }
         // font is not found
