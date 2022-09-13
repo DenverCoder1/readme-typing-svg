@@ -85,7 +85,7 @@ class RendererModel
         $this->multiline = $this->checkBoolean($params["multiline"] ?? $this->DEFAULTS["multiline"]);
         $this->duration = $this->checkNumberPositive($params["duration"] ?? $this->DEFAULTS["duration"], "duration");
         $this->pause = $this->checkNumberNonNegative($params["pause"] ?? $this->DEFAULTS["pause"], "pause");
-        $this->fontCSS = $this->fetchFontCSS($this->font, $params["lines"] ?? "");
+        $this->fontCSS = $this->fetchFontCSS($this->font, $params["lines"]);
     }
 
     /**
