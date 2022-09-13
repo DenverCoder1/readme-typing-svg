@@ -17,7 +17,7 @@ class GoogleFontConverter
         $url = "https://fonts.googleapis.com/css2?" . http_build_query([
             "family" => $font,
             "text" => $text,
-            "display" => "swap"
+            "display" => "fallback",
         ]);
         try {
             // get the CSS for the font
