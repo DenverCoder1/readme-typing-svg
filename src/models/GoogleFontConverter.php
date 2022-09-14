@@ -9,14 +9,19 @@ class GoogleFontConverter
      * Fetch CSS from Google Fonts
      *
      * @param string $font Google Font to fetch
+     * @param string $text Text to display in font
      * @return string|false The CSS for displaying the font
      */
-    public static function fetchFontCSS($font)
+    public static function fetchFontCSS($font, $text)
     {
-        $url = "https://fonts.googleapis.com/css2?family=" . str_replace(" ", "+", $font);
+        $url = "https://fonts.googleapis.com/css2?" . http_build_query([
+            "family" => $font,
+            "text" => $text,
+            "display" => "fallback",
+        ]);
         try {
             // get the CSS for the font
-            $response = self::curl_get_contents($url);
+            $response = self::curlGetContents($url);
             // find all font files and convert them to base64 Data URIs
             return self::encodeFonts($response);
         } catch (InvalidArgumentException $error) {
@@ -37,7 +42,7 @@ class GoogleFontConverter
         $urls = array_combine($matches[1], $matches[2]);
         // go over all links and replace with data URI
         foreach ($urls as $url => $fontType) {
-            $response = self::curl_get_contents($url);
+            $response = self::curlGetContents($url);
             $dataURI = "data:font/{$fontType};base64," . base64_encode($response);
             $css = str_replace($url, $dataURI, $css);
         }
@@ -50,7 +55,7 @@ class GoogleFontConverter
      * @param string $url The URL to fetch
      * @return string Response from URL
      */
-    private static function curl_get_contents($url): string
+    private static function curlGetContents($url): string
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_AUTOREFERER, true);

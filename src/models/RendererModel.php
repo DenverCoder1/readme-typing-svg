@@ -49,9 +49,6 @@ class RendererModel
     /** @var string $template Path to template file */
     public $template;
 
-    /** @var DatabaseConnection $database Database connection */
-    private $database;
-
     /** @var array<string, string> $DEFAULTS */
     private $DEFAULTS = array(
         "font" => "monospace",
@@ -72,12 +69,10 @@ class RendererModel
      *
      * @param string $template Path to the template file
      * @param array<string, string> $params request parameters
-     * @param DatabaseConnection $font_db Database connection
      */
-    public function __construct($template, $params, $database)
+    public function __construct($template, $params)
     {
         $this->template = $template;
-        $this->database = $database;
         $this->lines = $this->checkLines($params["lines"] ?? "");
         $this->font = $this->checkFont($params["font"] ?? $this->DEFAULTS["font"]);
         $this->color = $this->checkColor($params["color"] ?? $this->DEFAULTS["color"], "color");
@@ -90,7 +85,7 @@ class RendererModel
         $this->multiline = $this->checkBoolean($params["multiline"] ?? $this->DEFAULTS["multiline"]);
         $this->duration = $this->checkNumberPositive($params["duration"] ?? $this->DEFAULTS["duration"], "duration");
         $this->pause = $this->checkNumberNonNegative($params["pause"] ?? $this->DEFAULTS["pause"], "pause");
-        $this->fontCSS = $this->fetchFontCSS($this->font);
+        $this->fontCSS = $this->fetchFontCSS($this->font, $params["lines"]);
     }
 
     /**
@@ -184,34 +179,24 @@ class RendererModel
     }
 
     /**
-     * Fetch CSS with Base-64 encoding from database or store new entry if it is missing
+     * Fetch CSS with Base-64 encoding from Google Fonts
      *
      * @param string $font Google Font to fetch
+     * @param string $text Text to display in font
      * @return string The CSS for displaying the font
      */
-    private function fetchFontCSS($font)
+    private function fetchFontCSS($font, $text)
     {
         // skip checking if left as default
         if ($font != $this->DEFAULTS["font"]) {
-            // fetch from database
-            $from_database = $this->database->fetchFontCSS($font);
-            if ($from_database) {
-                // return the CSS for displaying the font
-                $date = $from_database[0];
-                $css = $from_database[1];
-                return "<style>\n/* From database {$date} */\n{$css}</style>\n";
-            }
-            // fetch and convert from Google Fonts if not found in database
-            $from_google_fonts = GoogleFontConverter::fetchFontCSS($font);
+            // fetch and convert from Google Fonts
+            $from_google_fonts = GoogleFontConverter::fetchFontCSS($font, $text);
             if ($from_google_fonts) {
-                // add font to the database
-                $this->database->insertFontCSS($font, $from_google_fonts);
                 // return the CSS for displaying the font
-                $date = date('Y-m-d');
-                return "<style>\n/* From Google Fonts {$date} */\n{$from_google_fonts}</style>\n";
+                return "<style>\n{$from_google_fonts}</style>\n";
             }
         }
-        // font is not in database or Google Fonts
+        // font is not found
         return "";
     }
 }
