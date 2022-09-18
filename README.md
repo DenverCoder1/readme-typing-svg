@@ -59,7 +59,6 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Ossama Mehmood](https://github.com/ossamamehmood.png?size=60)](https://github.com/ossamamehmood)
 [![Huynh Duong](https://github.com/betty2310.png?size=60)](https://github.com/betty2310)
 [![NiceSapien](https://github.com/nicesapien.png?size=60)](https://github.com/nicesapien)
-[![LMFAO-Jude](https://github.com/lmfao-jude.png?size=60)](https://github.com/lmfao-jude)
 [![Manthan Ank](https://github.com/manthanank.png?size=60)](https://github.com/manthanank)
 [![Ronny Coste](https://github.com/lertsoft.png?size=60)](https://github.com/lertsoft)
 [![Vishal Beep](https://github.com/vishal-beep136.png?size=60)](https://github.com/Vishal-beep136)
