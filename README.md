@@ -68,6 +68,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Aquarian Blake](https://github.com/Aquarius-blake.png?size=60)](https://github.com/Aquarius-blake)
 [![D3vil0p3r](https://github.com/D3vil0p3r.png?size=60)](https://github.com/D3vil0p3r)
 [![EliusHHimel](https://github.com/EliusHHimel.png?size=60)](https://github.com/EliusHHimel)
+[![jcs090218](https://github.com/jcs090218.png?size=60)](https://github.com/jcs090218)
 [![vantr-o](https://github.com/vantr-o.png?size=60)](https://github.com/vantr-o)
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
