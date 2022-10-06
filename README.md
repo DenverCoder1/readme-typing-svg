@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD033 MD041-->
+<!-- markdownlint-disable MD033 MD041 -->
 <p align="center">
   <h3 align="center">⌨️ Readme Typing SVG</h3>
 </p>
@@ -19,11 +19,13 @@
 
 1. Copy-paste the markdown below into your GitHub profile README
 2. Replace the value after `?lines=` with your text. Separate lines of text with semicolons and use `+` or `%20` for spaces.
-3. (Optional) Adjust the width parameter (see below) to fit the full width of your text.
+3. Adjust the width parameter (see below) to fit the full width of your text.
 
 ```md
 [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
 ```
+
+4. Star the repo 😄
 
 ## ⚙ Demo site
 
@@ -116,57 +118,7 @@ Contributions are welcome! Feel free to open an issue or submit a pull request i
 
 Make sure your request is meaningful and you have tested the app locally before submitting a pull request.
 
-### Installing requirements
-
-#### Requirements
-
--   [PHP 7](https://www.apachefriends.org/index.html)
--   [Composer](https://getcomposer.org)
-
-#### Linux
-
-```bash
-sudo apt-get install php
-sudo apt-get install php-curl
-sudo apt-get install composer
-```
-
-#### Windows
-
-Install PHP from [XAMPP](https://www.apachefriends.org/index.html) or [php.net](https://windows.php.net/download)
-
-[▶ How to install and run PHP using XAMPP (Windows)](https://www.youtube.com/watch?v=K-qXW9ymeYQ)
-
-[📥 Download Composer](https://getcomposer.org/download/)
-
-### Clone the repository
-
-```bash
-git clone https://github.com/DenverCoder1/readme-typing-svg.git
-cd readme-typing-svg
-```
-
-### Running the app locally
-
-```bash
-composer start
-```
-
-Open <http://localhost:8000/> and add parameters to run the project locally.
-
-### Running the tests
-
-Before you can run tests, PHPUnit must be installed. You can install it using Composer by running the following command.
-
-```bash
-composer install
-```
-
-Run the following command to run the PHPUnit test script which will verify that the tested functionality is still working.
-
-```bash
-composer test
-```
+Refer to [CONTRIBUTING.md](/CONTRIBUTING.md) for more details on contributing, installing requirements, and running the application.
 
 ## 🙋‍♂️ Support
 
@@ -186,9 +138,7 @@ composer test
 Made with ❤️ and PHP
 
 <!-- markdownlint-disable MD033 -->
-
 <a href="https://heroku.com/"><img alt="Powered by Heroku" title="Powered by Heroku" src="https://img.shields.io/badge/-Powered%20by%20Heroku-6567a5?style=for-the-badge&logo=heroku&logoColor=white"/></a>
-
 <!-- markdownlint-enable MD033 -->
 
 This project uses [Twemoji](https://github.com/twitter/twemoji), published under the [CC-BY 4.0 License](https://creativecommons.org/licenses/by/4.0/)
