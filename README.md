@@ -72,7 +72,9 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![EliusHHimel](https://github.com/EliusHHimel.png?size=60)](https://github.com/EliusHHimel)
 [![jcs090218](https://github.com/jcs090218.png?size=60)](https://github.com/jcs090218)
 [![Rishabh2804](https://github.com/Rishabh2804.png?size=60)](https://github.com/Rishabh2804)
+[![shalinibhatt](https://github.com/shalinibhatt.png?size=60)](https://github.com/shalinibhatt)
 [![vantr-o](https://github.com/vantr-o.png?size=60)](https://github.com/vantr-o)
+
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
