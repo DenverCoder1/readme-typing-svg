@@ -50,6 +50,19 @@ Before you can run tests, PHPUnit must be installed. You can install it using Co
 composer install
 ```
 
+### Format and test the code
+
+Run the following command to run prettier on the code, to format the code:
+```
+composer run format
+```
+
+Run the following commad to check if your code is formatted properly:
+```
+composer run format:check
+```
+NOTE: You need to have [`prettier`](https://prettier.io/) and the [prettier-php plugin](https://github.com/prettier/plugin-php) installed globally in order to run this command.
+
 Run the following command to run the PHPUnit test script which will verify that the tested functionality is still working.
 
 ```bash
