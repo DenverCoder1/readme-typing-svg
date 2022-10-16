@@ -26,22 +26,20 @@ let preview = {
   update: function () {
     const copyButtons = document.querySelectorAll(".copy-button");
     // get parameter values from all .param elements
-    const params = Array.from(document.querySelectorAll(".param:not([data-index])")).reduce(
-      (acc, next) => {
-        // copy accumulator into local object
-        let obj = acc;
-        let value = next.value;
-        // remove hash from any colors and remove "FF" if full opacity
-        value = value.replace(/^#([A-Fa-f0-9]{6})(?:[Ff]{2})?/, "$1");
-        // add value to reduction accumulator
-        obj[next.id] = value;
-        return obj;
-      }, {}
-    );
+    const params = Array.from(document.querySelectorAll(".param:not([data-index])")).reduce((acc, next) => {
+      // copy accumulator into local object
+      let obj = acc;
+      let value = next.value;
+      // remove hash from any colors and remove "FF" if full opacity
+      value = value.replace(/^#([A-Fa-f0-9]{6})(?:[Ff]{2})?/, "$1");
+      // add value to reduction accumulator
+      obj[next.id] = value;
+      return obj;
+    }, {});
     const lineInputs = Array.from(document.querySelectorAll(".param[data-index]"));
     // disable copy button if any line contains semicolon
     if (lineInputs.some((el) => el.value.indexOf(";") >= 0)) {
-      return copyButtons.forEach((el) => el.disabled = true);
+      return copyButtons.forEach((el) => (el.disabled = true));
     }
     // add lines to parameters
     params.lines = lineInputs
@@ -50,7 +48,7 @@ let preview = {
       .join(";"); // join lines with ';' delimiter
     // function to URI encode string but keep semicolons as ';' and spaces as '+'
     const encode = (str) => {
-      return encodeURIComponent(str).replace(/%3B/g, ";").replace(/%20/g, "+")
+      return encodeURIComponent(str).replace(/%3B/g, ";").replace(/%20/g, "+");
     };
     // convert parameters to query string
     const query = Object.keys(params)
@@ -77,7 +75,7 @@ let preview = {
     mdElement.innerText = md;
     htmlElement.innerText = html;
     // disable copy button if no lines are filled in
-    copyButtons.forEach((el) => el.disabled = !params.lines.length);
+    copyButtons.forEach((el) => (el.disabled = !params.lines.length));
   },
   addLine: function () {
     const parent = document.querySelector(".lines");
@@ -101,11 +99,9 @@ let preview = {
     // removal button
     const deleteButton = document.createElement("button");
     deleteButton.className = "delete-line btn";
-    deleteButton.setAttribute(
-      "onclick",
-      "return preview.removeLine(this.dataset.index);"
-    );
-    deleteButton.innerHTML = '<svg stroke="currentColor" fill="currentColor"  stroke-width="0" viewBox="0 0 1024 1024" height="0.85em" width="0.85em" xmlns="http://www.w3.org/2000/svg"> <path d="M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z"> </path> </svg>';
+    deleteButton.setAttribute("onclick", "return preview.removeLine(this.dataset.index);");
+    deleteButton.innerHTML =
+      '<svg stroke="currentColor" fill="currentColor"  stroke-width="0" viewBox="0 0 1024 1024" height="0.85em" width="0.85em" xmlns="http://www.w3.org/2000/svg"> <path d="M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z"> </path> </svg>';
     deleteButton.dataset.index = index;
 
     // add elements
@@ -124,40 +120,35 @@ let preview = {
     index = Number(index);
     const parent = document.querySelector(".lines");
     // remove all elements for given property
-    parent
-      .querySelectorAll(`[data-index="${index}"]`)
-      .forEach((el) => {
-        parent.removeChild(el);
-      });
+    parent.querySelectorAll(`[data-index="${index}"]`).forEach((el) => {
+      parent.removeChild(el);
+    });
     // update index numbers
     const labels = parent.querySelectorAll("label");
-    labels
-      .forEach((label) => {
-        const labelIndex = Number(label.dataset.index);
-        if (labelIndex > index) {
-          label.dataset.index = labelIndex - 1;
-          label.setAttribute("for", `line-${labelIndex - 1}`);
-          label.innerText = `Line ${labelIndex - 1}`;
-        }
-      });
+    labels.forEach((label) => {
+      const labelIndex = Number(label.dataset.index);
+      if (labelIndex > index) {
+        label.dataset.index = labelIndex - 1;
+        label.setAttribute("for", `line-${labelIndex - 1}`);
+        label.innerText = `Line ${labelIndex - 1}`;
+      }
+    });
     const inputs = parent.querySelectorAll(".param");
-    inputs
-      .forEach((input) => {
-        const inputIndex = Number(input.dataset.index);
-        if (inputIndex > index) {
-          input.dataset.index = inputIndex - 1;
-          input.setAttribute("id", `line-${inputIndex - 1}`);
-          input.setAttribute("name", `line-${inputIndex - 1}`);
-        }
-      });
+    inputs.forEach((input) => {
+      const inputIndex = Number(input.dataset.index);
+      if (inputIndex > index) {
+        input.dataset.index = inputIndex - 1;
+        input.setAttribute("id", `line-${inputIndex - 1}`);
+        input.setAttribute("name", `line-${inputIndex - 1}`);
+      }
+    });
     const buttons = parent.querySelectorAll(".delete-line.btn");
-    buttons
-      .forEach((button) => {
-        const buttonIndex = Number(button.dataset.index);
-        if (buttonIndex > index) {
-          button.dataset.index = buttonIndex - 1;
-        }
-      });
+    buttons.forEach((button) => {
+      const buttonIndex = Number(button.dataset.index);
+      if (buttonIndex > index) {
+        button.dataset.index = buttonIndex - 1;
+      }
+    });
     // disable button if only 1
     buttons[0].disabled = buttons.length == 1;
     // update and exit

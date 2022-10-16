@@ -50,7 +50,7 @@ class RendererModel
     public $template;
 
     /** @var array<string, string> $DEFAULTS */
-    private $DEFAULTS = array(
+    private $DEFAULTS = [
         "font" => "monospace",
         "color" => "#36BCF7",
         "background" => "#00000000",
@@ -62,7 +62,7 @@ class RendererModel
         "multiline" => "false",
         "duration" => "5000",
         "pause" => "0",
-    );
+    ];
 
     /**
      * Construct RendererModel
@@ -99,7 +99,7 @@ class RendererModel
         if (!$lines) {
             throw new InvalidArgumentException("Lines parameter must be set.");
         }
-        $trimmed_lines = rtrim($lines, ';');
+        $trimmed_lines = rtrim($lines, ";");
         $exploded = explode(";", $trimmed_lines);
         // escape special characters to prevent code injection
         return array_map("htmlspecialchars", $exploded);

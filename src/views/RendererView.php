@@ -1,4 +1,4 @@
-<?php declare (strict_types = 1);
+<?php declare(strict_types=1);
 
 /**
  * View for rendering typing SVG
@@ -26,7 +26,7 @@ class RendererView
     public function render()
     {
         // import variables into symbol table
-        extract(array(
+        extract([
             "lines" => $this->model->lines,
             "font" => $this->model->font,
             "color" => $this->model->color,
@@ -40,7 +40,7 @@ class RendererView
             "fontCSS" => $this->model->fontCSS,
             "duration" => $this->model->duration,
             "pause" => $this->model->pause,
-        ));
+        ]);
         // render SVG with output buffering
         ob_start();
         include $this->model->template;

@@ -1,78 +1,76 @@
 .loader,
 .loader:before,
 .loader:after {
-    display: none;
-    border-radius: 50%;
-    width: 2.5em;
-    height: 2.5em;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation: load7 1.8s infinite ease-in-out;
-    animation: load7 1.8s infinite ease-in-out;
+  display: none;
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
 }
 
 .loader {
-    color: var(--blue-light);
-    font-size: 10px;
-    margin: 0 0 38px 15px;
-    position: relative;
-    text-indent: -9999em;
-    -webkit-transform: translateY(-4px) translateZ(0) scale(0.5);
-    -ms-transform: translateY(-4px) translateZ(0) scale(0.5);
-    transform: translateY(-4px) translateZ(0) scale(0.5);
-    -webkit-animation-delay: -0.16s;
-    animation-delay: -0.16s;
+  color: var(--blue-light);
+  font-size: 10px;
+  margin: 0 0 38px 15px;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateY(-4px) translateZ(0) scale(0.5);
+  -ms-transform: translateY(-4px) translateZ(0) scale(0.5);
+  transform: translateY(-4px) translateZ(0) scale(0.5);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
 }
 
 .loader:before,
 .loader:after {
-    content: '';
-    position: absolute;
-    top: 0;
+  content: "";
+  position: absolute;
+  top: 0;
 }
 
 .loader:before {
-    left: -3.5em;
-    -webkit-animation-delay: -0.32s;
-    animation-delay: -0.32s;
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
 }
 
 .loader:after {
-    left: 3.5em;
+  left: 3.5em;
 }
 
 @-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
 
-    0%,
-    80%,
-    100% {
-        box-shadow: 0 2.5em 0 -1.3em;
-    }
-
-    40% {
-        box-shadow: 0 2.5em 0 0;
-    }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
 }
 
 @keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
 
-    0%,
-    80%,
-    100% {
-        box-shadow: 0 2.5em 0 -1.3em;
-    }
-
-    40% {
-        box-shadow: 0 2.5em 0 0;
-    }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
 }
 
 .loading + .loader,
 .loading + .loader:before,
 .loading + .loader:after {
-    display: block;
+  display: block;
 }
 
 .loading {
-    display: none;
+  display: none;
 }

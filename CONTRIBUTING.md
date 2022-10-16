@@ -8,8 +8,8 @@ Make sure your request is meaningful and you have tested the app locally before 
 
 #### Requirements
 
-* [PHP 7.4+](https://www.apachefriends.org/index.html)
-* [Composer](https://getcomposer.org)
+- [PHP 7.4+](https://www.apachefriends.org/index.html)
+- [Composer](https://getcomposer.org)
 
 #### Linux
 
@@ -53,14 +53,17 @@ composer install
 ### Format and test the code
 
 Run the following command to format the code with Prettier:
+
 ```
 composer run format
 ```
 
 Run the following command to check if your code is formatted properly:
+
 ```
 composer run format:check
 ```
+
 > **Note** You need to have [`prettier`](https://prettier.io/) and the [prettier-php plugin](https://github.com/prettier/plugin-php) installed globally in order to run this command.
 
 Run the following command to run the PHPUnit test script which will verify that the tested functionality is still working.

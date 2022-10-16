@@ -1,7 +1,5 @@
 // enable dark mode on load if user prefers dark themes and has not used the toggle
-getCookie("darkmode") === null &&
-  window.matchMedia("(prefers-color-scheme: dark)").matches &&
-  darkmode();
+getCookie("darkmode") === null && window.matchMedia("(prefers-color-scheme: dark)").matches && darkmode();
 
 function toggleTheme() {
   // turn on dark mode

@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
-require 'vendor/autoload.php';
+require "vendor/autoload.php";
 
 final class OptionsTest extends TestCase
 {
-
     /**
      * Test exception thrown when missing 'lines' parameter
      */
@@ -16,11 +15,11 @@ final class OptionsTest extends TestCase
     {
         $this->expectException("InvalidArgumentException");
         $this->expectExceptionMessage("Lines parameter must be set.");
-        $params = array(
+        $params = [
             "center" => "true",
             "width" => "380",
             "height" => "50",
-        );
+        ];
         print_r(new RendererModel("src/templates/main.php", $params));
     }
 
@@ -29,10 +28,10 @@ final class OptionsTest extends TestCase
      */
     public function testValidFont(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "font" => "Open Sans",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals("Open Sans", $model->font);
     }
@@ -42,10 +41,10 @@ final class OptionsTest extends TestCase
      */
     public function testValidFontColor(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "color" => "000000",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals("#000000", $model->color);
     }
@@ -55,10 +54,10 @@ final class OptionsTest extends TestCase
      */
     public function testInvalidFontColor(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "color" => "00000",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals("#36BCF7", $model->color);
     }
@@ -68,10 +67,10 @@ final class OptionsTest extends TestCase
      */
     public function testValidBackgroundColor(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "background" => "00000033",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals("#00000033", $model->background);
     }
@@ -81,10 +80,10 @@ final class OptionsTest extends TestCase
      */
     public function testInvalidBackgroundColor(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "background" => "00000",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals("#00000000", $model->background);
     }
@@ -94,10 +93,10 @@ final class OptionsTest extends TestCase
      */
     public function testValidFontSize(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "size" => "18",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals(18, $model->size);
     }
@@ -109,10 +108,10 @@ final class OptionsTest extends TestCase
     {
         $this->expectException("InvalidArgumentException");
         $this->expectExceptionMessage("Font size must be a positive number.");
-        $params = array(
+        $params = [
             "lines" => "text",
             "size" => "0",
-        );
+        ];
         print_r(new RendererModel("src/templates/main.php", $params));
     }
 
@@ -121,10 +120,10 @@ final class OptionsTest extends TestCase
      */
     public function testValidHeight(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "height" => "80",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals(80, $model->height);
     }
@@ -136,10 +135,10 @@ final class OptionsTest extends TestCase
     {
         $this->expectException("InvalidArgumentException");
         $this->expectExceptionMessage("Height must be a positive number.");
-        $params = array(
+        $params = [
             "lines" => "text",
             "height" => "x",
-        );
+        ];
         print_r(new RendererModel("src/templates/main.php", $params));
     }
 
@@ -148,10 +147,10 @@ final class OptionsTest extends TestCase
      */
     public function testValidWidth(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "width" => "500",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals(500, $model->width);
     }
@@ -163,10 +162,10 @@ final class OptionsTest extends TestCase
     {
         $this->expectException("InvalidArgumentException");
         $this->expectExceptionMessage("Width must be a positive number.");
-        $params = array(
+        $params = [
             "lines" => "text",
             "width" => "-1",
-        );
+        ];
         print_r(new RendererModel("src/templates/main.php", $params));
     }
 
@@ -175,10 +174,10 @@ final class OptionsTest extends TestCase
      */
     public function testCenterIsTrue(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "center" => "true",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals(true, $model->center);
     }
@@ -188,10 +187,10 @@ final class OptionsTest extends TestCase
      */
     public function testCenterIsNotTrue(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "center" => "other",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals(false, $model->center);
     }
@@ -201,10 +200,10 @@ final class OptionsTest extends TestCase
      */
     public function testVCenterIsTrue(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "vCenter" => "true",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals(true, $model->vCenter);
     }
@@ -214,10 +213,10 @@ final class OptionsTest extends TestCase
      */
     public function testVCenterIsNotTrue(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "vCenter" => "other",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals(false, $model->vCenter);
     }
@@ -227,10 +226,10 @@ final class OptionsTest extends TestCase
      */
     public function testValidDuration(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "duration" => "500",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals(500, $model->duration);
     }
@@ -242,10 +241,10 @@ final class OptionsTest extends TestCase
     {
         $this->expectException("InvalidArgumentException");
         $this->expectExceptionMessage("duration must be a positive number.");
-        $params = array(
+        $params = [
             "lines" => "text",
             "duration" => "-1",
-        );
+        ];
         print_r(new RendererModel("src/templates/main.php", $params));
     }
 
@@ -254,10 +253,10 @@ final class OptionsTest extends TestCase
      */
     public function testValidPause(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "pause" => "500",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals(500, $model->pause);
     }
@@ -267,10 +266,10 @@ final class OptionsTest extends TestCase
      */
     public function testValidPauseZero(): void
     {
-        $params = array(
+        $params = [
             "lines" => "text",
             "pause" => "0",
-        );
+        ];
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals(0, $model->pause);
     }
@@ -282,10 +281,10 @@ final class OptionsTest extends TestCase
     {
         $this->expectException("InvalidArgumentException");
         $this->expectExceptionMessage("pause must be a non-negative number.");
-        $params = array(
+        $params = [
             "lines" => "text",
             "pause" => "-1",
-        );
+        ];
         print_r(new RendererModel("src/templates/main.php", $params));
     }
 }

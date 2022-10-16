@@ -14,11 +14,13 @@ class GoogleFontConverter
      */
     public static function fetchFontCSS($font, $text)
     {
-        $url = "https://fonts.googleapis.com/css2?" . http_build_query([
-            "family" => $font,
-            "text" => $text,
-            "display" => "fallback",
-        ]);
+        $url =
+            "https://fonts.googleapis.com/css2?" .
+            http_build_query([
+                "family" => $font,
+                "text" => $text,
+                "display" => "fallback",
+            ]);
         try {
             // get the CSS for the font
             $response = self::curlGetContents($url);

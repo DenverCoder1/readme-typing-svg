@@ -1,11 +1,10 @@
-<?php declare (strict_types = 1);
+<?php declare(strict_types=1);
 
 /**
  * Controller for choosing model and rendering SVG outputs
  */
 class RendererController
 {
-
     /**
      * @var RendererModel $model
      */
@@ -49,8 +48,8 @@ class RendererController
      */
     private function redirectToDemo(): void
     {
-        header('Location: demo/');
-        exit;
+        header("Location: demo/");
+        exit();
     }
 
     /**
