@@ -12,9 +12,11 @@ Markdown files on GitHub support embedded images using Markdown or HTML. You can
 
 ### HTML
 
+<!-- prettier-ignore-start -->
 ```html
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text"></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text"/></a>
 ```
+<!-- prettier-ignore-end -->
 
 ## The text is getting cut off at the end, how do I fix it?
 
@@ -30,11 +32,13 @@ https://readme-typing-svg.demolab.com/?lines=Your+Long+Message+With+A+Long+Width
 
 To center align images, you must use the HTML syntax and wrap it in an element with the HTML attribute `align="center"`.
 
+<!-- prettier-ignore-start -->
 ```html
 <p align="center">
-  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com/?lines=This+image+is+center-aligned&font=Fira%20Code&center=true&width=380&height=50"></a>
+  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com/?lines=This+image+is+center-aligned&font=Fira%20Code&center=true&width=380&height=50"/></a>
 </p>
 ```
+<!-- prettier-ignore-end -->
 
 ## How do I add multiple spaces in the middle of a line?
 
@@ -46,12 +50,14 @@ A workaround for adding extra spaces can be to use other whitespace characters (
 
 As of May 2022, you can now [specify theme context](https://github.blog/changelog/2022-05-19-specify-theme-context-for-images-in-markdown-beta/) using the `<picture>` and `<source>` elements as shown below. The dark mode version appears in the `srcset` of the `<source>` tag and the light mode version appears in the `src` of the `<img>` tag.
 
+<!-- prettier-ignore-start -->
 ```html
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com/?lines=You+are+using+dark+mode&color=FFFFFF">
-  <img src="https://readme-typing-svg.demolab.com/?lines=You+are+using+light+mode&color=000000">
+  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com/?lines=You+are+using+dark+mode&color=FFFFFF" />
+  <img src="https://readme-typing-svg.demolab.com/?lines=You+are+using+light+mode&color=000000" />
 </picture>
 ```
+<!-- prettier-ignore-end -->
 
 ## How do I create a Readme for my profile?
 

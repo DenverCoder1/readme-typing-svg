@@ -28,6 +28,8 @@
   },
   "scripts": {
     "start": "php7 -S localhost:8000 -t src || php -S localhost:8000 -t src",
-    "test": "./vendor/bin/phpunit --testdox tests"
+    "test": "./vendor/bin/phpunit --testdox tests",
+    "format:check": "prettier --check *.md **/**/*.{php,md,js,css} --print-width 120",
+    "format": "prettier --write *.md **/**/*.{php,md,js,css} --print-width 120"
   }
 }
