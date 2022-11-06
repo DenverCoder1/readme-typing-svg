@@ -64,6 +64,9 @@
                 </div>
                 <input class="param" type="text" id="font" name="font" alt="Font name" placeholder="Fira Code" value="Fira Code" pattern="^[A-Za-z0-9\- ]*$" title="Font from Google Fonts. Only letters, numbers, and spaces.">
 
+                <label for="weight">Font weight</label>
+                <input class="param" type="number" id="weight" name="weight" alt="Font weight" placeholder="400" value="400" min="100" max="900" step="100">
+
                 <label for="size">Font size</label>
                 <input class="param" type="number" id="size" name="size" alt="Font size" placeholder="20" value="20">
 

@@ -12,12 +12,12 @@ class GoogleFontConverter
      * @param string $text Text to display in font
      * @return string|false The CSS for displaying the font
      */
-    public static function fetchFontCSS($font, $text)
+    public static function fetchFontCSS($font, $weight, $text)
     {
         $url =
             "https://fonts.googleapis.com/css2?" .
             http_build_query([
-                "family" => $font,
+                "family" => $font . ":wght@" . $weight,
                 "text" => $text,
                 "display" => "fallback",
             ]);

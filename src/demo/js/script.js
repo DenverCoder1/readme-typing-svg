@@ -2,6 +2,7 @@ let preview = {
   // default values
   defaults: {
     font: "monospace",
+    weight: "400",
     color: "36BCF7",
     background: "00000000",
     size: "20",
