@@ -13,6 +13,9 @@ class RendererModel
     /** @var string $font Font family */
     public $font;
 
+    /** @var string $font Font weight */
+    public $weight;
+
     /** @var string $color Font color */
     public $color;
 
@@ -52,6 +55,7 @@ class RendererModel
     /** @var array<string, string> $DEFAULTS */
     private $DEFAULTS = [
         "font" => "monospace",
+        "weight" => "400",
         "color" => "#36BCF7",
         "background" => "#00000000",
         "size" => "20",
@@ -75,6 +79,7 @@ class RendererModel
         $this->template = $template;
         $this->lines = $this->checkLines($params["lines"] ?? "");
         $this->font = $this->checkFont($params["font"] ?? $this->DEFAULTS["font"]);
+        $this->weight = $this->checkNumberPositive($params["weight"] ?? $this->DEFAULTS["weight"], "Font weight");
         $this->color = $this->checkColor($params["color"] ?? $this->DEFAULTS["color"], "color");
         $this->background = $this->checkColor($params["background"] ?? $this->DEFAULTS["background"], "background");
         $this->size = $this->checkNumberPositive($params["size"] ?? $this->DEFAULTS["size"], "Font size");
@@ -85,7 +90,7 @@ class RendererModel
         $this->multiline = $this->checkBoolean($params["multiline"] ?? $this->DEFAULTS["multiline"]);
         $this->duration = $this->checkNumberPositive($params["duration"] ?? $this->DEFAULTS["duration"], "duration");
         $this->pause = $this->checkNumberNonNegative($params["pause"] ?? $this->DEFAULTS["pause"], "pause");
-        $this->fontCSS = $this->fetchFontCSS($this->font, $params["lines"]);
+        $this->fontCSS = $this->fetchFontCSS($this->font, $this->weight, $params["lines"]);
     }
 
     /**
@@ -185,12 +190,12 @@ class RendererModel
      * @param string $text Text to display in font
      * @return string The CSS for displaying the font
      */
-    private function fetchFontCSS($font, $text)
+    private function fetchFontCSS($font, $weight, $text)
     {
         // skip checking if left as default
         if ($font != $this->DEFAULTS["font"]) {
             // fetch and convert from Google Fonts
-            $from_google_fonts = GoogleFontConverter::fetchFontCSS($font, $text);
+            $from_google_fonts = GoogleFontConverter::fetchFontCSS($font, $weight, $text);
             if ($from_google_fonts) {
                 // return the CSS for displaying the font
                 return "<style>\n{$from_google_fonts}</style>\n";
