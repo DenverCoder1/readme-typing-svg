@@ -107,7 +107,7 @@
                     <input class="param inline" type="number" id="height" name="height" alt="Height (px)" placeholder="50" value="50">
                 </span>
 
-                <input type="button" value="Reset" onclick="preview.reset();">
+                <input type="button" class="btn" value="Reset" onclick="preview.reset();">
             </form>
         </div>
 
