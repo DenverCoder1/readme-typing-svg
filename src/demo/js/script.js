@@ -156,6 +156,29 @@ let preview = {
     this.update();
     return false;
   },
+  reset: function () {
+    const inputs = document.querySelectorAll(".param");
+    inputs.forEach((input) => {
+      let value = this.defaults[input.name];
+      if (value) {
+        input.value = value;
+      }
+    });
+    const overrides = {
+      font: "Fira Code",
+      pause: "1000",
+      width: "435",
+    };
+    let value = overrides[input.name] || this.defaults[input.name];
+    input.jscolor.fromString(value);
+    if (value) {
+      if (["color", "background"].includes(input.name)) {
+        input.jscolor.fromString(value);
+      } else {
+        input.value = value;
+      }
+    }
+  }
 };
 
 let clipboard = {
