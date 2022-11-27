@@ -46,9 +46,15 @@ final class RendererTest extends TestCase
         ];
         $controller = new RendererController($params);
         $this->assertStringContainsString("keyTimes='0;0;1;1'", $controller->render());
-        $this->assertStringContainsString("values='m0,25 h0 ; m0,25 h0 ; m0,25 h380 ; m0,25 h380'", $controller->render());
+        $this->assertStringContainsString(
+            "values='m0,25 h0 ; m0,25 h0 ; m0,25 h380 ; m0,25 h380'",
+            $controller->render()
+        );
         $this->assertStringContainsString("keyTimes='0;0.5;1;1'", $controller->render());
-        $this->assertStringContainsString("values='m0,50 h0 ; m0,50 h0 ; m0,50 h380 ; m0,50 h380'", $controller->render());
+        $this->assertStringContainsString(
+            "values='m0,50 h0 ; m0,50 h0 ; m0,50 h380 ; m0,50 h380'",
+            $controller->render()
+        );
     }
 
     /**
@@ -78,7 +84,13 @@ final class RendererTest extends TestCase
         ];
         $controller = new RendererController($params);
         $this->assertStringContainsString("@font-face {", $controller->render());
-        $this->assertSame(1, preg_match("/src: url\(data:font\/truetype;base64,[a-zA-Z0-9\/+=]+\) format\('truetype'\);/", $controller->render()));
+        $this->assertSame(
+            1,
+            preg_match(
+                "/src: url\(data:font\/truetype;base64,[a-zA-Z0-9\/+=]+\) format\('truetype'\);/",
+                $controller->render()
+            )
+        );
         $this->assertStringContainsString("font-family='\"Roboto\", monospace'", $controller->render());
     }
 
