@@ -26,7 +26,7 @@ final class RendererTest extends TestCase
             "height" => "50",
         ];
         $controller = new RendererController($params);
-        $this->assertEquals(file_get_contents("tests/svg/test_normal.svg"), $controller->render());
+        $this->assertStringEqualsFile("tests/svg/test_normal.svg", $controller->render());
     }
 
     public function testMultilineCardRender(): void
@@ -122,7 +122,7 @@ final class RendererTest extends TestCase
             "height" => "50",
         ];
         $controller = new RendererController($params);
-        $this->assertEquals(file_get_contents("tests/svg/test_normal.svg"), $controller->render());
+        $this->assertStringEqualsFile("tests/svg/test_normal.svg", $controller->render());
     }
 
     /**
