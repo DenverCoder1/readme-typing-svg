@@ -20,8 +20,8 @@
 <?php else: ?>
     <?php $lineHeight = $size + 5; ?>
     <animate id='d<?= $i ?>' attributeName='d' dur='<?= ($duration + $pause) * ($i + 1) ?>ms' fill="freeze"
-            begin='0s;<?= "d" . (count($lines) - 1) ?>.end' keyTimes="0;<?= $i / ($i + 1) ?>;<?= $i / ($i + 1) +
-    $duration / (($duration + $pause) * ($i + 1)) ?>;1"
+            begin='0s;<?= "d" . (count($lines) - 1) ?>.end' keyTimes='0;<?= $i / ($i + 1) ?>;<?= $i / ($i + 1) +
+    $duration / (($duration + $pause) * ($i + 1)) ?>;1'
             values='m0,<?= ($i + 1) * $lineHeight ?> h0 ; m0,<?= ($i + 1) * $lineHeight ?> h0 ; m0,<?= ($i + 1) *
      $lineHeight ?> h<?= $width ?> ; m0,<?= ($i + 1) * $lineHeight ?> h<?= $width ?>' />
 <?php endif; ?>

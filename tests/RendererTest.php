@@ -26,7 +26,7 @@ final class RendererTest extends TestCase
             "height" => "50",
         ];
         $controller = new RendererController($params);
-        $this->assertEquals(file_get_contents("tests/svg/test_normal.svg"), $controller->render());
+        $this->assertStringEqualsFile("tests/svg/test_normal.svg", $controller->render());
     }
 
     public function testMultilineCardRender(): void
@@ -45,7 +45,16 @@ final class RendererTest extends TestCase
             "multiline" => "true",
         ];
         $controller = new RendererController($params);
-        $this->assertEquals(file_get_contents("tests/svg/test_multiline.svg"), $controller->render());
+        $this->assertStringContainsString("keyTimes='0;0;1;1'", $controller->render());
+        $this->assertStringContainsString(
+            "values='m0,25 h0 ; m0,25 h0 ; m0,25 h380 ; m0,25 h380'",
+            $controller->render()
+        );
+        $this->assertStringContainsString("keyTimes='0;0.5;1;1'", $controller->render());
+        $this->assertStringContainsString(
+            "values='m0,50 h0 ; m0,50 h0 ; m0,50 h380 ; m0,50 h380'",
+            $controller->render()
+        );
     }
 
     /**
@@ -61,7 +70,7 @@ final class RendererTest extends TestCase
             "height" => "50",
         ];
         $controller = new RendererController($params);
-        $this->assertEquals(file_get_contents("tests/svg/test_missing_lines.svg"), $controller->render());
+        $this->assertStringContainsString("Lines parameter must be set.", $controller->render());
     }
 
     /**
@@ -74,9 +83,15 @@ final class RendererTest extends TestCase
             "font" => "Roboto",
         ];
         $controller = new RendererController($params);
-        $expected = preg_replace("/\/\*(.*?)\*\//", "", file_get_contents("tests/svg/test_fonts.svg"));
-        $actual = preg_replace("/\/\*(.*?)\*\//", "", $controller->render());
-        $this->assertEquals($expected, $actual);
+        $this->assertStringContainsString("@font-face {", $controller->render());
+        $this->assertSame(
+            1,
+            preg_match(
+                "/src: url\(data:font\/truetype;base64,[a-zA-Z0-9\/+=]+\) format\('truetype'\);/",
+                $controller->render()
+            )
+        );
+        $this->assertStringContainsString("font-family='\"Roboto\", monospace'", $controller->render());
     }
 
     /**
@@ -97,8 +112,7 @@ final class RendererTest extends TestCase
             "font" => "Not-A-Font",
         ];
         $controller = new RendererController($params);
-        $expected = str_replace('"monospace"', '"Not-A-Font"', file_get_contents("tests/svg/test_normal.svg"));
-        $this->assertEquals($expected, $controller->render());
+        $this->assertStringContainsString("font-family='\"Not-A-Font\", monospace'", $controller->render());
     }
 
     /**
@@ -120,7 +134,7 @@ final class RendererTest extends TestCase
             "height" => "50",
         ];
         $controller = new RendererController($params);
-        $this->assertEquals(file_get_contents("tests/svg/test_normal.svg"), $controller->render());
+        $this->assertStringEqualsFile("tests/svg/test_normal.svg", $controller->render());
     }
 
     /**
@@ -140,7 +154,7 @@ final class RendererTest extends TestCase
             "height" => "50",
         ];
         $controller = new RendererController($params);
-        $this->assertEquals(file_get_contents("tests/svg/test_normal_vertical_alignment.svg"), $controller->render());
+        $this->assertStringContainsString("dominant-baseline='auto'", $controller->render());
     }
 
     /**
@@ -162,7 +176,8 @@ final class RendererTest extends TestCase
             "pause" => "1000",
         ];
         $controller = new RendererController($params);
-        $this->assertEquals(file_get_contents("tests/svg/test_pause.svg"), $controller->render());
+        $this->assertStringContainsString("dur='6000ms'", $controller->render());
+        $this->assertStringContainsString("keyTimes='0;0.66666666666667;0.83333333333333;1'", $controller->render());
     }
 
     /**
@@ -185,6 +200,9 @@ final class RendererTest extends TestCase
             "pause" => "1000",
         ];
         $controller = new RendererController($params);
-        $this->assertEquals(file_get_contents("tests/svg/test_pause_multiline.svg"), $controller->render());
+        $this->assertStringContainsString("dur='6000ms'", $controller->render());
+        $this->assertStringContainsString("keyTimes='0;0;0.83333333333333;1'", $controller->render());
+        $this->assertStringContainsString("dur='12000ms'", $controller->render());
+        $this->assertStringContainsString("keyTimes='0;0.5;0.91666666666667;1'", $controller->render());
     }
 }
