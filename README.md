@@ -56,6 +56,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Pratik Pingale](https://github.com/PROxZIMA.png?size=60)](https://github.com/PROxZIMA)
 [![Vydr'Oz](https://github.com/VydrOz.png?size=60)](https://github.com/VydrOz)
 [![Caroline Heloíse](https://github.com/Carol42.png?size=60)](https://github.com/Carol42)
+[![PriyanshK09](https://github.com/PriyanshK09.png?size=60)](https://github.com/PriyanshK09)
 [![BenjaminMichaelis](https://github.com/BenjaminMichaelis.png?size=60)](https://github.com/BenjaminMichaelis)
 [![Thakur Ballary](https://github.com/thakurballary.png?size=60)](https://github.com/thakurballary)
 [![NiceSapien](https://github.com/nicesapien.png?size=60)](https://github.com/nicesapien)
