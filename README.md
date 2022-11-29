@@ -77,6 +77,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![SpookyJelly](https://github.com/SpookyJelly.png?size=60)](https://github.com/SpookyJelly)
 [![yousafesaeed](https://github.com/yousafesaeed.png?size=60)](https://github.com/yousafesaeed)
 [![cfcife](https://github.com/cfcife.png?size=60)](https://github.com/cfcife)
+[![majidtdeni666](https://github.com/majidtdeni666.png?size+60)](https://github.com/majidtdeni666)
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
