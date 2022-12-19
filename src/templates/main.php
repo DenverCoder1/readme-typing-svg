@@ -39,11 +39,7 @@
                     <?= $freeze ? "fill='freeze'" : "" ?>
                     values='<?= $emptyLine ?> ; <?= $fullLine ?> ; <?= $fullLine ?> ; <?= $finalValues ?>'
                     keyTimes='<?= implode(";", $keyTimes) ?>' />
-            <?php
-                // values for the animation
-                // keyTimes for the animation
-
-                else: ?>
+            <?php else: ?>
                 <!-- Multiline -->
                 <?php
                 $nextIndex = $i + 1;
