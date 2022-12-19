@@ -13,10 +13,10 @@
             <?php if (!$multiline): ?>
                 <!-- Single line -->
                 <?php
-                // begin - start after previous line
+                // start after previous line
                 $begin = "d" . ($i - 1) . ".end";
                 if ($i == 0) {
-                    // if this is the first, line start at 0 seconds
+                    // if this is the first line, start at 0 seconds
                     // and also after the last line if repeat is true
                     $begin = $repeat ? "0s;d$lastLineIndex.end" : "0s";
                 }
@@ -26,7 +26,7 @@
                 $yOffset = $height / 2;
                 $emptyLine = "m0,$yOffset h0";
                 $fullLine = "m0,$yOffset h$width";
-                $finalValues = $freeze ? $fullLine : $emptyLine;
+                $values = [$emptyLine, $fullLine, $fullLine, $freeze ? $fullLine : $emptyLine];
                 // keyTimes for the animation
                 $keyTimes = [
                     "0",
@@ -35,10 +35,9 @@
                     "1",
                 ];
                 ?>
-                <animate id='d<?= $i ?>' attributeName='d' begin='<?= $begin ?>' dur='<?= $duration + $pause ?>ms'
-                    <?= $freeze ? "fill='freeze'" : "" ?>
-                    values='<?= $emptyLine ?> ; <?= $fullLine ?> ; <?= $fullLine ?> ; <?= $finalValues ?>'
-                    keyTimes='<?= implode(";", $keyTimes) ?>' />
+                <animate id='d<?= $i ?>' attributeName='d' begin='<?= $begin ?>'
+                    dur='<?= $duration + $pause ?>ms' fill='<?= $freeze ? "freeze" : "remove" ?>'
+                    values='<?= implode(" ; ", $values) ?>' keyTimes='<?= implode(";", $keyTimes) ?>' />
             <?php else: ?>
                 <!-- Multiline -->
                 <?php
@@ -48,12 +47,12 @@
                 $yOffset = $nextIndex * $lineHeight;
                 $emptyLine = "m0,$yOffset h0";
                 $fullLine = "m0,$yOffset h$width";
+                $values = [$emptyLine, $emptyLine, $fullLine, $fullLine];
                 $keyTimes = ["0", $i / $nextIndex, $i / $nextIndex + $duration / $lineDuration, "1"];
                 ?>
-                <animate id='d<?= $i ?>' attributeName='d' dur='<?= $lineDuration ?>ms' fill="freeze"
-                    begin='0s<?= $repeat ? ";d$lastLineIndex.end" : "" ?>'
-                    values='<?= $emptyLine ?> ; <?= $emptyLine ?> ; <?= $fullLine ?> ; <?= $fullLine ?>'
-                    keyTimes='<?= implode(";", $keyTimes) ?>' />
+                <animate id='d<?= $i ?>' attributeName='d' begin='0s<?= $repeat ? ";d$lastLineIndex.end" : "" ?>'
+                    dur='<?= $lineDuration ?>ms' fill="freeze"
+                    values='<?= implode(" ; ", $values) ?>' keyTimes='<?= implode(";", $keyTimes) ?>' />
             <?php endif; ?>
         </path>
     <text font-family='"<?= $font ?>", monospace' fill='<?= $color ?>' font-size='<?= $size ?>'
