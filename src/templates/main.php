@@ -56,8 +56,8 @@
             <?php endif; ?>
         </path>
     <text font-family='"<?= $font ?>", monospace' fill='<?= $color ?>' font-size='<?= $size ?>'
-        <?= $vCenter ? "dominant-baseline='middle'" : "dominant-baseline='auto'" ?>
-        <?= $center ? "x='50%' text-anchor='middle'" : "x='0%' text-anchor='start'" ?>>
+        dominant-baseline='<?= $vCenter ? "middle" : "auto" ?>'
+        x='<?= $center ? "50%" : "0%" ?>' text-anchor='<?= $center ? "middle" : "start" ?>'>
         <textPath xlink:href='#path<?= $i ?>'>
             <?= $lines[$i] . "\n" ?>
         </textPath>
