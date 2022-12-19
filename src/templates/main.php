@@ -5,7 +5,7 @@
     style='background-color: <?= $background ?>;'
     width='<?= $width ?>px' height='<?= $height ?>px'>
 
-    <?= str_replace("\n", "\n\t", $fontCSS) ?>
+    <?= $fontCSS ?>
 
     <?php $lastLineIndex = count($lines) - 1; ?>
     <?php for ($i = 0; $i <= $lastLineIndex; ++$i): ?>
