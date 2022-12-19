@@ -46,6 +46,9 @@ class RendererModel
     /** @var int $pause pause duration between lines in milliseconds */
     public $pause;
 
+    /** @var bool $repeat Whether to loop around to the first line after the last */
+    public $repeat;
+
     /** @var string $fontCSS CSS required for displaying the selected font */
     public $fontCSS;
 
@@ -66,6 +69,7 @@ class RendererModel
         "multiline" => "false",
         "duration" => "5000",
         "pause" => "0",
+        "repeat" => "true",
     ];
 
     /**
@@ -90,6 +94,7 @@ class RendererModel
         $this->multiline = $this->checkBoolean($params["multiline"] ?? $this->DEFAULTS["multiline"]);
         $this->duration = $this->checkNumberPositive($params["duration"] ?? $this->DEFAULTS["duration"], "duration");
         $this->pause = $this->checkNumberNonNegative($params["pause"] ?? $this->DEFAULTS["pause"], "pause");
+        $this->repeat = $this->checkBoolean($params["repeat"] ?? $this->DEFAULTS["repeat"]);
         $this->fontCSS = $this->fetchFontCSS($this->font, $this->weight, $params["lines"]);
     }
 
