@@ -13,12 +13,16 @@ final class RendererTest extends TestCase
      * 
      * @param string $expected
      * @param string $actual
-     * 
      */
     public static function compareNoCommentsOrWhitespace(string $expected, string $actual)
     {
+        // remove comments and whitespace
         $expected = preg_replace("/\s+/", " ", preg_replace("/<!--.*?-->/s", " ", $expected));
         $actual = preg_replace("/\s+/", " ", preg_replace("/<!--.*?-->/s", " ", $actual));
+        // add newlines to make it easier to debug
+        $expected = str_replace(">", ">\n", $expected);
+        $actual = str_replace(">", ">\n", $actual);
+        // assert strings are equal
         self::assertSame($expected, $actual);
     }
 
