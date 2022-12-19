@@ -83,21 +83,27 @@
                 <input class="param jscolor jscolor-active" id="background" name="background" alt="Background color" data-jscolor="{ format: 'hexa' }" value="#00000000">
 
                 <label for="center">Horizontally Centered</label>
-                <select class="param" id="center" name="center" alt="Horizontally Centered" value="false">
+                <select class="param" id="center" name="center" alt="Horizontally Centered">
                     <option>false</option>
                     <option>true</option>
                 </select>
 
                 <label for="vCenter">Vertically Centered</label>
-                <select class="param" id="vCenter" name="vCenter" alt="Vertically Centered" value="false">
+                <select class="param" id="vCenter" name="vCenter" alt="Vertically Centered">
                     <option>false</option>
                     <option>true</option>
                 </select>
 
                 <label for="multiline">Multiline</label>
-                <select class="param" id="multiline" name="multiline" alt="Multiline" value="false">
+                <select class="param" id="multiline" name="multiline" alt="Multiline">
                     <option value="false">Type sentences on one line</option>
                     <option value="true">Each sentence on a new line</option>
+                </select>
+
+                <label for="repeat">Repeat</label>
+                <select class="param" id="repeat" name="repeat" alt="Repeat">
+                    <option>true</option>
+                    <option>false</option>
                 </select>
 
                 <label for="dimensions" title="Width ✕ Height">Width ✕ Height</label>

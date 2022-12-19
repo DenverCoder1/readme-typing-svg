@@ -5,43 +5,62 @@
     style='background-color: <?= $background ?>;'
     width='<?= $width ?>px' height='<?= $height ?>px'>
 
-    <?= preg_replace("/\n/", "\n\t", $fontCSS) ?>
+    <?= $fontCSS ?>
 
-<?php $previousId = "d" . (count($lines) - 1); ?>
-<?php for ($i = 0; $i < count($lines); ++$i): ?>
-    <path id='path<?= $i ?>'>
-<?php if (!$multiline): ?>
-        <animate id='d<?= $i ?>' attributeName='d' begin='<?= ($i == 0 ? "0s;" : "") .
-    $previousId ?>.end' dur='<?= $duration + $pause ?>ms'
-            values='m0,<?= $height / 2 ?> h0 ; m0,<?= $height / 2 ?> h<?= $width ?> ; m0,<?= $height /
-     2 ?> h<?= $width ?> ; m0,<?= $height / 2 ?> h0'
-            keyTimes='0;<?= (0.8 * $duration) / ($duration + $pause) ?>;<?= (0.8 * $duration + $pause) /
-    ($duration + $pause) ?>;1' />
-<?php else: ?>
-    <?php $lineHeight = $size + 5; ?>
-    <animate id='d<?= $i ?>' attributeName='d' dur='<?= ($duration + $pause) * ($i + 1) ?>ms' fill="freeze"
-            begin='0s;<?= "d" . (count($lines) - 1) ?>.end' keyTimes='0;<?= $i / ($i + 1) ?>;<?= $i / ($i + 1) +
-    $duration / (($duration + $pause) * ($i + 1)) ?>;1'
-            values='m0,<?= ($i + 1) * $lineHeight ?> h0 ; m0,<?= ($i + 1) * $lineHeight ?> h0 ; m0,<?= ($i + 1) *
-     $lineHeight ?> h<?= $width ?> ; m0,<?= ($i + 1) * $lineHeight ?> h<?= $width ?>' />
-<?php endif; ?>
-    </path>
+    <?php $lastLineIndex = count($lines) - 1; ?>
+    <?php for ($i = 0; $i <= $lastLineIndex; ++$i): ?>
+        <path id='path<?= $i ?>'>
+            <?php if (!$multiline): ?>
+                <!-- Single line -->
+                <?php
+                // start after previous line
+                $begin = "d" . ($i - 1) . ".end";
+                if ($i == 0) {
+                    // if this is the first line, start at 0 seconds
+                    // and also after the last line if repeat is true
+                    $begin = $repeat ? "0s;d$lastLineIndex.end" : "0s";
+                }
+                // don't delete text after typing the last line if repeat is false
+                $freeze = !$repeat && $i == $lastLineIndex;
+                // empty line values
+                $yOffset = $height / 2;
+                $emptyLine = "m0,$yOffset h0";
+                $fullLine = "m0,$yOffset h$width";
+                $values = [$emptyLine, $fullLine, $fullLine, $freeze ? $fullLine : $emptyLine];
+                // keyTimes for the animation
+                $keyTimes = [
+                    "0",
+                    (0.8 * $duration) / ($duration + $pause),
+                    (0.8 * $duration + $pause) / ($duration + $pause),
+                    "1",
+                ];
+                ?>
+                <animate id='d<?= $i ?>' attributeName='d' begin='<?= $begin ?>'
+                    dur='<?= $duration + $pause ?>ms' fill='<?= $freeze ? "freeze" : "remove" ?>'
+                    values='<?= implode(" ; ", $values) ?>' keyTimes='<?= implode(";", $keyTimes) ?>' />
+            <?php else: ?>
+                <!-- Multiline -->
+                <?php
+                $nextIndex = $i + 1;
+                $lineHeight = $size + 5;
+                $lineDuration = ($duration + $pause) * $nextIndex;
+                $yOffset = $nextIndex * $lineHeight;
+                $emptyLine = "m0,$yOffset h0";
+                $fullLine = "m0,$yOffset h$width";
+                $values = [$emptyLine, $emptyLine, $fullLine, $fullLine];
+                $keyTimes = ["0", $i / $nextIndex, $i / $nextIndex + $duration / $lineDuration, "1"];
+                ?>
+                <animate id='d<?= $i ?>' attributeName='d' begin='0s<?= $repeat ? ";d$lastLineIndex.end" : "" ?>'
+                    dur='<?= $lineDuration ?>ms' fill="freeze"
+                    values='<?= implode(" ; ", $values) ?>' keyTimes='<?= implode(";", $keyTimes) ?>' />
+            <?php endif; ?>
+        </path>
     <text font-family='"<?= $font ?>", monospace' fill='<?= $color ?>' font-size='<?= $size ?>'
-<?php if ($vCenter): ?>
-        dominant-baseline='middle'
-<?php else: ?>
-        dominant-baseline='auto'
-<?php endif; ?>
-<?php if ($center): ?>
-        x='50%' text-anchor='middle'>
-<?php else: ?>
-        x='0%' text-anchor='start'>
-<?php endif; ?>
+        dominant-baseline='<?= $vCenter ? "middle" : "auto" ?>'
+        x='<?= $center ? "50%" : "0%" ?>' text-anchor='<?= $center ? "middle" : "start" ?>'>
         <textPath xlink:href='#path<?= $i ?>'>
             <?= $lines[$i] . "\n" ?>
         </textPath>
     </text>
-
-<?php $previousId = "d" . $i; ?>
 <?php endfor; ?>
 </svg>

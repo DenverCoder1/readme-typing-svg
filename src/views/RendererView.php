@@ -40,6 +40,7 @@ class RendererView
             "fontCSS" => $this->model->fontCSS,
             "duration" => $this->model->duration,
             "pause" => $this->model->pause,
+            "repeat" => $this->model->repeat,
         ]);
         // render SVG with output buffering
         ob_start();

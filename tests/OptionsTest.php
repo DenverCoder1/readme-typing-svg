@@ -287,4 +287,33 @@ final class OptionsTest extends TestCase
         ];
         print_r(new RendererModel("src/templates/main.php", $params));
     }
+
+    /**
+     * Test repeat set to true, false, other
+     */
+    public function testRepeat(): void
+    {
+        // not set
+        $params = [
+            "lines" => "text",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(true, $model->repeat);
+
+        // true
+        $params = [
+            "lines" => "text",
+            "repeat" => "true",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(true, $model->repeat);
+
+        // other / false
+        $params = [
+            "lines" => "text",
+            "repeat" => "other",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(false, $model->repeat);
+    }
 }
