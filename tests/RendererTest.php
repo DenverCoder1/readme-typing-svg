@@ -10,7 +10,7 @@ final class RendererTest extends TestCase
 {
     /**
      * Static method to assert strings are equal while ignoring whitespace
-     * 
+     *
      * @param string $expected
      * @param string $actual
      */
@@ -25,7 +25,6 @@ final class RendererTest extends TestCase
         // assert strings are equal
         self::assertSame($expected, $actual);
     }
-
 
     /**
      * Test normal card render
@@ -251,7 +250,7 @@ final class RendererTest extends TestCase
         $actualSVG = preg_replace("/\s+/", " ", $controller->render());
         $this->assertStringContainsString("begin='0s'", $actualSVG);
         $this->assertStringContainsString(
-            "begin='d2.end' dur='5000ms' fill='freeze' values='m0,25 h0 ; m0,25 h380 ; m0,25 h380 ; m0,25 h380'", 
+            "begin='d2.end' dur='5000ms' fill='freeze' values='m0,25 h0 ; m0,25 h380 ; m0,25 h380 ; m0,25 h380'",
             $actualSVG
         );
         $this->assertStringNotContainsString(";d3.end", $actualSVG);
