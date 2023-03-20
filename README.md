@@ -50,7 +50,6 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Angelo Fallaria](https://github.com/angelofallars.png?size=60)](https://github.com/angelofallars)
 [![William J. Ghelfi](https://github.com/trumbitta.png?size=60)](https://github.com/trumbitta)
 [![Shivam Yadav](https://github.com/sudoshivam.png?size=60)](https://github.com/sudoshivam)
-[![Adam Ross](https://github.com/R055A.png?size=60)](https://github.com/R055A)
 [![Pratik Pingale](https://github.com/PROxZIMA.png?size=60)](https://github.com/PROxZIMA)
 [![Vydr'Oz](https://github.com/VydrOz.png?size=60)](https://github.com/VydrOz)
 [![Caroline Heloíse](https://github.com/Carol42.png?size=60)](https://github.com/Carol42)
@@ -69,7 +68,6 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![jcs090218](https://github.com/jcs090218.png?size=60)](https://github.com/jcs090218)
 [![Rishabh2804](https://github.com/Rishabh2804.png?size=60)](https://github.com/Rishabh2804)
 [![shalinibhatt](https://github.com/shalinibhatt.png?size=60)](https://github.com/shalinibhatt)
-[![Jude-Gideon](https://github.com/jude-gideon.png?size=60)](https://github.com/jude-gideon)
 [![UlisesAlexanderAM](https://github.com/UlisesAlexanderAM.png?size=60)](https://github.com/UlisesAlexanderAM)
 [![SpookyJelly](https://github.com/SpookyJelly.png?size=60)](https://github.com/SpookyJelly)
 [![yousafesaeed](https://github.com/yousafesaeed.png?size=60)](https://github.com/yousafesaeed)
@@ -80,7 +78,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Ash-codes18](https://github.com/Ash-codes18.png?size=60)](https://github.com/Ash-codes18)
 [![Maagnitude](https://github.com/Maagnitude.png?size=60)](https://github.com/Maagnitude)
 [![cracker911181](https://github.com/cracker911181.png?size=60)](https://github.com/cracker911181)
-[![logann131](https://github.com/logann131.png?size=60)](https://github.com/logann131)
+[![quiet-node](https://github.com/quiet-node.png?size=60)](https://github.com/quiet-node)
 [![ProfCyberNaught](https://github.com/ProfCyberNaught.png?size=60)](https://github.com/ProfCyberNaught "ProfCyberNaught on GitHub")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
