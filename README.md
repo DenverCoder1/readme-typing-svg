@@ -74,7 +74,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![cfcife](https://github.com/cfcife.png?size=60)](https://github.com/cfcife "cfcife on GitHub")
 [![majidtdeni666](https://github.com/majidtdeni666.png?size=60)](https://github.com/majidtdeni666 "majidtdeni666 on GitHub")
 [![GalexY727](https://github.com/galexy727.png?size=60)](https://github.com/galexy727 "GalexY727 on GitHub")
-[![HectorSaldes](https://github.com/HectorSaldes.png?size=60)](https://github.com/HectorSaldes " on GitHub")
+[![HectorSaldes](https://github.com/HectorSaldes.png?size=60)](https://github.com/HectorSaldes "HectorSaldes on GitHub")
 [![Ash-codes18](https://github.com/Ash-codes18.png?size=60)](https://github.com/Ash-codes18 "HectorSaldes on GitHub")
 [![Maagnitude](https://github.com/Maagnitude.png?size=60)](https://github.com/Maagnitude "Ash-codes18 on GitHub")
 [![cracker911181](https://github.com/cracker911181.png?size=60)](https://github.com/cracker911181 "Maagnitude on GitHub")
