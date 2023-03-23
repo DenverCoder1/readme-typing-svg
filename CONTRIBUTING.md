@@ -8,8 +8,8 @@ Make sure your request is meaningful and you have tested the app locally before 
 
 #### Requirements
 
-- [PHP 7.4+](https://www.apachefriends.org/index.html)
-- [Composer](https://getcomposer.org)
+- [PHP 7.4+](https://www.apachefriends.org/index.html "PHP 7.4+")
+- [Composer](https://getcomposer.org "Composer")
 
 #### Linux
 
@@ -21,11 +21,11 @@ sudo apt-get install composer
 
 #### Windows
 
-Install PHP from [XAMPP](https://www.apachefriends.org/index.html) or [php.net](https://windows.php.net/download)
+Install PHP from [XAMPP](https://www.apachefriends.org/index.html "XAMPP") or [php.net](https://windows.php.net/download "php.net")
 
-[▶ How to install and run PHP using XAMPP (Windows)](https://www.youtube.com/watch?v=K-qXW9ymeYQ)
+[▶ How to install and run PHP using XAMPP (Windows)](https://www.youtube.com/watch?v=K-qXW9ymeYQ "How to install and run PHP using XAMPP (Windows)")
 
-[📥 Download Composer](https://getcomposer.org/download/)
+[📥 Download Composer](https://getcomposer.org/download/ "Download Composer")
 
 ### Clone the repository
 
@@ -64,7 +64,7 @@ Run the following command to check if your code is formatted properly:
 composer run format:check
 ```
 
-> **Note** You need to have [`prettier`](https://prettier.io/) and the [prettier-php plugin](https://github.com/prettier/plugin-php) installed globally in order to run this command.
+> **Note** You need to have [`prettier`](https://prettier.io/ "prettier") and the [prettier-php plugin](https://github.com/prettier/plugin-php "prettier-php plugin") installed globally in order to run this command.
 
 Run the following command to run the PHPUnit test script which will verify that the tested functionality is still working.
 
