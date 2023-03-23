@@ -2,19 +2,19 @@
 
 ## How do I include Readme Typing SVG in my Readme?
 
-Markdown files on GitHub support embedded images using Markdown or HTML. You can customize your SVG on the [demo site](https://readme-typing-svg.demolab.com/demo/) and use the image source in either of the following ways:
+Markdown files on GitHub support embedded images using Markdown or HTML. You can customize your SVG on the [demo site](https://readme-typing-svg.demolab.com/demo/ "demo site") and use the image source in either of the following ways:
 
 ### Markdown
 
 ```md
-[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg "Typing SVG")
 ```
 
 ### HTML
 
 <!-- prettier-ignore-start -->
 ```html
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text"/></a>
+<a href="https://git.io/typing-svg" title=""Readme Typing SVG><img src="https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text"/></a>
 ```
 <!-- prettier-ignore-end -->
 
@@ -35,7 +35,7 @@ To center align images, you must use the HTML syntax and wrap it in an element w
 <!-- prettier-ignore-start -->
 ```html
 <p align="center">
-  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com/?lines=This+image+is+center-aligned&font=Fira%20Code&center=true&width=380&height=50"/></a>
+  <a href="https://git.io/typing-svg" title="Readme Typipng SVG"><img src="https://readme-typing-svg.demolab.com/?lines=This+image+is+center-aligned&font=Fira%20Code&center=true&width=380&height=50"/></a>
 </p>
 ```
 <!-- prettier-ignore-end -->
@@ -48,17 +48,17 @@ A workaround for adding extra spaces can be to use other whitespace characters (
 
 ## How do I make different SVGs for dark mode and light mode?
 
-As of May 2022, you can now [specify theme context](https://github.blog/changelog/2022-05-19-specify-theme-context-for-images-in-markdown-beta/) using the `<picture>` and `<source>` elements as shown below. The dark mode version appears in the `srcset` of the `<source>` tag and the light mode version appears in the `src` of the `<img>` tag.
+As of May 2022, you can now [specify theme context](https://github.blog/changelog/2022-05-19-specify-theme-context-for-images-in-markdown-beta/ "specify theme context") using the `<picture>` and `<source>` elements as shown below. The dark mode version appears in the `srcset` of the `<source>` tag and the light mode version appears in the `src` of the `<img>` tag.
 
 <!-- prettier-ignore-start -->
 ```html
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com/?lines=You+are+using+dark+mode&color=FFFFFF" />
-  <img src="https://readme-typing-svg.demolab.com/?lines=You+are+using+light+mode&color=000000" />
+  <img src="https://readme-typing-svg.demolab.com/?lines=You+are+using+light+mode&color=000000" alt="Readme Typing SVG"/>
 </picture>
 ```
 <!-- prettier-ignore-end -->
 
 ## How do I create a Readme for my profile?
 
-A profile readme appears on your profile page when you create a repository with the same name as your username and add a `README.md` file to it. For example, the repository for the user [`DenverCoder1`](https://github.com/DenverCoder1) is located at [`DenverCoder1/DenverCoder1`](https://github.com/DenverCoder1/DenverCoder1).
+A profile readme appears on your profile page when you create a repository with the same name as your username and add a `README.md` file to it. For example, the repository for the user [`DenverCoder1`](https://github.com/DenverCoder1 "DenverCoder1") is located at [`DenverCoder1/DenverCoder1`](https://github.com/DenverCoder1/DenverCoder1 "DenverCoder1/DenverCoder1").
