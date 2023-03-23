@@ -125,8 +125,8 @@ For answers to common questions about this code of conduct, see the FAQ at
 [https://www.contributor-covenant.org/faq][faq]. Translations are available at
 [https://www.contributor-covenant.org/translations][translations].
 
-[homepage]: https://www.contributor-covenant.org
-[v2.1]: https://www.contributor-covenant.org/version/2/1/code_of_conduct.html
-[mozilla coc]: https://github.com/mozilla/diversity
-[faq]: https://www.contributor-covenant.org/faq
-[translations]: https://www.contributor-covenant.org/translations
+[homepage]: https://www.contributor-covenant.org "https://www.contributor-covenant.org"
+[v2.1]: https://www.contributor-covenant.org/version/2/1/code_of_conduct.html "https://www.contributor-covenant.org/version/2/1/code_of_conduct.html"
+[mozilla coc]: https://github.com/mozilla/diversity "https://github.com/mozilla/diversity"
+[faq]: https://www.contributor-covenant.org/faq "https://www.contributor-covenant.org/faq"
+[translations]: https://www.contributor-covenant.org/translations "https://www.contributor-covenant.org/translations"
