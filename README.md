@@ -49,6 +49,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![T.A.Vignesh](https://github.com/tavignesh.png?size=60)](https://github.com/tavignesh)
 [![Angelo Fallaria](https://github.com/angelofallars.png?size=60)](https://github.com/angelofallars)
 [![William J. Ghelfi](https://github.com/trumbitta.png?size=60)](https://github.com/trumbitta)
+[![Mano Bharathi M](https://avatars.githubusercontent.com/u/88357044?size=60)](https://github.com/ManoBharathi93)
 [![Shivam Yadav](https://github.com/sudoshivam.png?size=60)](https://github.com/sudoshivam)
 [![Pratik Pingale](https://github.com/PROxZIMA.png?size=60)](https://github.com/PROxZIMA)
 [![Vydr'Oz](https://github.com/VydrOz.png?size=60)](https://github.com/VydrOz)
