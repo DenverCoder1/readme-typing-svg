@@ -76,11 +76,12 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![majidtdeni666](https://github.com/majidtdeni666.png?size=60)](https://github.com/majidtdeni666 "majidtdeni666 on GitHub")
 [![GalexY727](https://github.com/galexy727.png?size=60)](https://github.com/galexy727 "GalexY727 on GitHub")
 [![HectorSaldes](https://github.com/HectorSaldes.png?size=60)](https://github.com/HectorSaldes "HectorSaldes on GitHub")
-[![Ash-codes18](https://github.com/Ash-codes18.png?size=60)](https://github.com/Ash-codes18 "HectorSaldes on GitHub")
-[![Maagnitude](https://github.com/Maagnitude.png?size=60)](https://github.com/Maagnitude "Ash-codes18 on GitHub")
-[![cracker911181](https://github.com/cracker911181.png?size=60)](https://github.com/cracker911181 "Maagnitude on GitHub")
+[![Ash-codes18](https://github.com/Ash-codes18.png?size=60)](https://github.com/Ash-codes18 "Ash-codes18 on GitHub")
+[![Maagnitude](https://github.com/Maagnitude.png?size=60)](https://github.com/Maagnitude "Maagnitude on GitHub")
+[![cracker911181](https://github.com/cracker911181.png?size=60)](https://github.com/cracker911181 "cracker911181 on GitHub")
 [![quiet-node](https://github.com/quiet-node.png?size=60)](https://github.com/quiet-node "quiet-node on GitHub")
 [![ProfCyberNaught](https://github.com/ProfCyberNaught.png?size=60)](https://github.com/ProfCyberNaught "ProfCyberNaught on GitHub")
+[![kaustubh43](https://github.com/kaustubh43.png?size=60)](https://github.com/kaustubh43 "kaustubh43 on GitHub")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
