@@ -64,7 +64,7 @@ Run the following command to check if your code is formatted properly:
 composer run format:check
 ```
 
-> **Note** You need to have [`prettier`](https://prettier.io/ "prettier") and the [prettier-php plugin](https://github.com/prettier/plugin-php "prettier-php plugin") installed globally in order to run this command.
+> **Note** You need to have [`prettier`](https://prettier.io/) and the [prettier-php plugin](https://github.com/prettier/plugin-php) installed globally in order to run this command.
 
 Run the following command to run the PHPUnit test script which will verify that the tested functionality is still working.
 
