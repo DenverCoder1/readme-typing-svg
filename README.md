@@ -22,7 +22,7 @@
 3. Adjust the width parameter (see below) to fit the full width of your text.
 
 ```md
-[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg "Typing SVG")
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
 ```
 
 4. Star the repo 😄
