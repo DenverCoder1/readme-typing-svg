@@ -2,7 +2,7 @@
 
 ## How do I include Readme Typing SVG in my Readme?
 
-Markdown files on GitHub support embedded images using Markdown or HTML. You can customize your SVG on the [demo site](https://readme-typing-svg.demolab.com/demo/ "demo site") and use the image source in either of the following ways:
+Markdown files on GitHub support embedded images using Markdown or HTML. You can customize your SVG on the [demo site](https://readme-typing-svg.demolab.com/demo/) and use the image source in either of the following ways:
 
 ### Markdown
 
