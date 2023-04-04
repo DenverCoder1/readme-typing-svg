@@ -8,8 +8,8 @@ Make sure your request is meaningful and you have tested the app locally before 
 
 #### Requirements
 
-- [PHP 7.4+](https://www.apachefriends.org/index.html "PHP 7.4+")
-- [Composer](https://getcomposer.org "Composer")
+- [PHP 7.4+](https://www.apachefriends.org/index.html)
+- [Composer](https://getcomposer.org)
 
 #### Linux
 
