@@ -23,7 +23,7 @@ sudo apt-get install composer
 
 Install PHP from [XAMPP](https://www.apachefriends.org/index.html) or [php.net](https://windows.php.net/download)
 
-[▶ How to install and run PHP using XAMPP (Windows)](https://www.youtube.com/watch?v=K-qXW9ymeYQ "How to install and run PHP using XAMPP (Windows)")
+[▶ How to install and run PHP using XAMPP (Windows)](https://www.youtube.com/watch?v=K-qXW9ymeYQ)
 
 [📥 Download Composer](https://getcomposer.org/download/)
 
