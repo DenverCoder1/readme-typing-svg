@@ -14,7 +14,7 @@ Markdown files on GitHub support embedded images using Markdown or HTML. You can
 
 <!-- prettier-ignore-start -->
 ```html
-<a href="https://git.io/typing-svg" title=""Readme Typing SVG><img src="https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text"/></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text"/></a>
 ```
 <!-- prettier-ignore-end -->
 
