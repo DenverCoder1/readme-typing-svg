@@ -25,7 +25,7 @@ Install PHP from [XAMPP](https://www.apachefriends.org/index.html) or [php.net](
 
 [▶ How to install and run PHP using XAMPP (Windows)](https://www.youtube.com/watch?v=K-qXW9ymeYQ "How to install and run PHP using XAMPP (Windows)")
 
-[📥 Download Composer](https://getcomposer.org/download/ "Download Composer")
+[📥 Download Composer](https://getcomposer.org/download/)
 
 ### Clone the repository
 
