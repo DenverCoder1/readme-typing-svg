@@ -61,4 +61,4 @@ As of May 2022, you can now [specify theme context](https://github.blog/changelo
 
 ## How do I create a Readme for my profile?
 
-A profile readme appears on your profile page when you create a repository with the same name as your username and add a `README.md` file to it. For example, the repository for the user [`DenverCoder1`](https://github.com/DenverCoder1 "DenverCoder1") is located at [`DenverCoder1/DenverCoder1`](https://github.com/DenverCoder1/DenverCoder1 "DenverCoder1/DenverCoder1").
+A profile readme appears on your profile page when you create a repository with the same name as your username and add a `README.md` file to it. For example, the repository for the user [`DenverCoder1`](https://github.com/DenverCoder1) is located at [`DenverCoder1/DenverCoder1`](https://github.com/DenverCoder1/DenverCoder1).
