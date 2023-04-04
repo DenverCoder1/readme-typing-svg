@@ -115,7 +115,7 @@ You can deploy the PHP files on any website server with PHP installed or as a He
 1. Sign in to **Heroku** or create a new account at <https://heroku.com>
 2. Click the "Deploy to Heroku" button below
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg "Deploy to Heroku")](https://heroku.com/deploy?template=https://github.com/DenverCoder1/readme-typing-svg/tree/main "Deploy to Heroku")
+[![Deploy](https://www.herokucdn.com/deploy/button.svg "Deploy to Heroku")](https://heroku.com/deploy?template=https://github.com/DenverCoder1/readme-typing-svg/tree/main)
 
 3. On the page that comes up, click **"Deploy App"** at the end of the form
 4. Once the app is deployed, click **"Manage App"** to go to the dashboard
