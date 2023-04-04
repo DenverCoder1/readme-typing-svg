@@ -140,7 +140,7 @@ Refer to [CONTRIBUTING.md](/CONTRIBUTING.md) for more details on contributing, i
 </p>
 <!-- markdownlint-enable MD033 -->
 
-[☕ Buy me a coffee](https://ko-fi.com/jlawrence "Buy me a coffee")
+[☕ Buy me a coffee](https://ko-fi.com/jlawrence)
 
 ---
 
