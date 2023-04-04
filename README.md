@@ -77,10 +77,10 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![HectorSaldes](https://github.com/HectorSaldes.png?size=60)](https://github.com/HectorSaldes)
 [![Ash-codes18](https://github.com/Ash-codes18.png?size=60)](https://github.com/Ash-codes18)
 [![Maagnitude](https://github.com/Maagnitude.png?size=60)](https://github.com/Maagnitude)
-[![kaustubh43](https://github.com/kaustubh43.png?size=60)](https://github.com/kaustubh43)
 [![cracker911181](https://github.com/cracker911181.png?size=60)](https://github.com/cracker911181)
 [![quiet-node](https://github.com/quiet-node.png?size=60)](https://github.com/quiet-node)
 [![ProfCyberNaught](https://github.com/ProfCyberNaught.png?size=60)](https://github.com/ProfCyberNaught)
+[![kaustubh43](https://github.com/kaustubh43.png?size=60)](https://github.com/kaustubh43)
 
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
