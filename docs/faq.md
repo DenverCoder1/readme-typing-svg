@@ -7,7 +7,7 @@ Markdown files on GitHub support embedded images using Markdown or HTML. You can
 ### Markdown
 
 ```md
-[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg "Typing SVG")
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
 ```
 
 ### HTML
