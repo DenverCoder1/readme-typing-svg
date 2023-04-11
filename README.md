@@ -82,6 +82,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![quiet-node](https://github.com/quiet-node.png?size=60)](https://github.com/quiet-node "quiet-node on GitHub")
 [![ProfCyberNaught](https://github.com/ProfCyberNaught.png?size=60)](https://github.com/ProfCyberNaught "ProfCyberNaught on GitHub")
 [![kaustubh43](https://github.com/kaustubh43.png?size=60)](https://github.com/kaustubh43 "kaustubh43 on GitHub")
+[![kaisunoo](https://github.com/kaisunoo.png?size=60)](https://github.com/kaisunoo "kaisunoo on GitHub")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
