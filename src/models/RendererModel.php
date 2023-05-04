@@ -49,6 +49,9 @@ class RendererModel
     /** @var bool $repeat Whether to loop around to the first line after the last */
     public $repeat;
 
+    /** @var string $separator Line separator */
+    public $separator;
+
     /** @var string $fontCSS CSS required for displaying the selected font */
     public $fontCSS;
 
@@ -70,6 +73,7 @@ class RendererModel
         "duration" => "5000",
         "pause" => "0",
         "repeat" => "true",
+        "separator" => ";",
     ];
 
     /**
@@ -81,6 +85,7 @@ class RendererModel
     public function __construct($template, $params)
     {
         $this->template = $template;
+        $this->separator = $params["separator"] ?? $this->DEFAULTS["separator"];
         $this->lines = $this->checkLines($params["lines"] ?? "");
         $this->font = $this->checkFont($params["font"] ?? $this->DEFAULTS["font"]);
         $this->weight = $this->checkNumberPositive($params["weight"] ?? $this->DEFAULTS["weight"], "Font weight");
@@ -109,8 +114,10 @@ class RendererModel
         if (!$lines) {
             throw new InvalidArgumentException("Lines parameter must be set.");
         }
-        $trimmed_lines = rtrim($lines, ";");
-        $exploded = explode(";", $trimmed_lines);
+        if (strlen($this->separator) === 1) {
+            $lines = rtrim($lines, $this->separator);
+        }
+        $exploded = explode($this->separator, $lines);
         // escape special characters to prevent code injection
         return array_map("htmlspecialchars", $exploded);
     }

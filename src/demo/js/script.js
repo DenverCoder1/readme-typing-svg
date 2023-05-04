@@ -14,6 +14,7 @@ let preview = {
     duration: "5000",
     pause: "0",
     repeat: "true",
+    separator: ";",
   },
   dummyText: [
     "The five boxing wizards jump quickly",
@@ -39,15 +40,16 @@ let preview = {
       return obj;
     }, {});
     const lineInputs = Array.from(document.querySelectorAll(".param[data-index]"));
-    // disable copy button if any line contains semicolon
-    if (lineInputs.some((el) => el.value.indexOf(";") >= 0)) {
-      return copyButtons.forEach((el) => (el.disabled = true));
+    // change separator if it's included in the lines
+    params.separator = ";";
+    while (lineInputs.some((el) => el.value.indexOf(params.separator) >= 0)) {
+      params.separator += ";";
     }
     // add lines to parameters
     params.lines = lineInputs
       .map((el) => el.value) // get values
       .filter((val) => val.length) // skip blank entries
-      .join(";"); // join lines with ';' delimiter
+      .join(params.separator); // join lines with separator
     // function to URI encode string but keep semicolons as ';' and spaces as '+'
     const encode = (str) => {
       return encodeURIComponent(str).replace(/%3B/g, ";").replace(/%20/g, "+");
@@ -95,8 +97,6 @@ let preview = {
     input.name = `line-${index}`;
     input.placeholder = "Enter text here";
     input.value = this.dummyText[(index - 1) % this.dummyText.length];
-    input.pattern = "^[^;]*$";
-    input.title = "Text cannot contain semicolons";
     input.dataset.index = index;
     // removal button
     const deleteButton = document.createElement("button");
