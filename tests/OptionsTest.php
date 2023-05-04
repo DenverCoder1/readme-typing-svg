@@ -316,4 +316,26 @@ final class OptionsTest extends TestCase
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals(false, $model->repeat);
     }
+
+    /**
+     * Test separator set to something other than ";"
+     */
+    public function testSeparator(): void
+    {
+        $params = [
+            "lines" => "text;text2",
+            "separator" => ";;",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(";;", $model->separator);
+        $this->assertEquals(["text;text2"], $model->lines);
+
+        $params = [
+            "lines" => "text;;tex;t2",
+            "separator" => ";;",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(";;", $model->separator);
+        $this->assertEquals(["text", "tex;t2"], $model->lines);
+    }
 }

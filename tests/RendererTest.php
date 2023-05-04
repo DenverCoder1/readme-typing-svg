@@ -280,4 +280,28 @@ final class RendererTest extends TestCase
         $this->assertStringContainsString("begin='0s'", $actualSVG);
         $this->assertStringNotContainsString(";d3.end", $actualSVG);
     }
+
+    /**
+     * Test separator set to something other than ";"
+     */
+    public function testSeparator(): void
+    {
+        $params = [
+            "lines" => implode(";;", [
+                "Full-stack web and app developer",
+                "Self-taught UI/UX Designer",
+                "10+ years of coding experience",
+                "Always learning new things",
+            ]),
+            "center" => "true",
+            "vCenter" => "true",
+            "width" => "380",
+            "height" => "50",
+            "separator" => ";;",
+        ];
+        $controller = new RendererController($params);
+        $expectedSVG = file_get_contents("tests/svg/test_normal.svg");
+        $actualSVG = $controller->render();
+        $this->compareNoCommentsOrWhitespace($expectedSVG, $actualSVG);
+    }
 }
