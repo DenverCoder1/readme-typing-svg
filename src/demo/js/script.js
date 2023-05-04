@@ -39,17 +39,33 @@ let preview = {
       obj[next.id] = value;
       return obj;
     }, {});
+    // add lines to parameters
     const lineInputs = Array.from(document.querySelectorAll(".param[data-index]"));
+    /**
+     * Merge an array of lines with a given separator
+     * @param {array<string>} lines The lines to merge
+     * @param {string} separator The separator to insert between lines
+     * @returns The merged lines parameter string
+     */
+    const mergeLines = function (lines, separator) {
+      return lines
+        .map((el) => el.value) // get values
+        .filter((val) => val.length) // skip blank entries
+        .join(separator); // join lines with separator
+    };
     // change separator if it's included in the lines
     params.separator = ";";
-    while (lineInputs.some((el) => el.value.indexOf(params.separator) >= 0)) {
-      params.separator += ";";
+    while (mergeLines(lineInputs, "").indexOf(params.separator) >= 0) {
+      // change last character to next ascii character as long as it's below 127, otherwise add a semicolon
+      if (params.separator.charCodeAt(params.separator.length - 1) < 127) {
+        params.separator =
+          params.separator.slice(0, -1) +
+          String.fromCharCode(params.separator.charCodeAt(params.separator.length - 1) + 1);
+      } else {
+        params.separator += ";";
+      }
     }
-    // add lines to parameters
-    params.lines = lineInputs
-      .map((el) => el.value) // get values
-      .filter((val) => val.length) // skip blank entries
-      .join(params.separator); // join lines with separator
+    params.lines = mergeLines(lineInputs, params.separator);
     // function to URI encode string but keep semicolons as ';' and spaces as '+'
     const encode = (str) => {
       return encodeURIComponent(str).replace(/%3B/g, ";").replace(/%20/g, "+");
