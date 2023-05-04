@@ -58,7 +58,9 @@ let preview = {
     while (mergeLines(lineInputs, "").indexOf(params.separator) >= 0) {
       // change last character to next ascii character as long as it's below 127, otherwise add a semicolon
       if (params.separator.charCodeAt(params.separator.length - 1) < 127) {
-        params.separator = params.separator.slice(0, -1) + String.fromCharCode(params.separator.charCodeAt(params.separator.length - 1) + 1);
+        params.separator =
+          params.separator.slice(0, -1) +
+          String.fromCharCode(params.separator.charCodeAt(params.separator.length - 1) + 1);
       } else {
         params.separator += ";";
       }
