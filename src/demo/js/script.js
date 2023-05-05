@@ -43,7 +43,7 @@ let preview = {
     const lineInputs = Array.from(document.querySelectorAll(".param[data-index]"));
     /**
      * Merge an array of lines with a given separator
-     * @param {array<string>} lines The lines to merge
+     * @param {array<HTMLInputElement>} lines The line input fields to merge
      * @param {string} separator The separator to insert between lines
      * @returns The merged lines parameter string
      */
@@ -56,8 +56,8 @@ let preview = {
     // change separator if it's included in the lines
     params.separator = ";";
     while (mergeLines(lineInputs, "").indexOf(params.separator) >= 0) {
-      // change last character to next ascii character as long as it's below 127, otherwise add a semicolon
-      if (params.separator.charCodeAt(params.separator.length - 1) < 127) {
+      // change last character to next ascii character (';' through '@'), otherwise add a semicolon
+      if (params.separator.charCodeAt(params.separator.length - 1) < '@'.charCodeAt(0)) {
         params.separator = params.separator.slice(0, -1) + String.fromCharCode(params.separator.charCodeAt(params.separator.length - 1) + 1);
       } else {
         params.separator += ";";
