@@ -57,8 +57,10 @@ let preview = {
     params.separator = ";";
     while (mergeLines(lineInputs, "").indexOf(params.separator) >= 0) {
       // change last character to next ascii character (';' through '@'), otherwise add a semicolon
-      if (params.separator.charCodeAt(params.separator.length - 1) < '@'.charCodeAt(0)) {
-        params.separator = params.separator.slice(0, -1) + String.fromCharCode(params.separator.charCodeAt(params.separator.length - 1) + 1);
+      if (params.separator.charCodeAt(params.separator.length - 1) < "@".charCodeAt(0)) {
+        params.separator =
+          params.separator.slice(0, -1) +
+          String.fromCharCode(params.separator.charCodeAt(params.separator.length - 1) + 1);
       } else {
         params.separator += ";";
       }
