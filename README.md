@@ -88,6 +88,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Purushottam Anand](https://github.com/creativepuru.png?size=60)](https://github.com/creativepuru "Purushottam Anand 🇮🇳 on GitHub ☕")
 [![Greg Chism](https://github.com/Gchism94.png?size=60)](https://github.com/Gchism94 "Greg Chism 🤘 on GitHub")
 [![turbomaster95](https://github.com/turbomaster95.png?size=60)](https://github.com/turbomaster95 "turbomaster95 🗿 🇮🇳 on GitHub ☕")
+[![K1rsN7](https://github.com/K1rsN7.png?size=60)](https://github.com/K1rsN7 "K1rsN7 on GitHub💪")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
