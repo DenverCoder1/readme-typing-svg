@@ -91,6 +91,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![K1rsN7](https://github.com/K1rsN7.png?size=60)](https://github.com/K1rsN7 "K1rsN7 on GitHub💪")
 [![codesbyahsen](https://github.com/codesbyahsen.png?size=60)](https://github.com/codesbyahsen "AHSEN ALEE on GitHub")
 [![Freddywhest](https://github.com/Freddywhest.png?size=60)](https://github.com/Freddywhest "Alfred Nti on GitHub")
+[![Shiro-cha](https://github.com/Shiro-cha.png?size=60)](https://github.com/Shiro-cha "Shiro Yukami on Github")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
