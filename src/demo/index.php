@@ -40,7 +40,7 @@
         <!-- View on GitHub -->
         <a class="github-button" href="https://github.com/denvercoder1/readme-typing-svg" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="View denvercoder1/readme-typing-svg on GitHub">View on GitHub</a>
         <!-- GitHub Star -->
-        <a class="github-button" href="https://github.com/denvercoder1/readme-typing-svg/stargazers" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star denvercoder1/readme-typing-svg on GitHub">Star</a>
+        <a class="github-button" href="https://github.com/denvercoder1/readme-typing-svg" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star denvercoder1/readme-typing-svg on GitHub">Star</a>
     </div>
 
     <div class="container">
