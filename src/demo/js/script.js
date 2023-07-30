@@ -27,15 +27,24 @@ let preview = {
   ],
   // update the preview
   update: function () {
+    // Find the text element in the SVG content
+    const img = document.querySelector(".output img");
+    const svgDoc = img.contentDocument; // Get the SVG document
+    const textElement = svgDoc.querySelector("text");
+
+    // Clear any existing blinking cursors before adding a new one
+    const existingBlinkingCursors = svgDoc.querySelectorAll(".blinking-cursor");
+    existingBlinkingCursors.forEach((cursor) => {
+      textElement.removeChild(cursor);
+    });
+
     const blinkingCursor = document.createElementNS(
       "http://www.w3.org/2000/svg",
       "tspan"
     );
     blinkingCursor.textContent = "|";
     blinkingCursor.setAttribute("class", "blinking-cursor");
-
-    // Find the text element in the SVG content
-    const textElement = svgDoc.querySelector("text");
+    textElement.appendChild(blinkingCursor);
 
     // Append the blinking cursor to the text element
     textElement.appendChild(blinkingCursor);
