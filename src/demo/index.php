@@ -121,9 +121,10 @@
             <div class="top">
                 <h2>Preview</h2>
 
-                <img alt="Readme Typing SVG" src="/?lines=The+five+boxing+wizards+jump+quickly" onload="this.classList.remove('loading')" onerror="this.classList.remove('loading')" />
-                <div class="loader">Loading...</div>
-
+                <div id="svg-container">
+                    <img alt="Readme Typing SVG" src="/?lines=The+five+boxing+wizards+jump+quickly" onload="loadSVG()" onerror="this.classList.remove('loading')" />
+                    <div class="loader">Loading...</div>
+                </div>
                 <label class="show-border">
                     <input type="checkbox">
                     Show border
@@ -168,6 +169,36 @@
     <a href="javascript:toggleTheme()" class="darkmode" title="toggle dark mode">
         <i class="<?= isset($_COOKIE["darkmode"]) && $_COOKIE["darkmode"] == "on" ? "gg-sun" : "gg-moon" ?>"></i>
     </a>
+
+    <script>
+  function loadSVG() {
+    const img = document.querySelector(".output img");
+    const container = document.getElementById("svg-container");
+    const loader = container.querySelector(".loader");
+
+    img.onload = function () {
+      container.classList.remove("loading");
+      loader.style.display = "none";
+
+      // Get the SVG document and text element
+      const svgDoc = img.contentDocument;
+      const textElement = svgDoc.querySelector("text");
+
+      // Create the blinking cursor element
+      const blinkingCursor = svgDoc.createElementNS("http://www.w3.org/2000/svg", "tspan");
+      blinkingCursor.textContent = "|";
+      blinkingCursor.setAttribute("class", "blinking-cursor");
+
+      // Append the blinking cursor to the text element
+      textElement.appendChild(blinkingCursor);
+    };
+
+    img.onerror = function () {
+      container.classList.remove("loading");
+      loader.style.display = "none";
+    };
+  }
+</script>
 </body>
 
 </html>
