@@ -27,9 +27,33 @@ let preview = {
   ],
   // update the preview
   update: function () {
+    // Find the text element in the SVG content
+    const img = document.querySelector(".output img");
+    const svgDoc = img.contentDocument; // Get the SVG document
+    const textElement = svgDoc.querySelector("text");
+
+    // Clear any existing blinking cursors before adding a new one
+    const existingBlinkingCursors = svgDoc.querySelectorAll(".blinking-cursor");
+    existingBlinkingCursors.forEach((cursor) => {
+      textElement.removeChild(cursor);
+    });
+
+    const blinkingCursor = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "tspan"
+    );
+    blinkingCursor.textContent = "|";
+    blinkingCursor.setAttribute("class", "blinking-cursor");
+    textElement.appendChild(blinkingCursor);
+
+    // Append the blinking cursor to the text element
+    textElement.appendChild(blinkingCursor);
+
     const copyButtons = document.querySelectorAll(".copy-button");
     // get parameter values from all .param elements
-    const params = Array.from(document.querySelectorAll(".param:not([data-index])")).reduce((acc, next) => {
+    const params = Array.from(
+      document.querySelectorAll(".param:not([data-index])")
+    ).reduce((acc, next) => {
       // copy accumulator into local object
       let obj = acc;
       let value = next.value;
@@ -40,7 +64,9 @@ let preview = {
       return obj;
     }, {});
     // add lines to parameters
-    const lineInputs = Array.from(document.querySelectorAll(".param[data-index]"));
+    const lineInputs = Array.from(
+      document.querySelectorAll(".param[data-index]")
+    );
     /**
      * Merge an array of lines with a given separator
      * @param {array<HTMLInputElement>} lines The line input fields to merge
@@ -57,10 +83,15 @@ let preview = {
     params.separator = ";";
     while (mergeLines(lineInputs, "").indexOf(params.separator) >= 0) {
       // change last character to next ascii character (';' through '@'), otherwise add a semicolon
-      if (params.separator.charCodeAt(params.separator.length - 1) < "@".charCodeAt(0)) {
+      if (
+        params.separator.charCodeAt(params.separator.length - 1) <
+        "@".charCodeAt(0)
+      ) {
         params.separator =
           params.separator.slice(0, -1) +
-          String.fromCharCode(params.separator.charCodeAt(params.separator.length - 1) + 1);
+          String.fromCharCode(
+            params.separator.charCodeAt(params.separator.length - 1) + 1
+          );
       } else {
         params.separator += ";";
       }
@@ -117,7 +148,10 @@ let preview = {
     // removal button
     const deleteButton = document.createElement("button");
     deleteButton.className = "delete-line btn";
-    deleteButton.setAttribute("onclick", "return preview.removeLine(this.dataset.index);");
+    deleteButton.setAttribute(
+      "onclick",
+      "return preview.removeLine(this.dataset.index);"
+    );
     deleteButton.innerHTML =
       '<svg stroke="currentColor" fill="currentColor"  stroke-width="0" viewBox="0 0 1024 1024" height="0.85em" width="0.85em" xmlns="http://www.w3.org/2000/svg"> <path d="M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z"> </path> </svg>';
     deleteButton.dataset.index = index;
@@ -224,10 +258,14 @@ document.addEventListener("keyup", () => preview.update(), false);
 document.addEventListener("click", () => preview.update(), false);
 
 // checkbox listener
-document.querySelector(".show-border input").addEventListener("change", function () {
-  const img = document.querySelector(".output img");
-  this.checked ? img.classList.add("outlined") : img.classList.remove("outlined");
-});
+document
+  .querySelector(".show-border input")
+  .addEventListener("change", function () {
+    const img = document.querySelector(".output img");
+    this.checked
+      ? img.classList.add("outlined")
+      : img.classList.remove("outlined");
+  });
 
 // when the page loads
 window.addEventListener(
