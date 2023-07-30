@@ -1,0 +1,22 @@
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blinking-cursor {
+  animation: blink 1s step-start infinite;
+  opacity: 1; /* Ensure the cursor is visible by default */
+}
+
+/* Show the cursor even when loading is stopped */
+.output img.loading + .blinking-cursor,
+.output img:not(.loading) + .blinking-cursor {
+  opacity: 1;
+}
