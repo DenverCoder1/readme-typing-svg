@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: php-actions/composer@master
+      - uses: php-actions/composer@9357db0fb3020086db5a9922354c8dc643927bcd
       - name: PHPUnit Tests
         uses: php-actions/phpunit@v3
         with:
