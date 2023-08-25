@@ -95,6 +95,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Shiro-cha](https://github.com/Shiro-cha.png?size=60)](https://github.com/Shiro-cha "Shiro Yukami on Github")
 [![Abid-Nafi](https://github.com/MohammedAbidNafi.png?size=60)](https://github.com/MohammedAbidNafi "Abid Nafi on Github")
 [![Srijan-Baniyal](https://github.com/Srijan-Baniyal.png?size=60)](https://github.com/Srijan-Baniyal "Srijan Baniyal on Github")
+[![CFCIfe](https://github.com/CFCIfe.png?size=60)](https://github.com/CFCIfe "CFCIFE on Github")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
