@@ -35,7 +35,9 @@ jobs:
         run: composer format:check 
 
       - name: Prettify code
-        run: composer format 
+        run: |
+          composer format 
+          git diff
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
