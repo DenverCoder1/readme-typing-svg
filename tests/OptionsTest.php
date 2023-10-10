@@ -338,4 +338,33 @@ final class OptionsTest extends TestCase
         $this->assertEquals(";;", $model->separator);
         $this->assertEquals(["text", "tex;t2"], $model->lines);
     }
+
+    /**
+     * Test random order
+     */
+    public function testRandom(): void
+    {
+        // not set
+        $params = [
+            "lines" => "text",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(false, $model->random);
+
+        // true
+        $params = [
+            "lines" => "text",
+            "random" => "true",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(true, $model->random);
+
+        // other / false
+        $params = [
+            "lines" => "text",
+            "random" => "other",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(false, $model->random);
+    }
 }

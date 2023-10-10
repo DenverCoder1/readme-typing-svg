@@ -304,4 +304,26 @@ final class RendererTest extends TestCase
         $actualSVG = $controller->render();
         $this->compareNoCommentsOrWhitespace($expectedSVG, $actualSVG);
     }
+
+    /**
+     * Test random
+     */
+    public function testRandom(): void
+    {
+        $lines = [
+            "Full-stack web and app developer",
+            "Self-taught UI/UX Designer",
+            "10+ years of coding experience",
+            "Always learning new things",
+        ];
+        $params = [
+            "lines" => implode(";", $lines),
+            "random" => "true",
+        ];
+        $controller = new RendererController($params);
+        $actualSVG = preg_replace("/\s+/", " ", $controller->render());
+        foreach ($lines as $line) {
+            $this->assertStringContainsString("> $line </textPath>", $actualSVG);
+        }
+    }
 }

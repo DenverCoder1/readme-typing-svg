@@ -52,6 +52,9 @@ class RendererModel
     /** @var string $separator Line separator */
     public $separator;
 
+    /** @var bool $random True = Sort lines in random order */
+    public $random;
+
     /** @var string $fontCSS CSS required for displaying the selected font */
     public $fontCSS;
 
@@ -74,6 +77,7 @@ class RendererModel
         "pause" => "0",
         "repeat" => "true",
         "separator" => ";",
+        "random" => "false",
     ];
 
     /**
@@ -86,6 +90,7 @@ class RendererModel
     {
         $this->template = $template;
         $this->separator = $params["separator"] ?? $this->DEFAULTS["separator"];
+        $this->random = $this->checkBoolean($params["random"] ?? $this->DEFAULTS["random"]);
         $this->lines = $this->checkLines($params["lines"] ?? "");
         $this->font = $this->checkFont($params["font"] ?? $this->DEFAULTS["font"]);
         $this->weight = $this->checkNumberPositive($params["weight"] ?? $this->DEFAULTS["weight"], "Font weight");
@@ -118,6 +123,9 @@ class RendererModel
             $lines = rtrim($lines, $this->separator);
         }
         $exploded = explode($this->separator, $lines);
+        if ($this->random) {
+            shuffle($exploded);
+        }
         // escape special characters to prevent code injection
         return array_map("htmlspecialchars", $exploded);
     }
