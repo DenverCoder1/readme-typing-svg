@@ -106,6 +106,12 @@
                     <option>false</option>
                 </select>
 
+                <label for="random">Random</label>
+                <select class="param" id="random" name="random" alt="Random">
+                    <option>false</option>
+                    <option>true</option>
+                </select>
+
                 <label for="dimensions" title="Width ✕ Height">Width ✕ Height</label>
                 <span id="dimensions">
                     <input class="param inline" type="number" id="width" name="width" alt="Width (px)" placeholder="435" value="435">
