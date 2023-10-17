@@ -100,6 +100,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![tshr-d-dragon](https://github.com/tshr-d-dragon.png?size=60)](https://github.com/tshr-d-dragon "Tushar Patil on Github")
 [![v-pun215](https://github.com/v-pun215.png?size=60)](https://github.com/v-pun215 "Vihaan Pundir on Github")
 [![DeveshYadav13](https://github.com/DeveshYadav13.png?size=60)](https://github.com/DeveshYadav13 "Devesh Yadav on Github")
+[![HauseMasterZ](https://github.com/HauseMasterZ.png?size=60)](https://github.com/HauseMasterZ "HauseMaster on Github")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
