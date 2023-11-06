@@ -49,7 +49,6 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![T.A.Vignesh](https://github.com/tavignesh.png?size=60)](https://github.com/tavignesh "T.A.Vignesh on GitHub")
 [![Angelo Fallaria](https://github.com/angelofallars.png?size=60)](https://github.com/angelofallars "Angelo Fallaria on GitHub")
 [![William J. Ghelfi](https://github.com/trumbitta.png?size=60)](https://github.com/trumbitta "William J. Ghelfi on GitHub")
-[![Mano Bharathi M](https://avatars.githubusercontent.com/u/88357044?size=60)](https://github.com/ManoBharathi93 "Mano Bharathi M on GitHub")
 [![Shivam Yadav](https://github.com/sudoshivam.png?size=60)](https://github.com/sudoshivam "Shivam Yadav on GitHub")
 [![Pratik Pingale](https://github.com/PROxZIMA.png?size=60)](https://github.com/PROxZIMA "Pratik Pingale on GitHub")
 [![Vydr'Oz](https://github.com/VydrOz.png?size=60)](https://github.com/VydrOz "Vydr'Oz on GitHub")
@@ -99,6 +98,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![DeveshYadav13](https://github.com/DeveshYadav13.png?size=60)](https://github.com/DeveshYadav13 "Devesh Yadav on Github")
 [![HauseMasterZ](https://github.com/HauseMasterZ.png?size=60)](https://github.com/HauseMasterZ "HauseMaster on Github")
 [![hyskoniho](https://github.com/hyskoniho.png?size=60)](https://github.com/hyskoniho "hyskoniho on Github")
+[![elvisisvan](https://github.com/elvisisvan.png?size=60)](https://github.com/elvisisvan "elvisisvan on Github")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
