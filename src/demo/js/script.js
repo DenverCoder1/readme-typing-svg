@@ -198,11 +198,10 @@ let clipboard = {
   copy: function (el) {
     const textToCopy = el.parentElement.querySelector("code").innerText;
     // copy
-    navigator.clipboard.writeText(textToCopy)
-    .then(()=>{
+    navigator.clipboard.writeText(textToCopy).then(() => {
       // set tooltip text
       el.title = "Copied!";
-    })
+    });
   },
 };
 
