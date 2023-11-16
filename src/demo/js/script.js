@@ -196,19 +196,13 @@ let preview = {
 
 let clipboard = {
   copy: function (el) {
-    // create input box to copy from
-    const input = document.createElement("input");
-    input.value = el.parentElement.querySelector("code").innerText;
-    document.body.appendChild(input);
-    // select all
-    input.select();
-    input.setSelectionRange(0, 99999);
+    const textToCopy = el.parentElement.querySelector("code").innerText;
     // copy
-    document.execCommand("copy");
-    // remove input box
-    input.parentElement.removeChild(input);
-    // set tooltip text
-    el.title = "Copied!";
+    navigator.clipboard.writeText(textToCopy)
+    .then(()=>{
+      // set tooltip text
+      el.title = "Copied!";
+    })
   },
 };
 
