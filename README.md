@@ -100,6 +100,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![HauseMasterZ](https://github.com/HauseMasterZ.png?size=60)](https://github.com/HauseMasterZ "HauseMaster on Github")
 [![hyskoniho](https://github.com/hyskoniho.png?size=60)](https://github.com/hyskoniho "hyskoniho on Github")
 [![elvisisvan](https://github.com/elvisisvan.png?size=60)](https://github.com/elvisisvan "elvisisvan on Github")
+[![elvisisvan](https://github.com/elvisisvan.png?size=60)](https://github.com/Nquenan "Nquenan on Github")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
