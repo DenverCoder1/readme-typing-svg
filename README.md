@@ -105,6 +105,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![mannysoft](https://github.com/mannysoft.png?size=60)](https://github.com/mannysoft "Manny Isles on Github")
 [![LinThit27](https://github.com/LinThit27.png?size=60)](https://github.com/LinThit27 "LinThit27 on Github")
 [![Elio-Aliaj](https://github.com/Elio-Aliaj.png?size=60)](https://github.com/Elio-Aliaj "Elio-Aliaj on Github")
+[![MehmetBozkir](https://github.com/MehmetBozkir.png?size=60)](https://github.com/MehmetBozkir "MehmetBozkir on Github")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
