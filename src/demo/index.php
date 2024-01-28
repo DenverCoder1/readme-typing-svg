@@ -94,6 +94,12 @@
                     <option>true</option>
                 </select>
 
+                <label for="rtl">Right-to-left script</label>
+                <select class="param" id="rtl" name="rtl" alt="Right-to-left script">
+                    <option>false</option>
+                    <option>true</option>
+                </select>
+
                 <label for="multiline">Multiline</label>
                 <select class="param" id="multiline" name="multiline" alt="Multiline">
                     <option value="false">Type sentences on one line</option>

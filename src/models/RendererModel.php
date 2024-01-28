@@ -37,6 +37,9 @@ class RendererModel
     /** @var int $height SVG height (px) */
     public $height;
 
+    /** @var int $rtl False = animation starts from the left, True = from the right */
+    public $rtl;
+
     /** @var bool $multiline True = wrap to new lines, False = retype on same line */
     public $multiline;
 
@@ -72,6 +75,7 @@ class RendererModel
         "vCenter" => "false",
         "width" => "400",
         "height" => "50",
+        "rtl" => "false",
         "multiline" => "false",
         "duration" => "5000",
         "pause" => "0",
@@ -101,6 +105,7 @@ class RendererModel
         $this->vCenter = $this->checkBoolean($params["vCenter"] ?? $this->DEFAULTS["vCenter"]);
         $this->width = $this->checkNumberPositive($params["width"] ?? $this->DEFAULTS["width"], "Width");
         $this->height = $this->checkNumberPositive($params["height"] ?? $this->DEFAULTS["height"], "Height");
+        $this->rtl = $this->checkBoolean($params["rtl"] ?? $this->DEFAULTS["rtl"], "rtl");
         $this->multiline = $this->checkBoolean($params["multiline"] ?? $this->DEFAULTS["multiline"]);
         $this->duration = $this->checkNumberPositive($params["duration"] ?? $this->DEFAULTS["duration"], "duration");
         $this->pause = $this->checkNumberNonNegative($params["pause"] ?? $this->DEFAULTS["pause"], "pause");
