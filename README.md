@@ -1,5 +1,4 @@
 <!-- markdownlint-disable MD033 MD041 -->
-
 <p align="center">
   <h3 align="center">⌨️ Readme Typing SVG</h3>
 </p>
@@ -32,7 +31,7 @@
 
 Here you can easily customize your Typing SVG with a live preview.
 
-[https://readme-typing-svg.demolab.com/demo/](https://readme-typing-svg.demolab.com/demo/)
+<https://readme-typing-svg.demolab.com/demo/>
 
 [![Demo Site](https://user-images.githubusercontent.com/20955511/183703055-42ec8754-d84c-414f-8132-a02974224aa1.gif "Demo Site")](https://readme-typing-svg.demolab.com/demo/)
 
@@ -113,23 +112,23 @@ Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issue
 
 ## 🔧 Options
 
-|   Parameter   |                                      Details                                      |  Type  |                Example                |
-| :------------: | :--------------------------------------------------------------------------------: | :-----: | :-----------------------------------: |
-|   `lines`   |         Text to display with lines separated by `;` and `+` for spaces         | string | `First+line;Second+line;Third+line` |
-|   `height`   |                Height of the output SVG in pixels (default: `50`)                | integer |          Any positive number          |
-|   `width`   |                Width of the output SVG in pixels (default: `400`)                | integer |          Any positive number          |
-|    `size`    |                        Font size in pixels (default: `20`)                        | integer |          Any positive number          |
-|    `font`    |                        Font family (default: `monospace`)                        | string |      Any font from Google Fonts      |
-|   `color`   |                       Color of the text (default: `36BCF7`)                       | string |  Hex code without # (eg.`F724A9`)  |
-| `background` |                Background color of the text (default: `00000000`)                | string |  Hex code without # (eg.`FEFF4C`)  |
-|   `center`   |     `true` to center text or `false` for left aligned (default: `false`)     | boolean |         `true` or `false`         |
-|  `vCenter`  |   `true` to center vertically or `false` (default) to align above the center   | boolean |         `true` or `false`         |
-|    `rtl`    | `true` to use right-to-left script (Arabic, Hebrew…) (default: `false`) | boolean |         `true` or `false`         |
-| `multiline` |   `true` to wrap lines or `false` to retype on one line (default: `false`)   | boolean |         `true` or `false`         |
-|  `duration`  |    Duration of the printing of a single line in milliseconds (default: `5000`)    | integer |          Any positive number          |
-|   `pause`   |        Duration of the pause between lines in milliseconds (default: `0`)        | integer |        Any non-negative number        |
-|   `repeat`   |    `true` to loop around to the first line after the last (default: `true`)    | boolean |         `true` or `false`         |
-| `separator` |        Separator used between lines in the lines parameter (default: `;`)        | string |      `;`, `;;`, `/`, etc.      |
+|  Parameter   |                                   Details                                   |  Type   |               Example               |
+| :----------: | :-------------------------------------------------------------------------: | :-----: | :---------------------------------: |
+|   `lines`    |       Text to display with lines separated by `;` and `+` for spaces        | string  | `First+line;Second+line;Third+line` |
+|   `height`   |             Height of the output SVG in pixels (default: `50`)              | integer |         Any positive number         |
+|   `width`    |             Width of the output SVG in pixels (default: `400`)              | integer |         Any positive number         |
+|    `size`    |                     Font size in pixels (default: `20`)                     | integer |         Any positive number         |
+|    `font`    |                     Font family (default: `monospace`)                      | string  |     Any font from Google Fonts      |
+|   `color`    |                    Color of the text (default: `36BCF7`)                    | string  |  Hex code without # (eg. `F724A9`)  |
+| `background` |             Background color of the text (default: `00000000`)              | string  |  Hex code without # (eg. `FEFF4C`)  |
+|   `center`   |    `true` to center text or `false` for left aligned (default: `false`)     | boolean |          `true` or `false`          |
+|  `vCenter`   |  `true` to center vertically or `false`(default) to align above the center  | boolean |          `true` or `false`          |
+|    `rtl`     |   `true` to use right-to-left script (Arabic, Hebrew…) (default: `false`)   | boolean |          `true` or `false`          |
+| `multiline`  |  `true` to wrap lines or `false` to retype on one line (default: `false`)   | boolean |          `true` or `false`          |
+|  `duration`  | Duration of the printing of a single line in milliseconds (default: `5000`) | integer |         Any positive number         |
+|   `pause`    |     Duration of the pause between lines in milliseconds (default: `0`)      | integer |       Any non-negative number       |
+|   `repeat`   |  `true` to loop around to the first line after the last (default: `true`)   | boolean |          `true` or `false`          |
+| `separator`  |     Separator used between lines in the lines parameter (default: `;`)      | string  |        `;`, `;;`, `/`, etc.         |
 
 ## 📤 Deploying it on your own
 
@@ -141,7 +140,7 @@ You can deploy the PHP files on any website server with PHP installed or as a He
 
 ### Step-by-step instructions for deploying to Heroku
 
-1. Sign in to **Heroku** or create a new account at [https://heroku.com](https://heroku.com)
+1. Sign in to **Heroku** or create a new account at <https://heroku.com>
 2. Click the "Deploy to Heroku" button below
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg "Deploy to Heroku")](https://heroku.com/deploy?template=https://github.com/DenverCoder1/readme-typing-svg/tree/main)
@@ -163,7 +162,6 @@ Refer to [CONTRIBUTING.md](/CONTRIBUTING.md) for more details on contributing, i
 💙 If you like this project, give it a ⭐ and share it with friends!
 
 <!-- markdownlint-disable MD033 -->
-
 <p align="left">
   <a href="https://www.youtube.com/channel/UCipSxT7a3rn81vGLw9lqRkg?sub_confirmation=1"><img alt="Youtube" title="Youtube" src="https://img.shields.io/badge/-Subscribe-red?style=for-the-badge&logo=youtube&logoColor=white"/></a>
   <a href="https://github.com/sponsors/DenverCoder1"><img alt="Sponsor with Github" title="Sponsor with Github" src="https://img.shields.io/badge/-Sponsor-ea4aaa?style=for-the-badge&logo=github&logoColor=white"/></a>
@@ -178,7 +176,7 @@ Made with ❤️ and PHP
 
 <!-- markdownlint-disable MD033 -->
 
-`<a href="https://heroku.com/"><img alt="Powered by Heroku" title="Powered by Heroku" src="https://img.shields.io/badge/-Powered%20by%20Heroku-6567a5?style=for-the-badge&logo=heroku&logoColor=white"/>``</a>`
+<a href="https://heroku.com/"><img alt="Powered by Heroku" title="Powered by Heroku" src="https://img.shields.io/badge/-Powered%20by%20Heroku-6567a5?style=for-the-badge&logo=heroku&logoColor=white"/></a>
 
 <!-- markdownlint-enable MD033 -->
 
