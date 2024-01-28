@@ -24,8 +24,14 @@
                 $freeze = !$repeat && $i == $lastLineIndex;
                 // empty line values
                 $yOffset = $height / 2;
-                $emptyLine = "m0,$yOffset h0";
-                $fullLine = "m0,$yOffset h$width";
+                // rtl true means writing from the right, else, behaves normally
+                if ($rtl === true) {
+                    $emptyLine = "m$width,$yOffset h0";
+                    $fullLine = "m$width,$yOffset h-$width";
+                } else {
+                    $emptyLine = "m0,$yOffset h0";
+                    $fullLine = "m0,$yOffset h$width";
+                }
                 $values = [$emptyLine, $fullLine, $fullLine, $freeze ? $fullLine : $emptyLine];
                 // keyTimes for the animation
                 $keyTimes = [
@@ -45,8 +51,13 @@
                 $lineHeight = $size + 5;
                 $lineDuration = ($duration + $pause) * $nextIndex;
                 $yOffset = $nextIndex * $lineHeight;
-                $emptyLine = "m0,$yOffset h0";
-                $fullLine = "m0,$yOffset h$width";
+                if ($rtl === true) {
+                    $emptyLine = "m$width,$yOffset h0";
+                    $fullLine = "m$width,$yOffset h-$width";
+                } else {
+                    $emptyLine = "m0,$yOffset h0";
+                    $fullLine = "m0,$yOffset h$width";
+                }
                 $values = [$emptyLine, $emptyLine, $fullLine, $fullLine];
                 $keyTimes = ["0", $i / $nextIndex, $i / $nextIndex + $duration / $lineDuration, "1"];
                 ?>
