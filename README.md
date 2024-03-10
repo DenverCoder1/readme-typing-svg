@@ -100,7 +100,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Nquenan](https://github.com/Nquenan.png?size=60)](https://github.com/Nquenan "Nquenan on Github")
 [![akhilnev](https://github.com/akhilnev.png?size=60)](https://github.com/akhilnev "Akhilesh Nevatia on Github")
 [![mannysoft](https://github.com/mannysoft.png?size=60)](https://github.com/mannysoft "Manny Isles on Github")
-[![LinThit27](https://github.com/LinThit27.png?size=60)](https://github.com/LinThit27 "LinThit27 on Github")
+[![LinThitHtwe](https://github.com/LinThitHtwe.png?size=60)](https://github.com/LinThitHtwe "LinThitHtwe on Github")
 [![Elio-Aliaj](https://github.com/Elio-Aliaj.png?size=60)](https://github.com/Elio-Aliaj "Elio-Aliaj on Github")
 [![MehmetBozkir](https://github.com/MehmetBozkir.png?size=60)](https://github.com/MehmetBozkir "MehmetBozkir on Github")
 [![presentformyfriends](https://github.com/presentformyfriends.png?size=60)](https://github.com/presentformyfriends "presentformyfriends on Github")
