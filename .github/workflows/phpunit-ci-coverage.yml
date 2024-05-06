@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: php-actions/composer@9357db0fb3020086db5a9922354c8dc643927bcd
       - name: PHPUnit Tests
-        uses: php-actions/phpunit@v3
+        uses: php-actions/phpunit@v4
         with:
           bootstrap: vendor/autoload.php
           configuration: tests/phpunit/phpunit.xml
