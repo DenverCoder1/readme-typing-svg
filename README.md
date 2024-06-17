@@ -114,6 +114,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![lucmsilva651](https://github.com/lucmsilva651.png?size=60)](https://github.com/lucmsilva651 "lucmsilva651 on Github")
 [![ashertenenbaum](https://github.com/ashertenenbaum.png?size=60)](https://github.com/ashertenenbaum "ashertenenbaum on Github")
 [![0dxplt](https://github.com/0dxplt.png?size=60)](https://github.com/0dxplt "0dxplt on Github")
+[![0dxplt](https://github.com/HerobrineTV.png?size=60)](https://github.com/HerobrineTV "HerobrineTV on Github")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
