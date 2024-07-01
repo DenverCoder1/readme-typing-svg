@@ -6,6 +6,7 @@ let preview = {
     color: "36BCF7",
     background: "00000000",
     size: "20",
+    letterSpacing: "normal",
     center: "false",
     vCenter: "false",
     multiline: "false",
@@ -230,5 +231,5 @@ window.addEventListener(
     preview.addLine();
     preview.update();
   },
-  false
+  false,
 );

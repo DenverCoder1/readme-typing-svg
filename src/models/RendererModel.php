@@ -58,6 +58,9 @@ class RendererModel
     /** @var string $fontCSS CSS required for displaying the selected font */
     public $fontCSS;
 
+    /** @var string $letterSpacing Font letter spacing */
+    public $letterSpacing;
+
     /** @var string $template Path to template file */
     public $template;
 
@@ -78,6 +81,7 @@ class RendererModel
         "repeat" => "true",
         "separator" => ";",
         "random" => "false",
+        "letterSpacing" => "normal",
     ];
 
     /**
@@ -106,6 +110,7 @@ class RendererModel
         $this->pause = $this->checkNumberNonNegative($params["pause"] ?? $this->DEFAULTS["pause"], "pause");
         $this->repeat = $this->checkBoolean($params["repeat"] ?? $this->DEFAULTS["repeat"]);
         $this->fontCSS = $this->fetchFontCSS($this->font, $this->weight, $params["lines"]);
+        $this->letterSpacing = $this->checkLetterSpacing($params["letterSpacing"] ?? $this->DEFAULTS["letterSpacing"]);
     }
 
     /**
@@ -223,5 +228,47 @@ class RendererModel
         }
         // font is not found
         return "";
+    }
+
+    /**
+     * Validate unit for size properties
+     *
+     * This method validates if the given unit is a valid CSS size unit.
+     * It supports various units such as px, em, rem, pt, pc, in, cm, mm,
+     * ex, ch, vh, vw, vmin, vmax, and percentages.
+     *
+     * @param string $unit Unit for validation
+     * @return bool True if valid, false otherwise
+     */
+    private function isValidUnit($unit)
+    {
+        return (bool) preg_match(
+            "/^(-?\\d+(\\.\\d+)?(px|em|rem|pt|pc|in|cm|mm|ex|ch|vh|vw|vmin|vmax|%))$/",
+            $unit
+        );
+    }
+
+    /**
+     * Validate font letter spacing
+     *
+     * This method validates the letter spacing property for fonts.
+     * It allows specific keywords (normal, inherit, initial, revert, revert-layer, unset)
+     * and valid CSS size units.
+     *
+     * @param string $letterSpacing Font letter spacing for validation
+     * @return string Validated font letter spacing
+     */
+    private function checkLetterSpacing($letterSpacing)
+    {
+        // List of valid keywords for letter-spacing
+        $keywords = "normal|inherit|initial|revert|revert-layer|unset";
+
+        // Check if the input matches one of the keywords or a valid unit
+        if (preg_match("/^($keywords)$/", $letterSpacing) || $this->isValidUnit($letterSpacing)) {
+            return $letterSpacing;
+        }
+
+        // Return the default letter spacing value if the input is invalid
+        return $this->DEFAULTS['letterSpacing'];
     }
 }

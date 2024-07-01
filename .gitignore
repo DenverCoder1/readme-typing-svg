@@ -1,3 +1,4 @@
 vendor/
 .vscode/
 .env
+.idea

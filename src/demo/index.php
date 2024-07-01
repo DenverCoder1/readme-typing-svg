@@ -70,6 +70,9 @@
                 <label for="size">Font size</label>
                 <input class="param" type="number" id="size" name="size" alt="Font size" placeholder="20" value="20">
 
+                <label for="letterSpacing">Font letter spacing</label>
+                <input class="param" type="text" id="letterSpacing" name="letterSpacing" alt="Font letter spacing" placeholder="normal" value="normal">
+
                 <label for="duration">Duration (ms per line)</label>
                 <input class="param" type="number" id="duration" name="duration" alt="Print duration (ms)" placeholder="5000" value="5000">
 
