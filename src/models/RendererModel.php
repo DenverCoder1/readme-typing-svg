@@ -242,10 +242,7 @@ class RendererModel
      */
     private function isValidUnit($unit)
     {
-        return (bool) preg_match(
-            "/^(-?\\d+(\\.\\d+)?(px|em|rem|pt|pc|in|cm|mm|ex|ch|vh|vw|vmin|vmax|%))$/",
-            $unit
-        );
+        return (bool) preg_match("/^(-?\\d+(\\.\\d+)?(px|em|rem|pt|pc|in|cm|mm|ex|ch|vh|vw|vmin|vmax|%))$/", $unit);
     }
 
     /**
@@ -269,6 +266,6 @@ class RendererModel
         }
 
         // Return the default letter spacing value if the input is invalid
-        return $this->DEFAULTS['letterSpacing'];
+        return $this->DEFAULTS["letterSpacing"];
     }
 }

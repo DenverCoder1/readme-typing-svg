@@ -343,10 +343,7 @@ final class RendererTest extends TestCase
         ];
         $controller = new RendererController($params);
         $actualSVG = preg_replace("/\s+/", " ", $controller->render());
-        $this->assertStringContainsString(
-            "letter-spacing='10px'",
-            $actualSVG
-        );
+        $this->assertStringContainsString("letter-spacing='10px'", $actualSVG);
         $this->assertStringNotContainsString("letter-spacing='normal'", $actualSVG);
     }
 }
