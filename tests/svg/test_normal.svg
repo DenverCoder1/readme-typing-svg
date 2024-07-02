@@ -13,7 +13,8 @@
     </path>
     <text font-family='"monospace", monospace' fill='#36BCF7' font-size='20'
         dominant-baseline='middle'
-        x='50%' text-anchor='middle'>
+        x='50%' text-anchor='middle'
+        letter-spacing='normal'>
         <textPath xlink:href='#path0'>
             Full-stack web and app developer
         </textPath>
@@ -27,7 +28,8 @@
     </path>
     <text font-family='"monospace", monospace' fill='#36BCF7' font-size='20'
         dominant-baseline='middle'
-        x='50%' text-anchor='middle'>
+        x='50%' text-anchor='middle'
+        letter-spacing='normal'>
         <textPath xlink:href='#path1'>
             Self-taught UI/UX Designer
         </textPath>
@@ -41,7 +43,8 @@
     </path>
     <text font-family='"monospace", monospace' fill='#36BCF7' font-size='20'
         dominant-baseline='middle'
-        x='50%' text-anchor='middle'>
+        x='50%' text-anchor='middle'
+        letter-spacing='normal'>
         <textPath xlink:href='#path2'>
             10+ years of coding experience
         </textPath>
@@ -55,7 +58,8 @@
     </path>
     <text font-family='"monospace", monospace' fill='#36BCF7' font-size='20'
         dominant-baseline='middle'
-        x='50%' text-anchor='middle'>
+        x='50%' text-anchor='middle'
+        letter-spacing='normal'>
         <textPath xlink:href='#path3'>
             Always learning new things
         </textPath>

@@ -367,4 +367,33 @@ final class OptionsTest extends TestCase
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals(false, $model->random);
     }
+
+    /**
+     * Test Letter Spacing
+     */
+    public function testLetterSpacing(): void
+    {
+        // default
+        $params = [
+            "lines" => "text",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals("normal", $model->letterSpacing);
+
+        // invalid
+        $params = [
+            "lines" => "text",
+            "letterSpacing" => "invalid",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals("normal", $model->letterSpacing);
+
+        // valid
+        $params = [
+            "lines" => "text",
+            "letterSpacing" => "10px",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals("10px", $model->letterSpacing);
+    }
 }
