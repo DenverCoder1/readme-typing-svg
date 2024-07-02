@@ -57,7 +57,8 @@
         </path>
     <text font-family='"<?= $font ?>", monospace' fill='<?= $color ?>' font-size='<?= $size ?>'
         dominant-baseline='<?= $vCenter ? "middle" : "auto" ?>'
-        x='<?= $center ? "50%" : "0%" ?>' text-anchor='<?= $center ? "middle" : "start" ?>'>
+        x='<?= $center ? "50%" : "0%" ?>' text-anchor='<?= $center ? "middle" : "start" ?>'
+        letter-spacing='<?= $letterSpacing ?>'>
         <textPath xlink:href='#path<?= $i ?>'>
             <?= $lines[$i] . "\n" ?>
         </textPath>

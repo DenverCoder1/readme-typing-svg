@@ -326,4 +326,24 @@ final class RendererTest extends TestCase
             $this->assertStringContainsString("> $line </textPath>", $actualSVG);
         }
     }
+
+    /**
+     * Test Letter Spacing
+     */
+    public function testLetterSpacing()
+    {
+        $params = [
+            "lines" => implode(";", [
+                "Full-stack web and app developer",
+                "Self-taught UI/UX Designer",
+                "10+ years of coding experience",
+                "Always learning new things",
+            ]),
+            "letterSpacing" => "10px",
+        ];
+        $controller = new RendererController($params);
+        $actualSVG = preg_replace("/\s+/", " ", $controller->render());
+        $this->assertStringContainsString("letter-spacing='10px'", $actualSVG);
+        $this->assertStringNotContainsString("letter-spacing='normal'", $actualSVG);
+    }
 }
