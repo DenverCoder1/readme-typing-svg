@@ -369,7 +369,7 @@ final class OptionsTest extends TestCase
     }
 
     /**
-     * Test Font Letter Spacing
+     * Test Letter Spacing
      */
     public function testLetterSpacing(): void
     {

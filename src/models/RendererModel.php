@@ -58,7 +58,7 @@ class RendererModel
     /** @var string $fontCSS CSS required for displaying the selected font */
     public $fontCSS;
 
-    /** @var string $letterSpacing Font letter spacing */
+    /** @var string $letterSpacing Letter spacing */
     public $letterSpacing;
 
     /** @var string $template Path to template file */
@@ -249,14 +249,14 @@ class RendererModel
     }
 
     /**
-     * Validate font letter spacing
+     * Validate letter spacing
      *
      * This method validates the letter spacing property for fonts.
      * It allows specific keywords (normal, inherit, initial, revert, revert-layer, unset)
      * and valid CSS size units.
      *
-     * @param string $letterSpacing Font letter spacing for validation
-     * @return string Validated font letter spacing
+     * @param string $letterSpacing Letter spacing for validation
+     * @return string Validated letter spacing
      */
     private function checkLetterSpacing($letterSpacing)
     {
