@@ -231,5 +231,5 @@ window.addEventListener(
     preview.addLine();
     preview.update();
   },
-  false
+  false,
 );
