@@ -12,9 +12,9 @@ class GoogleFontConverter
      *
      * @param string $font Google Font to fetch
      * @param string $text Text to display in font
-     * @return string|false The CSS for displaying the font
+     * @return string The CSS for displaying the font
      */
-    public static function fetchFontCSS($font, $weight, $text)
+    public static function fetchFontCSS($font, $weight, $text): string
     {
         $url =
             "https://fonts.googleapis.com/css2?" .
