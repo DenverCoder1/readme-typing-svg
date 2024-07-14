@@ -18,7 +18,8 @@
       "src/views/",
       "src/controllers/",
       "src/enums/",
-      "src/exceptions/"
+      "src/exceptions/",
+      "src/interfaces/"
     ]
   },
   "require": {

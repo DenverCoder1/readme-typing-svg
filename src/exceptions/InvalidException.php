@@ -1,10 +1,9 @@
 <?php
 
-class InvalidException extends InvalidArgumentException
+class InvalidException extends InvalidArgumentException implements IStatusException
 {
-    public function __construct(string $message = "", int $code = 0, ?Throwable $previous = null)
+    public function getStatus(): ResponseEnum
     {
-        parent::__construct($message, $code, $previous);
-        http_response_code(ResponseEnum::HTTP_UNPROCESSABLE_ENTITY->value);
+        return ResponseEnum::HTTP_UNPROCESSABLE_ENTITY;
     }
 }

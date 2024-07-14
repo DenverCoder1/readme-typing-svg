@@ -6,10 +6,10 @@
 class ErrorModel
 {
     /** @var string $message Text to display */
-    public $message;
+    public string $message;
 
     /** @var string $template Path to template file */
-    public $template;
+    public string $template;
 
     /**
      * Construct ErrorModel
@@ -17,7 +17,7 @@ class ErrorModel
      * @param string $message Text to display
      * @param string $template Path to the template file
      */
-    public function __construct($template, $message)
+    public function __construct(string $template, string $message)
     {
         $this->message = $message;
         $this->template = $template;

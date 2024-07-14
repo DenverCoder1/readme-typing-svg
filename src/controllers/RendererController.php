@@ -21,11 +21,16 @@ class RendererController
     private $params;
 
     /**
+     * @var ResponseEnum $statusCode Response status code
+     */
+    private ResponseEnum $statusCode = ResponseEnum::HTTP_OK;
+
+    /**
      * Construct RendererController
      *
      * @param array<string, string> $params request parameters
      */
-    public function __construct($params)
+    public function __construct(array $params)
     {
         $this->params = $params;
 
@@ -40,6 +45,11 @@ class RendererController
             $this->model = new ErrorModel(__DIR__ . "/../templates/error.php", $error->getMessage());
             // create error rendering view
             $this->view = new ErrorView($this->model);
+
+            // set status code
+            if ($error instanceof IStatusException) {
+                $this->statusCode = $error->getStatus();
+            }
         }
     }
 
@@ -89,6 +99,9 @@ class RendererController
 
         // set cache headers
         $this->setCacheRefreshDaily();
+
+        // set status code
+        http_response_code($this->statusCode->value);
     }
 
     /**
