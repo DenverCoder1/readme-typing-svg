@@ -132,7 +132,7 @@
 
                 <input type="button" class="btn" value="Reset" onclick="preview.reset();">
 
-                <input type="button" class="btn" value="Open Permalink" onclick="preview.openPermalink();">
+                <button type="button" class="copy-button btn tooltip" onclick="clipboard.copyPermalink(this);" onmouseout="tooltip.reset(this);" disabled>Copy Permalink</button>
             </form>
         </div>
 
@@ -154,7 +154,7 @@
                         <code></code>
                     </div>
 
-                    <button class="copy-button btn tooltip" onclick="clipboard.copy(this);" onmouseout="tooltip.reset(this);" disabled>
+                    <button class="copy-button btn tooltip" onclick="clipboard.copyCode(this);" onmouseout="tooltip.reset(this);" disabled>
                         Copy To Clipboard
                     </button>
                 </div>
@@ -165,7 +165,7 @@
                         <code></code>
                     </div>
 
-                    <button class="copy-button btn tooltip" onclick="clipboard.copy(this);" onmouseout="tooltip.reset(this);" disabled>
+                    <button class="copy-button btn tooltip" onclick="clipboard.copyCode(this);" onmouseout="tooltip.reset(this);" disabled>
                         Copy To Clipboard
                     </button>
                 </div>

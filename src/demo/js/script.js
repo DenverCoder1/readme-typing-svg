@@ -114,6 +114,8 @@ const preview = {
     htmlElement.innerText = html;
     // disable copy button if no lines are filled in
     copyButtons.forEach((el) => (el.disabled = !params.lines.length));
+    // update URL to match parameters
+    this.openPermalink();
   },
 
   /**
@@ -235,9 +237,10 @@ const preview = {
   },
 
   /**
-   * Save the current parameters to the URL
+   * Get the current parameters in a permalink format
+   * @returns {string} The permalink URL
    */
-  openPermalink() {
+  getPermalink() {
     // get parameters from form
     const params = this.getParams();
     // convert parameters to query string
@@ -247,8 +250,15 @@ const preview = {
       .filter((key) => params[key] !== defaultInputs[key]) // skip if default value
       .map((key) => this.customEncode(key) + "=" + this.customEncode(params[key])) // encode keys and values
       .join("&"); // join lines with '&' delimiter
-    // update URL
-    window.history.replaceState({}, "", query ? `?${query}` : window.location.pathname);
+    // return permalink
+    return `${window.location.origin}${window.location.pathname}` + (query ? `?${query}` : "");
+  },
+
+  /**
+   * Save the current parameters to the URL
+   */
+  openPermalink() {
+    window.history.replaceState({}, "", this.getPermalink());
   },
 
   /**
@@ -282,15 +292,31 @@ const preview = {
 
 const clipboard = {
   /**
-   * Copy the text from a code block to the clipboard
-   * @param {HTMLElement} el The element that was clicked
+   * Copy text to the clipboard
+   * @param {HTMLElement} btn The element that was clicked
+   * @param {String} text The text to copy
    */
-  copy(el) {
-    const textToCopy = el.parentElement.querySelector("code").innerText;
-    navigator.clipboard.writeText(textToCopy).then(() => {
+  copy(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
       // set tooltip text
-      el.title = "Copied!";
+      btn.title = "Copied!";
     });
+  },
+
+  /**
+   * Copy the text from a code block to the clipboard
+   * @param {HTMLElement} btn The element that was clicked
+   */
+  copyCode(btn) {
+    this.copy(btn, btn.parentElement.querySelector("code").innerText);
+  },
+
+  /**
+   * Copy the permalink to the clipboard
+   * @param {HTMLElement} btn The element that was clicked
+   */
+  copyPermalink(btn) {
+    this.copy(btn, preview.getPermalink());
   },
 };
 
