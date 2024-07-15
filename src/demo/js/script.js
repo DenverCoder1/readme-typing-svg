@@ -1,4 +1,4 @@
-let preview = {
+const preview = {
   // default values
   defaults: {
     font: "monospace",
@@ -18,6 +18,7 @@ let preview = {
     random: "false",
     separator: ";",
   },
+  // dummy text for default line values
   dummyText: [
     "The five boxing wizards jump quickly",
     "How vexingly quick daft zebras jump",
@@ -27,8 +28,11 @@ let preview = {
     "Glib jocks quiz nymph to vex dwarf",
     "Jived fox nymph grabs quick waltz",
   ],
-  // update the preview
-  update: function () {
+
+  /**
+   * Update the preview image and markdown
+   */
+  update() {
     const copyButtons = document.querySelectorAll(".copy-button");
     // get parameter values from all .param elements
     const params = Array.from(document.querySelectorAll(".param:not([data-index])")).reduce((acc, next) => {
@@ -99,7 +103,12 @@ let preview = {
     // disable copy button if no lines are filled in
     copyButtons.forEach((el) => (el.disabled = !params.lines.length));
   },
-  addLine: function () {
+  
+  /**
+   * Add a new line to the input fields
+   * @returns {false} Always returns false to prevent form submission
+   */
+  addLine() {
     const parent = document.querySelector(".lines");
     const index = parent.querySelectorAll("input").length + 1;
     // label
@@ -136,7 +145,13 @@ let preview = {
     this.update();
     return false;
   },
-  removeLine: function (index) {
+
+  /**
+   * Remove a line from the input fields
+   * @param {number} index The index of the line to remove
+   * @returns {false} Always returns false to prevent form submission
+   */
+  removeLine(index) {
     index = Number(index);
     const parent = document.querySelector(".lines");
     // remove all elements for given property
@@ -175,7 +190,12 @@ let preview = {
     this.update();
     return false;
   },
-  reset: function () {
+
+  /**
+   * Reset all input fields to default values
+   * @returns {false} Always returns false to prevent form submission
+   */
+  reset() {
     const overrides = {
       font: "Fira Code",
       pause: "1000",
@@ -196,10 +216,13 @@ let preview = {
   },
 };
 
-let clipboard = {
-  copy: function (el) {
+const clipboard = {
+  /**
+   * Copy the text from a code block to the clipboard
+   * @param {HTMLElement} el The element that was clicked
+   */
+  copy(el) {
     const textToCopy = el.parentElement.querySelector("code").innerText;
-    // copy
     navigator.clipboard.writeText(textToCopy).then(() => {
       // set tooltip text
       el.title = "Copied!";
@@ -207,8 +230,12 @@ let clipboard = {
   },
 };
 
-let tooltip = {
-  reset: function (el) {
+const tooltip = {
+  /**
+   * Reset the tooltip text
+   * @param {HTMLElement} el The element that was clicked
+   */
+  reset(el) {
     // remove tooltip text
     el.removeAttribute("title");
   },
