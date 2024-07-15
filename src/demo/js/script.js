@@ -103,7 +103,7 @@ const preview = {
     // disable copy button if no lines are filled in
     copyButtons.forEach((el) => (el.disabled = !params.lines.length));
   },
-  
+
   /**
    * Add a new line to the input fields
    * @returns {false} Always returns false to prevent form submission
