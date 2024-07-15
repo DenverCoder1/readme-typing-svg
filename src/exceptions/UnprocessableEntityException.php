@@ -1,6 +1,6 @@
 <?php
 
-class InvalidException extends InvalidArgumentException implements IStatusException
+class UnprocessableEntityException extends InvalidArgumentException implements IStatusException
 {
     public function getStatus(): ResponseEnum
     {

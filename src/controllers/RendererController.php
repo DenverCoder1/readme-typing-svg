@@ -47,9 +47,9 @@ class RendererController
             $this->view = new ErrorView($this->model);
 
             // set status code
-            if ($error instanceof IStatusException) {
-                $this->statusCode = $error->getStatus();
-            }
+            $this->statusCode = $error instanceof IStatusException
+                ? $error->getStatus()
+                : ResponseEnum::HTTP_INTERNAL_SERVER_ERROR;
         }
     }
 
