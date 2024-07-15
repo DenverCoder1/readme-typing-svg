@@ -49,7 +49,7 @@
             <form class="parameters three-columns lines">
                 <!-- Lines are added in JavaScript -->
             </form>
-            <button class="add-line btn" onclick="return preview.addLine();">+ Add line</button>
+            <button class="add-line btn" onclick="return preview.addLines(1);">+ Add line</button>
 
             <h2>Options</h2>
             <form class="parameters two-columns options">
@@ -131,6 +131,8 @@
                 </span>
 
                 <input type="button" class="btn" value="Reset" onclick="preview.reset();">
+
+                <button type="button" class="copy-button btn tooltip" onclick="clipboard.copyPermalink(this);" onmouseout="tooltip.reset(this);" disabled>Copy Permalink</button>
             </form>
         </div>
 
@@ -152,7 +154,7 @@
                         <code></code>
                     </div>
 
-                    <button class="copy-button btn tooltip" onclick="clipboard.copy(this);" onmouseout="tooltip.reset(this);" disabled>
+                    <button class="copy-button btn tooltip" onclick="clipboard.copyCode(this);" onmouseout="tooltip.reset(this);" disabled>
                         Copy To Clipboard
                     </button>
                 </div>
@@ -163,7 +165,7 @@
                         <code></code>
                     </div>
 
-                    <button class="copy-button btn tooltip" onclick="clipboard.copy(this);" onmouseout="tooltip.reset(this);" disabled>
+                    <button class="copy-button btn tooltip" onclick="clipboard.copyCode(this);" onmouseout="tooltip.reset(this);" disabled>
                         Copy To Clipboard
                     </button>
                 </div>
