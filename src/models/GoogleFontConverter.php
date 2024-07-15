@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * Class for converting Google Fonts to base 64 for displaying through SVG image
  */
@@ -10,9 +12,9 @@ class GoogleFontConverter
      *
      * @param string $font Google Font to fetch
      * @param string $text Text to display in font
-     * @return string|false The CSS for displaying the font
+     * @return string The CSS for displaying the font
      */
-    public static function fetchFontCSS($font, $weight, $text)
+    public static function fetchFontCSS($font, $weight, $text): string
     {
         $url =
             "https://fonts.googleapis.com/css2?" .
@@ -70,7 +72,7 @@ class GoogleFontConverter
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-        if ($httpCode != 200) {
+        if ($httpCode != ResponseEnum::HTTP_OK->value) {
             throw new InvalidArgumentException("Failed to fetch Google Font from API.");
         }
         return $response;

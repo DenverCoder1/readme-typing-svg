@@ -122,7 +122,7 @@ class RendererModel
     private function checkLines($lines)
     {
         if (!$lines) {
-            throw new InvalidArgumentException("Lines parameter must be set.");
+            throw new UnprocessableEntityException("Lines parameter must be set.");
         }
         if (strlen($this->separator) === 1) {
             $lines = rtrim($lines, $this->separator);
@@ -176,7 +176,7 @@ class RendererModel
     {
         $digits = intval(preg_replace("/[^0-9\-]/", "", $num));
         if ($digits <= 0) {
-            throw new InvalidArgumentException("$field must be a positive number.");
+            throw new UnprocessableEntityException("$field must be a positive number.");
         }
         return $digits;
     }
@@ -192,7 +192,7 @@ class RendererModel
     {
         $digits = intval(preg_replace("/[^0-9\-]/", "", $num));
         if ($digits < 0) {
-            throw new InvalidArgumentException("$field must be a non-negative number.");
+            throw new UnprocessableEntityException("$field must be a non-negative number.");
         }
         return $digits;
     }
