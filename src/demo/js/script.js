@@ -15,6 +15,7 @@ let preview = {
     duration: "5000",
     pause: "0",
     repeat: "true",
+    random: "false",
     separator: ";",
   },
   dummyText: [
