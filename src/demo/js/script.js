@@ -36,11 +36,11 @@ const preview = {
   ],
 
   /**
-   * Update the preview image and markdown
+   * Get the current parameters from the form
+   * @returns {object} The current parameters
    */
-  update() {
-    const copyButtons = document.querySelectorAll(".copy-button");
-    // get parameter values from all .param elements
+  getParams() {
+    // get all parameters from the .param fields
     const params = Array.from(document.querySelectorAll(".param:not([data-index])")).reduce((acc, next) => {
       // copy accumulator into local object
       let obj = acc;
@@ -78,6 +78,16 @@ const preview = {
       }
     }
     params.lines = mergeLines(lineInputs, params.separator);
+    return params;
+  },
+
+  /**
+   * Update the preview image and markdown
+   */
+  update() {
+    const copyButtons = document.querySelectorAll(".copy-button");
+    // get parameter values
+    const params = this.getParams();
     // convert parameters to query string
     const query = Object.keys(params)
       .filter((key) => params[key] !== this.defaults[key]) // skip if default value
@@ -104,8 +114,6 @@ const preview = {
     htmlElement.innerText = html;
     // disable copy button if no lines are filled in
     copyButtons.forEach((el) => (el.disabled = !params.lines.length));
-    // save the current lines in the url
-    this.saveParams(params);
   },
 
   /**
@@ -228,9 +236,10 @@ const preview = {
 
   /**
    * Save the current parameters to the URL
-   * @param {object} params The parameters to save
    */
-  saveParams(params) {
+  openPermalink() {
+    // get parameters from form
+    const params = this.getParams();
     // convert parameters to query string
     const defaultInputs = { ...this.defaults, ...this.overrides };
     defaultInputs.lines = this.dummyText[0];

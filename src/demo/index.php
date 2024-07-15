@@ -131,6 +131,8 @@
                 </span>
 
                 <input type="button" class="btn" value="Reset" onclick="preview.reset();">
+
+                <input type="button" class="btn" value="Open Permalink" onclick="preview.openPermalink();">
             </form>
         </div>
 
