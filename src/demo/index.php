@@ -49,7 +49,7 @@
             <form class="parameters three-columns lines">
                 <!-- Lines are added in JavaScript -->
             </form>
-            <button class="add-line btn" onclick="return preview.addLine();">+ Add line</button>
+            <button class="add-line btn" onclick="return preview.addLines(1);">+ Add line</button>
 
             <h2>Options</h2>
             <form class="parameters two-columns options">
