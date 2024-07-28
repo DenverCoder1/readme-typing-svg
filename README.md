@@ -117,6 +117,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![HerobrineTV](https://github.com/HerobrineTV.png?size=60)](https://github.com/HerobrineTV "HerobrineTV on Github")
 [![Borketh](https://github.com/Borketh.png?size=60)](https://github.com/Borketh "Borketh on Github")
 [![Jafeth Yahuma](https://github.com/Callmeproteus.png?size=60)](https://github.com/Callmeproteus "Callmeproteus on GitHub")
+[![João Pedro](https://github.com/JotaP07.png?size=60)](https://github.com/JotaP07 "JP on GitHub")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
