@@ -80,7 +80,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![kaisunoo](https://github.com/kaisunoo.png?size=60)](https://github.com/kaisunoo "kaisunoo on GitHub")
 [![meyer-pidiache](https://github.com/meyer-pidiache.png?size=60)](https://github.com/meyer-pidiache "Meyer Pidiache on GitHub")
 [![jeremiahseun](https://github.com/jeremiahseun.png?size=60)](https://github.com/jeremiahseun "Jeremiah Erinola on GitHub")
-[![Purushottam Anand](https://github.com/creativepuru.png?size=60)](https://github.com/creativepuru "Purushottam Anand 🇮🇳 on GitHub ☕")
+[![Anand Purushottam](https://github.com/creativepurus.png?size=60)](https://github.com/creativepurus "Anand Purushottam 🇮🇳 on GitHub ☕")
 [![Greg Chism](https://github.com/Gchism94.png?size=60)](https://github.com/Gchism94 "Greg Chism 🤘 on GitHub")
 [![turbomaster95](https://github.com/turbomaster95.png?size=60)](https://github.com/turbomaster95 "turbomaster95 🗿 🇮🇳 on GitHub ☕")
 [![K1rsN7](https://github.com/K1rsN7.png?size=60)](https://github.com/K1rsN7 "K1rsN7 on GitHub💪")
