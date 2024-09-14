@@ -122,6 +122,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![caesar013](https://github.com/caesar013.png?size=60)](https://github.com/caesar013 "caesar013 on Github")
 [![amir78729](https://github.com/amir78729.png?size=60)](https://github.com/amir78729 "Amir on Github")
 [![AJsuper007](https://github.com/AJsuper007.png?size=60)](https://github.com/AJsuper007 "AJsuper007 on Github")
+[![ABAN26](https://github.com/ABAN26.png?size=60)](https://github.com/ABAN26/AinaraAndreoli "ABAN26 on Github")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
