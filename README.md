@@ -126,6 +126,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Soham More](https://github.com/SohamMore100.png?size=60)](https://github.com/SohamMore100 "Soham More on GitHub")
 [![Yogi Hariyani](https://github.com/yobro7292.png?size=60)](https://github.com/Yobro7292 "Yogi Hariyani on GitHub")
 [![Antônio Nascimento](https://github.com/Ninja1375.png?size=60)](https://github.com/Ninja1375 "Antônio Nascimento on GitHub")
+[![Ishaan Rastogi](https://github.com/TridentifyIshaan.png?size=60)](https://github.com/TridentifyIshaan "Tridentify Ishaan on GitHub")
 [![Eligijus Ciza](https://github.com/krimmyy.png?size=60)](https://github.com/krimmyy "Eligijus Ciza on GitHub")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
