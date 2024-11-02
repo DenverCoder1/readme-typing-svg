@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD033 MD041 -->
+https://github.com/DenverCoder1/readme-typing-svg.git<!-- Bmwmd$LHk0cTSTmarkdownlint-disable MD033 MD041 -->
 <p align="center">
   <h3 align="center">⌨️ Readme Typing SVG</h3>
 </p>
