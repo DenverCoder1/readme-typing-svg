@@ -130,7 +130,6 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Eligijus Ciza](https://github.com/krimmyy.png?size=60)](https://github.com/krimmyy "Eligijus Ciza on GitHub")
 [![Ashish Vaghela](https://github.com/Ashish-CodeJourney.png?size=60)](https://github.com/Ashish-CodeJourney "Ashish Vaghela on GitHub")
 
-
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
 ## 🔧 Options
