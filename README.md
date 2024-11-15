@@ -40,6 +40,7 @@ Here you can easily customize your Typing SVG with a live preview.
 Below are links to profiles where you can see Readme Typing SVGs in action!
 
 [![Jonah Lawrence](https://github.com/DenverCoder1.png?size=60)](https://github.com/DenverCoder1 "Jonah Lawrence on GitHub")
+[![Austin Musuya](https://github.com/AustinMusuya.png?size=60)](https://github.com/AustinMusuya "Austin Musuya on GitHub")
 [![Jini by Rentalz.com](https://i.imgur.com/TtuoKCs.png)](https://jini.rentalz.com/ "Jini by Rentalz.com")
 [![Waren Gonzaga](https://github.com/warengonzaga.png?size=60)](https://github.com/warengonzaga "Waren Gonzaga on GitHub")
 [![8BitJonny](https://github.com/8BitJonny.png?size=60)](https://github.com/8BitJonny "8BitJonny on GitHub")
