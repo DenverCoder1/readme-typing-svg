@@ -128,6 +128,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Snoopy1866](https://github.com/Snoopy1866.png?size=60)](https://github.com/Snoopy1866 "Snoopy1866 on GitHub")
 [![Sarthak Krishak](https://github.com/SarthakKrishak.png?size=60)](https://github.com/SarthakKrishak "Sarthak Krishak on GitHub")
 [![Austin Musuya](https://github.com/AustinMusuya.png?size=60)](https://github.com/AustinMusuya "Austin Musuya on GitHub")
+[![Austin Musuya](https://github.com/EngineerRohit01.png?size=60)](https://github.com/EngineerRohit01 "Rohit Shrivastava on GitHub")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
