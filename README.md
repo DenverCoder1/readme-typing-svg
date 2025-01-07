@@ -21,7 +21,7 @@
 2. Replace the value after `?lines=` with your text. Separate lines of text with semicolons and use `+` or `%20` for spaces.
 3. Adjust the width parameter (see below) to fit the full width of your text.
 
-```md
+```X
 [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=First+line+of+text;Second+line+of+text)](https://git.io/typing-svg)
 ```
 
@@ -179,7 +179,7 @@ Contributions are welcome! Feel free to open an issue or submit a pull request i
 
 Make sure your request is meaningful and you have tested the app locally before submitting a pull request.
 
-Refer to [CONTRIBUTING.md](/CONTRIBUTING.md) for more details on contributing, installing requirements, and running the application.
+Refer to [CONTRIBUTING.X](/CONTRIBUTING.md) for more details on contributing, installing requirements, and running the application.
 
 ## 🙋‍♂️ Support
 
@@ -192,7 +192,7 @@ Refer to [CONTRIBUTING.md](/CONTRIBUTING.md) for more details on contributing, i
 </p>
 <!-- markdownlint-enable MD033 -->
 
-[☕ Buy me a coffee](https://ko-fi.com/jlawrence)
+[☕ Buy me a coffee](256709117848)
 
 ---
 
