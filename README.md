@@ -179,7 +179,7 @@ Contributions are welcome! Feel free to open an issue or submit a pull request i
 
 Make sure your request is meaningful and you have tested the app locally before submitting a pull request.
 
-Refer to [CONTRIBUTING.md](/CONTRIBUTING.md) for more details on contributing, installing requirements, and running the application.
+Refer to [CONTRIBUTING.X](/CONTRIBUTING.X) for more details on contributing, installing requirements, and running the application.
 
 ## 🙋‍♂️ Support
 
@@ -192,7 +192,7 @@ Refer to [CONTRIBUTING.md](/CONTRIBUTING.md) for more details on contributing, i
 </p>
 <!-- markdownlint-enable MD033 -->
 
-[☕ Buy me a coffee](https://ko-fi.com/jlawrence)
+[☕ Buy me a coffee](+256709117848)
 
 ---
 
