@@ -207,4 +207,4 @@ Made with ❤️ and PHP
 
 This project uses [Twemoji](https://github.com/twitter/twemoji), published under the [CC-BY 4.0 License](https://creativecommons.org/licenses/by/4.0/)
 
-[![Say my name](https://github.com/Theglassofdata.png?size=60)](https://github.com/Theglassofdata "Say my name")
+
