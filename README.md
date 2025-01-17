@@ -132,6 +132,8 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Sandeep Prasad](https://github.com/Sandeep-Petwal.png?size=60)](https://github.com/sandeep-Petwal "Sandeep Prasad on GitHub")
 [![Saad Hussain](https://github.com/saadhusayn.png?size=60)](https://github.com/saadhusayn "Saad Hussain on Github")
 [![Aditya Singh](https://github.com/EchoSingh.png?size=60)](https://github.com/EchoSingh "Aditya Singh on Github")
+[![Muhammad Noraeii](https://github.com/Muhammad-Noraeii.png?size=60)](https://github.com/Muhammad-Noraeii "Muhammad Noraeii on Github")
+
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
