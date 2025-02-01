@@ -208,5 +208,3 @@ Made with ❤️ and PHP
 <!-- markdownlint-enable MD033 -->
 
 This project uses [Twemoji](https://github.com/twitter/twemoji), published under the [CC-BY 4.0 License](https://creativecommons.org/licenses/by/4.0/)
-
-
