@@ -131,6 +131,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Rohit](https://github.com/EngineerRohit01.png?size=60)](https://github.com/EngineerRohit01 "Rohit on GitHub")
 [![Sandeep Prasad](https://github.com/Sandeep-Petwal.png?size=60)](https://github.com/sandeep-Petwal "Sandeep Prasad on GitHub")
 [![Saad Hussain](https://github.com/saadhusayn.png?size=60)](https://github.com/saadhusayn "Saad Hussain on Github")
+[![Rahul Raj](https://github.com/Theglassofdata.png?size=60)](https://github.com/Theglassofdata "Rahul Raj")
 [![Aditya Singh](https://github.com/EchoSingh.png?size=60)](https://github.com/EchoSingh "Aditya Singh on Github")
 [![Harry Skerritt](https://github.com/user-attachments/assets/392d404f-b0af-4fab-b4f7-120a36ffc3f4)](https://github.com/Harry-Skerritt "Harry-Skerritt on Github")
 
