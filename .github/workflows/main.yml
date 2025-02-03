@@ -1,0 +1,3 @@
+permissions:
+  id-token: write
+  attestations: write
