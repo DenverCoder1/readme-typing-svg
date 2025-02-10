@@ -94,15 +94,15 @@
                 <input class="param jscolor jscolor-active" id="background" name="background" alt="Background color" data-jscolor="{ format: 'hexa' }" value="#00000000">
 
                 <label for="center">Horizontally Centered</label>
-                <select class="param" id="center" name="center" alt="Horizontally Centered" translate="no">
-                    <option>false</option>
-                    <option>true</option>
+                <select class="param" id="center" name="center" alt="Horizontally Centered">
+                    <option value="false">false</option>
+                    <option value="true">true</option>
                 </select>
 
                 <label for="vCenter">Vertically Centered</label>
-                <select class="param" id="vCenter" name="vCenter" alt="Vertically Centered" translate="no">
-                    <option>false</option>
-                    <option>true</option>
+                <select class="param" id="vCenter" name="vCenter" alt="Vertically Centered">
+                    <option value="false">false</option>
+                    <option value="true">true</option>
                 </select>
 
                 <label for="multiline">Multiline</label>
@@ -112,15 +112,15 @@
                 </select>
 
                 <label for="repeat">Repeat</label>
-                <select class="param" id="repeat" name="repeat" alt="Repeat" translate="no">
-                    <option>true</option>
-                    <option>false</option>
+                <select class="param" id="repeat" name="repeat" alt="Repeat">
+                    <option value="true">true</option>
+                    <option value="false">false</option>
                 </select>
 
                 <label for="random">Random</label>
-                <select class="param" id="random" name="random" alt="Random" translate="no">
-                    <option>false</option>
-                    <option>true</option>
+                <select class="param" id="random" name="random" alt="Random">
+                    <option value="false">false</option>
+                    <option value="true">true</option>
                 </select>
 
                 <label for="dimensions" title="Width ✕ Height">Width ✕ Height</label>
