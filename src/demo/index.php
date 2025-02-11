@@ -95,14 +95,14 @@
 
                 <label for="center">Horizontally Centered</label>
                 <select class="param" id="center" name="center" alt="Horizontally Centered">
-                    <option>false</option>
-                    <option>true</option>
+                    <option value="false">false</option>
+                    <option value="true">true</option>
                 </select>
 
                 <label for="vCenter">Vertically Centered</label>
                 <select class="param" id="vCenter" name="vCenter" alt="Vertically Centered">
-                    <option>false</option>
-                    <option>true</option>
+                    <option value="false">false</option>
+                    <option value="true">true</option>
                 </select>
 
                 <label for="multiline">Multiline</label>
@@ -113,14 +113,14 @@
 
                 <label for="repeat">Repeat</label>
                 <select class="param" id="repeat" name="repeat" alt="Repeat">
-                    <option>true</option>
-                    <option>false</option>
+                    <option value="true">true</option>
+                    <option value="false">false</option>
                 </select>
 
                 <label for="random">Random</label>
                 <select class="param" id="random" name="random" alt="Random">
-                    <option>false</option>
-                    <option>true</option>
+                    <option value="false">false</option>
+                    <option value="true">true</option>
                 </select>
 
                 <label for="dimensions" title="Width ✕ Height">Width ✕ Height</label>
