@@ -136,6 +136,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Muhammad Noraeii](https://github.com/Muhammad-Noraeii.png?size=60)](https://github.com/Muhammad-Noraeii "Muhammad Noraeii on Github")
 [![Harry Skerritt](https://github.com/user-attachments/assets/392d404f-b0af-4fab-b4f7-120a36ffc3f4)](https://github.com/Harry-Skerritt "Harry-Skerritt on Github")
 [![Madhurima Rawat](https://github.com/madhurimarawat.png?size=60)](https://github.com/madhurimarawat "Madhurima Rawat on Github")
+[![wfxey](https://github.com/wfxey.png?size=60)](https://github.com/wfxey "wfxey on Github")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
