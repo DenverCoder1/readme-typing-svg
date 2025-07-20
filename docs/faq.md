@@ -48,7 +48,11 @@ A workaround for adding extra spaces can be to use other whitespace characters (
 
 ## How do I make different SVGs for dark mode and light mode?
 
-As of May 2022, you can now [specify theme context](https://github.blog/changelog/2022-05-19-specify-theme-context-for-images-in-markdown-beta/) using the `<picture>` and `<source>` elements as shown below. The dark mode version appears in the `srcset` of the `<source>` tag and the light mode version appears in the `src` of the `<img>` tag.
+As of May 2022, you can now [specify theme context](https://github.blog/changelog/2022-05-19-specify-theme-context-for-images-in-markdown-beta/) using the `<picture>` and `<source>` elements as shown below. The dark mode version appears in the `srcset` of the `<source>` tag and the light mode version appears in the `src` of the `<img>` tag. 
+
+
+
+Everthing ok
 
 <!-- prettier-ignore-start -->
 ```html
