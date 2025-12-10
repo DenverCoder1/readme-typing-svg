@@ -19,7 +19,8 @@
     <title>Readme Typing SVG - Demo Site</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
-    <link href="https://css.gg/css?=|moon|sun" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/css.gg/icons/css/moon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/css.gg/icons/css/sun.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/loader.css">
     <link rel="stylesheet" href="./css/toggle-dark.css">
