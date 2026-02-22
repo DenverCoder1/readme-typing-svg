@@ -38,13 +38,6 @@ Install PHP from [XAMPP](https://www.apachefriends.org/index.html) or [php.net](
 
 [📥 Download Composer](https://getcomposer.org/download/)
 
-#### macOS
-
-```bash
-brew install php
-brew install composer
-```
-
 ### Clone the repository
 
 ```
