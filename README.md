@@ -139,6 +139,9 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![wfxey](https://github.com/wfxey.png?size=60)](https://github.com/wfxey "wfxey on Github")
 [![Lixiao Zhu](https://github.com/zhulixiao.png?size=60)](https://github.com/zhulixiao "Lixiao Zhu on Github")
 [![Ahmed Nassar](https://github.com/AhmedNassar7.png?size=60)](https://github.com/AhmedNassar7 "Ahmed Nassar on Github")
+<a href="https://github.com/realmg51-cpu">
+  <img src="https://github.com/realmg51-cpu.png?size=60" width="60" height="60" style="border-radius: 50%;">
+</a>
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
