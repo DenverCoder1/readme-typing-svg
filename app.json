@@ -1,12 +1,92 @@
-{
-  "name": "Readme Typing SVG",
-  "description": "⚡ Dynamically generated, customizable SVG that gives the appearance of typing and deleting text. Typing SVGs can be used as a bio on your Github profile readme or repository.",
-  "repository": "https://github.com/DenverCoder1/readme-typing-svg/",
-  "keywords": ["github", "dynamic", "readme", "typing", "svg", "profile"],
-  "formation": {
-    "web": {
-      "quantity": 1,
-      "size": "basic"
+[
+    {
+        "key": "dbln",
+        "value": "%7B%2261582212549714%22%3A%22NGjowxYt%22%7D",
+        "domain": "facebook.com",
+        "path": "/login/device-based/",
+        "hostOnly": false,
+        "creation": "2026-04-10T07:01:51.438Z",
+        "lastAccessed": "2026-04-10T07:01:51.471Z"
+    },
+    {
+        "key": "dpr",
+        "value": "2.371968984603882",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-04-10T07:01:51.474Z",
+        "lastAccessed": "2026-04-10T07:01:51.474Z"
+    },
+    {
+        "key": "sb",
+        "value": "90m6adMsbcLpbyq6FW2JqV6-",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-04-10T07:01:51.474Z",
+        "lastAccessed": "2026-04-10T07:01:51.474Z"
+    },
+    {
+        "key": "datr",
+        "value": "CGPBacirG1fL3k1sDDgEEqM0",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-04-10T07:01:51.474Z",
+        "lastAccessed": "2026-04-10T07:01:51.474Z"
+    },
+    {
+        "key": "ps_l",
+        "value": "1",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-04-10T07:01:51.474Z",
+        "lastAccessed": "2026-04-10T07:01:51.474Z"
+    },
+    {
+        "key": "ps_n",
+        "value": "1",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-04-10T07:01:51.474Z",
+        "lastAccessed": "2026-04-10T07:01:51.474Z"
+    },
+    {
+        "key": "wd",
+        "value": "1048x2035",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-04-10T07:01:51.474Z",
+        "lastAccessed": "2026-04-10T07:01:51.474Z"
+    },
+    {
+        "key": "c_user",
+        "value": "61573363988180",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-04-10T07:01:51.474Z",
+        "lastAccessed": "2026-04-10T07:01:51.474Z"
+    },
+    {
+        "key": "fr",
+        "value": "1ej7II5ipi3WjFnAh.AWfGJBYFoHBja0KAOE50XuzxmryFnjw4gUnL_og9wCaQekhJAQk.Bp2Jjl..AAA.0.0.Bp2Jjl.AWfoPFva2NOG0-DIKlcz7jpUwmI",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-04-10T07:01:51.474Z",
+        "lastAccessed": "2026-04-10T07:01:51.474Z"
+    },
+    {
+        "key": "xs",
+        "value": "10%3A4rdn6SAWxBCzgw%3A2%3A1775802593%3A-1%3A-1%3A%3AAcxxfoqgvPTQqMXoU_K1QhvYarOG5MACRzLWNpN54Q",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-04-10T07:01:51.474Z",
+        "lastAccessed": "2026-04-10T07:01:51.474Z"
     }
-  }
-}
+]
