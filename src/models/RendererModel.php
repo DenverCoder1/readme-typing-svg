@@ -55,6 +55,9 @@ class RendererModel
     /** @var bool $random True = Sort lines in random order */
     public $random;
 
+    /** @var array<int>|null $groups Group sizes for grouped animation mode, null if disabled */
+    public $groups;
+
     /** @var string $fontCSS CSS required for displaying the selected font */
     public $fontCSS;
 
@@ -109,6 +112,7 @@ class RendererModel
         $this->duration = $this->checkNumberPositive($params["duration"] ?? $this->DEFAULTS["duration"], "duration");
         $this->pause = $this->checkNumberNonNegative($params["pause"] ?? $this->DEFAULTS["pause"], "pause");
         $this->repeat = $this->checkBoolean($params["repeat"] ?? $this->DEFAULTS["repeat"]);
+        $this->groups = $this->checkGroups($params["groups"] ?? null, count($this->lines));
         $this->fontCSS = $this->fetchFontCSS($this->font, $this->weight, $params["lines"]);
         $this->letterSpacing = $this->checkLetterSpacing($params["letterSpacing"] ?? $this->DEFAULTS["letterSpacing"]);
     }
@@ -267,5 +271,34 @@ class RendererModel
 
         // Return the default letter spacing value if the input is invalid
         return $this->DEFAULTS["letterSpacing"];
+    }
+
+    /**
+     * Validate and parse the groups parameter
+     *
+     * @param string|null $groups Comma-separated group sizes, e.g. "2,1"
+     * @param int $lineCount Total number of lines
+     * @return array<int>|null Parsed group sizes, or null if parameter not provided
+     */
+    private function checkGroups($groups, $lineCount)
+    {
+        if ($groups === null || $groups === "") {
+            return null;
+        }
+        $sizes = [];
+        foreach (explode(",", $groups) as $part) {
+            $n = intval(trim($part));
+            if ($n <= 0) {
+                throw new UnprocessableEntityException("Each group size must be a positive number.");
+            }
+            $sizes[] = $n;
+        }
+        $total = array_sum($sizes);
+        if ($total !== $lineCount) {
+            throw new UnprocessableEntityException(
+                "Sum of group sizes ($total) must equal number of lines ($lineCount).",
+            );
+        }
+        return $sizes;
     }
 }
