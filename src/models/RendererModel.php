@@ -113,8 +113,32 @@ class RendererModel
         $this->pause = $this->checkNumberNonNegative($params["pause"] ?? $this->DEFAULTS["pause"], "pause");
         $this->repeat = $this->checkBoolean($params["repeat"] ?? $this->DEFAULTS["repeat"]);
         $this->groups = $this->checkGroups($params["groups"] ?? null, count($this->lines));
+        if ($this->random) {
+            $this->shuffleLines();
+        }
         $this->fontCSS = $this->fetchFontCSS($this->font, $this->weight, $params["lines"]);
         $this->letterSpacing = $this->checkLetterSpacing($params["letterSpacing"] ?? $this->DEFAULTS["letterSpacing"]);
+    }
+
+    /**
+     * Shuffle lines, keeping groups together as units when groups are set
+     */
+    private function shuffleLines()
+    {
+        if ($this->groups !== null) {
+            // Shuffle whole groups so lines within each group stay together
+            $chunks = [];
+            $offset = 0;
+            foreach ($this->groups as $size) {
+                $chunks[] = array_slice($this->lines, $offset, $size);
+                $offset += $size;
+            }
+            shuffle($chunks);
+            $this->lines = array_merge(...$chunks);
+            $this->groups = array_map("count", $chunks);
+        } else {
+            shuffle($this->lines);
+        }
     }
 
     /**
@@ -132,9 +156,6 @@ class RendererModel
             $lines = rtrim($lines, $this->separator);
         }
         $exploded = explode($this->separator, $lines);
-        if ($this->random) {
-            shuffle($exploded);
-        }
         // escape special characters to prevent code injection
         return array_map("htmlspecialchars", $exploded);
     }

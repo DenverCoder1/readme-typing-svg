@@ -218,7 +218,9 @@ const preview = {
     parent.querySelectorAll(`[data-index="${index}"]`).forEach((el) => {
       parent.removeChild(el);
     });
-    // first line has no preceding divider, so fall back to removing divider after line 1
+    // DOM layout: [Line 1] [divider after=1] [Line 2] [divider after=2] [Line 3]
+    // Remove the divider before the deleted line (index-1), except line 1
+    // has no preceding divider, so remove the one after it instead
     const dividerToRemove = index > 1 ? index - 1 : 1;
     const divider = parent.querySelector(`.group-divider[data-divider-after="${dividerToRemove}"]`);
     if (divider) parent.removeChild(divider);

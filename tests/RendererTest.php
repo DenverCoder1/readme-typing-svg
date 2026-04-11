@@ -411,6 +411,28 @@ final class RendererTest extends TestCase
     }
 
     /**
+     * Test random + groups: lines within each group must stay together
+     */
+    public function testRandomWithGroups(): void
+    {
+        $params = [
+            "lines" => "a;b;c;d",
+            "groups" => "2,2",
+            "random" => "true",
+        ];
+        $controller = new RendererController($params);
+        $svg = preg_replace("/\s+/", " ", $controller->render());
+        // All lines should still be present
+        $this->assertStringContainsString("> a </textPath>", $svg);
+        $this->assertStringContainsString("> b </textPath>", $svg);
+        $this->assertStringContainsString("> c </textPath>", $svg);
+        $this->assertStringContainsString("> d </textPath>", $svg);
+        // Lines within each group share the same dur, so groups stay as units
+        // Both groups have size 2 with same timing, verify grouped animation is used
+        $this->assertStringContainsString("Grouped lines", $svg);
+    }
+
+    /**
      * Test Letter Spacing
      */
     public function testLetterSpacing()
