@@ -78,6 +78,13 @@ const preview = {
       }
     }
     params.lines = mergeLines(lineInputs, params.separator);
+    // Derive color from per-line inputs: single value if all same, comma-separated if different
+    const lineColorInputs = Array.from(document.querySelectorAll(".line-color"));
+    if (lineColorInputs.length > 0) {
+      const perLineColors = lineColorInputs.map((el) => el.value.replace(/^#/, "").toUpperCase());
+      const firstColor = perLineColors[0];
+      params.color = perLineColors.every((c) => c === firstColor) ? firstColor : perLineColors.join(",");
+    }
     return params;
   },
 
@@ -135,7 +142,7 @@ const preview = {
   addLines(count) {
     for (let i = 0; i < count; i++) {
       const parent = document.querySelector(".lines");
-      const index = parent.querySelectorAll("input").length + 1;
+      const index = parent.querySelectorAll("input.param").length + 1;
       // label
       const label = document.createElement("label");
       label.innerText = `Line ${index}`;
@@ -158,9 +165,18 @@ const preview = {
         '<svg stroke="currentColor" fill="currentColor"  stroke-width="0" viewBox="0 0 1024 1024" height="0.85em" width="0.85em" xmlns="http://www.w3.org/2000/svg"> <path d="M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z"> </path> </svg>';
       deleteButton.dataset.index = index;
 
+      // per-line color input
+      const colorInput = document.createElement("input");
+      colorInput.type = "color";
+      colorInput.className = "line-color";
+      colorInput.dataset.index = index;
+      colorInput.value = "#" + this.defaults.color;
+      colorInput.title = "Line color";
+
       // add elements
       parent.appendChild(label);
       parent.appendChild(input);
+      parent.appendChild(colorInput);
       parent.appendChild(deleteButton);
 
       // disable button if only 1
@@ -203,6 +219,13 @@ const preview = {
         input.setAttribute("name", `line-${inputIndex - 1}`);
       }
     });
+    const colorInputs = parent.querySelectorAll(".line-color");
+    colorInputs.forEach((input) => {
+      const inputIndex = Number(input.dataset.index);
+      if (inputIndex > index) {
+        input.dataset.index = inputIndex - 1;
+      }
+    });
     const buttons = parent.querySelectorAll(".delete-line.btn");
     buttons.forEach((button) => {
       const buttonIndex = Number(button.dataset.index);
@@ -233,6 +256,10 @@ const preview = {
           input.value = value;
         }
       }
+    });
+    // reset per-line colors to default
+    document.querySelectorAll(".line-color").forEach((input) => {
+      input.value = "#" + this.defaults.color;
     });
   },
 
@@ -286,6 +313,15 @@ const preview = {
     this.addLines(lineInputs.length);
     lineInputs.forEach((line, index) => {
       document.querySelector(`#line-${index + 1}`).value = line;
+    });
+    // restore per-line colors from (possibly comma-separated) color param
+    const colorParam = params.color || this.defaults.color;
+    const perLineColors = colorParam.split(",");
+    document.querySelectorAll(".line-color").forEach((input, i) => {
+      const raw = (perLineColors[i] || perLineColors[perLineColors.length - 1]).replace(/^#/, "").substring(0, 6);
+      if (raw.length === 6) {
+        input.value = "#" + raw;
+      }
     });
   },
 };

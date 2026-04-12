@@ -45,7 +45,7 @@
     <div class="container">
         <div class="properties">
             <h2>Add your text</h2>
-            <form class="parameters three-columns lines">
+            <form class="parameters four-columns lines">
                 <!-- Lines are added in JavaScript -->
             </form>
             <button class="add-line btn" onclick="return preview.addLines(1);">+ Add line</button>
@@ -85,9 +85,6 @@
 
                 <label for="pause">Pause (ms after line)</label>
                 <input class="param" type="number" id="pause" name="pause" alt="Pause duration (ms)" placeholder="1000" value="1000">
-
-                <label for="color">Font color</label>
-                <input class="param jscolor jscolor-active" id="color" name="color" alt="Font color" data-jscolor="{ format: 'hexa' }" value="#36BCF7">
 
                 <label for="background">Background color</label>
                 <input class="param jscolor jscolor-active" id="background" name="background" alt="Background color" data-jscolor="{ format: 'hexa' }" value="#00000000">
