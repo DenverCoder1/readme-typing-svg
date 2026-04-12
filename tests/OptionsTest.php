@@ -369,6 +369,97 @@ final class OptionsTest extends TestCase
     }
 
     /**
+     * Test per-line colors: single color applies to all lines
+     */
+    public function testPerLineColorsSingle(): void
+    {
+        $params = [
+            "lines" => "Hello;World;Foo",
+            "color" => "FF0000",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(["#FF0000", "#FF0000", "#FF0000"], $model->colors);
+    }
+
+    /**
+     * Test per-line colors: each line gets its own color
+     */
+    public function testPerLineColorsMultiple(): void
+    {
+        $params = [
+            "lines" => "Hello;World;Foo",
+            "color" => "FF0000,00FF00,0000FF",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(["#FF0000", "#00FF00", "#0000FF"], $model->colors);
+    }
+
+    /**
+     * Test per-line colors: fewer colors than lines repeats the last valid color
+     */
+    public function testPerLineColorsFallbackToLast(): void
+    {
+        $params = [
+            "lines" => "Hello;World;Foo",
+            "color" => "FF0000,00FF00",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(["#FF0000", "#00FF00", "#00FF00"], $model->colors);
+    }
+
+    /**
+     * Test per-line colors: invalid color falls back to the previous valid value
+     */
+    public function testPerLineColorsInvalidFallback(): void
+    {
+        $params = [
+            "lines" => "Hello;World;Foo",
+            "color" => "FF0000,invalid,0000FF",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(["#FF0000", "#FF0000", "#0000FF"], $model->colors);
+    }
+
+    /**
+     * Test per-line sizes: single size applies to all lines
+     */
+    public function testPerLineSizesSingle(): void
+    {
+        $params = [
+            "lines" => "Hello;World",
+            "size" => "24",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals([24, 24], $model->sizes);
+    }
+
+    /**
+     * Test per-line sizes: each line gets its own size
+     */
+    public function testPerLineSizesMultiple(): void
+    {
+        $params = [
+            "lines" => "Hello;World;Foo",
+            "size" => "20,30,14",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals([20, 30, 14], $model->sizes);
+    }
+
+    /**
+     * Test per-line letter spacings: each line gets its own letter spacing
+     */
+    public function testPerLineLetterSpacingsMultiple(): void
+    {
+        $params = [
+            "lines" => "Hello;World",
+            "letterSpacing" => "2px,normal",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(["2px", "normal"], $model->letterSpacings);
+    }
+
+    /**
      * Test Letter Spacing
      */
     public function testLetterSpacing(): void
