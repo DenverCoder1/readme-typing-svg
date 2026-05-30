@@ -1,0 +1,13 @@
+name: Question
+description: I have a question about this project
+title: "[Question]: "
+labels: ["question"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: A brief description of the question or issue
+      placeholder: How do I...
+    validations:
+      required: true
