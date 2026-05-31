@@ -37,16 +37,25 @@ body:
       label: Screenshots
       description: If applicable, add screenshots to help explain your problem
       placeholder: Drag and drop screenshots here
-  - type: input
+  - type: dropdown
     id: os
     attributes:
       label: OS
-      placeholder: e.g. macOS, Windows, Linux
-  - type: input
+      options:
+        - macOS
+        - Windows
+        - Linux
+        - Other
+  - type: dropdown
     id: browser
     attributes:
       label: Browser
-      placeholder: e.g. Chrome, Safari, Firefox
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other
   - type: input
     id: version
     attributes:
