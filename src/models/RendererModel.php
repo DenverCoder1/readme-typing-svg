@@ -317,7 +317,7 @@ class RendererModel
         $total = array_sum($sizes);
         if ($total !== $lineCount) {
             throw new UnprocessableEntityException(
-                "Sum of group sizes ($total) must equal number of lines ($lineCount).",
+                "Sum of group sizes ($total) must equal number of lines ($lineCount)."
             );
         }
         return $sizes;

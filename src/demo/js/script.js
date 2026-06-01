@@ -411,5 +411,5 @@ window.addEventListener(
     preview.restore(); // restore parameters
     preview.update(); // update preview
   },
-  false,
+  false
 );
