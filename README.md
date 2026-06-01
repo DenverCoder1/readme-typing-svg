@@ -42,6 +42,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Jonah Lawrence](https://github.com/DenverCoder1.png?size=60)](https://github.com/DenverCoder1 "Jonah Lawrence on GitHub")
 [![Jini by Rentalz.com](https://i.imgur.com/TtuoKCs.png)](https://jini.rentalz.com/ "Jini by Rentalz.com")
 [![Waren Gonzaga](https://github.com/warengonzaga.png?size=60)](https://github.com/warengonzaga "Waren Gonzaga on GitHub")
+[![MR. Robin Ahmed](https://github.com/Robinishear.png?size=60)](https://github.com/Robinishear "MR. Robin Ahmed on GitHub")
 [![8BitJonny](https://github.com/8BitJonny.png?size=60)](https://github.com/8BitJonny "8BitJonny on GitHub")
 [![Aditya Raute](https://github.com/adityaraute.png?size=60)](https://github.com/adityaraute "Aditya Raute on GitHub")
 [![Shiva Sankeerth Reddy](https://github.com/ShivaSankeerth.png?size=60)](https://github.com/ShivaSankeerth "Shiva Sankeerth Reddy on GitHub")
