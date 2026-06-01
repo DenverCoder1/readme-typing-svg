@@ -19,6 +19,17 @@ sudo apt-get install php-curl
 sudo apt-get install composer
 ```
 
+#### macOS
+
+Using [Homebrew](https://brew.sh):
+
+```bash
+brew install php
+brew install composer
+```
+
+PHP on macOS typically includes the curl extension. If you need to enable it, ensure `php.ini` has `extension=curl` uncommented (run `php --ini` to find your config file).
+
 #### Windows
 
 Install PHP from [XAMPP](https://www.apachefriends.org/index.html) or [php.net](https://windows.php.net/download)

@@ -13,13 +13,11 @@ function toggleTheme() {
 }
 
 function darkmode() {
-  document.querySelector(".darkmode i").className = "gg-sun";
   setCookie("darkmode", "on", 9999);
   document.body.setAttribute("data-theme", "dark");
 }
 
 function lightmode() {
-  document.querySelector(".darkmode i").className = "gg-moon";
   setCookie("darkmode", "off", 9999);
   document.body.removeAttribute("data-theme");
 }
