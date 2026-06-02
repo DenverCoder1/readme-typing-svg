@@ -166,13 +166,14 @@ const preview = {
       deleteButton.dataset.index = index;
 
       // per-line color input
+      // per-line color input
       const colorInput = document.createElement("input");
       colorInput.type = "color";
       colorInput.className = "line-color";
       colorInput.dataset.index = index;
       colorInput.value = "#" + this.defaults.color;
       colorInput.title = "Line color";
-
+      colorInput.setAttribute("aria-label", `Color for line ${index}`);
       // add elements
       parent.appendChild(label);
       parent.appendChild(input);
