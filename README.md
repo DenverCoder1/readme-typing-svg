@@ -159,7 +159,7 @@ Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issue
 |   `duration`    |     Duration of the printing of a single line in milliseconds (default: `5000`)     | integer |                                                Any positive number                                                |
 |     `pause`     |         Duration of the pause between lines in milliseconds (default: `0`)          | integer |                                              Any non-negative number                                              |
 |    `repeat`     |      `true` to loop around to the first line after the last (default: `true`)       | boolean |                                                 `true` or `false`                                                 |
-|    `groups`     | Group lines so each group types sequentially then clears together (default: `none`) | string  |                                `2,1` (first 2 lines as group 1, next 1 as group 2)                                |
+|    `groups`     | Group lines so each group types sequentially then clears together. Sizes must sum to the number of non-empty lines (default: `none`) | string  |                                `2,1` (first 2 lines as group 1, next 1 as group 2)                                |
 |   `separator`   |         Separator used between lines in the lines parameter (default: `;`)          | string  |                                               `;`, `;;`, `/`, etc.                                                |
 | `letterSpacing` |                         Letter spacing (default: `normal`)                          | string  | Any css values for the [letter-spacing](https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing) property |
 
