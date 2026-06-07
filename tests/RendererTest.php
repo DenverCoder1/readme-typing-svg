@@ -415,6 +415,8 @@ final class RendererTest extends TestCase
      */
     public function testRandomWithGroups(): void
     {
+        // Seed the RNG so shuffle() is deterministic (this seed reorders the groups to c,d,a,b).
+        mt_srand(2);
         $params = [
             "lines" => "a;b;c;d",
             "groups" => "2,2",
@@ -422,14 +424,21 @@ final class RendererTest extends TestCase
         ];
         $controller = new RendererController($params);
         $svg = preg_replace("/\s+/", " ", $controller->render());
-        // All lines should still be present
-        $this->assertStringContainsString("> a </textPath>", $svg);
-        $this->assertStringContainsString("> b </textPath>", $svg);
-        $this->assertStringContainsString("> c </textPath>", $svg);
-        $this->assertStringContainsString("> d </textPath>", $svg);
-        // Lines within each group share the same dur, so groups stay as units
-        // Both groups have size 2 with same timing, verify grouped animation is used
+
+        // Grouped animation must still be used
         $this->assertStringContainsString("Grouped lines", $svg);
+
+        // Read back the rendered line order
+        preg_match_all("#> ([abcd]) </textPath>#", $svg, $matches);
+        $order = $matches[1];
+        $this->assertEqualsCanonicalizing(["a", "b", "c", "d"], $order, "All lines must survive the shuffle");
+
+        // Groups [a,b] and [c,d] must each stay together in original intra-group order;
+        // shuffling whole groups must never interleave their members.
+        $posA = array_search("a", $order);
+        $posC = array_search("c", $order);
+        $this->assertSame("b", $order[$posA + 1], "Group [a,b] was split apart by the shuffle");
+        $this->assertSame("d", $order[$posC + 1], "Group [c,d] was split apart by the shuffle");
     }
 
     /**
