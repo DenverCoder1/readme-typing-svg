@@ -219,13 +219,19 @@ const preview = {
   removeLine(index) {
     index = Number(index);
     const parent = document.querySelector(".lines");
+    // A line has a divider on each side; if either was an active group boundary the
+    // boundary must survive when the two neighbouring lines merge into one gap.
+    const prevDivider = parent.querySelector(`.group-divider[data-divider-after="${index - 1}"]`);
+    const nextDivider = parent.querySelector(`.group-divider[data-divider-after="${index}"]`);
+    const boundarySurvives =
+      (prevDivider && prevDivider.classList.contains("active")) ||
+      (nextDivider && nextDivider.classList.contains("active"));
     // remove all elements for given property
     parent.querySelectorAll(`[data-index="${index}"]`).forEach((el) => {
       parent.removeChild(el);
     });
-    // DOM layout: [Line 1] [divider after=1] [Line 2] [divider after=2] [Line 3]
-    // Remove the divider before the deleted line (index-1), except line 1
-    // has no preceding divider, so remove the one after it instead
+    // Remove the divider before the deleted line (index-1); line 1 has no preceding
+    // divider, so remove the one after it instead.
     const dividerToRemove = index > 1 ? index - 1 : 1;
     const divider = parent.querySelector(`.group-divider[data-divider-after="${dividerToRemove}"]`);
     if (divider) parent.removeChild(divider);
@@ -236,6 +242,11 @@ const preview = {
         div.dataset.dividerAfter = afterIndex - 1;
       }
     });
+    // nextDivider has shifted into the merged gap; re-activate it if a boundary was lost.
+    if (index > 1 && nextDivider && boundarySurvives) {
+      nextDivider.classList.add("active");
+      nextDivider.setAttribute("aria-pressed", "true");
+    }
     // update index numbers
     const labels = parent.querySelectorAll("label");
     labels.forEach((label) => {
