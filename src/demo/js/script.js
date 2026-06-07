@@ -147,13 +147,18 @@ const preview = {
    * @returns {HTMLElement} The divider element
    */
   createDivider(afterIndex) {
-    const divider = document.createElement("div");
+    // Button element so the divider is keyboard focusable and activatable; type=button stops it submitting the form.
+    const divider = document.createElement("button");
+    divider.type = "button";
     divider.className = "group-divider";
     divider.dataset.dividerAfter = afterIndex;
     divider.title = "Click to split into separate groups";
+    divider.setAttribute("aria-label", "Toggle group break");
+    divider.setAttribute("aria-pressed", "false");
     divider.innerHTML = '<span class="group-divider-label">new group</span>';
     divider.addEventListener("click", function () {
-      this.classList.toggle("active");
+      const active = this.classList.toggle("active");
+      this.setAttribute("aria-pressed", String(active));
     });
     return divider;
   },
@@ -281,7 +286,10 @@ const preview = {
         }
       }
     });
-    document.querySelectorAll(".group-divider.active").forEach((d) => d.classList.remove("active"));
+    document.querySelectorAll(".group-divider.active").forEach((d) => {
+      d.classList.remove("active");
+      d.setAttribute("aria-pressed", "false");
+    });
   },
 
   /**
@@ -347,7 +355,10 @@ const preview = {
       for (let i = 0; i < sizes.length - 1; i++) {
         pos += sizes[i];
         const divider = document.querySelector(`.group-divider[data-divider-after="${pos}"]`);
-        if (divider) divider.classList.add("active");
+        if (divider) {
+          divider.classList.add("active");
+          divider.setAttribute("aria-pressed", "true");
+        }
       }
     }
   },
@@ -411,5 +422,5 @@ window.addEventListener(
     preview.restore(); // restore parameters
     preview.update(); // update preview
   },
-  false
+  false,
 );
