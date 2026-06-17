@@ -119,6 +119,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![amir78729](https://github.com/amir78729.png?size=60)](https://github.com/amir78729 "Amir on Github")
 [![AJsuper007](https://github.com/AJsuper007.png?size=60)](https://github.com/AJsuper007 "AJsuper007 on Github")
 [![ABAN26](https://github.com/ABAN26.png?size=60)](https://github.com/ABAN26 "ABAN26 on Github")
+[![PiyushYadav0021](https://github.com/PiyushYadav0021.png?size=60)](https://github.com/PiyushYadav0021 "Piyush Yadav on GitHub")
 [![Soham More](https://github.com/SohamMore100.png?size=60)](https://github.com/SohamMore100 "Soham More on GitHub")
 [![Yogi Hariyani](https://github.com/yobro7292.png?size=60)](https://github.com/Yobro7292 "Yogi Hariyani on GitHub")
 [![Antônio Nascimento](https://github.com/Ninja1375.png?size=60)](https://github.com/Ninja1375 "Antônio Nascimento on GitHub")
