@@ -55,10 +55,10 @@
                     values='<?= implode(" ; ", $values) ?>' keyTimes='<?= implode(";", $keyTimes) ?>' />
             <?php endif; ?>
         </path>
-    <text font-family='"<?= $font ?>", monospace' fill='<?= $color ?>' font-size='<?= $size ?>'
+    <text font-family='"<?= $font ?>", monospace' fill='<?= $colors[$i] ?>' font-size='<?= $sizes[$i] ?>'
         dominant-baseline='<?= $vCenter ? "middle" : "auto" ?>'
         x='<?= $center ? "50%" : "0%" ?>' text-anchor='<?= $center ? "middle" : "start" ?>'
-        letter-spacing='<?= $letterSpacing ?>'>
+        letter-spacing='<?= $letterSpacings[$i] ?>'>
         <textPath xlink:href='#path<?= $i ?>'>
             <?= $lines[$i] . "\n" ?>
         </textPath>

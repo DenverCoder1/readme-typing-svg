@@ -137,6 +137,20 @@ h2 {
   grid-template-columns: auto 1fr auto;
 }
 
+.four-columns {
+  grid-template-columns: auto 1fr auto auto;
+}
+
+.line-color {
+  width: 40px;
+  height: 40px;
+  padding: 3px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--card-background);
+  cursor: pointer;
+}
+
 .parameters .btn {
   margin-top: 8px;
 }
