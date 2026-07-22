@@ -68,12 +68,12 @@ final class RendererTest extends TestCase
         $this->assertStringContainsString("keyTimes='0;0;1;1'", $controller->render());
         $this->assertStringContainsString(
             "values='m0,25 h0 ; m0,25 h0 ; m0,25 h380 ; m0,25 h380'",
-            $controller->render()
+            $controller->render(),
         );
         $this->assertStringContainsString("keyTimes='0;0.5;1;1'", $controller->render());
         $this->assertStringContainsString(
             "values='m0,50 h0 ; m0,50 h0 ; m0,50 h380 ; m0,50 h380'",
-            $controller->render()
+            $controller->render(),
         );
     }
 
@@ -108,8 +108,8 @@ final class RendererTest extends TestCase
             1,
             preg_match(
                 "/src: url\(data:font\/truetype;base64,[a-zA-Z0-9\/+=]+\) format\('truetype'\);/",
-                $controller->render()
-            )
+                $controller->render(),
+            ),
         );
         $this->assertStringContainsString("font-family='\"Roboto\", monospace'", $controller->render());
     }
@@ -251,7 +251,7 @@ final class RendererTest extends TestCase
         $this->assertStringContainsString("begin='0s'", $actualSVG);
         $this->assertStringContainsString(
             "begin='d2.end' dur='5000ms' fill='freeze' values='m0,25 h0 ; m0,25 h380 ; m0,25 h380 ; m0,25 h380'",
-            $actualSVG
+            $actualSVG,
         );
         $this->assertStringNotContainsString(";d3.end", $actualSVG);
     }
@@ -325,6 +325,120 @@ final class RendererTest extends TestCase
         foreach ($lines as $line) {
             $this->assertStringContainsString("> $line </textPath>", $actualSVG);
         }
+    }
+
+    /**
+     * Test grouped lines animation: 3 lines with groups=2,1
+     * Group 0 (lines 0,1): both lines type sequentially and clear together.
+     * Group 1 (line 2): behaves like a single-line cycle.
+     */
+    public function testGroupedLinesRender(): void
+    {
+        $params = [
+            "lines" => "line1;line2;line3",
+            "groups" => "2,1",
+            "width" => "400",
+            "height" => "75",
+            "duration" => "5000",
+            "pause" => "0",
+        ];
+        $controller = new RendererController($params);
+        $svg = preg_replace("/\s+/", " ", $controller->render());
+
+        // Group 0, line 0 (p=0, k=2, groupDuration=10000): begins at 0s, types first
+        $this->assertStringContainsString("begin='0s;d2.end'", $svg);
+        $this->assertStringContainsString("dur='10000ms'", $svg);
+        $this->assertStringContainsString("keyTimes='0;0;0.4;0.9;1'", $svg);
+        $this->assertStringContainsString("values='m0,25 h0 ; m0,25 h0 ; m0,25 h400 ; m0,25 h400 ; m0,25 h0'", $svg);
+
+        // Group 0, line 1 (p=1, k=2, groupDuration=10000): same begin, waits for line 0
+        $this->assertStringContainsString("keyTimes='0;0.5;0.9;0.9;1'", $svg);
+        $this->assertStringContainsString("values='m0,50 h0 ; m0,50 h0 ; m0,50 h400 ; m0,50 h400 ; m0,50 h0'", $svg);
+
+        // Group 1, line 2 (k=1, groupDuration=5000): begins after group 0 ends
+        $this->assertStringContainsString("begin='d1.end'", $svg);
+        $this->assertStringContainsString("dur='5000ms'", $svg);
+        $this->assertStringContainsString("keyTimes='0;0;0.8;0.8;1'", $svg);
+        $this->assertStringContainsString("values='m0,25 h0 ; m0,25 h0 ; m0,25 h400 ; m0,25 h400 ; m0,25 h0'", $svg);
+    }
+
+    /**
+     * Test grouped lines with pause: pause applied once per group at the end
+     * groupDuration = k*duration + pause = 2*5000 + 1000 = 11000
+     */
+    public function testGroupedLinesPause(): void
+    {
+        $params = [
+            "lines" => "line1;line2",
+            "groups" => "2",
+            "width" => "400",
+            "height" => "60",
+            "duration" => "5000",
+            "pause" => "1000",
+        ];
+        $controller = new RendererController($params);
+        $svg = preg_replace("/\s+/", " ", $controller->render());
+
+        $this->assertStringContainsString("dur='11000ms'", $svg);
+        // Both lines share the same begin and dur, so both clear at the same moment
+        $this->assertEquals(2, substr_count($svg, "dur='11000ms'"));
+    }
+
+    /**
+     * Test grouped lines with repeat=false: last group stays visible
+     */
+    public function testGroupedLinesRepeatFalse(): void
+    {
+        $params = [
+            "lines" => "line1;line2",
+            "groups" => "1,1",
+            "width" => "400",
+            "height" => "50",
+            "duration" => "5000",
+            "pause" => "0",
+            "repeat" => "false",
+        ];
+        $controller = new RendererController($params);
+        $svg = preg_replace("/\s+/", " ", $controller->render());
+
+        // First group: begin at 0s with no repeat trigger
+        $this->assertStringContainsString("begin='0s'", $svg);
+        $this->assertStringNotContainsString(";d1.end", $svg);
+
+        // Last line should freeze (fill='freeze', last value is fullLine not emptyLine)
+        $this->assertStringContainsString("fill='freeze'", $svg);
+        $this->assertStringContainsString("values='m0,25 h0 ; m0,25 h0 ; m0,25 h400 ; m0,25 h400 ; m0,25 h400'", $svg);
+    }
+
+    /**
+     * Test random + groups: lines within each group must stay together
+     */
+    public function testRandomWithGroups(): void
+    {
+        // Seed the RNG so shuffle() is deterministic (this seed reorders the groups to c,d,a,b).
+        mt_srand(2);
+        $params = [
+            "lines" => "a;b;c;d",
+            "groups" => "2,2",
+            "random" => "true",
+        ];
+        $controller = new RendererController($params);
+        $svg = preg_replace("/\s+/", " ", $controller->render());
+
+        // Grouped animation must still be used
+        $this->assertStringContainsString("Grouped lines", $svg);
+
+        // Read back the rendered line order
+        preg_match_all("#> ([abcd]) </textPath>#", $svg, $matches);
+        $order = $matches[1];
+        $this->assertEqualsCanonicalizing(["a", "b", "c", "d"], $order, "All lines must survive the shuffle");
+
+        // Groups [a,b] and [c,d] must each stay together in original intra-group order;
+        // shuffling whole groups must never interleave their members.
+        $posA = array_search("a", $order);
+        $posC = array_search("c", $order);
+        $this->assertSame("b", $order[$posA + 1], "Group [a,b] was split apart by the shuffle");
+        $this->assertSame("d", $order[$posC + 1], "Group [c,d] was split apart by the shuffle");
     }
 
     /**

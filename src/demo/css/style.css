@@ -101,7 +101,9 @@ h2 {
   border-radius: 6px;
   cursor: pointer;
   font-family: inherit;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
   transition: 0.2s ease-in-out;
 }
 
@@ -111,7 +113,9 @@ h2 {
 
 .btn:not(:disabled):hover {
   background-color: var(--blue-dark);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .btn:disabled {
@@ -196,7 +200,9 @@ input:invalid {
 
 input:focus:invalid {
   outline: none;
-  box-shadow: 0 0 0 1px var(--blue-light), 0 0 0 3px var(--red);
+  box-shadow:
+    0 0 0 1px var(--blue-light),
+    0 0 0 3px var(--red);
 }
 
 .delete-line.btn {
@@ -213,12 +219,83 @@ input:focus:invalid {
 }
 
 .delete-line.btn:not(:disabled):hover {
-  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  box-shadow:
+    0 1px 3px rgb(0 0 0 / 12%),
+    0 1px 2px rgb(0 0 0 / 24%);
   background: #e4535314;
 }
 
 .delete-line.btn:disabled {
   color: var(--stroke);
+}
+
+.group-divider {
+  grid-column: 1 / -1;
+  /* display:none gives a true zero grid footprint (no row, no surrounding gap);
+     opacity/height would still reserve space and leave large gaps between lines. */
+  display: none;
+  align-items: center;
+  gap: 6px;
+  height: 18px;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.4;
+  /* Reset: divider is a real <button> so it is keyboard focusable/activatable */
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  transition:
+    opacity 0.15s,
+    background 0.15s;
+}
+
+/* focus-within reveals the dividers before Tab order reaches them, so keyboard users can land on the buttons to create groups. */
+.lines:hover .group-divider,
+.lines:focus-within .group-divider,
+.group-divider.active {
+  display: flex;
+}
+
+.group-divider:hover,
+.group-divider:focus-visible {
+  opacity: 0.7;
+}
+
+.group-divider.active {
+  opacity: 1;
+}
+
+.group-divider::before,
+.group-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--stroke);
+  transition:
+    background 0.15s,
+    height 0.15s;
+}
+
+.group-divider.active::before,
+.group-divider.active::after {
+  height: 2px;
+  background: var(--blue-light);
+}
+
+.group-divider-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  color: var(--stroke);
+  transition: color 0.15s;
+}
+
+.group-divider.active .group-divider-label {
+  color: var(--blue-light);
+  font-weight: 600;
 }
 
 .add-line.btn {

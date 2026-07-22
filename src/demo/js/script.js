@@ -78,6 +78,20 @@ const preview = {
       }
     }
     params.lines = mergeLines(lineInputs, params.separator);
+    // backend validates sum(groups) == line count, so skip empty inputs
+    const activeDividers = Array.from(document.querySelectorAll(".group-divider.active"));
+    if (activeDividers.length > 0) {
+      const breaks = activeDividers.map((d) => Number(d.dataset.dividerAfter)).sort((a, b) => a - b);
+      const segments = [0, ...breaks, lineInputs.length];
+      const groups = [];
+      for (let i = 0; i < segments.length - 1; i++) {
+        const count = lineInputs.slice(segments[i], segments[i + 1]).filter((el) => el.value.length > 0).length;
+        if (count > 0) groups.push(count);
+      }
+      if (groups.length > 1) {
+        params.groups = groups.join(",");
+      }
+    }
     return params;
   },
 
@@ -128,6 +142,28 @@ const preview = {
   },
 
   /**
+   * Create a clickable group divider element
+   * @param {number} afterIndex The line index this divider sits after
+   * @returns {HTMLElement} The divider element
+   */
+  createDivider(afterIndex) {
+    // Button element so the divider is keyboard focusable and activatable; type=button stops it submitting the form.
+    const divider = document.createElement("button");
+    divider.type = "button";
+    divider.className = "group-divider";
+    divider.dataset.dividerAfter = afterIndex;
+    divider.title = "Click to split into separate groups";
+    divider.setAttribute("aria-label", "Toggle group break");
+    divider.setAttribute("aria-pressed", "false");
+    divider.innerHTML = '<span class="group-divider-label">new group</span>';
+    divider.addEventListener("click", function () {
+      const active = this.classList.toggle("active");
+      this.setAttribute("aria-pressed", String(active));
+    });
+    return divider;
+  },
+
+  /**
    * Add new line input fields
    * @param {number} count The number of lines to add
    * @returns {false} Always returns false to prevent form submission
@@ -136,6 +172,9 @@ const preview = {
     for (let i = 0; i < count; i++) {
       const parent = document.querySelector(".lines");
       const index = parent.querySelectorAll("input").length + 1;
+      if (index > 1) {
+        parent.appendChild(this.createDivider(index - 1));
+      }
       // label
       const label = document.createElement("label");
       label.innerText = `Line ${index}`;
@@ -180,10 +219,34 @@ const preview = {
   removeLine(index) {
     index = Number(index);
     const parent = document.querySelector(".lines");
+    // A line has a divider on each side; if either was an active group boundary the
+    // boundary must survive when the two neighbouring lines merge into one gap.
+    const prevDivider = parent.querySelector(`.group-divider[data-divider-after="${index - 1}"]`);
+    const nextDivider = parent.querySelector(`.group-divider[data-divider-after="${index}"]`);
+    const boundarySurvives =
+      (prevDivider && prevDivider.classList.contains("active")) ||
+      (nextDivider && nextDivider.classList.contains("active"));
     // remove all elements for given property
     parent.querySelectorAll(`[data-index="${index}"]`).forEach((el) => {
       parent.removeChild(el);
     });
+    // Remove the divider before the deleted line (index-1); line 1 has no preceding
+    // divider, so remove the one after it instead.
+    const dividerToRemove = index > 1 ? index - 1 : 1;
+    const divider = parent.querySelector(`.group-divider[data-divider-after="${dividerToRemove}"]`);
+    if (divider) parent.removeChild(divider);
+    // divider positions shift down when a line is removed
+    parent.querySelectorAll(".group-divider").forEach((div) => {
+      const afterIndex = Number(div.dataset.dividerAfter);
+      if (afterIndex >= index) {
+        div.dataset.dividerAfter = afterIndex - 1;
+      }
+    });
+    // nextDivider has shifted into the merged gap; re-activate it if a boundary was lost.
+    if (index > 1 && nextDivider && boundarySurvives) {
+      nextDivider.classList.add("active");
+      nextDivider.setAttribute("aria-pressed", "true");
+    }
     // update index numbers
     const labels = parent.querySelectorAll("label");
     labels.forEach((label) => {
@@ -225,14 +288,18 @@ const preview = {
     // reset all inputs
     const inputs = document.querySelectorAll(".param");
     inputs.forEach((input) => {
-      let value = this.overrides[input.name] || this.defaults[input.name];
-      if (value) {
+      let value = this.overrides[input.name] ?? this.defaults[input.name];
+      if (value !== undefined) {
         if (["color", "background"].includes(input.name)) {
           input.jscolor.fromString(value);
         } else {
           input.value = value;
         }
       }
+    });
+    document.querySelectorAll(".group-divider.active").forEach((d) => {
+      d.classList.remove("active");
+      d.setAttribute("aria-pressed", "false");
     });
   },
 
@@ -267,12 +334,16 @@ const preview = {
   restore() {
     // get parameters from URL
     const urlParams = new URLSearchParams(window.location.search);
-    const params = { ...this.defaults, ...this.overrides, ...Object.fromEntries(urlParams) };
+    const params = {
+      ...this.defaults,
+      ...this.overrides,
+      ...Object.fromEntries(urlParams),
+    };
     // set all parameters
     const inputs = document.querySelectorAll(".param");
     inputs.forEach((input) => {
       let value = params[input.name];
-      if (value) {
+      if (value !== undefined) {
         if (["color", "background"].includes(input.name)) {
           input.jscolor.fromString(value);
         } else {
@@ -287,6 +358,20 @@ const preview = {
     lineInputs.forEach((line, index) => {
       document.querySelector(`#line-${index + 1}`).value = line;
     });
+    // groups param stores sizes, need to convert to cumulative positions for divider activation
+    const groupsParam = urlParams.get("groups");
+    if (groupsParam) {
+      const sizes = groupsParam.split(",").map(Number);
+      let pos = 0;
+      for (let i = 0; i < sizes.length - 1; i++) {
+        pos += sizes[i];
+        const divider = document.querySelector(`.group-divider[data-divider-after="${pos}"]`);
+        if (divider) {
+          divider.classList.add("active");
+          divider.setAttribute("aria-pressed", "true");
+        }
+      }
+    }
   },
 };
 
@@ -348,5 +433,5 @@ window.addEventListener(
     preview.restore(); // restore parameters
     preview.update(); // update preview
   },
-  false
+  false,
 );
