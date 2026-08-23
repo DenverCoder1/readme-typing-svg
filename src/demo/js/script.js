@@ -124,7 +124,13 @@ const preview = {
    * @returns The encoded string
    */
   customEncode(str) {
-    return encodeURIComponent(str).replace(/%3B/g, ";").replace(/%20/g, "+");
+    // encodeURIComponent doesn't escape ( and ), which breaks the generated
+    // markdown link syntax [![...](url)](...) when they appear in the input
+    return encodeURIComponent(str)
+      .replace(/%3B/g, ";")
+      .replace(/%20/g, "+")
+      .replace(/\(/g, "%28")
+      .replace(/\)/g, "%29");
   },
 
   /**
