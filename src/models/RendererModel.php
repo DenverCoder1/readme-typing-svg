@@ -1,5 +1,22 @@
 <?php
+// Source - https://stackoverflow.com/a
+// Posted by Anatoliy, modified by community. See post 'Timeline' for change history
+// Retrieved 2025-11-22, License - CC BY-SA 3.0
 
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+
+
+function setRandomColor() {
+  $("#colorpad").css("background-color", getRandomColor());
+}
 declare(strict_types=1);
 
 /**
@@ -68,7 +85,7 @@ class RendererModel
     private $DEFAULTS = [
         "font" => "monospace",
         "weight" => "400",
-        "color" => "#36BCF7",
+        "color" => "getRandomColor()",
         "background" => "#00000000",
         "size" => "20",
         "center" => "false",
