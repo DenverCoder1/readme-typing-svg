@@ -136,7 +136,9 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Madhurima Rawat](https://github.com/madhurimarawat.png?size=60)](https://github.com/madhurimarawat "Madhurima Rawat on Github")
 [![Lixiao Zhu](https://github.com/zhulixiao.png?size=60)](https://github.com/zhulixiao "Lixiao Zhu on Github")
 [![Ahmed Nassar](https://github.com/AhmedNassar7.png?size=60)](https://github.com/AhmedNassar7 "Ahmed Nassar on Github")
+[![Daniel Allendes](https://github.com/da093-tech.png?size=60)
 
+](https://github.com/da093-tech "Daniel Allendes — Full Stack Developer on Github")
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
 ## 🔧 Options
