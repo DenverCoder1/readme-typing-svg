@@ -369,6 +369,59 @@ final class OptionsTest extends TestCase
     }
 
     /**
+     * Test valid groups parameter
+     */
+    public function testValidGroups(): void
+    {
+        $params = [
+            "lines" => "a;b;c",
+            "groups" => "2,1",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals([2, 1], $model->groups);
+    }
+
+    /**
+     * Test groups not provided returns null
+     */
+    public function testGroupsNotProvided(): void
+    {
+        $params = [
+            "lines" => "a;b;c",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertNull($model->groups);
+    }
+
+    /**
+     * Test groups sum mismatch throws exception
+     */
+    public function testGroupsSumMismatch(): void
+    {
+        $this->expectException("InvalidArgumentException");
+        $this->expectExceptionMessage("Sum of group sizes (3) must equal number of lines (2).");
+        $params = [
+            "lines" => "a;b",
+            "groups" => "2,1",
+        ];
+        new RendererModel("src/templates/main.php", $params);
+    }
+
+    /**
+     * Test groups with a zero size throws exception
+     */
+    public function testGroupsZeroSize(): void
+    {
+        $this->expectException("InvalidArgumentException");
+        $this->expectExceptionMessage("Each group size must be a positive number.");
+        $params = [
+            "lines" => "a;b",
+            "groups" => "0,2",
+        ];
+        new RendererModel("src/templates/main.php", $params);
+    }
+
+    /**
      * Test Letter Spacing
      */
     public function testLetterSpacing(): void
