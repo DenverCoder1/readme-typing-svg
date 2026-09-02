@@ -61,6 +61,15 @@ class RendererModel
     /** @var string $letterSpacing Letter spacing */
     public $letterSpacing;
 
+    /** @var array<string> $colors Per-line font colors */
+    public $colors;
+
+    /** @var array<int> $sizes Per-line font sizes */
+    public $sizes;
+
+    /** @var array<string> $letterSpacings Per-line letter spacings */
+    public $letterSpacings;
+
     /** @var string $template Path to template file */
     public $template;
 
@@ -111,6 +120,99 @@ class RendererModel
         $this->repeat = $this->checkBoolean($params["repeat"] ?? $this->DEFAULTS["repeat"]);
         $this->fontCSS = $this->fetchFontCSS($this->font, $this->weight, $params["lines"]);
         $this->letterSpacing = $this->checkLetterSpacing($params["letterSpacing"] ?? $this->DEFAULTS["letterSpacing"]);
+        $lineCount = count($this->lines);
+        $this->colors = $this->buildPerLineArray(
+            $params["color"] ?? $this->DEFAULTS["color"],
+            [$this, "parseColor"],
+            $this->color,
+            $lineCount
+        );
+        $this->sizes = $this->buildPerLineArray(
+            $params["size"] ?? $this->DEFAULTS["size"],
+            [$this, "parsePositiveInt"],
+            $this->size,
+            $lineCount
+        );
+        $this->letterSpacings = $this->buildPerLineArray(
+            $params["letterSpacing"] ?? $this->DEFAULTS["letterSpacing"],
+            [$this, "parseLetterSpacing"],
+            $this->letterSpacing,
+            $lineCount
+        );
+        // Keep global properties consistent with the first per-line value so that
+        // layout calculations (e.g. multiline line-height) use a sensible default.
+        $this->color = $this->colors[0];
+        $this->size = $this->sizes[0];
+        $this->letterSpacing = $this->letterSpacings[0];
+    }
+
+    /**
+     * Parse a color string and return sanitized color, or null if invalid
+     *
+     * @param string $color Color parameter
+     * @return string|null Sanitized color with preceding hash, or null if invalid
+     */
+    private function parseColor($color): ?string
+    {
+        $sanitized = (string) preg_replace("/[^0-9A-Fa-f]/", "", $color);
+        if (!in_array(strlen($sanitized), [3, 4, 6, 8])) {
+            return null;
+        }
+        return "#" . $sanitized;
+    }
+
+    /**
+     * Parse a positive integer string and return int, or null if invalid
+     *
+     * @param string $num Number parameter
+     * @return int|null Positive integer, or null if invalid
+     */
+    private function parsePositiveInt($num): ?int
+    {
+        $digits = intval(preg_replace("/[^0-9\-]/", "", $num));
+        return $digits > 0 ? $digits : null;
+    }
+
+    /**
+     * Parse a letter-spacing value and return it, or null if invalid
+     *
+     * @param string $letterSpacing Letter spacing parameter
+     * @return string|null Valid letter spacing, or null if invalid
+     */
+    private function parseLetterSpacing($letterSpacing): ?string
+    {
+        $keywords = "normal|inherit|initial|revert|revert-layer|unset";
+        if (preg_match("/^($keywords)$/", $letterSpacing) || $this->isValidUnit($letterSpacing)) {
+            return $letterSpacing;
+        }
+        return null;
+    }
+
+    /**
+     * Build an array of per-line values from a comma-separated parameter string.
+     * Each value is validated using $parser; invalid values fall back to the previous
+     * valid value (or $globalDefault for the first line).
+     *
+     * @param string $param Raw comma-separated parameter string
+     * @param callable $parser Called with each value; returns valid value or null
+     * @param mixed $globalDefault Fallback value when no valid value has been seen yet
+     * @param int $lineCount Number of lines
+     * @return array
+     */
+    private function buildPerLineArray(string $param, callable $parser, $globalDefault, int $lineCount): array
+    {
+        $parts = array_map("trim", explode(",", $param));
+        $result = [];
+        $lastValid = $globalDefault;
+        for ($i = 0; $i < $lineCount; $i++) {
+            $val = $parts[$i] ?? "";
+            $parsed = $parser($val);
+            if ($parsed !== null) {
+                $lastValid = $parsed;
+            }
+            $result[] = $lastValid;
+        }
+        return $result;
     }
 
     /**
