@@ -126,7 +126,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![kelvinhe04](https://github.com/kelvinhe04.png?size=60)](https://github.com/kelvinhe04 "kelvinhe04 on Github")
 [![Ravi Ashray](https://github.com/RaviAshray15.png?size=60)](https://github.com/RaviAshray15 "Ravi Ashray on GitHub")
 [![Yuvraj Singh](https://github.com/yuvraj0412s.png?size=60)](https://github.com/yuvraj0412s "Yuvraj Singh on GitHub")
-[![Gabriela Schmitt](https://github.com/GabrielaSchmitt.png?size=60)](https://github.com/GabrielaSchmitt "Gabriela Schmitt on Github") 
+[![Gabriela Schmitt](https://github.com/GabrielaSchmitt.png?size=60)](https://github.com/GabrielaSchmitt "Gabriela Schmitt on Github")
 [![Gabriel Couto](https://github.com/rouri404.png?size=60)](https://github.com/rouri404 "Gabriel Couto on Github")
 [![Adepegba David](https://github.com/adepegba1.png?size=60)](https://github.com/adepegba1 "Adepegba David on Github")
 [![Omar Afifi](https://github.com/OmarAfifi-CSE.png?size=60)](https://github.com/OmarAfifi-CSE "Omar Afifi on Github")
