@@ -145,6 +145,7 @@ Below are links to profiles where you can see Readme Typing SVGs in action!
 [![Mussab](https://github.com/MussabPro.png?size=60)](https://github.com/MussabPro "Mussab on Github")
 [![Zakii](https://github.com/Zakii360.png?size=60)](https://github.com/Zakii360 "Zakii360 on Github")
 [![arpanwave](https://github.com/arpanwave.png?size=60)](https://github.com/arpanwave "arpanwave on GitHub")
+[![infinuts](https://github.com/infinuts.png?size=60)](https://github.com/infinuts "infinuts on GitHub")
 
 Feel free to [open a PR](https://github.com/DenverCoder1/readme-typing-svg/issues/21#issue-870549556) and add yours!
 
