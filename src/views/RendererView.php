@@ -37,6 +37,7 @@ class RendererView
             "width" => $this->model->width,
             "height" => $this->model->height,
             "multiline" => $this->model->multiline,
+            "groups" => $this->model->groups,
             "fontCSS" => $this->model->fontCSS,
             "duration" => $this->model->duration,
             "pause" => $this->model->pause,
