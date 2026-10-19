@@ -251,10 +251,7 @@ input:focus:invalid {
     background 0.15s;
 }
 
-/* focus-within reveals the dividers before Tab order reaches them, so keyboard users can land on the buttons to create groups. */
-.lines:hover .group-divider,
-.lines:focus-within .group-divider,
-.group-divider.active {
+.lines.groups-enabled .group-divider {
   display: flex;
 }
 
@@ -298,11 +295,19 @@ input:focus:invalid {
   font-weight: 600;
 }
 
+.line-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 0.8em;
+}
+
 .add-line.btn {
   width: 100px;
   font-size: 1em;
   padding: 6px 0;
-  margin-top: 0.8em;
+  margin: 0;
 }
 
 .output img {

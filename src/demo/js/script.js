@@ -80,7 +80,7 @@ const preview = {
     params.lines = mergeLines(lineInputs, params.separator);
     // backend validates sum(groups) == line count, so skip empty inputs
     const activeDividers = Array.from(document.querySelectorAll(".group-divider.active"));
-    if (activeDividers.length > 0) {
+    if (document.querySelector("#enable-groups").checked && activeDividers.length > 0) {
       const breaks = activeDividers.map((d) => Number(d.dataset.dividerAfter)).sort((a, b) => a - b);
       const segments = [0, ...breaks, lineInputs.length];
       const groups = [];
@@ -139,6 +139,11 @@ const preview = {
    */
   customEncode(str) {
     return encodeURIComponent(str).replace(/%3B/g, ";").replace(/%20/g, "+");
+  },
+
+  setGroupsEnabled(enabled) {
+    document.querySelector("#enable-groups").checked = enabled;
+    document.querySelector(".lines").classList.toggle("groups-enabled", enabled);
   },
 
   /**
@@ -301,6 +306,7 @@ const preview = {
       d.classList.remove("active");
       d.setAttribute("aria-pressed", "false");
     });
+    this.setGroupsEnabled(false);
   },
 
   /**
@@ -361,6 +367,7 @@ const preview = {
     // groups param stores sizes, need to convert to cumulative positions for divider activation
     const groupsParam = urlParams.get("groups");
     if (groupsParam) {
+      this.setGroupsEnabled(true);
       const sizes = groupsParam.split(",").map(Number);
       let pos = 0;
       for (let i = 0; i < sizes.length - 1; i++) {
@@ -419,6 +426,11 @@ const tooltip = {
 // refresh preview on interactions with the page
 document.addEventListener("keyup", () => preview.update(), false);
 document.addEventListener("click", () => preview.update(), false);
+
+document.querySelector("#enable-groups").addEventListener("change", function () {
+  preview.setGroupsEnabled(this.checked);
+  preview.update();
+});
 
 // checkbox listener
 document.querySelector(".show-border input").addEventListener("change", function () {
