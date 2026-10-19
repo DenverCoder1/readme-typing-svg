@@ -68,12 +68,12 @@ final class RendererTest extends TestCase
         $this->assertStringContainsString("keyTimes='0;0;1;1'", $controller->render());
         $this->assertStringContainsString(
             "values='m0,25 h0 ; m0,25 h0 ; m0,25 h380 ; m0,25 h380'",
-            $controller->render(),
+            $controller->render()
         );
         $this->assertStringContainsString("keyTimes='0;0.5;1;1'", $controller->render());
         $this->assertStringContainsString(
             "values='m0,50 h0 ; m0,50 h0 ; m0,50 h380 ; m0,50 h380'",
-            $controller->render(),
+            $controller->render()
         );
     }
 
@@ -108,8 +108,8 @@ final class RendererTest extends TestCase
             1,
             preg_match(
                 "/src: url\(data:font\/truetype;base64,[a-zA-Z0-9\/+=]+\) format\('truetype'\);/",
-                $controller->render(),
-            ),
+                $controller->render()
+            )
         );
         $this->assertStringContainsString("font-family='\"Roboto\", monospace'", $controller->render());
     }
@@ -251,7 +251,7 @@ final class RendererTest extends TestCase
         $this->assertStringContainsString("begin='0s'", $actualSVG);
         $this->assertStringContainsString(
             "begin='d2.end' dur='5000ms' fill='freeze' values='m0,25 h0 ; m0,25 h380 ; m0,25 h380 ; m0,25 h380'",
-            $actualSVG,
+            $actualSVG
         );
         $this->assertStringNotContainsString(";d3.end", $actualSVG);
     }
