@@ -27,7 +27,7 @@
     "vlucas/phpdotenv": "^5.3"
   },
   "require-dev": {
-    "phpunit/phpunit": "^11.5.50"
+    "phpunit/phpunit": "^13.4.5"
   },
   "scripts": {
     "start": "php8 -S localhost:8000 -t src || php -S localhost:8000 -t src",
