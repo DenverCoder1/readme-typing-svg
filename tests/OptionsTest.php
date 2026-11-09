@@ -222,6 +222,32 @@ final class OptionsTest extends TestCase
     }
 
     /**
+     * Test multiline set to true
+     */
+    public function testMultilineIsTrue(): void
+    {
+        $params = [
+            "lines" => "text",
+            "multiline" => "true",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(true, $model->multiline);
+    }
+
+    /**
+     * Test multiline not set to true
+     */
+    public function testMultilineIsNotTrue(): void
+    {
+        $params = [
+            "lines" => "text",
+            "multiline" => "false",
+        ];
+        $model = new RendererModel("src/templates/main.php", $params);
+        $this->assertEquals(false, $model->multiline);
+    }
+
+    /**
      * Test valid duration
      */
     public function testValidDuration(): void
