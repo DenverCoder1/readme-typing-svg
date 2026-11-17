@@ -41,6 +41,7 @@ class RendererView
             "fontCSS" => $this->model->fontCSS,
             "duration" => $this->model->duration,
             "pause" => $this->model->pause,
+            "delay" => $this->model->delay,
             "repeat" => $this->model->repeat,
             "letterSpacing" => $this->model->letterSpacing,
         ]);

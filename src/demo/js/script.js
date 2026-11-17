@@ -14,6 +14,7 @@ const preview = {
     height: "50",
     duration: "5000",
     pause: "0",
+    delay: "0",
     repeat: "true",
     random: "false",
     separator: ";",

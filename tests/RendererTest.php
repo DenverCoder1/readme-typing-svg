@@ -229,6 +229,62 @@ final class RendererTest extends TestCase
     }
 
     /**
+     * Test per-line delays in normal mode without changing duration or pause.
+     */
+    public function testPerLineDelays(): void
+    {
+        $controller = new RendererController([
+            "lines" => "line1;line2;line3",
+            "delay" => "0;500;1000",
+            "duration" => "1000",
+            "pause" => "2000",
+        ]);
+        $svg = preg_replace("/\s+/", " ", $controller->render());
+
+        $this->assertStringContainsString("begin='0s;d2.end'", $svg);
+        $this->assertStringContainsString("begin='d0.end+500ms'", $svg);
+        $this->assertStringContainsString("begin='d1.end+1000ms'", $svg);
+        $this->assertSame(3, substr_count($svg, "dur='3000ms'"));
+    }
+
+    /**
+     * Test a single delay value applies before the first line and each repeat.
+     */
+    public function testInitialAndRepeatDelay(): void
+    {
+        $controller = new RendererController([
+            "lines" => "line1;line2",
+            "delay" => "500",
+        ]);
+        $svg = preg_replace("/\s+/", " ", $controller->render());
+
+        $this->assertStringContainsString("begin='500ms;d1.end+500ms'", $svg);
+        $this->assertStringContainsString("begin='d0.end+500ms'", $svg);
+    }
+
+    /**
+     * Test multiline delays include all preceding line delays in each timeline.
+     */
+    public function testMultilineDelays(): void
+    {
+        $controller = new RendererController([
+            "lines" => "line1;line2;line3",
+            "multiline" => "true",
+            "delay" => "100;200;300",
+            "duration" => "1000",
+            "pause" => "500",
+        ]);
+        $svg = preg_replace("/\s+/", " ", $controller->render());
+
+        $this->assertStringContainsString("dur='1600ms'", $svg);
+        $this->assertStringContainsString("keyTimes='0;0.0625;0.6875;1'", $svg);
+        $this->assertStringContainsString("dur='3300ms'", $svg);
+        $this->assertStringContainsString("keyTimes='0;0.54545454545455;0.84848484848485;1'", $svg);
+        $this->assertStringContainsString("dur='5100ms'", $svg);
+        $this->assertStringContainsString("keyTimes='0;0.70588235294118;0.90196078431373;1'", $svg);
+    }
+
+    /**
      * Test repeat set to false
      */
     public function testRepeatFalse(): void
@@ -363,6 +419,28 @@ final class RendererTest extends TestCase
     }
 
     /**
+     * Test delays inside grouped mode are included in group timing.
+     */
+    public function testGroupedLinesDelays(): void
+    {
+        $controller = new RendererController([
+            "lines" => "line1;line2;line3",
+            "groups" => "2,1",
+            "delay" => "100;200;300",
+            "duration" => "1000",
+            "pause" => "500",
+        ]);
+        $svg = preg_replace("/\s+/", " ", $controller->render());
+
+        $this->assertStringContainsString("dur='2800ms'", $svg);
+        $this->assertStringContainsString("keyTimes='0;0.035714285714286;0.32142857142857;0.92857142857143;1'", $svg);
+        $this->assertStringContainsString("keyTimes='0;0.46428571428571;0.75;0.92857142857143;1'", $svg);
+        $this->assertStringContainsString("begin='d1.end'", $svg);
+        $this->assertStringContainsString("dur='1800ms'", $svg);
+        $this->assertStringContainsString("keyTimes='0;0.16666666666667;0.61111111111111;0.88888888888889;1'", $svg);
+    }
+
+    /**
      * Test grouped lines with pause: pause applied once per group at the end
      * groupDuration = k*duration + pause = 2*5000 + 1000 = 11000
      */
@@ -439,6 +517,22 @@ final class RendererTest extends TestCase
         $posC = array_search("c", $order);
         $this->assertSame("b", $order[$posA + 1], "Group [a,b] was split apart by the shuffle");
         $this->assertSame("d", $order[$posC + 1], "Group [c,d] was split apart by the shuffle");
+    }
+
+    /**
+     * Test random mode keeps each delay attached to its line.
+     */
+    public function testRandomKeepsDelaysWithLines(): void
+    {
+        mt_srand(2);
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b;c;d",
+            "delay" => "10;20;30;40",
+            "random" => "true",
+        ]);
+
+        $delaysByLine = array_combine($model->lines, $model->delay);
+        $this->assertEquals(["a" => 10, "b" => 20, "c" => 30, "d" => 40], $delaysByLine);
     }
 
     /**
