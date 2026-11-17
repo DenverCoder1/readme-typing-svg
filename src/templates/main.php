@@ -116,7 +116,7 @@
                 <?php
                 $nextIndex = $i + 1;
                 $lineHeight = $size + 5;
-                $cumulativeDelay = array_sum(array_slice($delay, 0, $nextIndex));
+                $cumulativeDelay = ($i === 0 ? 0 : $cumulativeDelay) + $delay[$i];
                 $lineDuration = ($duration + $pause) * $nextIndex + $cumulativeDelay;
                 $lineStart = $i * ($duration + $pause) + $cumulativeDelay;
                 $yOffset = $nextIndex * $lineHeight;
