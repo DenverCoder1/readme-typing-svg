@@ -11,12 +11,17 @@
     <?php
     // Pre-compute per-line group membership when groups param is provided
     $groupInfo = [];
+    $groupDelays = [];
+    $groupLineStarts = [];
     if ($groups !== null) {
         $lineIdx = 0;
         foreach ($groups as $gIdx => $gSize) {
             $groupStartLine = $lineIdx;
+            $delayPrefix = 0;
             for ($p = 0; $p < $gSize; $p++) {
-                $groupInfo[$lineIdx] = [
+                $lineIndex = $lineIdx + $p;
+                $delayPrefix += $delay[$lineIndex];
+                $groupInfo[$lineIndex] = [
                     "groupIndex" => $gIdx,
                     "positionInGroup" => $p,
                     "groupSize" => $gSize,
@@ -24,8 +29,10 @@
                     "lastLineInGroup" => $groupStartLine + $gSize - 1,
                     "isFirstGroup" => $gIdx === 0,
                 ];
-                $lineIdx++;
+                $groupLineStarts[$lineIndex] = $delayPrefix + $p * $duration;
             }
+            $groupDelays[$gIdx] = $delayPrefix;
+            $lineIdx += $gSize;
         }
     }
     ?>
@@ -46,11 +53,11 @@
                 $fullLine = "m0,$yOffset h$width";
 
                 // Delays are waits immediately before each line starts typing.
-                $groupDelay = array_sum(array_slice($delay, $groupStartLine, $k));
+                $groupDelay = $groupDelays[$info["groupIndex"]];
                 $groupDuration = $groupDelay + $k * $duration + $pause;
 
                 // Each line waits for its own delay and the preceding lines in the group.
-                $lineStart = array_sum(array_slice($delay, $groupStartLine, $p + 1)) + $p * $duration;
+                $lineStart = $groupLineStarts[$i];
                 $kt1 = $lineStart / $groupDuration;
                 $kt2 = ($lineStart + 0.8 * $duration) / $groupDuration;
                 $kt3 = ($groupDelay + ($k - 1 + 0.8) * $duration + $pause) / $groupDuration;
