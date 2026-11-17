@@ -46,6 +46,9 @@ class RendererModel
     /** @var int $pause pause duration between lines in milliseconds */
     public $pause;
 
+    /** @var array<int> $delay delay before each line starts in milliseconds */
+    public $delay;
+
     /** @var bool $repeat Whether to loop around to the first line after the last */
     public $repeat;
 
@@ -81,6 +84,7 @@ class RendererModel
         "multiline" => "false",
         "duration" => "5000",
         "pause" => "0",
+        "delay" => "0",
         "repeat" => "true",
         "separator" => ";",
         "random" => "false",
@@ -111,6 +115,7 @@ class RendererModel
         $this->multiline = $this->checkBoolean($params["multiline"] ?? $this->DEFAULTS["multiline"]);
         $this->duration = $this->checkNumberPositive($params["duration"] ?? $this->DEFAULTS["duration"], "duration");
         $this->pause = $this->checkNumberNonNegative($params["pause"] ?? $this->DEFAULTS["pause"], "pause");
+        $this->delay = $this->checkDelays($params["delay"] ?? $this->DEFAULTS["delay"], count($this->lines));
         $this->repeat = $this->checkBoolean($params["repeat"] ?? $this->DEFAULTS["repeat"]);
         $this->groups = $this->checkGroups($params["groups"] ?? null, count($this->lines));
         if ($this->random) {
@@ -121,23 +126,46 @@ class RendererModel
     }
 
     /**
-     * Shuffle lines, keeping groups together as units when groups are set
+     * Shuffle lines and their delays, keeping groups together as units when groups are set
      */
     private function shuffleLines()
     {
         if ($this->groups !== null) {
-            // Shuffle whole groups so lines within each group stay together
+            // Shuffle whole groups so lines and their delays stay together
             $chunks = [];
             $offset = 0;
             foreach ($this->groups as $size) {
-                $chunks[] = array_slice($this->lines, $offset, $size);
+                $chunks[] = [
+                    "lines" => array_slice($this->lines, $offset, $size),
+                    "delay" => array_slice($this->delay, $offset, $size),
+                ];
                 $offset += $size;
             }
             shuffle($chunks);
-            $this->lines = array_merge(...$chunks);
-            $this->groups = array_map("count", $chunks);
+            $this->lines = [];
+            $this->delay = [];
+            foreach ($chunks as $chunk) {
+                array_push($this->lines, ...$chunk["lines"]);
+                array_push($this->delay, ...$chunk["delay"]);
+            }
+            $this->groups = array_map(function ($chunk) {
+                return count($chunk["lines"]);
+            }, $chunks);
         } else {
-            shuffle($this->lines);
+            $items = [];
+            foreach ($this->lines as $index => $line) {
+                $items[] = [
+                    "line" => $line,
+                    "delay" => $this->delay[$index],
+                ];
+            }
+            shuffle($items);
+            $this->lines = [];
+            $this->delay = [];
+            foreach ($items as $item) {
+                $this->lines[] = $item["line"];
+                $this->delay[] = $item["delay"];
+            }
         }
     }
 
@@ -220,6 +248,45 @@ class RendererModel
             throw new UnprocessableEntityException("$field must be a non-negative number.");
         }
         return $digits;
+    }
+
+    /**
+     * Validate and expand delay values.
+     *
+     * A single value applies to every line. Multiple values must contain
+     * exactly one non-negative integer for each line.
+     *
+     * @param string $delay Delay value or semicolon-separated delay values
+     * @param int $lineCount Number of rendered lines
+     * @return array<int> Validated delay values
+     */
+    private function checkDelays($delay, $lineCount)
+    {
+        $values = explode(";", (string) $delay);
+        if (count($values) === 1) {
+            $values = array_fill(0, $lineCount, $values[0]);
+        }
+        if (count($values) !== $lineCount) {
+            throw new UnprocessableEntityException("delay must contain either one value or one value per line.");
+        }
+        return array_map(function ($value) {
+            return $this->checkDelayValue($value);
+        }, $values);
+    }
+
+    /**
+     * Validate one delay value without silently accepting malformed input.
+     *
+     * @param string $value Delay in milliseconds
+     * @return int Validated delay
+     */
+    private function checkDelayValue($value)
+    {
+        $value = trim((string) $value);
+        if ($value === "" || !preg_match("/^\d+$/", $value)) {
+            throw new UnprocessableEntityException("delay must be a non-negative integer.");
+        }
+        return intval($value);
     }
 
     /**

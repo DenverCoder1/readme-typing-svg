@@ -315,6 +315,80 @@ final class OptionsTest extends TestCase
     }
 
     /**
+     * Test delay defaults to zero for every line
+     */
+    public function testDelayDefaultsToZero(): void
+    {
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b;c",
+        ]);
+        $this->assertSame([0, 0, 0], $model->delay);
+    }
+
+    /**
+     * Test one delay value applies to every line
+     */
+    public function testSingleDelayAppliesToEveryLine(): void
+    {
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b;c",
+            "delay" => "500",
+        ]);
+        $this->assertSame([500, 500, 500], $model->delay);
+    }
+
+    /**
+     * Test semicolon-separated delay values are parsed per line
+     */
+    public function testPerLineDelays(): void
+    {
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b;c",
+            "delay" => "0;500;1000",
+        ]);
+        $this->assertSame([0, 500, 1000], $model->delay);
+    }
+
+    /**
+     * Test malformed delay values are rejected
+     */
+    public function testInvalidDelay(): void
+    {
+        $this->expectException("InvalidArgumentException");
+        $this->expectExceptionMessage("delay must be a non-negative integer.");
+        new RendererModel("src/templates/main.php", [
+            "lines" => "text",
+            "delay" => "-1",
+        ]);
+    }
+
+    /**
+     * Test non-numeric delay values are rejected
+     */
+    public function testNonNumericDelay(): void
+    {
+        $this->expectException("InvalidArgumentException");
+        $this->expectExceptionMessage("delay must be a non-negative integer.");
+        new RendererModel("src/templates/main.php", [
+            "lines" => "text",
+            "delay" => "abc",
+        ]);
+    }
+
+    /**
+     * Test the number of per-line delays must match the number of lines
+     */
+    public function testDelayCountMustMatchLineCount(): void
+    {
+        $this->expectException("InvalidArgumentException");
+        $this->expectExceptionMessage("delay must contain either one value or one value per line.");
+        new RendererModel("src/templates/main.php", [
+            "lines" => "a;b;c",
+            "delay" => "100;200",
+        ]);
+    }
+
+    /**
      * Test repeat set to true, false, other
      */
     public function testRepeat(): void

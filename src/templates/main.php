@@ -11,12 +11,17 @@
     <?php
     // Pre-compute per-line group membership when groups param is provided
     $groupInfo = [];
+    $groupDelays = [];
+    $groupLineStarts = [];
     if ($groups !== null) {
         $lineIdx = 0;
         foreach ($groups as $gIdx => $gSize) {
             $groupStartLine = $lineIdx;
+            $delayPrefix = 0;
             for ($p = 0; $p < $gSize; $p++) {
-                $groupInfo[$lineIdx] = [
+                $lineIndex = $lineIdx + $p;
+                $delayPrefix += $delay[$lineIndex];
+                $groupInfo[$lineIndex] = [
                     "groupIndex" => $gIdx,
                     "positionInGroup" => $p,
                     "groupSize" => $gSize,
@@ -24,8 +29,10 @@
                     "lastLineInGroup" => $groupStartLine + $gSize - 1,
                     "isFirstGroup" => $gIdx === 0,
                 ];
-                $lineIdx++;
+                $groupLineStarts[$lineIndex] = $delayPrefix + $p * $duration;
             }
+            $groupDelays[$gIdx] = $delayPrefix;
+            $lineIdx += $gSize;
         }
     }
     ?>
@@ -45,13 +52,15 @@
                 $emptyLine = "m0,$yOffset h0";
                 $fullLine = "m0,$yOffset h$width";
 
-                // Total time for this group: each line occupies one $duration slot, plus one $pause at the end
-                $groupDuration = $k * $duration + $pause;
+                // Delays are waits immediately before each line starts typing.
+                $groupDelay = $groupDelays[$info["groupIndex"]];
+                $groupDuration = $groupDelay + $k * $duration + $pause;
 
-                // keyTimes: wait for turn, type, hold through group pause, clear simultaneously with group
-                $kt1 = ($p * $duration) / $groupDuration;
-                $kt2 = (($p + 0.8) * $duration) / $groupDuration;
-                $kt3 = (($k - 1 + 0.8) * $duration + $pause) / $groupDuration;
+                // Each line waits for its own delay and the preceding lines in the group.
+                $lineStart = $groupLineStarts[$i];
+                $kt1 = $lineStart / $groupDuration;
+                $kt2 = ($lineStart + 0.8 * $duration) / $groupDuration;
+                $kt3 = ($groupDelay + ($k - 1 + 0.8) * $duration + $pause) / $groupDuration;
                 $keyTimes = ["0", $kt1, $kt2, $kt3, "1"];
                 $values = [$emptyLine, $emptyLine, $fullLine, $fullLine, $emptyLine];
 
@@ -86,9 +95,13 @@
                 elseif (!$multiline): ?>
                 <!-- Single line -->
                 <?php
-                $begin = "d" . ($i - 1) . ".end";
+                $lineDelay = $delay[$i];
+                $delayOffset = $lineDelay > 0 ? "+{$lineDelay}ms" : "";
                 if ($i == 0) {
-                    $begin = $repeat ? "0s;d$lastLineIndex.end" : "0s";
+                    $initialBegin = $lineDelay > 0 ? "{$lineDelay}ms" : "0s";
+                    $begin = $repeat ? "{$initialBegin};d$lastLineIndex.end$delayOffset" : $initialBegin;
+                } else {
+                    $begin = "d" . ($i - 1) . ".end$delayOffset";
                 }
                 $freeze = !$repeat && $i == $lastLineIndex;
                 $yOffset = $height / 2;
@@ -110,12 +123,14 @@
                 <?php
                 $nextIndex = $i + 1;
                 $lineHeight = $size + 5;
-                $lineDuration = ($duration + $pause) * $nextIndex;
+                $cumulativeDelay = ($i === 0 ? 0 : $cumulativeDelay) + $delay[$i];
+                $lineDuration = ($duration + $pause) * $nextIndex + $cumulativeDelay;
+                $lineStart = $i * ($duration + $pause) + $cumulativeDelay;
                 $yOffset = $nextIndex * $lineHeight;
                 $emptyLine = "m0,$yOffset h0";
                 $fullLine = "m0,$yOffset h$width";
                 $values = [$emptyLine, $emptyLine, $fullLine, $fullLine];
-                $keyTimes = ["0", $i / $nextIndex, $i / $nextIndex + $duration / $lineDuration, "1"];
+                $keyTimes = ["0", $lineStart / $lineDuration, ($lineStart + $duration) / $lineDuration, "1"];
                 ?>
                 <animate id='d<?= $i ?>' attributeName='d' begin='0s<?= $repeat ? ";d$lastLineIndex.end" : "" ?>'
                     dur='<?= $lineDuration ?>ms' fill="freeze"

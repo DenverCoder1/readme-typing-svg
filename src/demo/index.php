@@ -89,6 +89,9 @@
                 <label for="pause">Pause (ms after line)</label>
                 <input class="param" type="number" id="pause" name="pause" alt="Pause duration (ms)" placeholder="1000" value="1000">
 
+                <label for="delay">Delay (ms before line)</label>
+                <input class="param" type="text" id="delay" name="delay" alt="Delay before line" placeholder="0" value="0">
+
                 <label for="color">Font color</label>
                 <input class="param jscolor jscolor-active" id="color" name="color" alt="Font color" data-jscolor="{ format: 'hexa' }" value="#36BCF7">
 
