@@ -145,8 +145,8 @@ class RendererModel
             $this->lines = [];
             $this->delay = [];
             foreach ($chunks as $chunk) {
-                $this->lines = array_merge($this->lines, $chunk["lines"]);
-                $this->delay = array_merge($this->delay, $chunk["delay"]);
+                array_push($this->lines, ...$chunk["lines"]);
+                array_push($this->delay, ...$chunk["delay"]);
             }
             $this->groups = array_map(function ($chunk) {
                 return count($chunk["lines"]);
