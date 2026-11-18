@@ -37,6 +37,12 @@
     }
     ?>
     <?php for ($i = 0; $i <= $lastLineIndex; ++$i): ?>
+        <?php
+        // Each line is typed across its own width; centered lines start part way in
+        $lineWidth = $lineWidths[$i];
+        $xStart = $center ? ($width - $lineWidth) / 2 : 0;
+        $textX = $center ? ($lineWidth === $width ? "50%" : $lineWidth / 2) : "0%";
+        ?>
         <path id='path<?= $i ?>'>
             <?php if ($groups !== null): ?>
                 <!-- Grouped lines: lines within a group type sequentially, all clear together -->
@@ -49,8 +55,8 @@
 
                 $lineHeight = $size + 5;
                 $yOffset = ($p + 1) * $lineHeight;
-                $emptyLine = "m0,$yOffset h0";
-                $fullLine = "m0,$yOffset h$width";
+                $emptyLine = "m$xStart,$yOffset h0";
+                $fullLine = "m$xStart,$yOffset h$lineWidth";
 
                 // Delays are waits immediately before each line starts typing.
                 $groupDelay = $groupDelays[$info["groupIndex"]];
@@ -105,8 +111,8 @@
                 }
                 $freeze = !$repeat && $i == $lastLineIndex;
                 $yOffset = $height / 2;
-                $emptyLine = "m0,$yOffset h0";
-                $fullLine = "m0,$yOffset h$width";
+                $emptyLine = "m$xStart,$yOffset h0";
+                $fullLine = "m$xStart,$yOffset h$lineWidth";
                 $values = [$emptyLine, $fullLine, $fullLine, $freeze ? $fullLine : $emptyLine];
                 $keyTimes = [
                     "0",
@@ -127,8 +133,8 @@
                 $lineDuration = ($duration + $pause) * $nextIndex + $cumulativeDelay;
                 $lineStart = $i * ($duration + $pause) + $cumulativeDelay;
                 $yOffset = $nextIndex * $lineHeight;
-                $emptyLine = "m0,$yOffset h0";
-                $fullLine = "m0,$yOffset h$width";
+                $emptyLine = "m$xStart,$yOffset h0";
+                $fullLine = "m$xStart,$yOffset h$lineWidth";
                 $values = [$emptyLine, $emptyLine, $fullLine, $fullLine];
                 $keyTimes = ["0", $lineStart / $lineDuration, ($lineStart + $duration) / $lineDuration, "1"];
                 ?>
@@ -139,7 +145,7 @@
         </path>
     <text font-family='"<?= $font ?>", monospace' fill='<?= $color ?>' font-size='<?= $size ?>'
         dominant-baseline='<?= $vCenter ? "middle" : "auto" ?>'
-        x='<?= $center ? "50%" : "0%" ?>' text-anchor='<?= $center ? "middle" : "start" ?>'
+        x='<?= $textX ?>' text-anchor='<?= $center ? "middle" : "start" ?>'
         letter-spacing='<?= $letterSpacing ?>'>
         <textPath xlink:href='#path<?= $i ?>'>
             <?= $lines[$i] . "\n" ?>

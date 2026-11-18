@@ -389,6 +389,58 @@ final class OptionsTest extends TestCase
     }
 
     /**
+     * Test one width value applies to every line
+     */
+    public function testSingleWidthAppliesToEveryLine(): void
+    {
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b;c",
+            "width" => "300",
+        ]);
+        $this->assertSame([300, 300, 300], $model->lineWidths);
+        $this->assertSame(300, $model->width);
+    }
+
+    /**
+     * Test semicolon-separated width values are parsed per line and the SVG uses the widest
+     */
+    public function testPerLineWidths(): void
+    {
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b;c",
+            "width" => "120;450;200",
+        ]);
+        $this->assertSame([120, 450, 200], $model->lineWidths);
+        $this->assertSame(450, $model->width);
+    }
+
+    /**
+     * Test each per-line width must be positive
+     */
+    public function testInvalidPerLineWidth(): void
+    {
+        $this->expectException("InvalidArgumentException");
+        $this->expectExceptionMessage("Width must be a positive number.");
+        new RendererModel("src/templates/main.php", [
+            "lines" => "a;b",
+            "width" => "200;0",
+        ]);
+    }
+
+    /**
+     * Test the number of per-line widths must match the number of lines
+     */
+    public function testWidthCountMustMatchLineCount(): void
+    {
+        $this->expectException("InvalidArgumentException");
+        $this->expectExceptionMessage("width must contain either one value or one value per line.");
+        new RendererModel("src/templates/main.php", [
+            "lines" => "a;b;c",
+            "width" => "100;200",
+        ]);
+    }
+
+    /**
      * Test repeat set to true, false, other
      */
     public function testRepeat(): void

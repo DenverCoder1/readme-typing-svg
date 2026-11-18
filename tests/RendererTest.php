@@ -536,6 +536,88 @@ final class RendererTest extends TestCase
     }
 
     /**
+     * Test per-line widths: each path ends at its own width and the SVG is as wide as the widest line.
+     */
+    public function testPerLineWidths(): void
+    {
+        $controller = new RendererController([
+            "lines" => "Hi;Hello world",
+            "width" => "40;300",
+            "height" => "50",
+        ]);
+        $svg = preg_replace("/\s+/", " ", $controller->render());
+
+        $this->assertStringContainsString("viewBox='0 0 300 50'", $svg);
+        $this->assertStringContainsString("width='300px'", $svg);
+        $this->assertStringContainsString("values='m0,25 h0 ; m0,25 h40 ; m0,25 h40 ; m0,25 h0'", $svg);
+        $this->assertStringContainsString("values='m0,25 h0 ; m0,25 h300 ; m0,25 h300 ; m0,25 h0'", $svg);
+    }
+
+    /**
+     * Test centered per-line widths start each path so the line stays centered.
+     */
+    public function testCenteredPerLineWidths(): void
+    {
+        $controller = new RendererController([
+            "lines" => "Hi;Hello world",
+            "width" => "40;300",
+            "height" => "50",
+            "center" => "true",
+        ]);
+        $svg = preg_replace("/\s+/", " ", $controller->render());
+
+        // the 40px line starts (300 - 40) / 2 = 130px in, its text is centered 20px along its path
+        $this->assertStringContainsString("values='m130,25 h0 ; m130,25 h40 ; m130,25 h40 ; m130,25 h0'", $svg);
+        $this->assertStringContainsString("x='20' text-anchor='middle'", $svg);
+        // the widest line keeps the original full-width path and 50% anchor
+        $this->assertStringContainsString("values='m0,25 h0 ; m0,25 h300 ; m0,25 h300 ; m0,25 h0'", $svg);
+        $this->assertStringContainsString("x='50%' text-anchor='middle'", $svg);
+    }
+
+    /**
+     * Test per-line widths in multiline and grouped modes.
+     */
+    public function testPerLineWidthsMultilineAndGroups(): void
+    {
+        $multiline = new RendererController([
+            "lines" => "a;bbbbbb",
+            "width" => "50;200",
+            "size" => "20",
+            "multiline" => "true",
+        ]);
+        $svg = preg_replace("/\s+/", " ", $multiline->render());
+        $this->assertStringContainsString("m0,25 h50", $svg);
+        $this->assertStringContainsString("m0,50 h200", $svg);
+
+        $grouped = new RendererController([
+            "lines" => "a;bbbbbb;cc",
+            "width" => "50;200;80",
+            "size" => "20",
+            "groups" => "2,1",
+        ]);
+        $svg = preg_replace("/\s+/", " ", $grouped->render());
+        $this->assertStringContainsString("m0,25 h50", $svg);
+        $this->assertStringContainsString("m0,50 h200", $svg);
+        $this->assertStringContainsString("m0,25 h80", $svg);
+    }
+
+    /**
+     * Test random mode keeps each width attached to its line.
+     */
+    public function testRandomKeepsWidthsWithLines(): void
+    {
+        mt_srand(2);
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b;c;d",
+            "width" => "10;20;30;40",
+            "random" => "true",
+        ]);
+
+        $widthsByLine = array_combine($model->lines, $model->lineWidths);
+        $this->assertEquals(["a" => 10, "b" => 20, "c" => 30, "d" => 40], $widthsByLine);
+    }
+
+    /**
      * Test Letter Spacing
      */
     public function testLetterSpacing()
