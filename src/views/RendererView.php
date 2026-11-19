@@ -45,6 +45,8 @@ class RendererView
             "delay" => $this->model->delay,
             "repeat" => $this->model->repeat,
             "letterSpacing" => $this->model->letterSpacing,
+            "widthSpeed" => $this->model->widthSpeed,
+            "typeDurations" => $this->model->typeDurations,
         ]);
         // render SVG with output buffering
         ob_start();

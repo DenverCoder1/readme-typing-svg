@@ -89,6 +89,9 @@
                 <label for="pause">Pause (ms after line)</label>
                 <input class="param" type="number" id="pause" name="pause" alt="Pause duration (ms)" placeholder="1000" value="1000">
 
+                <label for="widthSpeed" title="Types each line at the same speed, so narrower lines finish sooner. Only applies when a different width is set per line.">Scale speed to line width</label>
+                <input class="param" type="checkbox" id="widthSpeed" name="widthSpeed" alt="Scale typing speed to each line's width" value="true">
+
                 <label for="delay">Delay (ms before line)</label>
                 <input class="param" type="text" id="delay" name="delay" alt="Delay before line" placeholder="0" value="0">
 

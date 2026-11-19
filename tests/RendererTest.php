@@ -618,6 +618,113 @@ final class RendererTest extends TestCase
     }
 
     /**
+     * Test widthSpeed keeps typing speed constant: the narrow line finishes typing sooner
+     */
+    public function testWidthSpeedShortensNarrowLine(): void
+    {
+        $params = [
+            "lines" => "Hi;Hello world",
+            "width" => "40;300",
+            "height" => "50",
+            "duration" => "1000",
+            "pause" => "0",
+        ];
+        $fixed = preg_replace("/\\s+/", " ", (new RendererController($params))->render());
+        $scaled = preg_replace("/\\s+/", " ", (new RendererController($params + ["widthSpeed" => "true"]))->render());
+
+        // off: both lines take the full duration
+        $this->assertStringContainsString("dur='1000ms'", $fixed);
+        // on: the 40px line takes 1000 * 40 / 300 = 133ms, the widest keeps 1000ms
+        $this->assertStringContainsString("dur='133ms'", $scaled);
+        $this->assertStringContainsString("dur='1000ms'", $scaled);
+    }
+
+    /**
+     * Test widthSpeed with a uniform width renders byte for byte the same SVG as before
+     */
+    public function testWidthSpeedNoOpWhenWidthIsUniform(): void
+    {
+        $base = [
+            "lines" => "first;second;third",
+            "width" => "400",
+            "duration" => "1000",
+            "pause" => "500",
+            "delay" => "100;200;300",
+        ];
+        foreach ([
+            "single" => [],
+            "multiline" => ["multiline" => "true"],
+            "groups" => ["groups" => "2,1"],
+        ] as $mode => $extra) {
+            $off = preg_replace("/\\s+/", " ", (new RendererController($base + $extra))->render());
+            $on = preg_replace("/\\s+/", " ", (new RendererController($base + $extra + ["widthSpeed" => "true"]))->render());
+            $this->assertSame($off, $on, "widthSpeed changed output in $mode mode with a single width");
+        }
+    }
+
+    /**
+     * Test widthSpeed in multiline mode advances each line by the previous line's typing time
+     */
+    public function testWidthSpeedMultiline(): void
+    {
+        $params = [
+            "lines" => "a;bbbbbb",
+            "width" => "50;200",
+            "size" => "20",
+            "multiline" => "true",
+            "duration" => "1000",
+            "pause" => "0",
+        ];
+        $svg = preg_replace("/\\s+/", " ", (new RendererController($params + ["widthSpeed" => "true"]))->render());
+
+        // line 1 types for 250ms then hands over; line 2 keeps the full 1000ms
+        $this->assertStringContainsString("dur='1250ms'", $svg);
+        $this->assertStringContainsString("keyTimes='0;0.2;1;1'", $svg);
+    }
+
+    /**
+     * Test widthSpeed in grouped mode keeps pauses and the group cadence intact
+     */
+    public function testWidthSpeedGroups(): void
+    {
+        $params = [
+            "lines" => "a;bbbbbb;cc",
+            "width" => "50;200;80",
+            "size" => "20",
+            "groups" => "2,1",
+            "duration" => "1000",
+            "pause" => "500",
+        ];
+        $svg = preg_replace("/\\s+/", " ", (new RendererController($params + ["widthSpeed" => "true"]))->render());
+
+        // group 0 types 250 (50px) + 1000 (200px) = 1250ms, plus the 500ms pause
+        $this->assertStringContainsString("dur='1750ms'", $svg);
+        // group 1 types 400ms (80px) then pauses 500ms
+        $this->assertStringContainsString("dur='900ms'", $svg);
+        // every keyTime stays inside [0, 1] and never goes backwards
+        foreach (["0;0;0.11428571428571;0.88571428571429;1", "0;0.14285714285714;0.6;0.88571428571429;1", "0;0;0.35555555555556;0.91111111111111;1"] as $expected) {
+            $this->assertStringContainsString("keyTimes='$expected'", $svg);
+        }
+    }
+
+    /**
+     * Test random mode keeps each type duration with its line
+     */
+    public function testRandomKeepsTypeDurationsWithLines(): void
+    {
+        mt_srand(7);
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b;c;d",
+            "width" => "10;20;30;40",
+            "duration" => "1000",
+            "widthSpeed" => "true",
+            "random" => "true",
+        ]);
+        $byLine = array_combine($model->lines, $model->typeDurations);
+        $this->assertEquals(["a" => 250.0, "b" => 500.0, "c" => 750.0, "d" => 1000.0], $byLine);
+    }
+
+    /**
      * Test Letter Spacing
      */
     public function testLetterSpacing()

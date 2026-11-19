@@ -70,6 +70,12 @@ class RendererModel
     /** @var string $letterSpacing Letter spacing */
     public $letterSpacing;
 
+    /** @var bool $widthSpeed True = scale typing duration with each line's width */
+    public $widthSpeed;
+
+    /** @var array<float> $typeDurations Typing duration of each line (ms) */
+    public $typeDurations;
+
     /** @var string $template Path to template file */
     public $template;
 
@@ -92,6 +98,7 @@ class RendererModel
         "separator" => ";",
         "random" => "false",
         "letterSpacing" => "normal",
+        "widthSpeed" => "false",
     ];
 
     /**
@@ -127,6 +134,32 @@ class RendererModel
         }
         $this->fontCSS = $this->fetchFontCSS($this->font, $this->weight, $params["lines"]);
         $this->letterSpacing = $this->checkLetterSpacing($params["letterSpacing"] ?? $this->DEFAULTS["letterSpacing"]);
+        $this->widthSpeed = $this->checkBoolean($params["widthSpeed"] ?? $this->DEFAULTS["widthSpeed"]);
+        $this->typeDurations = $this->computeTypeDurations();
+    }
+
+    /**
+     * Compute how long each line spends typing.
+     *
+     * With widthSpeed disabled every line types for the same duration. With it
+     * enabled each line types at the byte rate of the widest line, so a narrower
+     * line finishes typing sooner instead of typing more slowly across the same
+     * duration. Pauses and delays are unaffected.
+     *
+     * @return array<float> Typing duration of each line (ms)
+     */
+    private function computeTypeDurations()
+    {
+        $durations = [];
+        foreach ($this->lineWidths as $lineWidth) {
+            if (!$this->widthSpeed || $this->width === 0 || $lineWidth >= $this->width) {
+                $durations[] = (float) $this->duration;
+            } else {
+                // round so the SVG gets a whole millisecond, never 133.33333333333ms
+                $durations[] = round($this->duration * 1.0 * $lineWidth / $this->width);
+            }
+        }
+        return $durations;
     }
 
     /**

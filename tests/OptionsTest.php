@@ -441,6 +441,50 @@ final class OptionsTest extends TestCase
     }
 
     /**
+     * Test widthSpeed is off by default and leaves every line at the full duration
+     */
+    public function testWidthSpeedOffByDefault(): void
+    {
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;bbbbbb",
+            "width" => "50;200",
+            "duration" => "1000",
+        ]);
+        $this->assertFalse($model->widthSpeed);
+        $this->assertSame([1000.0, 1000.0], $model->typeDurations);
+    }
+
+    /**
+     * Test widthSpeed scales each line's typing time by its share of the widest width
+     */
+    public function testWidthSpeedScalesTypeDurations(): void
+    {
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;bbbbbb;cc",
+            "width" => "50;200;80",
+            "duration" => "1000",
+            "widthSpeed" => "true",
+        ]);
+        $this->assertTrue($model->widthSpeed);
+        // the widest line keeps the full duration, narrower lines type proportionally shorter
+        $this->assertSame([250.0, 1000.0, 400.0], $model->typeDurations);
+    }
+
+    /**
+     * Test a single width disables the scaling even when widthSpeed is on
+     */
+    public function testWidthSpeedWithSingleWidthKeepsFullDuration(): void
+    {
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b",
+            "width" => "300",
+            "duration" => "1000",
+            "widthSpeed" => "true",
+        ]);
+        $this->assertSame([1000.0, 1000.0], $model->typeDurations);
+    }
+
+    /**
      * Test repeat set to true, false, other
      */
     public function testRepeat(): void
