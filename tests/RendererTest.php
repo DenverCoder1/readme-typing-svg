@@ -618,6 +618,70 @@ final class RendererTest extends TestCase
     }
 
     /**
+     * Test no cursor block is emitted unless the option is on, so existing output is unchanged
+     */
+    public function testCursorAbsentByDefault(): void
+    {
+        $svg = preg_replace("/\\s+/", " ", (new RendererController(["lines" => "a;b"]))->render());
+        $this->assertStringNotContainsString("<rect", $svg);
+    }
+
+    /**
+     * Test the cursor block is drawn once per line and tracks the typed edge
+     */
+    public function testCursorFollowsLine(): void
+    {
+        $params = [
+            "lines" => "a;bbbb",
+            "width" => "100;400",
+            "duration" => "1000",
+            "pause" => "0",
+            "cursor" => "true",
+        ];
+        $svg = preg_replace("/\\s+/", " ", (new RendererController($params))->render());
+
+        // one cursor per line
+        $this->assertSame(2, substr_count($svg, "<rect"));
+        // each cursor rides from the line start to the end of that line's own width
+        $this->assertStringContainsString("values='0 ; 100 ; 100 ; 0'", $svg);
+        $this->assertStringContainsString("values='0 ; 400 ; 400 ; 0'", $svg);
+        // the cursor is sized to the font
+        $this->assertStringContainsString("width='10' height='20'", $svg);
+    }
+
+    /**
+     * Test the cursor is anchored to the text start when the content is centered
+     */
+    public function testCursorWithCenteredText(): void
+    {
+        $svg = preg_replace("/\\s+/", " ", (new RendererController([
+            "lines" => "hi",
+            "width" => "400",
+            "center" => "true",
+            "cursor" => "true",
+        ]))->render());
+
+        // a centered single-width line starts at x = 0 (xStart uses the full width) and ends at 400
+        $this->assertStringContainsString("values='0 ; 400 ; 400 ; 0'", $svg);
+        $this->assertStringContainsString("text-anchor='middle'", $svg);
+    }
+
+    /**
+     * Test the cursor blinks and stays put in multiline mode
+     */
+    public function testCursorMultiline(): void
+    {
+        $svg = preg_replace("/\\s+/", " ", (new RendererController([
+            "lines" => "one;two",
+            "multiline" => "true",
+            "cursor" => "true",
+        ]))->render());
+
+        $this->assertSame(2, substr_count($svg, "<rect"));
+        $this->assertStringContainsString("values='1;1;0;0;1'", $svg);
+    }
+
+    /**
      * Test Letter Spacing
      */
     public function testLetterSpacing()

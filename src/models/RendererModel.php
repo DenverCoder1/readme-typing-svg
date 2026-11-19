@@ -70,6 +70,9 @@ class RendererModel
     /** @var string $letterSpacing Letter spacing */
     public $letterSpacing;
 
+    /** @var bool $cursor True = draw a blinking cursor block after the typed text */
+    public $cursor;
+
     /** @var string $template Path to template file */
     public $template;
 
@@ -92,6 +95,7 @@ class RendererModel
         "separator" => ";",
         "random" => "false",
         "letterSpacing" => "normal",
+        "cursor" => "false",
     ];
 
     /**
@@ -127,6 +131,7 @@ class RendererModel
         }
         $this->fontCSS = $this->fetchFontCSS($this->font, $this->weight, $params["lines"]);
         $this->letterSpacing = $this->checkLetterSpacing($params["letterSpacing"] ?? $this->DEFAULTS["letterSpacing"]);
+        $this->cursor = $this->checkBoolean($params["cursor"] ?? $this->DEFAULTS["cursor"]);
     }
 
     /**
