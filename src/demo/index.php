@@ -130,7 +130,7 @@
 
                 <label for="dimensions" title="Width ✕ Height">Width ✕ Height</label>
                 <span id="dimensions">
-                    <input class="param inline" type="number" id="width" name="width" alt="Width (px)" placeholder="435" value="435">
+                    <input class="param inline" type="text" id="width" name="width" alt="Width (px), or one width per line separated by semicolons" title="One width, or one per line separated by semicolons (e.g. 200;435)" placeholder="435" value="435">
                     <label>✕</label>
                     <input class="param inline" type="number" id="height" name="height" alt="Height (px)" placeholder="50" value="50">
                 </span>

@@ -31,8 +31,11 @@ class RendererModel
     /** @var bool $vCenter Whether or not to center text vertically */
     public $vCenter;
 
-    /** @var int $width SVG width (px) */
+    /** @var int $width SVG width (px), the widest line width */
     public $width;
+
+    /** @var array<int> $lineWidths width each line is typed across (px) */
+    public $lineWidths;
 
     /** @var int $height SVG height (px) */
     public $height;
@@ -110,7 +113,8 @@ class RendererModel
         $this->size = $this->checkNumberPositive($params["size"] ?? $this->DEFAULTS["size"], "Font size");
         $this->center = $this->checkBoolean($params["center"] ?? $this->DEFAULTS["center"]);
         $this->vCenter = $this->checkBoolean($params["vCenter"] ?? $this->DEFAULTS["vCenter"]);
-        $this->width = $this->checkNumberPositive($params["width"] ?? $this->DEFAULTS["width"], "Width");
+        $this->lineWidths = $this->checkWidths($params["width"] ?? $this->DEFAULTS["width"], count($this->lines));
+        $this->width = max($this->lineWidths);
         $this->height = $this->checkNumberPositive($params["height"] ?? $this->DEFAULTS["height"], "Height");
         $this->multiline = $this->checkBoolean($params["multiline"] ?? $this->DEFAULTS["multiline"]);
         $this->duration = $this->checkNumberPositive($params["duration"] ?? $this->DEFAULTS["duration"], "duration");
@@ -138,15 +142,18 @@ class RendererModel
                 $chunks[] = [
                     "lines" => array_slice($this->lines, $offset, $size),
                     "delay" => array_slice($this->delay, $offset, $size),
+                    "width" => array_slice($this->lineWidths, $offset, $size),
                 ];
                 $offset += $size;
             }
             shuffle($chunks);
             $this->lines = [];
             $this->delay = [];
+            $this->lineWidths = [];
             foreach ($chunks as $chunk) {
                 array_push($this->lines, ...$chunk["lines"]);
                 array_push($this->delay, ...$chunk["delay"]);
+                array_push($this->lineWidths, ...$chunk["width"]);
             }
             $this->groups = array_map(function ($chunk) {
                 return count($chunk["lines"]);
@@ -157,14 +164,17 @@ class RendererModel
                 $items[] = [
                     "line" => $line,
                     "delay" => $this->delay[$index],
+                    "width" => $this->lineWidths[$index],
                 ];
             }
             shuffle($items);
             $this->lines = [];
             $this->delay = [];
+            $this->lineWidths = [];
             foreach ($items as $item) {
                 $this->lines[] = $item["line"];
                 $this->delay[] = $item["delay"];
+                $this->lineWidths[] = $item["width"];
             }
         }
     }
@@ -248,6 +258,30 @@ class RendererModel
             throw new UnprocessableEntityException("$field must be a non-negative number.");
         }
         return $digits;
+    }
+
+    /**
+     * Validate and expand width values.
+     *
+     * A single value applies to every line. Multiple values must contain
+     * exactly one positive integer for each line.
+     *
+     * @param string $width Width value or semicolon-separated width values
+     * @param int $lineCount Number of rendered lines
+     * @return array<int> Validated width values
+     */
+    private function checkWidths($width, $lineCount)
+    {
+        $values = explode(";", (string) $width);
+        if (count($values) === 1) {
+            $values = array_fill(0, $lineCount, $values[0]);
+        }
+        if (count($values) !== $lineCount) {
+            throw new UnprocessableEntityException("width must contain either one value or one value per line.");
+        }
+        return array_map(function ($value) {
+            return $this->checkNumberPositive($value, "Width");
+        }, $values);
     }
 
     /**
