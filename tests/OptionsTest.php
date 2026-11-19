@@ -441,6 +441,24 @@ final class OptionsTest extends TestCase
     }
 
     /**
+     * Test the cursor is off by default
+     */
+    public function testCursorOffByDefault(): void
+    {
+        $model = new RendererModel("src/templates/main.php", ["lines" => "a;b"]);
+        $this->assertFalse($model->cursor);
+    }
+
+    /**
+     * Test the cursor option is read from the parameter
+     */
+    public function testCursorEnabled(): void
+    {
+        $model = new RendererModel("src/templates/main.php", ["lines" => "a", "cursor" => "true"]);
+        $this->assertTrue($model->cursor);
+    }
+
+    /**
      * Test repeat set to true, false, other
      */
     public function testRepeat(): void

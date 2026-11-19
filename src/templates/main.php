@@ -9,6 +9,15 @@
 
     <?php $lastLineIndex = count($lines) - 1; ?>
     <?php
+    // Cursor block: geometry and blink timing, recomputed per line.
+    if ($cursor) {
+        $cursorWidth = max(1, (int) round($size * 0.5));
+        $cursorHeight = (int) round($size);
+        $cursorBlinkMs = 1000;
+        $cursorBlinkBegin = "0s";
+    }
+    ?>
+    <?php
     // Pre-compute per-line group membership when groups param is provided
     $groupInfo = [];
     $groupDelays = [];
@@ -90,6 +99,16 @@
                     fill='<?= $freeze ? "freeze" : "remove" ?>'
                     values='<?= implode(" ; ", $values) ?>'
                     keyTimes='<?= implode(";", $keyTimes) ?>' />
+                <?php
+                // Cursor rides to the group's last line end, then clears with the group
+                $cursorBegin = $begin;
+                $cursorDur = $groupDuration;
+                if ($cursor) { $cursorY = $vCenter ? $yOffset - $cursorHeight / 2 : $yOffset - $size * 0.8; }
+                $cursorKeyTimes = $keyTimes;
+                $cursorXs = [$xStart, $xStart + $lineWidth, $xStart + $lineWidth, $freeze ? $xStart + $lineWidth : $xStart];
+                $cursorFill = $freeze ? "freeze" : "remove";
+                $cursorBlinkBegin = $begin;
+                ?>
             <?php
                 // start after previous line
                 // if this is the first line, start at 0 seconds
@@ -124,6 +143,16 @@
                 <animate id='d<?= $i ?>' attributeName='d' begin='<?= $begin ?>'
                     dur='<?= $duration + $pause ?>ms' fill='<?= $freeze ? "freeze" : "remove" ?>'
                     values='<?= implode(" ; ", $values) ?>' keyTimes='<?= implode(";", $keyTimes) ?>' />
+                <?php
+                // Cursor mirrors the line's reveal: it rides to the end of the text, holds, then resets
+                $cursorBegin = $begin;
+                $cursorDur = $duration + $pause;
+                $cursorKeyTimes = $keyTimes;
+                $cursorXs = [$xStart, $xStart + $lineWidth, $xStart + $lineWidth, $freeze ? $xStart + $lineWidth : $xStart];
+                $cursorFill = $freeze ? "freeze" : "remove";
+                if ($cursor) { $cursorY = $vCenter ? $yOffset - $cursorHeight / 2 : $yOffset - $size * 0.8; }
+                $cursorBlinkBegin = $cursorBegin;
+                ?>
             <?php else: ?>
                 <!-- Multiline -->
                 <?php
@@ -141,6 +170,16 @@
                 <animate id='d<?= $i ?>' attributeName='d' begin='0s<?= $repeat ? ";d$lastLineIndex.end" : "" ?>'
                     dur='<?= $lineDuration ?>ms' fill="freeze"
                     values='<?= implode(" ; ", $values) ?>' keyTimes='<?= implode(";", $keyTimes) ?>' />
+                <?php
+                // Cursor appears with the line and stops at its end
+                $cursorBegin = "0s" . ($repeat ? ";d$lastLineIndex.end" : "");
+                $cursorDur = $lineDuration;
+                $cursorKeyTimes = ["0", "0", $keyTimes[2], "1"];
+                $cursorXs = [$xStart, $xStart, $xStart + $lineWidth, $xStart + $lineWidth];
+                $cursorFill = "freeze";
+                if ($cursor) { $cursorY = $vCenter ? $yOffset - $cursorHeight / 2 : $yOffset - $size * 0.8; }
+                $cursorBlinkBegin = "0s";
+                ?>
             <?php endif; ?>
         </path>
     <text font-family='"<?= $font ?>", monospace' fill='<?= $color ?>' font-size='<?= $size ?>'
@@ -151,5 +190,15 @@
             <?= $lines[$i] . "\n" ?>
         </textPath>
     </text>
+    <?php if ($cursor): ?>
+        <!-- Cursor: a block that rides the same path as the text, so it tracks the typed edge -->
+        <rect x='0' y='<?= $cursorY ?>' width='<?= $cursorWidth ?>' height='<?= $cursorHeight ?>' fill='<?= $color ?>'>
+            <animate attributeName='x' dur='<?= $cursorDur ?>ms' begin='<?= $cursorBegin ?>'
+                values='<?= implode(" ; ", $cursorXs) ?>' keyTimes='<?= implode(";", $cursorKeyTimes) ?>'
+                fill='<?= $cursorFill ?>' />
+            <animate attributeName='opacity' values='1;1;0;0;1' dur='<?= $cursorBlinkMs ?>ms'
+                begin='<?= $cursorBlinkBegin ?>' repeatCount='indefinite' />
+        </rect>
+    <?php endif; ?>
 <?php endfor; ?>
 </svg>
