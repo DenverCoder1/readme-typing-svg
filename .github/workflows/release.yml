@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
 
       - name: conventional Changelog Action
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v3.7.1
+        uses: TriPSs/conventional-changelog-action@v6.5.0
         with:
           github-token: ${{ secrets.CHANGELOG_RELEASE }}
           version-file: './composer.json'
