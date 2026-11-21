@@ -672,7 +672,7 @@ final class OptionsTest extends TestCase
             "random" => "true",
         ]);
         foreach ($model->lineWidths as $index => $width) {
-            $this->assertSame(max(1, (int) round(600 * $width / 300)), $model->typeDurations[$index]);
+            $this->assertSame(max(1, (int) round((600 * $width) / 300)), $model->typeDurations[$index]);
         }
     }
 }

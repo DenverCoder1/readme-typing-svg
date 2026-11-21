@@ -153,7 +153,7 @@ class RendererModel
             return array_fill(0, count($this->lines), $this->duration);
         }
         return array_map(
-            fn(int $lineWidth): int => max(1, (int) round($this->duration * $lineWidth / $this->width)),
+            fn(int $lineWidth): int => max(1, (int) round(($this->duration * $lineWidth) / $this->width)),
             $this->lineWidths
         );
     }

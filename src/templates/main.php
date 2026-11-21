@@ -8,7 +8,10 @@
     <?= $fontCSS ?>
 
     <?php $lastLineIndex = count($lines) - 1; ?>
-    <?php $cumulativeDelay = 0; $cumulativeTyping = 0; ?>
+    <?php
+    $cumulativeDelay = 0;
+    $cumulativeTyping = 0;
+    ?>
     <?php
     // Pre-compute per-line group membership when groups param is provided
     $groupInfo = [];

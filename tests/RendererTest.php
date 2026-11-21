@@ -656,10 +656,7 @@ final class RendererTest extends TestCase
     private function animateKeyTimes(string $svg): array
     {
         preg_match_all("/keyTimes='([^']+)'/", $svg, $matches);
-        return array_map(
-            fn(string $times): array => array_map("floatval", explode(";", $times)),
-            $matches[1]
-        );
+        return array_map(fn(string $times): array => array_map("floatval", explode(";", $times)), $matches[1]);
     }
 
     /**
@@ -744,18 +741,15 @@ final class RendererTest extends TestCase
             "grouped" => ["groups" => "2"],
         ];
         foreach ($modes as $mode => $extra) {
-            $base = [
-                "lines" => "a;b",
-                "width" => "400",
-                "duration" => "1000",
-                "pause" => "100",
-            ] + $extra;
-            $off = preg_replace("/\\s+/", " ", (new RendererController($base))->render());
-            $on = preg_replace(
-                "/\\s+/",
-                " ",
-                (new RendererController($base + ["widthSpeed" => "true"]))->render()
-            );
+            $base =
+                [
+                    "lines" => "a;b",
+                    "width" => "400",
+                    "duration" => "1000",
+                    "pause" => "100",
+                ] + $extra;
+            $off = preg_replace("/\s+/", " ", (new RendererController($base))->render());
+            $on = preg_replace("/\s+/", " ", (new RendererController($base + ["widthSpeed" => "true"]))->render());
             $this->assertSame($off, $on, "widthSpeed changed output in $mode mode");
         }
     }
