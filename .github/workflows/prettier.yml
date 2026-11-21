@@ -18,14 +18,14 @@ jobs:
     steps:
       - name: Checkout Pull Request
         if: ${{ github.event_name == 'pull_request' }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Checkout Push
         if: ${{ github.event_name != 'pull_request' }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Install prettier and plugin-php
         run: npm install --global prettier@2.8.1 @prettier/plugin-php@0.18.9
@@ -40,7 +40,7 @@ jobs:
           git diff
 
       - name: Commit changes
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v11
         with:
           message: "style: Formatted code with Prettier"
           default_author: github_actions
