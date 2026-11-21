@@ -8,16 +8,19 @@
     <?= $fontCSS ?>
 
     <?php $lastLineIndex = count($lines) - 1; ?>
+    <?php $cumulativeDelay = 0; $cumulativeTyping = 0; ?>
     <?php
     // Pre-compute per-line group membership when groups param is provided
     $groupInfo = [];
     $groupDelays = [];
+    $groupTypingDurations = [];
     $groupLineStarts = [];
     if ($groups !== null) {
         $lineIdx = 0;
         foreach ($groups as $gIdx => $gSize) {
             $groupStartLine = $lineIdx;
             $delayPrefix = 0;
+            $typingPrefix = 0;
             for ($p = 0; $p < $gSize; $p++) {
                 $lineIndex = $lineIdx + $p;
                 $delayPrefix += $delay[$lineIndex];
@@ -29,9 +32,11 @@
                     "lastLineInGroup" => $groupStartLine + $gSize - 1,
                     "isFirstGroup" => $gIdx === 0,
                 ];
-                $groupLineStarts[$lineIndex] = $delayPrefix + $p * $duration;
+                $groupLineStarts[$lineIndex] = $delayPrefix + $typingPrefix;
+                $typingPrefix += $typeDurations[$lineIndex];
             }
             $groupDelays[$gIdx] = $delayPrefix;
+            $groupTypingDurations[$gIdx] = $typingPrefix;
             $lineIdx += $gSize;
         }
     }
@@ -49,7 +54,6 @@
                 <?php
                 $info = $groupInfo[$i];
                 $p = $info["positionInGroup"];
-                $k = $info["groupSize"];
                 $groupStartLine = $info["groupStartLine"];
                 $lastLineInGroup = $info["lastLineInGroup"];
 
@@ -60,13 +64,16 @@
 
                 // Delays are waits immediately before each line starts typing.
                 $groupDelay = $groupDelays[$info["groupIndex"]];
-                $groupDuration = $groupDelay + $k * $duration + $pause;
+                $groupTyping = $groupTypingDurations[$info["groupIndex"]];
+                $groupDuration = $groupDelay + $groupTyping + $pause;
+                $lineTypeDuration = $typeDurations[$i];
 
                 // Each line waits for its own delay and the preceding lines in the group.
                 $lineStart = $groupLineStarts[$i];
                 $kt1 = $lineStart / $groupDuration;
-                $kt2 = ($lineStart + 0.8 * $duration) / $groupDuration;
-                $kt3 = ($groupDelay + ($k - 1 + 0.8) * $duration + $pause) / $groupDuration;
+                $kt2 = ($lineStart + 0.8 * $lineTypeDuration) / $groupDuration;
+                $lastLineTypeDuration = $typeDurations[$lastLineInGroup];
+                $kt3 = ($groupDelay + $groupTyping - 0.2 * $lastLineTypeDuration + $pause) / $groupDuration;
                 $keyTimes = ["0", $kt1, $kt2, $kt3, "1"];
                 $values = [$emptyLine, $emptyLine, $fullLine, $fullLine, $emptyLine];
 
@@ -114,32 +121,40 @@
                 $emptyLine = "m$xStart,$yOffset h0";
                 $fullLine = "m$xStart,$yOffset h$lineWidth";
                 $values = [$emptyLine, $fullLine, $fullLine, $freeze ? $fullLine : $emptyLine];
+                $lineTypeDuration = $typeDurations[$i];
+                $animationDuration = $lineTypeDuration + $pause;
                 $keyTimes = [
                     "0",
-                    (0.8 * $duration) / ($duration + $pause),
-                    (0.8 * $duration + $pause) / ($duration + $pause),
+                    (0.8 * $lineTypeDuration) / $animationDuration,
+                    (0.8 * $lineTypeDuration + $pause) / $animationDuration,
                     "1",
                 ];
                 ?>
                 <animate id='d<?= $i ?>' attributeName='d' begin='<?= $begin ?>'
-                    dur='<?= $duration + $pause ?>ms' fill='<?= $freeze ? "freeze" : "remove" ?>'
+                    dur='<?= $animationDuration ?>ms' fill='<?= $freeze ? "freeze" : "remove" ?>'
                     values='<?= implode(" ; ", $values) ?>' keyTimes='<?= implode(";", $keyTimes) ?>' />
             <?php else: ?>
                 <!-- Multiline -->
                 <?php
                 $nextIndex = $i + 1;
                 $lineHeight = $size + 5;
-                $cumulativeDelay = ($i === 0 ? 0 : $cumulativeDelay) + $delay[$i];
-                $lineDuration = ($duration + $pause) * $nextIndex + $cumulativeDelay;
-                $lineStart = $i * ($duration + $pause) + $cumulativeDelay;
+                $cumulativeDelay += $delay[$i];
+                $lineStart = $cumulativeDelay + $cumulativeTyping;
+                $animationDuration = $lineStart + $typeDurations[$i] + $pause;
                 $yOffset = $nextIndex * $lineHeight;
                 $emptyLine = "m$xStart,$yOffset h0";
                 $fullLine = "m$xStart,$yOffset h$lineWidth";
                 $values = [$emptyLine, $emptyLine, $fullLine, $fullLine];
-                $keyTimes = ["0", $lineStart / $lineDuration, ($lineStart + $duration) / $lineDuration, "1"];
+                $keyTimes = [
+                    "0",
+                    $lineStart / $animationDuration,
+                    ($lineStart + $typeDurations[$i]) / $animationDuration,
+                    "1",
+                ];
+                $cumulativeTyping += $typeDurations[$i] + $pause;
                 ?>
                 <animate id='d<?= $i ?>' attributeName='d' begin='0s<?= $repeat ? ";d$lastLineIndex.end" : "" ?>'
-                    dur='<?= $lineDuration ?>ms' fill="freeze"
+                    dur='<?= $animationDuration ?>ms' fill="freeze"
                     values='<?= implode(" ; ", $values) ?>' keyTimes='<?= implode(";", $keyTimes) ?>' />
             <?php endif; ?>
         </path>

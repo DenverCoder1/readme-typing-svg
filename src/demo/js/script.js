@@ -11,6 +11,7 @@ const preview = {
     vCenter: "false",
     multiline: "false",
     width: "400",
+    widthSpeed: "false",
     height: "50",
     duration: "5000",
     pause: "0",
@@ -93,13 +94,27 @@ const preview = {
         params.groups = groups.join(",");
       }
     }
+    // the width-speed option only applies when widths are set per line
+    if (!params.width.includes(";")) {
+      params.widthSpeed = "false";
+    }
     return params;
+  },
+
+  /**
+   * Show the width-speed option only when widths are set per line
+   */
+  updateWidthSpeedVisibility() {
+    const applies = document.querySelector("#width").value.includes(";");
+    document.querySelector("#widthSpeedLabel").style.display = applies ? "" : "none";
+    document.querySelector("#widthSpeed").style.display = applies ? "" : "none";
   },
 
   /**
    * Update the preview image and markdown
    */
   update() {
+    this.updateWidthSpeedVisibility();
     const copyButtons = document.querySelectorAll(".copy-button");
     // get parameter values
     const params = this.getParams();

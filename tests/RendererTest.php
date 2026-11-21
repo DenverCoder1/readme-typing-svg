@@ -636,4 +636,127 @@ final class RendererTest extends TestCase
         $this->assertStringContainsString("letter-spacing='10px'", $actualSVG);
         $this->assertStringNotContainsString("letter-spacing='normal'", $actualSVG);
     }
+
+    /**
+     * Extract the dur attribute (ms) of every animate element
+     *
+     * @return array<int>
+     */
+    private function animateDurations(string $svg): array
+    {
+        preg_match_all("/<animate[^>]*\\bdur='(\\d+)ms'/", $svg, $matches);
+        return array_map("intval", $matches[1]);
+    }
+
+    /**
+     * Extract the keyTimes attribute of every animate element as float arrays
+     *
+     * @return array<array<float>>
+     */
+    private function animateKeyTimes(string $svg): array
+    {
+        preg_match_all("/keyTimes='([^']+)'/", $svg, $matches);
+        return array_map(
+            fn(string $times): array => array_map("floatval", explode(";", $times)),
+            $matches[1]
+        );
+    }
+
+    /**
+     * Test widthSpeed leaves the default timings untouched when disabled
+     */
+    public function testWidthSpeedIsOffByDefaultInSingleLineMode(): void
+    {
+        $params = [
+            "lines" => "a;b",
+            "width" => "200;400",
+            "duration" => "1000",
+            "pause" => "0",
+        ];
+        $svg = (new RendererController($params))->render();
+        $this->assertSame([1000, 1000], $this->animateDurations($svg));
+    }
+
+    /**
+     * Test widthSpeed makes each line type at the same pixels per second
+     */
+    public function testWidthSpeedScalesTypingTimeInSingleLineMode(): void
+    {
+        $params = [
+            "lines" => "a;b",
+            "width" => "200;400",
+            "duration" => "1000",
+            "pause" => "0",
+            "widthSpeed" => "true",
+        ];
+        $svg = (new RendererController($params))->render();
+        $this->assertSame([500, 1000], $this->animateDurations($svg));
+    }
+
+    /**
+     * Test widthSpeed advances each multiline path by the previous line's typing time
+     */
+    public function testWidthSpeedScalesTypingTimeInMultilineMode(): void
+    {
+        $base = [
+            "lines" => "a;b",
+            "width" => "200;400",
+            "duration" => "1000",
+            "pause" => "0",
+            "multiline" => "true",
+        ];
+        $off = (new RendererController($base))->render();
+        $on = (new RendererController($base + ["widthSpeed" => "true"]))->render();
+        $this->assertSame([1000, 2000], $this->animateDurations($off));
+        $this->assertSame([500, 1500], $this->animateDurations($on));
+    }
+
+    /**
+     * Test widthSpeed keeps the group cadence while scaling each line
+     */
+    public function testWidthSpeedScalesTypingTimeInGroupedMode(): void
+    {
+        $base = [
+            "lines" => "a;b",
+            "width" => "200;400",
+            "duration" => "1000",
+            "pause" => "0",
+            "groups" => "2",
+        ];
+        $off = (new RendererController($base))->render();
+        $on = (new RendererController($base + ["widthSpeed" => "true"]))->render();
+        $this->assertSame([2000, 2000], $this->animateDurations($off));
+        $this->assertSame([1500, 1500], $this->animateDurations($on));
+        $onTimes = $this->animateKeyTimes($on);
+        $this->assertEqualsWithDelta(400 / 1500, $onTimes[0][2], 1e-9);
+        $this->assertEqualsWithDelta(500 / 1500, $onTimes[1][1], 1e-9);
+        $this->assertEqualsWithDelta(1300 / 1500, $onTimes[1][2], 1e-9);
+    }
+
+    /**
+     * Test widthSpeed is a no-op when one width applies to every line
+     */
+    public function testWidthSpeedIsANoOpWithASingleWidth(): void
+    {
+        $modes = [
+            "single line" => [],
+            "multiline" => ["multiline" => "true"],
+            "grouped" => ["groups" => "2"],
+        ];
+        foreach ($modes as $mode => $extra) {
+            $base = [
+                "lines" => "a;b",
+                "width" => "400",
+                "duration" => "1000",
+                "pause" => "100",
+            ] + $extra;
+            $off = preg_replace("/\\s+/", " ", (new RendererController($base))->render());
+            $on = preg_replace(
+                "/\\s+/",
+                " ",
+                (new RendererController($base + ["widthSpeed" => "true"]))->render()
+            );
+            $this->assertSame($off, $on, "widthSpeed changed output in $mode mode");
+        }
+    }
 }
