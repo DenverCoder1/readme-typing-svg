@@ -76,7 +76,13 @@
                 $kt1 = $lineStart / $groupDuration;
                 $kt2 = ($lineStart + 0.8 * $lineTypeDuration) / $groupDuration;
                 $lastLineTypeDuration = $typeDurations[$lastLineInGroup];
-                $kt3 = ($groupDelay + $groupTyping - 0.2 * $lastLineTypeDuration + $pause) / $groupDuration;
+                // Clear at the last line's typing endpoint, built with the same
+                // expression as $kt2 above. Deriving it by subtraction
+                // (group end - 0.2 * duration) rounds to a different float and
+                // can serialize a keyTimes list that decreases, which makes the
+                // animation invalid.
+                $clearPoint = $groupLineStarts[$lastLineInGroup] + 0.8 * $lastLineTypeDuration + $pause;
+                $kt3 = $clearPoint / $groupDuration;
                 $keyTimes = ["0", $kt1, $kt2, $kt3, "1"];
                 $values = [$emptyLine, $emptyLine, $fullLine, $fullLine, $emptyLine];
 

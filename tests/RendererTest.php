@@ -602,6 +602,40 @@ final class RendererTest extends TestCase
     }
 
     /**
+     * Test grouped width-scaled lines serialize nondecreasing keyTimes (#504).
+     *
+     * The clear point used to be derived by subtracting from the group length,
+     * which rounds to a float one ULP below the last line's typing endpoint and
+     * serializes as a decreasing keyTimes list, invalidating the animation.
+     */
+    public function testGroupedWidthSpeedKeyTimesStayOrdered(): void
+    {
+        $controller = new RendererController([
+            "lines" => "a;b",
+            "width" => "1;284",
+            "duration" => "284",
+            "groups" => "2",
+            "pause" => "0",
+            "widthSpeed" => "true",
+        ]);
+        $svg = $controller->render();
+
+        preg_match_all("/keyTimes='([^']+)'/", $svg, $matches);
+        $this->assertNotEmpty($matches[1]);
+        foreach ($matches[1] as $keyTimes) {
+            $values = array_map("floatval", explode(";", $keyTimes));
+            $sorted = $values;
+            sort($sorted);
+            $this->assertSame($sorted, $values, "keyTimes must not decrease: {$keyTimes}");
+        }
+
+        // the last line finishes typing exactly when the group clears
+        preg_match("/<animate id='d1'[^>]*keyTimes='([^']+)'/", $svg, $lastLine);
+        $lastKeyTimes = explode(";", $lastLine[1]);
+        $this->assertSame($lastKeyTimes[2], $lastKeyTimes[3]);
+    }
+
+    /**
      * Test random mode keeps each width attached to its line.
      */
     public function testRandomKeepsWidthsWithLines(): void
