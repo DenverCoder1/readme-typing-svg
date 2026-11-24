@@ -601,4 +601,78 @@ final class OptionsTest extends TestCase
         $model = new RendererModel("src/templates/main.php", $params);
         $this->assertEquals("10px", $model->letterSpacing);
     }
+
+    /**
+     * Test widthSpeed is off by default and leaves every line at the full duration
+     */
+    public function testWidthSpeedIsOffByDefault(): void
+    {
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b",
+            "width" => "100;200",
+            "duration" => "1000",
+        ]);
+        $this->assertFalse($model->widthSpeed);
+        $this->assertSame([1000, 1000], $model->typeDurations);
+    }
+
+    /**
+     * Test widthSpeed scales each line's typing time by its share of the widest width
+     */
+    public function testWidthSpeedScalesDurationByWidthShare(): void
+    {
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b",
+            "width" => "100;200",
+            "duration" => "1000",
+            "widthSpeed" => "true",
+        ]);
+        $this->assertTrue($model->widthSpeed);
+        $this->assertSame([500, 1000], $model->typeDurations);
+    }
+
+    /**
+     * Test a single width disables the scaling even when widthSpeed is on
+     */
+    public function testWidthSpeedWithSingleWidthKeepsFullDuration(): void
+    {
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b",
+            "width" => "300",
+            "duration" => "1000",
+            "widthSpeed" => "true",
+        ]);
+        $this->assertSame([1000, 1000], $model->typeDurations);
+    }
+
+    /**
+     * Test a scaled duration never reaches zero milliseconds
+     */
+    public function testWidthSpeedKeepsEveryDurationPositive(): void
+    {
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b",
+            "width" => "1;1000",
+            "duration" => "1",
+            "widthSpeed" => "true",
+        ]);
+        $this->assertSame([1, 1], $model->typeDurations);
+    }
+
+    /**
+     * Test random mode keeps each type duration with its line
+     */
+    public function testWidthSpeedFollowsLinesWhenRandomized(): void
+    {
+        $model = new RendererModel("src/templates/main.php", [
+            "lines" => "a;b;c",
+            "width" => "100;200;300",
+            "duration" => "600",
+            "widthSpeed" => "true",
+            "random" => "true",
+        ]);
+        foreach ($model->lineWidths as $index => $width) {
+            $this->assertSame(max(1, (int) round((600 * $width) / 300)), $model->typeDurations[$index]);
+        }
+    }
 }

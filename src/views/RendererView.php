@@ -36,6 +36,7 @@ class RendererView
             "vCenter" => $this->model->vCenter,
             "width" => $this->model->width,
             "lineWidths" => $this->model->lineWidths,
+            "typeDurations" => $this->model->typeDurations,
             "height" => $this->model->height,
             "multiline" => $this->model->multiline,
             "groups" => $this->model->groups,

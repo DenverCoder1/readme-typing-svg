@@ -37,6 +37,12 @@ class RendererModel
     /** @var array<int> $lineWidths width each line is typed across (px) */
     public $lineWidths;
 
+    /** @var bool $widthSpeed True = scale each line's typing time with its width */
+    public $widthSpeed;
+
+    /** @var array<int> $typeDurations typing duration of each line (ms) */
+    public $typeDurations;
+
     /** @var int $height SVG height (px) */
     public $height;
 
@@ -83,6 +89,7 @@ class RendererModel
         "center" => "false",
         "vCenter" => "false",
         "width" => "400",
+        "widthSpeed" => "false",
         "height" => "50",
         "multiline" => "false",
         "duration" => "5000",
@@ -115,6 +122,7 @@ class RendererModel
         $this->vCenter = $this->checkBoolean($params["vCenter"] ?? $this->DEFAULTS["vCenter"]);
         $this->lineWidths = $this->checkWidths($params["width"] ?? $this->DEFAULTS["width"], count($this->lines));
         $this->width = max($this->lineWidths);
+        $this->widthSpeed = $this->checkBoolean($params["widthSpeed"] ?? $this->DEFAULTS["widthSpeed"]);
         $this->height = $this->checkNumberPositive($params["height"] ?? $this->DEFAULTS["height"], "Height");
         $this->multiline = $this->checkBoolean($params["multiline"] ?? $this->DEFAULTS["multiline"]);
         $this->duration = $this->checkNumberPositive($params["duration"] ?? $this->DEFAULTS["duration"], "duration");
@@ -125,8 +133,29 @@ class RendererModel
         if ($this->random) {
             $this->shuffleLines();
         }
+        $this->typeDurations = $this->computeTypeDurations();
         $this->fontCSS = $this->fetchFontCSS($this->font, $this->weight, $params["lines"]);
         $this->letterSpacing = $this->checkLetterSpacing($params["letterSpacing"] ?? $this->DEFAULTS["letterSpacing"]);
+    }
+
+    /**
+     * Typing duration for each line in milliseconds.
+     *
+     * With widthSpeed disabled every line types for the full duration. With it
+     * enabled each line types in proportion to its width, so all lines move at
+     * the same pixels per second. Pauses and delays are unaffected.
+     *
+     * @return array<int>
+     */
+    private function computeTypeDurations()
+    {
+        if (!$this->widthSpeed || $this->width === 0) {
+            return array_fill(0, count($this->lines), $this->duration);
+        }
+        return array_map(
+            fn(int $lineWidth): int => max(1, (int) round(($this->duration * $lineWidth) / $this->width)),
+            $this->lineWidths
+        );
     }
 
     /**

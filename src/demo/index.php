@@ -135,6 +135,12 @@
                     <input class="param inline" type="number" id="height" name="height" alt="Height (px)" placeholder="50" value="50">
                 </span>
 
+                <label for="widthSpeed" id="widthSpeedLabel" style="display: none;" title="Types every line at the same speed, so narrower lines finish sooner. Only applies when a different width is set per line.">Scale speed to line width</label>
+                <select class="param" id="widthSpeed" name="widthSpeed" alt="Scale typing speed to each line's width" style="display: none;">
+                    <option value="false">false</option>
+                    <option value="true">true</option>
+                </select>
+
                 <input type="button" class="btn" value="Reset" onclick="preview.reset();">
 
                 <button type="button" class="copy-button btn tooltip" onclick="clipboard.copyPermalink(this);" onmouseout="tooltip.reset(this);" disabled>Copy Permalink</button>
